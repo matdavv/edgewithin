@@ -818,20 +818,163 @@
   <p class="sans" style="font-size:13px;color:var(--grey2);margin-top:20px;">Already decided? <a href="#contact" style="color:var(--orange);text-decoration:none;font-weight:700;">Skip to the mentorship →</a></p>
 </section>
 
-<!-- FINAL CTA -->
-<div class="final-cta" id="contact">
-  <h2>Ready to build your podcast?</h2>
-  <p>5 founding member spots · Course $3,000 USD · Course + Mentorship $5,000 USD</p>
-  <p>Founding rate locked for life. Raises after the first 5 students.</p>
-  <span class="handle">DM @edgewithinpodcast or @rawmatdavenport</span>
-  <div class="link">sociatap.com/matdavenport</div>
-  <a href="https://www.instagram.com/edgewithinpodcast/" class="btn-dark" target="_blank" rel="noopener">Message on Instagram</a>
-</div>
+<!-- APPLICATION FORM -->
+<section class="section" id="contact" style="background:#0D0D0D;padding:80px 24px;">
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="eyebrow" style="text-align:center;">Apply Now</div>
+    <h2 style="text-align:center;margin-bottom:10px;">Claim Your Founding Spot</h2>
+    <p style="text-align:center;font-family:Arial,sans-serif;font-size:15px;color:var(--grey);margin-bottom:40px;line-height:1.7;">5 spots. Lowest price this program will ever be. Mat reviews every application personally and will be in touch within 24 hours.</p>
+
+    <form id="applyForm" style="display:flex;flex-direction:column;gap:20px;">
+
+      <!-- Name -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Your Name *</label>
+        <input type="text" name="name" required placeholder="Mat Davenport"
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'">
+      </div>
+
+      <!-- Instagram -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Instagram Handle *</label>
+        <input type="text" name="instagram" required placeholder="@yourhandle"
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'">
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Email *</label>
+        <input type="email" name="email" required placeholder="you@email.com"
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'">
+      </div>
+
+      <!-- Podcast status -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Do you currently have a podcast? *</label>
+        <select name="podcast_status" required
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'">
+          <option value="" disabled selected>Select an option</option>
+          <option value="not_yet">Not yet — planning to start</option>
+          <option value="early">Yes — launched but early stage</option>
+          <option value="going">Yes — been going for a while</option>
+        </select>
+      </div>
+
+      <!-- Biggest challenge -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">What's your biggest challenge right now? *</label>
+        <textarea name="challenge" required rows="3" placeholder="Be honest — this helps Mat understand where you're at and how he can help."
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;resize:vertical;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'"></textarea>
+      </div>
+
+      <!-- Hours per week -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Hours per week you can commit *</label>
+        <select name="hours" required
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'">
+          <option value="" disabled selected>Select an option</option>
+          <option value="less_3">Less than 3 hours</option>
+          <option value="3_5">3 to 5 hours</option>
+          <option value="5_10">5 to 10 hours</option>
+          <option value="10_plus">10+ hours</option>
+        </select>
+      </div>
+
+      <!-- Which option -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Which option interests you? *</label>
+        <select name="option" required
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;appearance:none;cursor:pointer;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'">
+          <option value="" disabled selected>Select an option</option>
+          <option value="course">Course Only — $3,000 USD</option>
+          <option value="mentorship">Course + Mentorship — $5,000 USD</option>
+          <option value="unsure">Not sure yet</option>
+        </select>
+      </div>
+
+      <!-- Anything else -->
+      <div>
+        <label style="display:block;font-family:'Courier New',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;">Anything else you want Mat to know?</label>
+        <textarea name="extra" rows="3" placeholder="Optional — any context that would help Mat understand your situation."
+          style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--white);font-family:Arial,sans-serif;font-size:15px;outline:none;resize:vertical;transition:border-color 0.2s;"
+          onfocus="this.style.borderColor='#b8860b'" onblur="this.style.borderColor='#1E1E1E'"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+        style="background:#b8860b;color:#0A0A0A;font-family:'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;border:none;border-radius:8px;cursor:pointer;transition:transform 0.2s,background 0.2s;margin-top:8px;"
+        onmouseover="this.style.background='#9a7009'" onmouseout="this.style.background='#b8860b'">
+        Submit Application
+      </button>
+
+      <!-- Success message -->
+      <div id="formSuccess" style="display:none;background:#0a110a;border:1px solid #22C55E;border-radius:8px;padding:20px 24px;text-align:center;">
+        <div style="font-size:24px;margin-bottom:8px;">✓</div>
+        <div style="font-size:16px;font-weight:700;color:#22C55E;font-family:Arial,sans-serif;margin-bottom:6px;">Application received.</div>
+        <div style="font-size:14px;color:var(--grey);font-family:Arial,sans-serif;">Mat will review it and be in touch within 24 hours via Instagram or email.</div>
+      </div>
+
+    </form>
+
+    <p style="text-align:center;font-family:Arial,sans-serif;font-size:13px;color:var(--grey2);margin-top:20px;">Prefer to DM directly? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" style="color:#b8860b;text-decoration:none;">@edgewithinpodcast on Instagram →</a></p>
+  </div>
+</section>
 
 <!-- MOBILE STICKY CTA -->
 <a href="#contact" class="mobile-cta">Claim Your Founding Spot →</a>
 
 <script>
+  // Application form
+  const form = document.getElementById('applyForm');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const data = new FormData(form);
+      const payload = {
+        name: data.get('name'),
+        instagram: data.get('instagram'),
+        email: data.get('email'),
+        podcast_status: data.get('podcast_status'),
+        challenge: data.get('challenge'),
+        hours: data.get('hours'),
+        option: data.get('option'),
+        extra: data.get('extra') || 'N/A',
+        _subject: 'New Mentorship Application - Edge Within',
+        _replyto: data.get('email'),
+      };
+
+      try {
+        const res = await fetch('https://formspree.io/f/xpwzgkqb', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          form.querySelectorAll('input,textarea,select,button').forEach(el => el.style.display = 'none');
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.textContent = 'Something went wrong — DM @edgewithinpodcast';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Something went wrong — DM @edgewithinpodcast';
+        btn.disabled = false;
+      }
+    });
+  }
+
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
