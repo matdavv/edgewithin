@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Within — Mat Davenport</title>
+<meta name="description" content="Raw, honest conversations about mindset, identity and growth. Hosted by Mat Davenport.">
+<meta property="og:title" content="Edge Within with Mat Davenport">
+<meta property="og:description" content="0 to 10K followers and 2.3M monthly views in 160 days. Real, raw, honest conversations.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --orange: #b8860b;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #555555;
+    --grey3: #222222;
+    --grey4: #333333;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Type ── */
+  .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  h1 { font-size: clamp(36px, 6vw, 80px); line-height: 1.0; font-weight: 400; }
+  h2 { font-size: clamp(24px, 4vw, 42px); font-weight: 400; line-height: 1.15; }
+  h3 { font-size: 18px; font-weight: 700; font-family: Arial, sans-serif; }
+  .sans { font-family: Arial, sans-serif; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--grey);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--bg) !important;
+    font-weight: 700 !important;
+    padding: 9px 20px;
+    border-radius: 5px;
+    font-size: 12px !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace !important;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: #9a7009 !important; transform: scale(1.03); }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    padding-top: 68px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: #0D0D0D;
+    padding: clamp(60px, 8vw, 110px) clamp(32px, 5vw, 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px; left: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(184,134,11,0.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-left h1 { margin-bottom: 20px; position: relative; z-index: 1; }
+  .hero-left h1 em { color: var(--orange); font-style: normal; }
+
+  .hero-tagline {
+    font-size: 17px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    max-width: 460px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 26px;
+    border-radius: 6px;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--orange); color: var(--bg); }
+  .btn-primary:hover { background: #9a7009; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--grey4);
+  }
+  .btn-secondary:hover { border-color: var(--white); }
+
+  /* ── Hero right (photo) ── */
+  .hero-right {
+    position: relative;
+    background: #0D0D0D;
+    overflow: hidden;
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(15%);
+  }
+
+  .hero-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    background: linear-gradient(135deg, #111 0%, #0F0A04 50%, #111 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .hero-photo-placeholder .placeholder-icon {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 2px dashed var(--grey4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
+  .hero-photo-placeholder p {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--grey2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-photo-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, #0D0D0D, transparent);
+    pointer-events: none;
+  }
+
+  /* ── Velocity strip ── */
+  .velocity {
+    background: #0D0D0D;
+    border-top: 1px solid var(--grey3);
+    border-bottom: 1px solid var(--grey3);
+    padding: 22px 32px;
+    overflow: hidden;
+  }
+  .velocity-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    color: var(--grey);
+  }
+  .velocity-inner strong { color: var(--orange); }
+  .velocity-sep { color: var(--grey3); }
+
+  /* ── Section layout ── */
+  .section { padding: 96px 32px; max-width: 1100px; margin: 0 auto; }
+  .section-full { padding: 96px 32px; }
+  .section-full .inner { max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 48px; }
+  .section-header p { font-size: 16px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 10px; line-height: 1.7; max-width: 560px; }
+
+  /* ── About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .about-text p strong { color: var(--white); }
+  .about-text p em { color: var(--orange); font-style: normal; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat-tile {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .stat-tile:hover { border-color: var(--grey4); transform: translateY(-2px); }
+  .stat-tile.featured { background: var(--card2); border-color: var(--orange); }
+  .stat-value { font-size: clamp(28px, 3.5vw, 38px); font-weight: 700; color: var(--orange); line-height: 1; font-family: Arial, sans-serif; margin-bottom: 6px; }
+  .stat-tile:not(.featured) .stat-value { color: var(--white); }
+  .stat-label { font-size: 11px; color: var(--grey); font-family: 'Courier New', monospace; letter-spacing: 0.08em; line-height: 1.4; }
+
+  /* ── Show section ── */
+  .show-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .show-info h2 { margin-bottom: 16px; }
+  .show-info p {
+    font-size: 15px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .listen-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .listen-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .listen-link:hover { border-color: var(--orange); transform: translateX(4px); }
+  .listen-icon { font-size: 20px; width: 28px; text-align: center; }
+  .listen-name { font-size: 14px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; }
+  .listen-sub { font-size: 12px; color: var(--grey); font-family: Arial, sans-serif; }
+  .listen-arrow { margin-left: auto; color: var(--orange); font-size: 16px; }
+
+  /* Episode cards */
+  .episode-cards { display: flex; flex-direction: column; gap: 12px; }
+
+  .ep-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+  .ep-card:hover { border-color: var(--grey4); }
+  .ep-num { font-family: 'Courier New', monospace; font-size: 10px; color: var(--orange); letter-spacing: 0.12em; margin-bottom: 6px; }
+  .ep-title { font-size: 15px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; margin-bottom: 6px; line-height: 1.4; }
+  .ep-desc { font-size: 13px; color: var(--grey); font-family: Arial, sans-serif; line-height: 1.6; }
+
+  /* ── Mentorship teaser ── */
+  .mentorship-block {
+    background: var(--card2);
+    border: 1px solid var(--orange);
+    border-radius: 12px;
+    padding: clamp(40px, 6vw, 64px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .mentorship-block h2 { margin-bottom: 14px; }
+  .mentorship-block p {
+    font-size: 15px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+
+  .mentorship-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 240px;
+  }
+
+  .tier-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .tier-card.featured { border-color: var(--orange); background: #0a0603; }
+  .tier-name { font-size: 11px; color: var(--grey2); font-family: 'Courier New', monospace; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .tier-price { font-size: 26px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; line-height: 1; }
+  .tier-card.featured .tier-price { color: var(--orange); }
+  .tier-desc { font-size: 11px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
+
+  .founding-note {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ── Free resource ── */
+  .free-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .free-visual {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .free-visual-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+    border-radius: 10px 10px 0 0;
+  }
+  .free-checklist-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .preview-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+  }
+  .preview-check {
+    width: 18px; height: 18px; min-width: 18px;
+    border-radius: 4px;
+    border: 1.5px solid var(--grey4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+  .preview-check.done { background: #22C55E; border-color: #22C55E; color: #000; }
+
+  .free-text h2 { margin-bottom: 14px; }
+  .free-text p {
+    font-size: 15px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  /* ── Instagram strip ── */
+  .ig-strip {
+    background: #0D0D0D;
+    border-top: 1px solid var(--grey3);
+    border-bottom: 1px solid var(--grey3);
+    padding: 64px 32px;
+    text-align: center;
+  }
+  .ig-strip h2 { margin-bottom: 12px; }
+  .ig-strip p {
+    font-size: 15px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    margin-bottom: 32px;
+  }
+  .ig-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .ig-stat { text-align: center; }
+  .ig-stat-val { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--orange); font-family: Arial, sans-serif; line-height: 1; }
+  .ig-stat-lbl { font-size: 11px; color: var(--grey); font-family: 'Courier New', monospace; letter-spacing: 0.1em; margin-top: 4px; }
+
+  /* ── Footer ── */
+  footer {
+    background: #0D0D0D;
+    border-top: 1px solid var(--grey3);
+    padding: 48px 32px 32px;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--grey3);
+    margin-bottom: 28px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+  .footer-logo {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+
+  .footer-col h4 {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey2);
+    margin-bottom: 14px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul a {
+    font-size: 13px;
+    color: var(--grey);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: var(--grey2); font-family: Arial, sans-serif; }
+  .footer-bottom a { color: var(--orange); text-decoration: none; }
+
+  /* ── Mobile sticky ── */
+  .mobile-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--orange);
+    color: var(--bg);
+    text-align: center;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 200;
+    border-top: 2px solid #9a7009;
+  }
+
+  /* ── Fade in ── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 360px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .show-grid { grid-template-columns: 1fr; }
+    .mentorship-block { grid-template-columns: 1fr; }
+    .mentorship-tiers { flex-direction: row; }
+    .free-block { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .mobile-cta { display: block; }
+    nav .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .section { padding: 64px 20px; }
+    .section-full { padding: 64px 20px; }
+    .mentorship-tiers { flex-direction: column; }
+    .ig-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    Edge Within
+  </a>
+  <ul class="nav-links">
+    <li><a href="#show">The Show</a></li>
+    <li><a href="#mentorship">Mentorship</a></li>
+    <li><a href="#free">Free Checklist</a></li>
+    <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="#mentorship" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-glow"></div>
+    <div class="eyebrow">Edge Within with Mat Davenport</div>
+    <h1>Real.<br><em>Raw.</em><br>Honest.</h1>
+    <p class="hero-tagline">Long-form conversations about mindset, identity and what it actually takes to build something that matters. No scripts. No agenda. Just truth.</p>
+    <div class="hero-actions">
+      <a href="#show" class="btn btn-primary">Listen Now</a>
+      <a href="#mentorship" class="btn btn-secondary">Build Your Podcast</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Replace src with your actual photo URL in Framer -->
+    <div class="hero-photo-placeholder">
+      <div class="placeholder-icon">📸</div>
+      <p>Add your photo here in Framer</p>
+    </div>
+    <div class="hero-photo-overlay"></div>
+  </div>
+</section>
+
+<!-- ── Velocity strip ── -->
+<div class="velocity">
+  <div class="velocity-inner">
+    <span>Launched <strong>Jan 20, 2026</strong> with 0 followers</span>
+    <span class="velocity-sep">·</span>
+    <span><strong>444</strong> followers after 30 days</span>
+    <span class="velocity-sep">·</span>
+    <span><strong>1M</strong> monthly views by Day 129</span>
+    <span class="velocity-sep">·</span>
+    <span><strong>10,700</strong> followers and <strong>2.3M</strong> monthly views today</span>
+    <span class="velocity-sep">·</span>
+    <span>No paid ads</span>
+  </div>
+</div>
+
+<!-- ── About ── -->
+<div class="section fade-in" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="eyebrow">About the Show</div>
+      <h2 style="margin-bottom:20px;">Meet your edge within.</h2>
+      <p>Edge Within is a long-form interview podcast built on one idea: <strong>the most important conversations are the ones most people avoid.</strong></p>
+      <p>Every episode goes deep. One guest, one conversation, no agenda. Mindset, identity, resilience, growth, what it means to live on your own terms. The conversations that change how you think.</p>
+      <p>Hosted by <em>Mat Davenport</em> from Australia. Launched January 2026. Zero dollars in advertising. The audience grew because the conversations were worth sharing.</p>
+      <div style="margin-top:28px;">
+        <a href="#show" class="btn btn-primary">Listen to Episodes</a>
+      </div>
+    </div>
+
+    <div class="about-stats">
+      <div class="stat-tile featured fade-in">
+        <div class="stat-value">2.3M</div>
+        <div class="stat-label">Monthly views</div>
+      </div>
+      <div class="stat-tile fade-in">
+        <div class="stat-value">10.7K</div>
+        <div class="stat-label">Instagram followers</div>
+      </div>
+      <div class="stat-tile fade-in">
+        <div class="stat-value">160</div>
+        <div class="stat-label">Days to 10K followers</div>
+      </div>
+      <div class="stat-tile fade-in">
+        <div class="stat-value">$0</div>
+        <div class="stat-label">Spent on paid ads</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Show ── -->
+<div class="section-full fade-in" style="background:#0D0D0D;" id="show">
+  <div class="inner">
+    <div class="show-grid">
+      <div class="show-info">
+        <div class="eyebrow">The Podcast</div>
+        <h2 style="margin-bottom:16px;">New episodes every week.</h2>
+        <p>One guest. One conversation. No script. Each episode is a deep dive with someone worth sitting across from. The kind of talk you walk away from thinking differently.</p>
+        <p>Available on Spotify, Apple Podcasts, and YouTube. Short clips posted daily on Instagram.</p>
+
+        <div class="listen-links">
+          <a href="https://open.spotify.com" target="_blank" rel="noopener" class="listen-link">
+            <span class="listen-icon">🎵</span>
+            <div>
+              <div class="listen-name">Spotify</div>
+              <div class="listen-sub">Listen on Spotify</div>
+            </div>
+            <span class="listen-arrow">→</span>
+          </a>
+          <a href="https://podcasts.apple.com" target="_blank" rel="noopener" class="listen-link">
+            <span class="listen-icon">🎙️</span>
+            <div>
+              <div class="listen-name">Apple Podcasts</div>
+              <div class="listen-sub">Listen on Apple Podcasts</div>
+            </div>
+            <span class="listen-arrow">→</span>
+          </a>
+          <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" class="listen-link">
+            <span class="listen-icon">📱</span>
+            <div>
+              <div class="listen-name">Instagram</div>
+              <div class="listen-sub">Daily clips @edgewithinpodcast</div>
+            </div>
+            <span class="listen-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="episode-cards fade-in">
+        <div class="ep-card">
+          <div class="ep-num">Latest Episode</div>
+          <div class="ep-title">Add your latest episode title here</div>
+          <div class="ep-desc">Update this with your most recent guest and a one-line description of what you covered.</div>
+        </div>
+        <div class="ep-card">
+          <div class="ep-num">Episode 14</div>
+          <div class="ep-title">Add episode title here</div>
+          <div class="ep-desc">A short description of what made this conversation worth listening to.</div>
+        </div>
+        <div class="ep-card">
+          <div class="ep-num">Episode 13</div>
+          <div class="ep-title">Add episode title here</div>
+          <div class="ep-desc">A short description of what made this conversation worth listening to.</div>
+        </div>
+        <div style="text-align:right;margin-top:8px;">
+          <a href="https://open.spotify.com" target="_blank" rel="noopener" style="font-family:'Courier New',monospace;font-size:11px;color:var(--orange);text-decoration:none;letter-spacing:0.1em;">ALL EPISODES →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Instagram ── -->
+<div class="ig-strip fade-in">
+  <div class="eyebrow" style="text-align:center;">On Instagram</div>
+  <h2>Follow the journey in real time.</h2>
+  <p>Clips, conversations, and the behind-the-scenes of building something from zero.</p>
+  <div class="ig-stats">
+    <div class="ig-stat">
+      <div class="ig-stat-val">2.3M</div>
+      <div class="ig-stat-lbl">Monthly views</div>
+    </div>
+    <div class="ig-stat">
+      <div class="ig-stat-val">10.7K</div>
+      <div class="ig-stat-lbl">Followers</div>
+    </div>
+    <div class="ig-stat">
+      <div class="ig-stat-val">107</div>
+      <div class="ig-stat-lbl">Posts</div>
+    </div>
+    <div class="ig-stat">
+      <div class="ig-stat-val">160</div>
+      <div class="ig-stat-lbl">Days</div>
+    </div>
+  </div>
+  <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" class="btn btn-primary">Follow @edgewithinpodcast</a>
+</div>
+
+<!-- ── Mentorship ── -->
+<div class="section fade-in" id="mentorship">
+  <div class="eyebrow">Podcast Mentorship</div>
+  <div class="mentorship-block">
+    <div>
+      <h2 style="margin-bottom:14px;">Build your podcast.<br>With me in your corner.</h2>
+      <p>I went from zero to 2.3M monthly views in 160 days. No paid ads. No prior audience. Just the right system, applied consistently. Now I teach everything I did, with direct access to me while you build yours.</p>
+      <p>5 founding member spots. The lowest price this program will ever be.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/mentorship/" class="btn btn-primary">See Full Details</a>
+        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" class="btn btn-secondary">DM to Apply</a>
+      </div>
+    </div>
+    <div class="mentorship-tiers">
+      <div class="tier-card">
+        <div class="tier-name">Course Only</div>
+        <div class="tier-price">$3,000</div>
+        <div class="tier-desc">USD · Self-paced</div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-name">Course + Mentorship</div>
+        <div class="tier-price">$5,000</div>
+        <div class="tier-desc">USD · Direct access</div>
+      </div>
+      <div class="founding-note">Founding rate · 5 spots only</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Free checklist ── -->
+<div class="section-full fade-in" style="background:#0D0D0D;" id="free">
+  <div class="inner">
+    <div class="free-block">
+      <div class="free-visual">
+        <div class="free-visual-accent"></div>
+        <div class="eyebrow" style="margin-bottom:16px;">Free Resource</div>
+        <div style="font-size:16px;font-weight:700;color:var(--white);font-family:Arial,sans-serif;margin-bottom:16px;">The 30-Step Launch Checklist</div>
+        <div class="free-checklist-preview">
+          <div class="preview-item"><span class="preview-check done">✓</span>Get clear on your WHY</div>
+          <div class="preview-item"><span class="preview-check done">✓</span>Name the show</div>
+          <div class="preview-item"><span class="preview-check done">✓</span>Find your recording location</div>
+          <div class="preview-item"><span class="preview-check">  </span>Book your first 3 guests</div>
+          <div class="preview-item"><span class="preview-check">  </span>Build your content bank</div>
+          <div class="preview-item"><span class="preview-check">  </span>Launch with 3 episodes at once</div>
+          <div style="font-size:11px;color:var(--grey2);font-family:'Courier New',monospace;letter-spacing:0.1em;margin-top:8px;">+ 24 more steps</div>
+        </div>
+      </div>
+
+      <div class="free-text">
+        <div class="eyebrow">Start Here</div>
+        <h2 style="margin-bottom:14px;">Not ready to commit yet? Start here.</h2>
+        <p>The exact 30 steps from "I want to start a podcast" to episode one being live. What to set up, in what order, and what actually matters. Free. No email required.</p>
+        <p style="font-size:14px;color:var(--grey);font-family:Arial,sans-serif;margin-bottom:24px;line-height:1.7;">DM <strong style="color:var(--white);">CHECKLIST</strong> to <strong style="color:var(--b8860b);">@edgewithinpodcast</strong> on Instagram and I'll send it straight to you. Or tap below to open it directly.</p>
+        <a href="/checklist/" class="btn btn-primary">Open Free Checklist</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><span class="footer-logo-dot"></span>Edge Within</div>
+      <p>Real, raw, honest conversations about mindset, identity and growth. Hosted by Mat Davenport from Australia.</p>
+      <div style="margin-top:16px;display:flex;gap:14px;">
+        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" style="font-size:12px;color:var(--orange);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;">@edgewithinpodcast</a>
+        <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-size:12px;color:var(--grey);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;">@rawmatdavenport</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#show">The Show</a></li>
+        <li><a href="#mentorship">Mentorship</a></li>
+        <li><a href="#free">Free Checklist</a></li>
+        <li><a href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://podcasts.apple.com" target="_blank" rel="noopener">Apple Podcasts</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Work with Mat</h4>
+      <ul>
+        <li><a href="/mentorship/">Course + Mentorship</a></li>
+        <li><a href="/checklist/">Free Launch Checklist</a></li>
+        <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">DM on Instagram</a></li>
+        <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Edge Within with Mat Davenport. All rights reserved.</p>
+    <p>Built with intention. <a href="https://www.instagram.com/edgewithinpodcast/">@edgewithinpodcast</a></p>
+  </div>
+</footer>
+
+<!-- Mobile sticky CTA -->
+<a href="#mentorship" class="mobile-cta">Claim Your Founding Spot →</a>
+
+<script>
+  // Fade in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

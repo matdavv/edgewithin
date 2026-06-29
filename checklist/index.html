@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Edge Within. Podcast Launch Checklist</title>
+<meta property="og:title" content="The 30-Step Podcast Launch Checklist. Edge Within">
+<meta property="og:description" content="The exact steps Mat Davenport used to go from zero to episode one. Free from @edgewithinpodcast.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --orange: #b8860b;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #555555;
+    --grey3: #222222;
+    --grey4: #333333;
+    --green: #22C55E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: #0D0D0D;
+    border-bottom: 1px solid var(--grey3);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-glow {
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(circle, rgba(184,134,11,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header h1 {
+    font-size: clamp(26px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .header h1 strong { color: var(--orange); font-weight: 700; }
+
+  .header-sub {
+    font-size: 15px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    max-width: 540px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card2);
+    border: 1px solid var(--orange);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .header-proof {
+    font-size: 12px;
+    color: var(--grey2);
+    font-family: Arial, sans-serif;
+    margin-top: 12px;
+  }
+  .header-proof span { color: var(--orange); font-weight: 700; }
+
+  /* ── Progress bar ── */
+  .progress-bar-wrap {
+    background: #0D0D0D;
+    border-bottom: 1px solid var(--grey3);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .progress-bar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .progress-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--grey2);
+    white-space: nowrap;
+  }
+  .progress-track {
+    flex: 1;
+    height: 4px;
+    background: var(--grey3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--orange);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+  .progress-count {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--orange);
+    white-space: nowrap;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  /* ── Main layout ── */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Phase headers ── */
+  .phase {
+    margin-bottom: 8px;
+    margin-top: 48px;
+  }
+  .phase:first-child { margin-top: 0; }
+  .phase-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--grey3);
+    border: 1px solid var(--grey4);
+    border-radius: 6px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+  }
+  .phase-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--orange);
+    color: var(--bg);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .phase-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    font-family: Arial, sans-serif;
+  }
+  .phase-desc {
+    font-size: 12px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+  }
+
+  /* ── Check items ── */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--grey4); }
+  .check-item.done {
+    background: #0a110a;
+    border-color: var(--green);
+  }
+
+  .check-box {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 5px;
+    border: 2px solid var(--grey4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: all 0.2s;
+    font-size: 13px;
+  }
+  .check-item.done .check-box {
+    background: var(--green);
+    border-color: var(--green);
+    color: #000;
+  }
+
+  .check-num {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--grey2);
+    min-width: 20px;
+    padding-top: 3px;
+  }
+  .check-item.done .check-num { color: var(--green); }
+
+  .check-content { flex: 1; }
+  .check-action {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .check-item.done .check-action {
+    text-decoration: line-through;
+    color: var(--grey2);
+  }
+  .check-mat {
+    font-size: 13px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .check-mat strong { color: var(--orange); font-weight: 600; }
+  .check-item.done .check-mat { color: var(--grey3); }
+
+  /* ── Mat tag ── */
+  .mat-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: var(--orange);
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+  }
+  .mat-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  /* ── Completion card ── */
+  .completion-card {
+    background: var(--card2);
+    border: 2px solid var(--orange);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 48px;
+    display: none;
+  }
+  .completion-card.visible { display: block; }
+  .completion-card h2 {
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .completion-card p {
+    font-size: 14px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    background: var(--orange);
+    border-radius: 10px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .cta-block h3 {
+    font-size: 20px;
+    color: var(--bg);
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    font-size: 14px;
+    color: rgba(0,0,0,0.7);
+    font-family: Arial, sans-serif;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .cta-handle {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--bg);
+    font-family: Arial, sans-serif;
+  }
+
+  /* ── Reset button ── */
+  .reset-btn {
+    display: block;
+    margin: 24px auto 0;
+    background: none;
+    border: 1px solid var(--grey4);
+    color: var(--grey2);
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .reset-btn:hover { border-color: var(--grey); color: var(--grey); }
+
+  @media (max-width: 480px) {
+    .header { padding: 40px 20px 36px; }
+    .main { padding: 32px 16px 60px; }
+    .check-item { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1E1E1E;height:56px;display:flex;align-items:center;padding:0 24px;justify-content:space-between;">
+  <a href="/" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:#b8860b;display:inline-block;"></span>Edge Within</a>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <a href="/" style="font-family:Arial,sans-serif;font-size:13px;color:#888;text-decoration:none;">Home</a>
+    <a href="/mentorship/" style="font-family:Arial,sans-serif;font-size:13px;color:#888;text-decoration:none;">Mentorship</a>
+    <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" style="font-family:'Courier New',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;background:#b8860b;color:#0A0A0A;padding:8px 16px;border-radius:4px;text-decoration:none;">DM on Instagram</a>
+  </div>
+</div>
+<div style="height:56px;"></div>
+
+<!-- ── Header ── -->
+<div class="header">
+  <div class="header-glow"></div>
+  <div class="eyebrow">Edge Within · Free Resource</div>
+  <h1>The <strong>30-Step</strong> Podcast<br>Launch Checklist</h1>
+  <p class="header-sub">The exact steps Mat Davenport followed to go from zero. no show, no audience, no brand to episode one being live. Tick them off as you go.</p>
+  <div class="header-badge">🔥 Used to hit 10,700 followers & 2.3M views in 160 days</div>
+  <div class="header-proof">
+    <span>Jan 20, 2026</span>. launched with 0 followers &nbsp;·&nbsp;
+    <span>160 days later</span>. 10,700 followers, 2.3M monthly views &nbsp;·&nbsp;
+    <span>$0</span> spent on ads
+  </div>
+</div>
+
+<!-- ── Progress ── -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-inner">
+    <div class="progress-label">Your progress</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-count" id="progressCount">0 / 30</div>
+  </div>
+</div>
+
+<!-- ── Checklist ── -->
+<div class="main">
+
+  <!-- PHASE 1 -->
+  <div class="phase">
+    <div class="phase-label">
+      <span class="phase-tag">Phase 1</span>
+      <span class="phase-name">Decide & Define</span>
+      <span class="phase-desc">Steps 1–8 · Before you buy anything</span>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">01</div>
+      <div class="check-content">
+        <div class="check-action">Get brutally clear on WHY you're doing this</div>
+        <div class="check-mat">Not "to grow an audience." Go deeper. What do you actually want to say? Who needs to hear it? Write it in one sentence. If you can't, keep thinking. the clarity comes before the camera.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">02</div>
+      <div class="check-content">
+        <div class="check-action">Decide on your show concept. niche or no niche</div>
+        <div class="check-mat">You don't need a tight niche. Raw, honest conversations about mindset, identity and growth. broad enough for anyone, specific enough for the right listener. Ask: who would choose this show during their limited attention window?</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">03</div>
+      <div class="check-content">
+        <div class="check-action">Name the show</div>
+        <div class="check-mat">Edge Within came from the idea that the growth you're looking for lives inside you. Keep it short. Make it mean something. Test it out loud. does it feel right when you say "Welcome to [name]"?</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">04</div>
+      <div class="check-content">
+        <div class="check-action">Write your show's one-line mission statement</div>
+        <div class="check-mat">"Real, raw, honest conversations. Meet your edge within." One line. Anyone who hears it instantly gets it. This becomes your bio, your caption opener, your show intro.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">05</div>
+      <div class="check-content">
+        <div class="check-action">Research 3–5 shows in your space</div>
+        <div class="check-mat">Not to copy them to find the gap. What's working? What feels scripted or surface-level? Your unique angle lives in what others aren't willing to do.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">06</div>
+      <div class="check-content">
+        <div class="check-action">Define your episode format</div>
+        <div class="check-mat">Long-form interview, 45–90 min, unscripted, one guest. No intro music. straight into the conversation. Decide: interview, solo, or both? Remote or in-person? Pick one and stick to it for the first 10 episodes.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">07</div>
+      <div class="check-content">
+        <div class="check-action">Set your posting commitment and write it down</div>
+        <div class="check-mat">1 full episode per week + 3–5 short clips per week on Instagram. Don't overcommit. Consistency beats volume every time. A show posting once a week for a year beats daily posting for a month then going quiet.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">08</div>
+      <div class="check-content">
+        <div class="mat-tag">Mat did this</div>
+        <div class="check-action">List your first 5 potential guests</div>
+        <div class="check-mat"><strong>Start with friends and people you already know.</strong> No shame in this. your first 3 episodes don't need to be famous people. They need to be real conversations. Trust over credentials every time.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase">
+    <div class="phase-label">
+      <span class="phase-tag">Phase 2</span>
+      <span class="phase-name">Set Up</span>
+      <span class="phase-desc">Steps 9–16 · Equipment, accounts, and systems</span>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">09</div>
+      <div class="check-content">
+        <div class="check-action">Choose your recording setup</div>
+        <div class="check-mat">A full studio setup from day one is ideal. dedicated mics, lighting, camera. But an iPhone in good light still beats waiting 6 months for gear. The conversation is what matters. Start with what you have.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">10</div>
+      <div class="check-content">
+        <div class="mat-tag">Mat did this</div>
+        <div class="check-action">Find your recording location</div>
+        <div class="check-mat"><strong>Mat recorded his first episodes in his back garden under trees for shade.</strong> Not a studio. Not a soundproofed room. A quiet outdoor spot with natural light and no echo. Think: ambient sound, no echo, good light. Surprisingly, outdoor works well.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">11</div>
+      <div class="check-content">
+        <div class="check-action">Choose your hosting platform and set it up</div>
+        <div class="check-mat">Your hosting platform distributes your audio to Spotify, Apple Podcasts and more. Options: Buzzsprout, Podbean, Anchor (free). Set up your account and upload your show art. You don't need an episode ready. just have it live.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">12</div>
+      <div class="check-content">
+        <div class="check-action">Create the show's Instagram account</div>
+        <div class="check-mat">Keep it clean. showname + podcast if needed. Bio = your mission statement. Link in bio. Profile photo = show logo, not a personal photo. You're building a brand.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">13</div>
+      <div class="check-content">
+        <div class="check-action">Design your show logo and cover art</div>
+        <div class="check-mat">Use Canva. Bold text, your face, clear branding. It needs to be legible at thumbnail size. The biggest mistake is over-designing. bold and simple wins every time.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">14</div>
+      <div class="check-content">
+        <div class="check-action">Set up your editing software</div>
+        <div class="check-mat">Premiere Pro is the industry standard and worth learning. Free alternatives: DaVinci Resolve (video), Audacity (audio only). Don't let software be the reason you don't start. CapCut on your phone is enough for first clips.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">15</div>
+      <div class="check-content">
+        <div class="check-action">Set up external storage for your files</div>
+        <div class="check-mat">Raw video files are huge. Get at minimum a 1TB external hard drive or cloud storage (Google Drive, Dropbox). You will run out of laptop space faster than you think. sort this before episode one.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">16</div>
+      <div class="check-content">
+        <div class="mat-tag">Mat did this</div>
+        <div class="check-action">Build a content bank before you launch</div>
+        <div class="check-mat"><strong>Mat recorded 3 episodes before posting a single thing.</strong> This is the move. Don't launch with one episode. you look like everyone else who started and stopped. Have 3–5 episodes ready so you can post consistently from day one and not scramble after every recording.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase">
+    <div class="phase-label">
+      <span class="phase-tag">Phase 3</span>
+      <span class="phase-name">Record & Launch</span>
+      <span class="phase-desc">Steps 17–24 · Get your first episodes done</span>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">17</div>
+      <div class="check-content">
+        <div class="check-action">Book your first 3 guests</div>
+        <div class="check-mat">Keep it simple: "I'm launching a podcast about [topic], I think you'd be a great first guest. 45 mins, in person, I'll handle everything. Are you in?" People say yes more than you think.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">18</div>
+      <div class="check-content">
+        <div class="check-action">Prepare for each conversation. not a script, a direction</div>
+        <div class="check-mat">5–10 questions prepared, but be willing to throw them out the moment the conversation goes somewhere real. Research your guest, find what they're passionate about, then let curiosity lead. The best moments are never planned.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">19</div>
+      <div class="check-content">
+        <div class="mat-tag">Mat did this</div>
+        <div class="check-action">Do a pre-recording ritual to get in state</div>
+        <div class="check-mat"><strong>Mat uses breathwork with his guest before recording.</strong> Even 2 minutes of intentional breathing changes the energy in the room. You're asking someone to be vulnerable on camera. help them arrive. The quality of your conversations depends on the state both people are in.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">20</div>
+      <div class="check-content">
+        <div class="mat-tag">Mat did this</div>
+        <div class="check-action">Record your first 3 episodes</div>
+        <div class="check-mat"><strong>Mat's first location: his back garden under trees.</strong> Natural shade, no echo, good natural light. Don't wait for a perfect setup. The first episode is never your best. it's just proof you started. Record it, learn from it, get to episode two.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">21</div>
+      <div class="check-content">
+        <div class="check-action">Edit your long-form episode</div>
+        <div class="check-mat">Keep the long-form for your hosting platform and YouTube. Cut dead air, ums that break flow, and anything that loses energy. But don't over-polish. real conversations have natural pauses. That's what makes them human.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">22</div>
+      <div class="check-content">
+        <div class="check-action">Pull 3–5 short clips for Instagram Reels</div>
+        <div class="check-mat">This is where the growth comes from. One 60-min episode = 5–8 clips of 30–90 seconds each. Look for strong opinions, surprising insights, or emotional turns. The clip should make someone stop scrolling and think "I need to hear more."</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">23</div>
+      <div class="check-content">
+        <div class="check-action">Write captions that extend the conversation</div>
+        <div class="check-mat">Don't describe the clip. extend it. Open with a hook, expand on the idea in 2–3 lines, tag the guest, add a CTA. The caption is a second piece of content.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">24</div>
+      <div class="check-content">
+        <div class="mat-tag">Mat did this</div>
+        <div class="check-action">Launch. post your first 3 episodes at once</div>
+        <div class="check-mat"><strong>Mat dropped 3 episodes on January 20, 2026.</strong> Not one. Three. It signals to anyone who finds you that this is a real show with depth. not a trial. It also gives the algorithm more to work with. Launch day should feel like an arrival, not a test.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase">
+    <div class="phase-label">
+      <span class="phase-tag">Phase 4</span>
+      <span class="phase-name">Grow</span>
+      <span class="phase-desc">Steps 25–30 · What happens after launch day</span>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">25</div>
+      <div class="check-content">
+        <div class="check-action">Post consistently. even when it feels pointless</div>
+        <div class="check-mat">Post 3–5 times per week and don't stop. At 444 followers it feels like shouting into nothing. At 2,684 it starts compounding. At 9,468 it feels like momentum. Push through the quiet phase. everyone who built something had to.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">26</div>
+      <div class="check-content">
+        <div class="check-action">Tag every guest and collaborate on the post</div>
+        <div class="check-mat">Tag every guest and encourage them to share. Even a guest with 2,000 followers sharing your clip puts you in front of people who already trust them. Free reach. Never skip this.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">27</div>
+      <div class="check-content">
+        <div class="check-action">Start cold outreach for guests beyond your network</div>
+        <div class="check-mat">DM someone you admire. Lead with genuine praise, mention something specific about their work, then pitch the show concisely. Don't ask for a favour. offer them a platform. After 5–8 episodes your show is your proof.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">28</div>
+      <div class="check-content">
+        <div class="check-action">Review every episode. what worked, what didn't</div>
+        <div class="check-mat">Review clip performance weekly. Which clips got reach? Which fell flat? What topics resonated? The algorithm gives you data constantly. use it. Your show at month 6 should look different to month 1.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">29</div>
+      <div class="check-content">
+        <div class="check-action">Build your media kit once you have traction</div>
+        <div class="check-mat">Once you have real numbers. even modest ones. build a one-page media kit. 10,700 followers and 2.3M monthly views in 160 days is a story sponsors listen to. You don't need 100K to start the conversation.</div>
+      </div>
+    </div>
+
+    <div class="check-item" onclick="toggle(this)">
+      <div class="check-box"></div>
+      <div class="check-num">30</div>
+      <div class="check-content">
+        <div class="check-action">Don't stop. The show compounds.</div>
+        <div class="check-mat">444 followers at day 48. 10,700 at day 160. The first 50 days felt slow. The next 110 were exponential. Every episode makes the next guest easier to book, the next viewer easier to convert. The work compounds. Keep going.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completion message -->
+  <div class="completion-card" id="completionCard">
+    <div style="font-size:40px;margin-bottom:14px;">🎙️</div>
+    <h2>You're ready to launch.</h2>
+    <p>Every step done. Now the real work starts, and it's worth it. Mat went from this exact checklist to 2.3M monthly views in 160 days. You've got the same starting point he did: zero.</p>
+    <p style="color:var(--orange);font-family:Arial,sans-serif;font-size:14px;font-weight:700;">The only difference between you and where Mat is now is time and consistency.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Want to build this with Mat?</h3>
+    <p>The Edge Within Podcast Mentorship. course, weekly calls, and direct WhatsApp access. 5 founding member spots at the lowest price it will ever be.</p>
+    <div class="cta-handle">DM @edgewithinpodcast or @rawmatdavenport</div>
+
+  </div>
+
+  <button class="reset-btn" onclick="resetAll()">Reset checklist</button>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'ew_checklist_v1';
+  const total = 30;
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+  }
+
+  function toggle(el) {
+    const num = el.querySelector('.check-num').textContent.trim();
+    el.classList.toggle('done');
+    const state = getState();
+    if (el.classList.contains('done')) {
+      el.querySelector('.check-box').textContent = '✓';
+      state[num] = true;
+    } else {
+      el.querySelector('.check-box').textContent = '';
+      delete state[num];
+    }
+    saveState(state);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.check-item.done').length;
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressCount').textContent = done + ' / ' + total;
+    document.getElementById('completionCard').classList.toggle('visible', done === total);
+  }
+
+  function resetAll() {
+    if (!confirm('Reset your progress?')) return;
+    document.querySelectorAll('.check-item').forEach(el => {
+      el.classList.remove('done');
+      el.querySelector('.check-box').textContent = '';
+    });
+    saveState({});
+    updateProgress();
+  }
+
+  // Restore state on load
+  window.addEventListener('DOMContentLoaded', () => {
+    const state = getState();
+    document.querySelectorAll('.check-item').forEach(el => {
+      const num = el.querySelector('.check-num').textContent.trim();
+      if (state[num]) {
+        el.classList.add('done');
+        el.querySelector('.check-box').textContent = '✓';
+      }
+    });
+    updateProgress();
+  });
+</script>
+</body>
+</html>

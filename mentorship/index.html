@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Within: Podcast Mentorship</title>
+<meta name="description" content="Podcast mentorship and community: build your show, grow your reach, spread messages that matter. Full curriculum + optional direct coaching. 5 founding spots.">
+<meta property="og:title" content="Edge Within: Podcast Mentorship">
+<meta property="og:description" content="A podcast community for building something significant. Full curriculum, real tools, optional mentorship. Founding intake open.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --orange: #b8860b;
+    --orange2: #9a7009;
+    --green: #22C55E;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #555555;
+    --grey3: #222222;
+    --grey4: #333333;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .sans { font-family: Arial, Helvetica, sans-serif; }
+  .mono { font-family: 'Courier New', monospace; }
+
+  /* ── Nav ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 36px; width: 36px; border-radius: 6px; object-fit: cover; }
+  .nav-logo span { font-family: Arial, sans-serif; font-weight: 700; font-size: 15px; color: var(--white); }
+  .nav-logo span em { color: var(--orange); font-style: normal; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--orange); color: var(--bg) !important;
+    padding: 10px 20px; border-radius: 6px; font-weight: 700 !important;
+    font-size: 12px !important; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: transform 0.2s, background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--orange2) !important; transform: scale(1.03); }
+
+  /* ── Typography ── */
+  .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 12px;
+  }
+  h1 { font-size: clamp(32px, 5.5vw, 64px); line-height: 1.06; font-weight: 400; }
+  h2 { font-size: clamp(24px, 3.5vw, 40px); font-weight: 400; line-height: 1.15; }
+  h3 { font-size: 18px; font-weight: 700; font-family: Arial, sans-serif; }
+
+  /* ── Layout ── */
+  .section { padding: 88px 24px; max-width: 1080px; margin: 0 auto; }
+  .section-full { padding: 88px 24px; }
+  .section-header { margin-bottom: 40px; }
+  .section-header h2 { margin-bottom: 10px; }
+  .section-header p { font-size: 16px; color: var(--grey); font-family: Arial, sans-serif; max-width: 640px; }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh; padding-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
+  }
+  .hero-left {
+    background: #0D0D0D; padding: clamp(48px, 7vw, 88px) 40px;
+    display: flex; flex-direction: column; justify-content: center; position: relative;
+  }
+  .hero-glow {
+    position: absolute; top: -120px; left: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(184,134,11,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-left h1 { margin-bottom: 18px; }
+  .hero-left h1 .muted { color: var(--grey); font-style: italic; }
+  .hero-left h1 .accent { color: var(--orange); font-weight: 700; }
+  .hero-sub { font-size: 16px; color: var(--grey); max-width: 480px; margin-bottom: 28px; font-family: Arial, sans-serif; line-height: 1.7; }
+  .hero-urgency { font-size: 15px; color: var(--white); font-family: Arial, sans-serif; margin-bottom: 28px; }
+  .hero-urgency strong { color: var(--orange); }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+  .btn-primary {
+    display: inline-block; background: var(--orange); color: var(--bg);
+    padding: 14px 28px; border-radius: 6px; font-family: Arial, sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: transform 0.2s, background 0.2s;
+  }
+  .btn-primary:hover { background: var(--orange2); transform: scale(1.03); }
+  .btn-secondary {
+    display: inline-block; border: 2px solid var(--border); color: var(--grey);
+    padding: 12px 24px; border-radius: 6px; font-family: Arial, sans-serif;
+    font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--white); }
+  .founding-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(184,134,11,0.15); border: 1px solid var(--orange);
+    color: var(--orange); font-family: 'Courier New', monospace;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    padding: 10px 18px; border-radius: 6px; text-transform: uppercase;
+    animation: pulse 3s infinite ease-in-out;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.75} }
+
+  .hero-right {
+    background: var(--card2); padding: clamp(48px, 7vw, 88px) 40px;
+    display: flex; flex-direction: column; justify-content: center; gap: 18px;
+  }
+  .hero-photo {
+    width: 100%; max-width: 320px; border-radius: 12px;
+    border: 2px solid var(--orange); margin-bottom: 8px;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .stat-card.featured { border-color: var(--orange); background: #0F0A04; }
+  .stat-val { font-size: clamp(26px, 4vw, 38px); font-weight: 700; color: var(--orange); line-height: 1; font-family: Arial, sans-serif; }
+  .stat-lbl { font-size: 10px; color: var(--grey); font-family: 'Courier New', monospace; letter-spacing: 0.08em; margin-top: 4px; }
+
+  /* ── Pain box ── */
+  .pain-box {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: clamp(32px, 5vw, 48px); max-width: 720px; margin: 0 auto; text-align: center;
+  }
+  .pain-box h2 { margin-bottom: 20px; }
+  .pain-box p { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.8; margin-bottom: 14px; text-align: left; }
+  .pain-box p strong { color: var(--white); }
+  .pain-box .insight { color: var(--white); font-size: 16px; margin-top: 20px; text-align: center; }
+
+  /* ── Velocity bar ── */
+  .velocity {
+    background: #0D0D0D; border-top: 1px solid var(--grey3); border-bottom: 1px solid var(--grey3);
+    padding: 28px 24px;
+  }
+  .velocity-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; flex-wrap: wrap; text-align: center;
+  }
+
+  /* ── Step cards ── */
+  .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 36px; }
+  .step-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 28px 24px; transition: transform 0.3s, border-color 0.3s;
+  }
+  .step-card:hover { transform: translateY(-3px); border-color: rgba(184,134,11,0.4); }
+  .step-num { font-size: 42px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; line-height: 1; margin-bottom: 12px; }
+  .step-title { font-size: 15px; color: var(--grey); font-family: Arial, sans-serif; line-height: 1.5; }
+  .steps-note { margin-top: 28px; font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); text-align: center; line-height: 1.7; }
+
+  /* ── Check benefits ── */
+  .check-list { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 22px;
+    transition: transform 0.3s;
+  }
+  .check-item:hover { transform: translateX(4px); }
+  .check-icon {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+    background: rgba(34,197,94,0.15); border: 1px solid var(--green);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green); font-size: 14px; font-weight: 700;
+  }
+  .check-text { font-family: Arial, sans-serif; font-size: 14px; color: var(--white); line-height: 1.5; }
+
+  /* ── Problem agitation ── */
+  .agitate p { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.8; margin-bottom: 16px; }
+  .agitate .big { font-size: clamp(22px, 3vw, 32px); color: var(--white); font-weight: 700; margin: 24px 0 8px; font-family: Arial, sans-serif; }
+  .agitate .green-eyebrow { color: #22C55E; font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 32px; }
+  .agitate ul { list-style: none; margin: 16px 0; }
+  .agitate ul li {
+    font-family: Arial, sans-serif; font-size: 15px; color: var(--grey);
+    padding: 8px 0 8px 24px; position: relative;
+  }
+  .agitate ul li::before { content: '»'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; }
+  .timeline-spine {
+    position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--orange) 8%, var(--orange) 92%, transparent);
+    transform: translateX(-50%);
+  }
+  .tl-row { display: grid; grid-template-columns: 1fr 56px 1fr; align-items: start; margin-bottom: 36px; }
+  .tl-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; }
+  .tl-card.current { border-color: var(--orange); background: var(--card2); }
+  .tl-date { font-size: 11px; color: var(--orange); font-family: 'Courier New', monospace; letter-spacing: 0.1em; }
+  .tl-day { font-size: 10px; color: var(--grey2); font-family: 'Courier New', monospace; margin: 4px 0 12px; }
+  .tl-stat { font-size: clamp(22px, 3vw, 34px); font-weight: 700; font-family: Arial, sans-serif; line-height: 1; }
+  .tl-stat.orange { color: var(--orange); }
+  .tl-sub { font-size: 11px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
+  .tl-stats { display: flex; gap: 24px; }
+  .tl-node { display: flex; justify-content: center; padding-top: 20px; position: relative; z-index: 2; }
+  .tl-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--orange); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--orange); }
+  .tl-dot.big { width: 20px; height: 20px; background: var(--white); box-shadow: 0 0 0 1px var(--white), 0 0 20px rgba(184,134,11,0.5); }
+  .tl-left { text-align: right; }
+  .tl-left .tl-stats { justify-content: flex-end; }
+
+  /* ── Platform preview ── */
+  .platform {
+    display: grid; grid-template-columns: 240px 1fr; gap: 0;
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    margin-top: 36px;
+  }
+  .platform-sidebar {
+    background: #0D0D0D; border-right: 1px solid var(--border); padding: 20px 0;
+    font-family: Arial, sans-serif; font-size: 12px;
+  }
+  .platform-sidebar .group-label {
+    font-size: 10px; color: var(--grey2); letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 12px 20px 6px; font-family: 'Courier New', monospace;
+  }
+  .platform-sidebar .item { padding: 8px 20px; color: var(--grey); cursor: default; }
+  .platform-sidebar .item.active { background: rgba(184,134,11,0.15); color: var(--orange); border-left: 3px solid var(--orange); }
+  .platform-main { padding: 28px 32px; }
+  .platform-progress { margin: 20px 0 24px; }
+  .platform-bar { height: 6px; background: var(--grey3); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+  .platform-bar-fill { height: 100%; background: var(--orange); border-radius: 3px; width: 70%; }
+  .platform-lessons { display: flex; flex-direction: column; gap: 0; }
+  .platform-lesson {
+    display: flex; align-items: center; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid var(--grey3); font-family: Arial, sans-serif; font-size: 13px; color: var(--grey);
+  }
+  .platform-lesson:last-child { border-bottom: none; }
+  .lesson-check { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--green); }
+  .lesson-check.empty { border-color: var(--grey4); color: transparent; }
+
+  /* ── Tools grid ── */
+  .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 32px; }
+  .tool-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .tool-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .tool-icon { font-size: 28px; margin-bottom: 12px; }
+  .tool-name { font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .tool-desc { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey); line-height: 1.5; }
+
+  /* ── Pricing ── */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .pricing-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 36px 32px; display: flex; flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(184,134,11,0.12); }
+  .pricing-card.featured { background: var(--card2); border: 2px solid var(--orange); position: relative; }
+  .pricing-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--orange); color: var(--bg); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 18px;
+    border-radius: 20px; white-space: nowrap; font-family: 'Courier New', monospace;
+  }
+  .pricing-tier { font-size: 11px; color: var(--grey2); letter-spacing: 0.18em; text-transform: uppercase; font-family: 'Courier New', monospace; margin-bottom: 8px; }
+  .pricing-name { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 6px; font-family: Arial, sans-serif; }
+  .pricing-price { font-size: 40px; font-weight: 700; color: var(--white); line-height: 1; font-family: Arial, sans-serif; }
+  .pricing-card.featured .pricing-price { color: var(--orange); }
+  .pricing-period { font-size: 12px; color: var(--grey); margin: 8px 0 24px; font-family: Arial, sans-serif; }
+  .pricing-divider { border: none; border-top: 1px solid var(--grey3); margin: 20px 0; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex: 1; }
+  .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--grey); font-family: Arial, sans-serif; line-height: 1.4; }
+  .pricing-features li .dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--orange); margin-top: 5px; }
+  .pricing-card.featured .pricing-features li { color: var(--white); }
+  .pricing-cta {
+    display: block; text-align: center; padding: 14px; border-radius: 6px;
+    font-size: 14px; font-weight: 700; text-decoration: none; font-family: Arial, sans-serif;
+    border: 2px solid var(--border); color: var(--grey); background: transparent; transition: all 0.2s;
+  }
+  .pricing-cta:hover { transform: scale(1.03); }
+  .pricing-card.featured .pricing-cta { background: var(--orange); border-color: var(--orange); color: var(--bg); }
+  .callout {
+    margin-top: 20px; background: #0A0603; border: 1px solid var(--orange); border-radius: 8px;
+    padding: 20px 24px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .callout p { font-size: 14px; color: var(--white); font-family: Arial, sans-serif; line-height: 1.6; }
+  .callout strong { color: var(--orange); }
+
+  /* ── Access ── */
+  .access-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .access-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 28px;
+    transition: transform 0.3s;
+  }
+  .access-card:hover { transform: translateY(-4px); }
+  .access-title { font-size: 16px; font-weight: 700; color: var(--orange); margin-bottom: 10px; font-family: Arial, sans-serif; }
+  .access-desc { font-size: 13.5px; color: var(--grey); font-family: Arial, sans-serif; line-height: 1.6; }
+
+  /* ── Curriculum phases ── */
+  .phase { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+  .phase-header {
+    background: var(--grey3); padding: 16px 28px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .phase-badge {
+    background: var(--orange); color: var(--bg); font-size: 11px; font-weight: 700;
+    font-family: 'Courier New', monospace; letter-spacing: 0.12em;
+    padding: 5px 12px; border-radius: 4px;
+  }
+  .phase-name { font-size: 17px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; }
+  .phase-sub { font-size: 13px; color: var(--grey); font-family: Arial, sans-serif; }
+  .phase-body { padding: 24px 28px; display: grid; gap: 20px; }
+  .phase-body.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .phase-body.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .mod-title { font-size: 13px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; margin-bottom: 6px; }
+  .mod-desc { font-size: 13px; color: var(--grey); font-family: Arial, sans-serif; line-height: 1.5; }
+  .phase.featured { border-color: var(--orange); }
+  .phase.featured .phase-header { background: rgba(184,134,11,0.12); }
+
+  /* ── FAQ accordion ── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .faq-q {
+    width: 100%; background: none; border: none; color: var(--white);
+    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
+    padding: 20px 24px; text-align: left; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .faq-q::after { content: '+'; color: var(--orange); font-size: 20px; font-weight: 400; transition: transform 0.3s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey); line-height: 1.6;
+    padding: 0 24px;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+  /* ── Proof stats ── */
+  .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+  .proof-stat { text-align: center; padding: 24px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; }
+  .proof-num { font-size: 32px; font-weight: 700; color: var(--orange); font-family: Arial, sans-serif; line-height: 1; }
+  .proof-lbl { font-size: 12px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 8px; line-height: 1.4; }
+
+  /* ── Lead magnet ── */
+  .lead-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 36px; max-width: 600px; margin: 0 auto; text-align: left;
+  }
+  .lead-option {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--grey3); border: 1px solid var(--grey4); border-radius: 8px; padding: 14px 18px;
+    font-family: Arial, sans-serif; font-size: 14px; color: var(--grey);
+  }
+
+  /* ── Final CTA ── */
+  .final-cta { background: var(--orange); padding: 72px 24px; text-align: center; }
+  .final-cta h2 { color: var(--bg); margin-bottom: 12px; }
+  .final-cta p { color: rgba(0,0,0,0.7); font-size: 15px; font-family: Arial, sans-serif; margin-bottom: 8px; }
+  .final-cta .handle { color: var(--bg); font-weight: 700; font-size: 18px; font-family: Arial, sans-serif; margin-top: 20px; display: block; }
+  .final-cta .link { font-size: 13px; color: rgba(0,0,0,0.6); font-family: 'Courier New', monospace; letter-spacing: 0.1em; margin-top: 10px; }
+  .final-cta .btn-dark {
+    display: inline-block; margin-top: 24px; background: var(--bg); color: var(--white);
+    padding: 16px 36px; border-radius: 6px; font-family: Arial, sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: transform 0.2s;
+  }
+  .final-cta .btn-dark:hover { transform: scale(1.03); }
+
+  /* ── Sticky mobile CTA ── */
+  .mobile-cta {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+    background: var(--orange); padding: 14px 20px; text-align: center;
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--bg); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+  }
+
+  /* ── Fade in ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { order: -1; padding: 32px 24px; align-items: center; text-align: center; }
+    .hero-left { padding: 40px 24px 56px; }
+    .hero-photo { margin: 0 auto; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .platform { grid-template-columns: 1fr; }
+    .platform-sidebar { display: none; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .access-grid { grid-template-columns: 1fr; }
+    .phase-body.cols-3, .phase-body.cols-4 { grid-template-columns: 1fr 1fr; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline-spine { left: 24px; }
+    .tl-row { grid-template-columns: 1fr; padding-left: 48px; position: relative; }
+    .tl-node { position: absolute; left: 0; top: 0; width: 48px; }
+    .tl-left { text-align: left; }
+    .tl-left .tl-stats { justify-content: flex-start; }
+    .tl-empty { display: none; }
+    .mobile-cta { display: block; }
+    body { padding-bottom: 56px; }
+    .about-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 480px) {
+    .phase-body.cols-3, .phase-body.cols-4 { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1E1E1E;height:56px;display:flex;align-items:center;padding:0 24px;justify-content:space-between;">
+  <a href="/" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:#b8860b;display:inline-block;"></span>Edge Within</a>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <a href="/" style="font-family:Arial,sans-serif;font-size:13px;color:#888;text-decoration:none;">Home</a>
+    <a href="/checklist/" style="font-family:Arial,sans-serif;font-size:13px;color:#888;text-decoration:none;">Free Checklist</a>
+    <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" style="font-family:'Courier New',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;background:#b8860b;color:#0A0A0A;padding:8px 16px;border-radius:4px;text-decoration:none;">DM to Apply</a>
+  </div>
+</div>
+<div style="height:56px;"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <img src="EDGE WITHIN PODCAST/logos/edgewithin 5.png" alt="Edge Within">
+    <span><em>EDGE</em> WITHIN</span>
+  </a>
+  <div class="nav-links">
+    <a href="#steps">Curriculum</a>
+    <a href="#proof">Results</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="nav-cta">Claim Your Spot</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-glow"></div>
+    <div class="eyebrow">Edge Within · Podcast Mentorship</div>
+    <h1>
+      Build Something<br>
+      <span class="accent">Worth Saying.</span><br>
+      <span class="muted">To the World.</span>
+    </h1>
+    <p class="hero-sub">A full podcast curriculum and private community for people who want more than downloads. Improve your communication, book incredible guests, spread powerful messages, and open doors you didn't know existed. Self-paced course, or course plus 3 months of direct mentorship.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Claim Your Founding Spot</a>
+      <a href="#free" class="btn-secondary">Get Free Checklist</a>
+    </div>
+    <div style="background:var(--grey3);border-left:3px solid var(--orange);padding:18px 22px;border-radius:0 6px 6px 0;max-width:520px;margin-bottom:24px;">
+      <p class="sans" style="font-size:14px;color:#ccc;font-style:italic;line-height:1.7;margin:0;">"This is about the journey. Putting yourself in rooms with incredible people, speaking truth, and building a platform that actually means something. I learned from great mentors. Now I'm sharing what I've learned, in my own way, with a community behind you."</p>
+      <p class="sans" style="font-size:13px;color:var(--orange);font-weight:700;margin-top:10px;">Mat Davenport</p>
+    </div>
+    <div class="founding-pill">🔥 Founding Member Intake · Only 5 Spots</div>
+  </div>
+  <div class="hero-right">
+    <img src="EDGE WITHIN PODCAST/logos/edgewithin 5.png" alt="Mat Davenport" class="hero-photo">
+    <div class="stat-card featured">
+      <div>
+        <div class="stat-val">10,700</div>
+        <div class="stat-lbl">Followers · Day 160</div>
+      </div>
+      <div>
+        <div class="stat-val">2.3M</div>
+        <div class="stat-lbl">Monthly views</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-val" style="color:var(--white)">107</div>
+        <div class="stat-lbl">Posts · Day 160</div>
+      </div>
+      <div>
+        <div class="stat-val" style="color:var(--white)">$0</div>
+        <div class="stat-lbl">Paid ads spent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VELOCITY -->
+<div class="velocity">
+  <div class="velocity-inner sans">
+    <span class="mono" style="font-size:11px;color:var(--grey2);letter-spacing:0.15em;text-transform:uppercase;">Growth rate</span>
+    <span style="color:var(--grey3);">·</span>
+    <span style="font-size:14px;color:var(--white);">Day 0 → <strong style="color:var(--orange)">444</strong> followers by Day 48</span>
+    <span style="color:var(--grey3);">·</span>
+    <span style="font-size:14px;color:var(--white);">→ <strong style="color:var(--orange)">1M</strong> views by Day 129</span>
+    <span style="color:var(--grey3);">·</span>
+    <span style="font-size:14px;color:var(--white);">→ <strong style="color:var(--orange)">10,700</strong> by Day 160</span>
+    <span style="color:var(--grey3);">·</span>
+    <span style="font-size:14px;color:var(--grey);">Results from a live 2026 launch. No paid ads.</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="section-full" style="background:#0D0D0D;padding:88px 24px;" id="problem">
+  <div class="pain-box fade-in" style="max-width:1080px;">
+    <h2>Starting a podcast is easy.<br>Growing one is where most people stall.</h2>
+    <p class="sans" style="text-align:left;">Maybe you've been sitting on the idea for months. Maybe you launched, posted a few episodes, and watched the views flatline. Maybe you're drowning in editing, struggling to book guests, and wondering why everyone else seems to be blowing up.</p>
+    <p class="sans" style="text-align:left;">The difference isn't talent or budget. It's <strong style="color:var(--white);">knowing what to do next, in what order, and what to stop wasting time on.</strong> This program gives you that sequence.</p>
+    <p class="insight sans">A full curriculum. A private community. A journey worth committing to.</p>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section" id="mission">
+  <div class="eyebrow">Bigger Than Numbers</div>
+  <div class="section-header fade-in">
+    <h2>This is not just a course.<br>It's a community on a mission.</h2>
+    <p class="sans">Yes, growth matters. But the reason to start a podcast is bigger than follower counts or sponsor decks. It's about building something significant.</p>
+  </div>
+  <div class="check-list">
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Spread messages that matter.</strong> Your voice reaches people who need to hear it. That's the whole point.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Become a better communicator.</strong> Every episode sharpens how you think, listen, ask questions, and hold a room.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Sit with incredible people.</strong> Podcasting puts you in conversations you'd never access otherwise. Those rooms change you.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Open doors.</strong> Opportunities show up when you show up consistently. Collaborations, partnerships, platforms. The journey creates the path.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>You're not doing it alone.</strong> Private community, shared wins, group support. Build alongside people on the same mission.</div></div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section-full" style="background:#0D0D0D;" id="steps">
+  <div style="max-width:1080px;margin:0 auto;">
+    <div class="eyebrow">The Curriculum</div>
+    <div class="section-header">
+      <h2>A full program across three phases.</h2>
+      <p class="sans">Video lessons, practical tools, and a sequenced path through every stage of building a show. Not a single straight line. A real journey with depth at every step.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-in"><div class="step-num">01</div><div class="step-title">Get honest about why you're doing this, and build the habits to actually follow through</div></div>
+      <div class="step-card fade-in"><div class="step-num">02</div><div class="step-title">Define your edge: niche, mission statement, and brand identity that cuts through the noise</div></div>
+      <div class="step-card fade-in"><div class="step-num">03</div><div class="step-title">Set up the tech stack properly: mics, hosting, platforms, and storage without overspending</div></div>
+      <div class="step-card fade-in"><div class="step-num">04</div><div class="step-title">Build a guest booking system that works when nobody knows your name yet</div></div>
+      <div class="step-card fade-in"><div class="step-num">05</div><div class="step-title">Run pre-show rituals and guest prep so every conversation sounds sharp, not scripted</div></div>
+      <div class="step-card fade-in"><div class="step-num">06</div><div class="step-title">Record in a setup that looks and sounds credible, whether home studio or on the road</div></div>
+      <div class="step-card fade-in"><div class="step-num">07</div><div class="step-title">Edit long-form episodes and short-form clips without losing your weekends</div></div>
+      <div class="step-card fade-in"><div class="step-num">08</div><div class="step-title">Turn episodes into clips that make people stop scrolling and actually feel something</div></div>
+      <div class="step-card fade-in"><div class="step-num">09</div><div class="step-title">Build the foundation for future sponsorship: media kits, positioning, and how to approach brands when you're ready</div></div>
+      <div class="step-card fade-in"><div class="step-num">10</div><div class="step-title">Install review loops and scaling habits so the show keeps evolving, not plateauing</div></div>
+      <div class="step-card fade-in"><div class="step-num">+</div><div class="step-title">Private community access: group chat, wins, troubleshooting, and building alongside others on the same path</div></div>
+    </div>
+    <p class="steps-note">These are the core themes. The full curriculum goes deeper across dozens of video lessons, tools, and templates inside each phase.</p>
+  </div>
+</section>
+
+<!-- GUEST MYTH -->
+<section class="section">
+  <div class="section-header fade-in">
+    <h2>Book great guests<br>before you have an audience.</h2>
+    <p class="sans">You don't need 10K followers to land your first interview. The outreach module shows you how to build a pipeline that works from day one.</p>
+  </div>
+  <div class="check-list">
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text">Lead with the value you're offering the guest, not your download count</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text">Track every conversation in a pipeline so nothing falls through the cracks</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text">One great guest makes the next booking easier. Momentum is real.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text">Outreach templates and a guest tracker you can start using immediately</div></div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section" id="why-me">
+  <div class="eyebrow">What Makes This Different</div>
+  <div class="section-header fade-in">
+    <h2>Taught from the trenches.<br>Not from a textbook.</h2>
+    <p class="sans">Mat learned from some of the best podcast mentors in the world, including Chris Griffin's Podcast Jungle. That foundation was invaluable. This program carries that forward in his own way, including how he actually grew his reach: clipping well and making people feel.</p>
+  </div>
+  <div class="check-list">
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Clip craft included.</strong> How to find the moment, edit it tight, and post content that makes people feel something. Not algorithm hacks. The approach that actually grew the show.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Real tools, not just videos.</strong> Launch List, Grow List, guest pipeline tracker, outreach scripts, and ChatGPT prompts. Ready to use from day one.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>A community, not just content.</strong> Private group, shared wins, and people building alongside you. The journey is better together.</div></div>
+    <div class="check-item fade-in"><div class="check-icon">✓</div><div class="check-text"><strong>Direct access option.</strong> Mentorship tier includes WhatsApp and weekly 1:1 calls for 3 months. Someone in your corner while you build.</div></div>
+  </div>
+</section>
+
+<!-- WHY MOST FAIL -->
+<section class="section-full" style="background:#0D0D0D;">
+  <div style="max-width:720px;margin:0 auto;" class="agitate fade-in">
+    <div class="eyebrow">Common Traps</div>
+    <h2>The mistakes that slow podcasts down.</h2>
+    <p>Most new hosts fall into the same patterns. Recognise them early and you'll move faster.</p>
+    <ul>
+      <li>Posting clips without a repeatable format</li>
+      <li>Spending hours editing before understanding what audiences actually watch</li>
+      <li>Treating Instagram and the podcast as two separate projects</li>
+      <li>Treating the show like a side project instead of something worth showing up for consistently</li>
+    </ul>
+    <p>Fix the sequence (clips first, consistency second, guests third) and momentum builds.</p>
+    <p class="green-eyebrow">Opportunity follows consistency.</p>
+    <div class="big">Consistency follows a system.</div>
+    <p>No income guarantees here. Mat is still working toward his first sponsor too. What this program promises is a system for building a show you're proud of, growing an audience that cares, and positioning yourself for whatever opportunities come next.</p>
+    <ul>
+      <li>How to show up with clarity and purpose, week after week</li>
+      <li>How to have conversations that sharpen you as a communicator</li>
+      <li>How to build the kind of platform that opens doors over time</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section-full" style="background:var(--bg);" id="proof">
+  <div style="max-width:1080px;margin:0 auto;">
+    <div class="eyebrow">Growth Timeline</div>
+    <div class="section-header">
+      <h2>Real results. No paid ads.</h2>
+      <p class="sans">Your coach's podcast growth, tracked live. Launched Jan 20, 2026 with zero followers and zero paid promotion.</p>
+    </div>
+    <div class="timeline" style="margin-top:48px;">
+      <div class="timeline-spine"></div>
+
+      <div class="tl-row">
+        <div class="tl-card tl-left"><div class="tl-date">Jan 20, 2026</div><div class="tl-day">Day 0: Launch</div><div class="tl-stats"><div><div class="tl-stat">0</div><div class="tl-sub">followers</div></div><div><div class="tl-stat">3</div><div class="tl-sub">episodes live</div></div></div></div>
+        <div class="tl-node"><div class="tl-dot"></div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-empty"></div>
+        <div class="tl-node"><div class="tl-dot"></div></div>
+        <div class="tl-card"><div class="tl-date">Mar 9, 2026</div><div class="tl-day">Day 48: First milestone</div><div class="tl-stats"><div><div class="tl-stat orange">444</div><div class="tl-sub">followers</div></div><div><div class="tl-stat">133K</div><div class="tl-sub">views/month</div></div></div></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-card tl-left"><div class="tl-date">May 29, 2026</div><div class="tl-day">Day 129: Breakthrough</div><div class="tl-stats"><div><div class="tl-stat orange">2,684</div><div class="tl-sub">followers</div></div><div><div class="tl-stat">1M</div><div class="tl-sub">views/month</div></div></div></div>
+        <div class="tl-node"><div class="tl-dot"></div></div>
+        <div class="tl-empty"></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-empty"></div>
+        <div class="tl-node"><div class="tl-dot"></div></div>
+        <div class="tl-card"><div class="tl-date">Jun 25, 2026</div><div class="tl-day">Day 156: Viral moment</div><div class="tl-stats"><div><div class="tl-stat orange">9,468</div><div class="tl-sub">followers</div></div><div><div class="tl-stat">2.2M</div><div class="tl-sub">views/month</div></div></div></div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-card current tl-left"><div class="tl-date" style="font-weight:700;">Jun 29, 2026 (Today)</div><div class="tl-day">Day 160</div><div class="tl-stats"><div><div class="tl-stat orange">10,700</div><div class="tl-sub">followers</div></div><div><div class="tl-stat">2.3M</div><div class="tl-sub">views/month</div></div><div><div class="tl-stat">107</div><div class="tl-sub">posts</div></div></div></div>
+        <div class="tl-node"><div class="tl-dot big"></div></div>
+        <div class="tl-empty"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;background:var(--card2);border:1px solid var(--orange);border-radius:10px;padding:28px 32px;" class="fade-in">
+      <div class="eyebrow" style="margin-bottom:8px;">EOY Projection</div>
+      <h3 style="color:var(--white);margin-bottom:8px;">On track for 80K to 120K followers and 10M+ monthly views by December 2026.</h3>
+      <p class="sans" style="font-size:13.5px;color:var(--grey);">Based on actual exponential growth rate from launch. Conservative estimate assumes natural plateau as the show scales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM PREVIEW -->
+<section class="section" id="inside">
+  <div class="eyebrow">Inside Edge Within</div>
+  <div class="section-header">
+    <h2>What the member area actually looks like.</h2>
+    <p class="sans">Video lessons, action checklists, outreach trackers, and a private community, organised so you always know what to work on next.</p>
+  </div>
+  <div class="platform fade-in">
+    <div class="platform-sidebar">
+      <div class="group-label">Community</div>
+      <div class="item">Welcome & Say Hello</div>
+      <div class="item">Group Chat</div>
+      <div class="item">Wins</div>
+      <div class="group-label">Classroom</div>
+      <div class="item">Launch Sprint</div>
+      <div class="group-label">Build</div>
+      <div class="item">Find Your Edge</div>
+      <div class="item">Mindset & Discipline</div>
+      <div class="item">Gear & Setup</div>
+      <div class="item active">Guest Booking</div>
+      <div class="group-label">Create</div>
+      <div class="item">Show Prep</div>
+      <div class="item">Recording</div>
+      <div class="item">Editing & Clips</div>
+      <div class="group-label">Grow</div>
+      <div class="item">Clip Strategy</div>
+      <div class="item">Opportunities & Sponsors</div>
+      <div class="item">Review & Scale</div>
+    </div>
+    <div class="platform-main">
+      <h3>Guest Booking</h3>
+      <p class="sans" style="font-size:13px;color:var(--grey);margin-top:4px;">Module 4 · Edge Within Classroom</p>
+      <div class="platform-progress">
+        <p class="sans" style="font-size:12px;color:var(--grey);">Your progress · 3 of 5 lessons complete</p>
+        <div class="platform-bar"><div class="platform-bar-fill"></div></div>
+      </div>
+      <div class="platform-lessons">
+        <div class="platform-lesson"><div class="lesson-check">✓</div> Why guests say yes (even to small shows)</div>
+        <div class="platform-lesson"><div class="lesson-check">✓</div> Setting up your guest tracker</div>
+        <div class="platform-lesson"><div class="lesson-check">✓</div> Follow-up sequences that get replies</div>
+        <div class="platform-lesson"><div class="lesson-check empty"></div> Outreach scripts & DM templates</div>
+        <div class="platform-lesson"><div class="lesson-check empty"></div> Pre-interview prep walkthrough</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section-full" style="background:#0D0D0D;">
+  <div style="max-width:1080px;margin:0 auto;">
+    <div class="eyebrow">Included Tools</div>
+    <div class="section-header">
+      <h2>Action trackers included.</h2>
+      <p class="sans">Action trackers and templates used during a real 2026 launch. Download them, adapt them, run your show with them.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card fade-in"><div class="tool-icon">🚀</div><div class="tool-name">Launch List</div><div class="tool-desc">7-step action plan from zero to pressing post on episode one. Every task, every deadline.</div></div>
+      <div class="tool-card fade-in"><div class="tool-icon">📈</div><div class="tool-name">Grow List</div><div class="tool-desc">6-step system to blow up an existing show: better guests, better editing, better results.</div></div>
+      <div class="tool-card fade-in"><div class="tool-icon">🎯</div><div class="tool-name">Guest Pipeline Tracker</div><div class="tool-desc">A/B tier guest tracking with stages, emails, and notes. Never lose a booking again.</div></div>
+      <div class="tool-card fade-in"><div class="tool-icon">🤖</div><div class="tool-name">ChatGPT Prompts</div><div class="tool-desc">Ready-made AI prompts for episode planning, guest research, captions, and show notes.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="eyebrow">The Program</div>
+  <div class="section-header">
+    <h2>Two ways to join.</h2>
+    <p class="sans">Self-paced course, or course plus me in your corner for 90 days.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card fade-in">
+      <div class="pricing-tier">Foundations</div>
+      <div class="pricing-name">Course Only</div>
+      <div class="pricing-price">$3,000</div>
+      <div class="pricing-period">USD · one-time · lifetime access</div>
+      <hr class="pricing-divider">
+      <ul class="pricing-features">
+        <li><span class="dot"></span>Full video curriculum across 3 phases (self-paced)</li>
+        <li><span class="dot"></span>Lifetime access + all future updates</li>
+        <li><span class="dot"></span>Launch List & Grow List trackers</li>
+        <li><span class="dot"></span>Guest pipeline & outreach templates</li>
+        <li><span class="dot"></span>Sponsor pitch deck template</li>
+        <li><span class="dot"></span>ChatGPT prompts library</li>
+        <li><span class="dot"></span>Private community access</li>
+      </ul>
+      <a class="pricing-cta" href="#contact">DM to Enrol</a>
+    </div>
+    <div class="pricing-card featured fade-in">
+      <div class="pricing-badge">Founding Member Rate</div>
+      <div class="pricing-tier" style="color:var(--orange);">Accelerator</div>
+      <div class="pricing-name">Course + Mentorship</div>
+      <div class="pricing-price">$5,000</div>
+      <div class="pricing-period">USD · founding rate · raises to $9,997 USD after first 5 students</div>
+      <hr class="pricing-divider" style="border-color:var(--grey4);">
+      <ul class="pricing-features">
+        <li><span class="dot"></span>Everything in Foundations</li>
+        <li><span class="dot"></span>Direct WhatsApp access to Mat</li>
+        <li><span class="dot"></span>1 × weekly call for 3 months</li>
+        <li><span class="dot"></span>Personal review of your first 3 episodes</li>
+        <li><span class="dot"></span>Real-time feedback as you grow</li>
+        <li><span class="dot"></span>Founding rate locked for life</li>
+      </ul>
+      <a class="pricing-cta" href="#contact">Claim Your Spot</a>
+    </div>
+  </div>
+  <div class="callout fade-in">
+    <div style="font-size:20px;">💡</div>
+    <p>Founding members get the <strong>lowest price this program will ever be</strong>. Course + 3 months of direct mentorship for <strong>$5,000 USD</strong>. After the first 5 students, the mentorship tier raises to $9,997. No pressure. No income promises. Just a serious environment for people ready to build.</p>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="section-full" style="background:#0D0D0D;">
+  <div style="max-width:1080px;margin:0 auto;">
+    <div class="eyebrow">What Direct Access Means</div>
+    <div class="section-header"><h2>What "mentorship" actually means with me.</h2></div>
+    <div class="access-grid">
+      <div class="access-card fade-in"><div class="access-title">📱 WhatsApp, On Demand</div><div class="access-desc">Stuck on a guest booking? Equipment question at 10pm? Message your mentor directly. Real answers, not templates.</div></div>
+      <div class="access-card fade-in"><div class="access-title">📞 Weekly 1:1 Call, 3 Months</div><div class="access-desc">A dedicated hour each week to review your progress, diagnose what's working, and build a clear plan for the next 7 days.</div></div>
+      <div class="access-card fade-in"><div class="access-title">🎙️ Episode Reviews</div><div class="access-desc">Your first 3 episodes reviewed with direct feedback on format, energy, editing, and clip potential.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="section">
+  <div class="eyebrow">Full Curriculum</div>
+  <div class="section-header">
+    <h2>Three phases. Full depth.</h2>
+    <p class="sans">Everything you need to build, launch, grow, and keep evolving. Structured, but not simplistic. This is a real program, not a checklist.</p>
+  </div>
+
+  <div class="phase fade-in">
+    <div class="phase-header"><span class="phase-badge">PHASE 1</span><span class="phase-name">Build</span><span class="phase-sub">Identity · Mindset · Fundamentals</span></div>
+    <div class="phase-body cols-3">
+      <div><div class="mod-title">Identity & Niche</div><div class="mod-desc">Who you are, who you're for, and how to stand out, including AI brand building tools.</div></div>
+      <div><div class="mod-title">Mindset & Goals</div><div class="mod-desc">Goal setting mastery, champion mindset, and the 1% habits that separate those who last.</div></div>
+      <div><div class="mod-title">Fundamentals</div><div class="mod-desc">Equipment, hosting, software, storage, and social setup. Everything before episode one.</div></div>
+    </div>
+  </div>
+
+  <div class="phase fade-in">
+    <div class="phase-header"><span class="phase-badge">PHASE 2</span><span class="phase-name">Launch</span><span class="phase-sub">Outreach · Preparation · Recording · Editing</span></div>
+    <div class="phase-body cols-4">
+      <div><div class="mod-title">Guest Outreach</div><div class="mod-desc">The exact pipeline framework to book guests at any stage of growth.</div></div>
+      <div><div class="mod-title">Podcast Preparation</div><div class="mod-desc">Pre-recording rituals, breath work, and guest prep that creates better conversations.</div></div>
+      <div><div class="mod-title">Recording</div><div class="mod-desc">Studio and home setup, interview framework, and building a set that looks world class.</div></div>
+      <div><div class="mod-title">Editing</div><div class="mod-desc">Short form and long form masterclasses, Premiere Pro, thumbnails, and 2026 AI tools.</div></div>
+    </div>
+  </div>
+
+  <div class="phase featured fade-in">
+    <div class="phase-header"><span class="phase-badge">PHASE 3</span><span class="phase-name">Grow & Expand</span><span class="phase-sub">Clip Craft · Opportunities · Scale</span></div>
+    <div class="phase-body cols-3">
+      <div><div class="mod-title" style="color:var(--orange);">Clip Craft ★</div><div class="mod-desc">How to pull the right moments from your episodes, edit them with intention, and post clips that make people feel something. No algorithm theory. Just what works.</div></div>
+      <div><div class="mod-title">Opportunities</div><div class="mod-desc">Building a media kit, positioning your show, and preparing for sponsorship when the time is right. No shortcuts. No false promises.</div></div>
+      <div><div class="mod-title">Scale</div><div class="mod-desc">Review and improve systems, grow your reach sustainably, and keep raising the standard of what you put out.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="eyebrow">Common Questions</div>
+  <div class="section-header"><h2>Everything you need to know.</h2></div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q">Do I need equipment or experience?</button><div class="faq-a">No. Module 1 covers everything from scratch including budget setup options. Many successful podcasters started with just a phone.</div></div>
+    <div class="faq-item"><button class="faq-q">How much time do I need per week?</button><div class="faq-a">Plan for 5 to 8 hours per week: recording, editing, posting clips. The course shows you how to systemise it so it doesn't take over your life.</div></div>
+    <div class="faq-item"><button class="faq-q">What if I'm not seeing results?</button><div class="faq-a">Mentorship members get direct WhatsApp access to course-correct in real time. You're never doing this alone. That's the whole point of the accelerator tier.</div></div>
+    <div class="faq-item"><button class="faq-q">When does the price go up?</button><div class="faq-a">After the first 5 founding members confirm. Once they're gone, the next intake opens at a significantly higher rate. The $5K price does not return.</div></div>
+    <div class="faq-item"><button class="faq-q">Who is teaching this?</button><div class="faq-a">Mat Davenport, based in Australia. He hosts Edge Within, a podcast about mindset, identity, and personal growth. He learned from mentors including Chris Griffin's Podcast Jungle, which he credits as a major foundation. This program is his own take on what he learned, applied in real time on his show since January 2026.</div></div>
+    <div class="faq-item"><button class="faq-q">Will this make me money?</button><div class="faq-a">No guarantees. Mat hasn't landed his first sponsor yet either. This program is about building something significant: your voice, your platform, your communication, your community. Income can follow, but that's not the promise. The promise is a system, tools, community, and optional mentorship to build a show you're proud of.</div></div>
+    <div class="faq-item"><button class="faq-q">Do you have student testimonials?</button><div class="faq-a">This is the founding intake (5 spots), so student stories are coming. The growth timeline shows real results from Mat's own show. Founding members get in at the lowest price it will ever be.</div></div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="section" id="free" style="text-align:center;">
+  <div class="eyebrow">Free Resource</div>
+    <h2 style="margin-bottom:14px;">Want a taste first?<br>Grab the launch checklist. It's free.</h2>
+    <p class="sans" style="font-size:15px;color:var(--grey);margin-bottom:36px;line-height:1.7;max-width:600px;margin-left:auto;margin-right:auto;">A 30-step list from "no show" to "episode one is live." Equipment, accounts, first guest, first post. Free. No email list required.</p>
+  <div class="lead-card fade-in">
+    <div style="font-size:16px;font-weight:700;color:var(--white);font-family:Arial,sans-serif;margin-bottom:6px;">Get the free launch checklist</div>
+    <div style="font-size:13px;color:var(--grey);font-family:Arial,sans-serif;margin-bottom:24px;">Delivered straight to your DMs. No email list. No spam.</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="lead-option">📱 &nbsp;DM <strong style="color:var(--white);">CHECKLIST</strong> to <strong style="color:var(--orange);">@edgewithinpodcast</strong> on Instagram</div>
+      <div style="text-align:center;font-size:12px;color:var(--grey2);font-family:'Courier New',monospace;letter-spacing:0.1em;">OR</div>
+      <div class="lead-option">🔗 &nbsp;Visit <strong style="color:var(--orange);">sociatap.com/matdavenport</strong> and tap Free Checklist</div>
+    </div>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--grey3);font-size:12px;color:var(--grey2);font-family:Arial,sans-serif;">✓ 30 steps from zero to launch · ✓ Equipment on any budget · ✓ First guest outreach template · ✓ Free forever</div>
+  </div>
+  <p class="sans" style="font-size:13px;color:var(--grey2);margin-top:20px;">Already decided? <a href="#contact" style="color:var(--orange);text-decoration:none;font-weight:700;">Skip to the mentorship →</a></p>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta" id="contact">
+  <h2>Ready to build your podcast?</h2>
+  <p>5 founding member spots · Course $3,000 USD · Course + Mentorship $5,000 USD</p>
+  <p>Founding rate locked for life. Raises after the first 5 students.</p>
+  <span class="handle">DM @edgewithinpodcast or @rawmatdavenport</span>
+  <div class="link">sociatap.com/matdavenport</div>
+  <a href="https://www.instagram.com/edgewithinpodcast/" class="btn-dark" target="_blank" rel="noopener">Message on Instagram</a>
+</div>
+
+<!-- MOBILE STICKY CTA -->
+<a href="#contact" class="mobile-cta">Claim Your Founding Spot →</a>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
