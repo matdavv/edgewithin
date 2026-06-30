@@ -398,6 +398,7 @@ function openDetail(id) {
 function closeDetail() { document.getElementById('detailOverlay').classList.remove('visible'); }
 
 function openForm(guest, prefDate) {
+  closeDetail();
   editingGuest = guest ? { ...guest } : { id: 'g_' + Date.now(), name:'', instagram:'', date: prefDate||'', time:'', episodeNum:'', topic:'', openingQuestion:'', notes:'' };
   renderForm();
   document.getElementById('formOverlay').classList.add('visible');
