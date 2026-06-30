@@ -134,10 +134,42 @@
 
 <script>
 const STORAGE_KEY = 'edgewithin-guests';
+const SEEDED_KEY = 'edgewithin-guests-seeded';
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAY_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
+const SEED_GUESTS = {
+  'g_amylou': {
+    id: 'g_amylou',
+    name: 'Amy Lou',
+    instagram: '',
+    date: '2026-07-01',
+    time: '09:30',
+    episodeNum: '16',
+    topic: 'Unschooling, deschooled family of 5, school-free life with partner Jeff',
+    openingQuestion: "What was the moment you knew the traditional school system wasn't going to work for your family?",
+    notes: 'Additional questions:\n- How has unschooling changed the way you see yourself as a mother?\n- What does "creating your world" actually look like in practice?\n- How do you handle the fear of "what if they fall behind"?\n- How has deschooling changed the way you and Jeff parent together?\n- What does a typical school-free day actually look like for your three kids?\n\nReel angles:\n- The moment she decided to pull her kids out of school\n- A normal school-free day in 60 seconds\n- Answering the "but what about socialisation" question\n\nRecording: in person'
+  },
+  'g_zacobrien': {
+    id: 'g_zacobrien',
+    name: "Zac O'Brien",
+    instagram: '@zzacobrienn',
+    date: '2026-07-06',
+    time: '09:30',
+    episodeNum: '17',
+    topic: 'Former MMA fighter, ADHD, fighter-to-father identity shift, "Mixed Martial Heartist"',
+    openingQuestion: "What was the moment you realised you were becoming someone your kids wouldn't recognise?",
+    notes: 'Additional questions:\n- How has martial arts changed the way you see masculinity and fatherhood?\n- You speak openly about ADHD, how does it show up in training, fighting, and fatherhood?\n- What does "Mixed Martial Heartist" mean to you?\n- What was the lowest point during that identity shift, and what pulled you through?\n- How has training with ADHD looked different since deciding to be more present as a dad?\n\nReel angles:\n- The exact moment of his identity shift\n- Training with ADHD as a dad now vs as a fighter then\n- What "heartist" actually means\n\nRecording: remote'
+  }
+};
+
 let guests = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+if (!localStorage.getItem(SEEDED_KEY)) {
+  guests = Object.assign({}, SEED_GUESTS, guests);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
+  localStorage.setItem(SEEDED_KEY, 'true');
+}
 let view = 'calendar';
 let currentMonth = new Date();
 let editingGuest = null;
