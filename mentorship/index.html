@@ -65,9 +65,34 @@
   .stat-lbl { font-size: 11px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
 
   /* Offer section */
-  .offer { padding: 72px clamp(24px, 5vw, 64px); background: var(--bg); border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1100px; margin: 0 auto; align-items: start; }
-  .offer-left h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 400; margin-bottom: 24px; }
-  .offer-left h2 em { color: var(--gold); font-style: normal; }
+  .offer { padding: 72px clamp(24px, 5vw, 64px); background: var(--bg); border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+  .offer-heading { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .offer-heading h2 { font-size: clamp(22px, 2.8vw, 32px); font-weight: 400; }
+  .offer-heading h2 em { color: var(--gold); font-style: normal; }
+
+  /* Phase strip */
+  .phase-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 56px; position: relative; }
+  .phase-strip::before { content: ''; position: absolute; top: 19px; left: 12.5%; right: 12.5%; height: 1px; background: var(--grey3); z-index: 0; }
+  .phase-step { text-align: center; position: relative; z-index: 1; padding: 0 8px; }
+  .phase-num { width: 38px; height: 38px; border-radius: 50%; background: var(--card2); border: 2px solid var(--gold); color: var(--gold); font-family: 'Courier New', monospace; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+  .phase-name { font-family: Arial, sans-serif; font-size: 13.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .phase-desc { font-family: Arial, sans-serif; font-size: 11.5px; color: var(--grey2); line-height: 1.5; }
+
+  /* Offer grid: cards + pricing */
+  .offer-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
+  .offer-right { position: sticky; top: 80px; }
+  .feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .feature-icon { font-size: 22px; margin-bottom: 10px; }
+  .feature-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
+  .feature-desc { font-family: Arial, sans-serif; font-size: 12.5px; color: var(--grey); line-height: 1.6; }
+
+  /* Outcome callout */
+  .outcome-callout { margin-top: 48px; background: var(--card2); border: 1px solid var(--gold); border-radius: 10px; padding: 28px 32px; text-align: center; }
+  .outcome-callout .feature-icon { font-size: 26px; }
+  .outcome-callout h3 { font-family: Arial, sans-serif; font-size: 17px; color: var(--gold); margin-bottom: 8px; }
+  .outcome-callout p { font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+
   .bullets { display: flex; flex-direction: column; gap: 14px; }
   .bullet { display: flex; align-items: flex-start; gap: 10px; font-family: Arial, sans-serif; font-size: 14.5px; color: var(--grey); line-height: 1.6; }
   .bullet-dot { width: 6px; height: 6px; min-width: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; }
@@ -132,7 +157,12 @@
     .hero-logo { max-width: 260px; }
     .stats-grid { max-width: 280px; }
     .hero-left { padding: 40px 24px 56px; }
-    .offer { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+    .offer { padding: 56px 24px; }
+    .offer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .offer-right { position: static; }
+    .feature-cards { grid-template-columns: 1fr; }
+    .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .phase-strip::before { display: none; }
     .form-grid { grid-template-columns: 1fr; }
     .field.full { grid-column: 1; }
     nav .nav-links { display: none; }
@@ -197,32 +227,85 @@
 <!-- OFFER -->
 <div id="offer">
   <div class="offer">
-    <div class="offer-left">
+    <div class="offer-heading">
       <h2>A curriculum, a community,<br><em>and someone in your corner.</em></h2>
-      <div class="bullets">
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>8 modules across 4 phases.</strong> Foundation, Production, Launch & Growth, Sustain & Monetise. The exact path from "I want to start a podcast" to a show that's actually generating income, built from what got Edge Within to 11,100+ followers and 2.4M monthly views, not theory</span></div>
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>A private founding member community.</strong> You're not doing this alone. Share your wins, ask the question you'd never post publicly, and build alongside people who are actually serious, not just curious</span></div>
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>Direct feedback on your actual episodes.</strong> Post a clip or a full episode before it goes live and get real notes, not vague encouragement. The kind of feedback that catches what you can't hear in your own work</span></div>
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>Real templates, not advice.</strong> Guest pipeline tracker, launch-day checklist, media kit, 30-day content calendar, the exact AI prompts I use for every episode's titles and thumbnails, my Auphonic settings, my folder structure. The stuff you'd otherwise spend weeks figuring out yourself</span></div>
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>Lifetime access</strong> and all future updates. The course evolves as the platform does. New modules, new templates, same one-time price</span></div>
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>Mentorship tier:</strong> direct WhatsApp access to me and one weekly call for 3 months. Real-time answers, not pre-written advice. I'm building my own show at the same time as you, so when you hit a wall, you're getting what's working for me this week, not recycled theory</span></div>
-        <div class="bullet"><span class="bullet-dot"></span><span><strong>By the end, you'll have a published show.</strong> Not notes. Not good intentions. Real episodes, live, with an audience starting to build</span></div>
+      <p style="font-family:Arial,sans-serif;font-size:14.5px;color:var(--grey);line-height:1.7;margin-top:16px;">The exact path from "I want to start a podcast" to a show that's actually generating income, built from what got Edge Within to 11,100+ followers and 2.4M monthly views, not theory.</p>
+    </div>
+
+    <div class="phase-strip">
+      <div class="phase-step">
+        <div class="phase-num">1</div>
+        <div class="phase-name">Foundation</div>
+        <div class="phase-desc">Identity & Fundamentals</div>
+      </div>
+      <div class="phase-step">
+        <div class="phase-num">2</div>
+        <div class="phase-name">Production</div>
+        <div class="phase-desc">Recording & Editing</div>
+      </div>
+      <div class="phase-step">
+        <div class="phase-num">3</div>
+        <div class="phase-name">Launch & Growth</div>
+        <div class="phase-desc">Launch & Instagram</div>
+      </div>
+      <div class="phase-step">
+        <div class="phase-num">4</div>
+        <div class="phase-name">Sustain & Monetise</div>
+        <div class="phase-desc">Grow & Get Paid</div>
       </div>
     </div>
 
-    <div class="offer-right" id="apply">
-      <div class="tier">
-        <div class="tier-name">Foundations</div>
-        <div class="tier-price">$3,000</div>
-        <div class="tier-desc">USD · course only · self-paced · lifetime access</div>
+    <div class="offer-grid">
+      <div class="offer-left">
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <div class="feature-title">Private founding community</div>
+            <div class="feature-desc">You're not doing this alone. Share wins, ask the question you'd never post publicly, build alongside people who are actually serious.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎧</div>
+            <div class="feature-title">Direct episode feedback</div>
+            <div class="feature-desc">Post a clip or full episode before it goes live and get real notes. The kind that catches what you can't hear in your own work.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧰</div>
+            <div class="feature-title">Real templates, not advice</div>
+            <div class="feature-desc">Guest pipeline tracker, launch checklist, media kit, content calendar, my actual AI prompts, Auphonic settings, folder structure.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔓</div>
+            <div class="feature-title">Lifetime access</div>
+            <div class="feature-desc">All future updates included. New modules, new templates, same one-time price.</div>
+          </div>
+          <div class="feature-card" style="grid-column: 1 / -1;">
+            <div class="feature-icon">💬</div>
+            <div class="feature-title">Mentorship tier: direct WhatsApp access + weekly calls for 3 months</div>
+            <div class="feature-desc">Real-time answers, not pre-written advice. I'm building my own show at the same time as you, so when you hit a wall, you're getting what's working for me this week, not recycled theory.</div>
+          </div>
+        </div>
+
+        <div class="outcome-callout">
+          <div class="feature-icon">🎙️</div>
+          <h3>By the end, you'll have a published show.</h3>
+          <p>Not notes. Not good intentions. Real episodes, live, with an audience starting to build.</p>
+        </div>
       </div>
-      <div class="tier featured">
-        <div class="tier-badge">Most Popular</div>
-        <div class="tier-name">Accelerator</div>
-        <div class="tier-price">$5,000</div>
-        <div class="tier-desc">USD · course + direct WhatsApp + weekly calls for 3 months</div>
+
+      <div class="offer-right" id="apply">
+        <div class="tier">
+          <div class="tier-name">Foundations</div>
+          <div class="tier-price">$3,000</div>
+          <div class="tier-desc">USD · course only · self-paced · lifetime access</div>
+        </div>
+        <div class="tier featured">
+          <div class="tier-badge">Most Popular</div>
+          <div class="tier-name">Accelerator</div>
+          <div class="tier-price">$5,000</div>
+          <div class="tier-desc">USD · course + direct WhatsApp + weekly calls for 3 months</div>
+        </div>
+        <div class="founding-note">Founding rate · price increases after this cohort</div>
       </div>
-      <div class="founding-note">Founding rate · price increases after this cohort</div>
     </div>
   </div>
 </div>
