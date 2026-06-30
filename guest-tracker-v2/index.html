@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Tracker — Edge Within</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0A0A0A; color: #fff; font-family: Arial, sans-serif; min-height: 100vh; }
+
+  nav {
+    height: 56px; display: flex; align-items: center; padding: 0 24px;
+    border-bottom: 1px solid #1E1E1E; position: sticky; top: 0; background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px); z-index: 50;
+  }
+  .nav-logo { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #b8860b; }
+
+  header { border-bottom: 1px solid #1E1E1E; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .h-eyebrow { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #b8860b; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+  .h-title { font-size: 20px; font-weight: 700; }
+  .save-indicator { font-size: 10px; font-family: 'Courier New', monospace; }
+  .save-indicator.saving { color: #666; }
+  .save-indicator.saved { color: #22C55E; }
+  .save-indicator.error { color: #e0a040; }
+  .view-btns { display: flex; gap: 8px; }
+  .view-btn { background: transparent; color: #888; border: 1px solid #1E1E1E; border-radius: 6px; padding: 8px 16px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Courier New', monospace; letter-spacing: 0.05em; }
+  .view-btn.active { background: #b8860b; color: #0A0A0A; border: none; }
+  .add-btn { background: transparent; color: #b8860b; border: 1px solid #b8860b; border-radius: 6px; padding: 8px 16px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Courier New', monospace; letter-spacing: 0.05em; }
+
+  .error-banner { background: #2a1a0a; color: #e0a040; font-size: 12px; padding: 10px 24px; border-bottom: 1px solid #1E1E1E; }
+
+  main { padding: 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; max-width: 1100px; margin: 0 auto; }
+  main.list-view { grid-template-columns: 1fr; }
+
+  .loading-state { text-align: center; padding: 80px 24px; color: #666; font-size: 14px; }
+
+  .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .cal-nav-btn { background: transparent; border: 1px solid #1E1E1E; color: #888; border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 14px; }
+  .cal-month { font-size: 16px; font-weight: 700; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-dow { text-align: center; font-size: 11px; color: #555; font-family: 'Courier New', monospace; padding: 4px 0; }
+  .cal-cell { min-height: 64px; background: #111; border: 1px solid #1E1E1E; border-radius: 6px; padding: 6px; cursor: pointer; }
+  .cal-cell.has-guest { background: #0F0A04; }
+  .cal-cell.is-today { border-color: #b8860b; }
+  .cal-daynum { font-size: 11px; color: #666; margin-bottom: 4px; }
+  .cal-cell.is-today .cal-daynum { color: #b8860b; font-weight: 700; }
+  .cal-guest-chip { font-size: 10px; color: #b8860b; background: rgba(184,134,11,0.15); border-radius: 3px; padding: 2px 4px; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .sidebar-label { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #b8860b; margin-bottom: 14px; }
+  .empty-msg { text-align: center; padding: 48px 24px; color: #555; font-size: 13px; }
+  .guest-row { background: #111; border: 1px solid #1E1E1E; border-radius: 8px; padding: 14px 16px; cursor: pointer; margin-bottom: 10px; }
+  .guest-row-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+  .guest-row-name { font-size: 14px; font-weight: 700; }
+  .tag { color: #0A0A0A; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; font-family: 'Courier New', monospace; letter-spacing: 0.04em; white-space: nowrap; }
+  .guest-row-date { font-size: 11.5px; color: #888; }
+  .guest-row-ig { font-size: 11.5px; color: #666; margin-top: 2px; }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+  .modal-overlay.visible { display: flex; }
+  .modal { background: #111; border: 1px solid #1E1E1E; border-radius: 12px; padding: 28px; max-width: 460px; width: 100%; max-height: 85vh; overflow-y: auto; }
+  .modal-title-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+  .modal-title { font-size: 20px; font-weight: 700; }
+  .modal-close { background: transparent; border: none; color: #666; font-size: 20px; cursor: pointer; line-height: 1; }
+  .modal-ig { font-size: 13px; color: #b8860b; margin-bottom: 16px; }
+  .modal-meta-row { display: flex; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #1E1E1E; flex-wrap: wrap; }
+  .modal-meta-label { font-family: 'Courier New', monospace; font-size: 10px; color: #555; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .modal-meta-val { font-size: 13px; }
+  .modal-section { margin-bottom: 18px; }
+  .modal-section-label { font-family: 'Courier New', monospace; font-size: 10px; color: #b8860b; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .modal-section-text { font-size: 14px; color: #ddd; line-height: 1.6; }
+  .modal-section-text.italic { font-style: italic; }
+  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .modal-edit-btn { flex: 1; background: #b8860b; color: #0A0A0A; border: none; border-radius: 8px; padding: 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Courier New', monospace; letter-spacing: 0.05em; }
+  .modal-del-btn { background: transparent; color: #888; border: 1px solid #1E1E1E; border-radius: 8px; padding: 12px 18px; font-size: 12px; cursor: pointer; }
+
+  .form-field { margin-bottom: 14px; }
+  .form-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 6px; display: block; }
+  .form-input, .form-textarea { width: 100%; background: #0A0A0A; border: 1px solid #1E1E1E; border-radius: 7px; padding: 11px 13px; color: #fff; font-size: 14px; font-family: Arial, sans-serif; outline: none; }
+  .form-input:focus, .form-textarea:focus { border-color: #b8860b; }
+  .form-textarea { min-height: 64px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-actions { display: flex; gap: 10px; margin-top: 24px; }
+  .save-btn { flex: 1; background: #b8860b; color: #0A0A0A; border: none; border-radius: 8px; padding: 13px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: 'Courier New', monospace; letter-spacing: 0.05em; }
+  .save-btn:disabled { background: #3a2f0f; color: #777; cursor: not-allowed; }
+  .cancel-btn { background: transparent; color: #888; border: 1px solid #1E1E1E; border-radius: 8px; padding: 13px 18px; font-size: 12px; cursor: pointer; }
+
+  @media (max-width: 760px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
+</nav>
+
+<header>
+  <div>
+    <div class="h-eyebrow">
+      <span>Edge Within</span>
+      <span id="saveIndicator" class="save-indicator"></span>
+    </div>
+    <div class="h-title">Guest Tracker</div>
+  </div>
+  <div class="view-btns">
+    <button class="view-btn active" id="calBtn">CALENDAR</button>
+    <button class="view-btn" id="listBtn">LIST</button>
+    <button class="add-btn" id="addBtn">+ ADD GUEST</button>
+  </div>
+</header>
+
+<div id="errorBanner" class="error-banner" style="display:none;"></div>
+
+<main id="mainGrid">
+  <div id="loadingState" class="loading-state" style="grid-column: 1 / -1;">Loading guest pipeline...</div>
+
+  <div id="calendarPanel" style="display:none;">
+    <div class="cal-header">
+      <button class="cal-nav-btn" id="prevMonth">←</button>
+      <div class="cal-month" id="calMonth"></div>
+      <button class="cal-nav-btn" id="nextMonth">→</button>
+    </div>
+    <div class="cal-grid" id="calDow"></div>
+    <div class="cal-grid" id="calGrid" style="margin-top:4px;"></div>
+  </div>
+
+  <div id="sidebarPanel" style="display:none;">
+    <div class="sidebar-label" id="sidebarLabel">Upcoming</div>
+    <div id="guestListContainer"></div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="detailOverlay">
+  <div class="modal" id="detailModal"></div>
+</div>
+
+<div class="modal-overlay" id="formOverlay">
+  <div class="modal" id="formModal"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://qkkwgmxhpijqyowzaiyg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_WiOK2HJKGVYnVSHWYZ4Arw_KvbMWypn';
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAY_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+let guests = {};
+let view = 'calendar';
+let currentMonth = new Date();
+let editingGuest = null;
+
+function showSaveStatus(status) {
+  const el = document.getElementById('saveIndicator');
+  el.className = 'save-indicator ' + status;
+  if (status === 'saving') el.textContent = 'saving...';
+  else if (status === 'saved') el.textContent = 'saved';
+  else if (status === 'error') el.textContent = 'save failed';
+  else el.textContent = '';
+  if (status === 'saved') setTimeout(() => { el.textContent = ''; el.className = 'save-indicator'; }, 1500);
+}
+
+function showError(msg) {
+  const banner = document.getElementById('errorBanner');
+  banner.textContent = msg;
+  banner.style.display = 'block';
+}
+
+function rowToGuest(row) {
+  return {
+    id: row.id,
+    name: row.name,
+    instagram: row.instagram || '',
+    date: row.date,
+    time: row.time || '',
+    episodeNum: row.episode_num || '',
+    topic: row.topic || '',
+    openingQuestion: row.opening_question || '',
+    notes: row.notes || '',
+  };
+}
+
+function guestToRow(g) {
+  return {
+    id: g.id,
+    name: g.name,
+    instagram: g.instagram || null,
+    date: g.date,
+    time: g.time || null,
+    episode_num: g.episodeNum || null,
+    topic: g.topic || null,
+    opening_question: g.openingQuestion || null,
+    notes: g.notes || null,
+  };
+}
+
+async function loadGuests() {
+  try {
+    const { data, error } = await supabaseClient.from('guests').select('*');
+    if (error) {
+      showError('Could not load guests: ' + error.message);
+      return;
+    }
+    guests = {};
+    (data || []).forEach(row => { guests[row.id] = rowToGuest(row); });
+  } catch (e) {
+    showError('Could not connect to the database. Check your connection and refresh.');
+  } finally {
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('calendarPanel').style.display = 'block';
+    document.getElementById('sidebarPanel').style.display = 'block';
+    render();
+  }
+}
+
+async function saveGuestToDb(guest) {
+  showSaveStatus('saving');
+  try {
+    const { error } = await supabaseClient.from('guests').upsert(guestToRow(guest));
+    if (error) { showSaveStatus('error'); showError('Save failed: ' + error.message); return false; }
+    showSaveStatus('saved');
+    return true;
+  } catch (e) {
+    showSaveStatus('error');
+    showError('Save failed. Check your connection.');
+    return false;
+  }
+}
+
+async function deleteGuestFromDb(id) {
+  showSaveStatus('saving');
+  try {
+    const { error } = await supabaseClient.from('guests').delete().eq('id', id);
+    if (error) { showSaveStatus('error'); showError('Delete failed: ' + error.message); return false; }
+    showSaveStatus('saved');
+    return true;
+  } catch (e) {
+    showSaveStatus('error');
+    return false;
+  }
+}
+
+function formatDateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+function parseDateKey(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+function daysUntil(dateKey) {
+  const target = parseDateKey(dateKey);
+  const today = new Date();
+  const t = new Date(target.getFullYear(), target.getMonth(), target.getDate());
+  const n = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  return Math.round((t - n) / 86400000);
+}
+function urgencyLabel(days) {
+  if (days < 0) return null;
+  if (days === 0) return { text: 'TODAY', color: '#b8860b' };
+  if (days === 1) return { text: 'TOMORROW', color: '#b8860b' };
+  if (days <= 3) return { text: `IN ${days} DAYS`, color: '#9a7009' };
+  return null;
+}
+function formatTime(time24) {
+  if (!time24) return '';
+  const [h, m] = time24.split(':').map(Number);
+  const period = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${h12}:${String(m).padStart(2,'0')} ${period}`;
+}
+function formatDisplayDate(dateKey) {
+  const d = parseDateKey(dateKey);
+  return d.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+}
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function getGuestList() {
+  return Object.values(guests).sort((a, b) => (a.date + (a.time||'00:00')).localeCompare(b.date + (b.time||'00:00')));
+}
+function getUpcoming() { return getGuestList().filter(g => daysUntil(g.date) >= 0); }
+function getGuestsByDate() {
+  const map = {};
+  getGuestList().forEach(g => { (map[g.date] = map[g.date] || []).push(g); });
+  return map;
+}
+
+function render() {
+  document.getElementById('calBtn').classList.toggle('active', view === 'calendar');
+  document.getElementById('listBtn').classList.toggle('active', view === 'list');
+  document.getElementById('calendarPanel').style.display = view === 'calendar' ? 'block' : 'none';
+  document.getElementById('mainGrid').classList.toggle('list-view', view === 'list');
+  document.getElementById('sidebarLabel').textContent = view === 'calendar' ? 'Upcoming' : 'All Guests';
+  if (view === 'calendar') renderCalendar();
+  renderGuestList();
+}
+
+function renderCalendar() {
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  document.getElementById('calMonth').textContent = `${MONTH_NAMES[month]} ${year}`;
+  document.getElementById('calDow').innerHTML = DAY_NAMES.map(d => `<div class="cal-dow">${d}</div>`).join('');
+
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const startOffset = firstDay.getDay();
+  const daysInMonth = lastDay.getDate();
+  const todayKey = formatDateKey(new Date());
+  const guestsByDate = getGuestsByDate();
+
+  let html = '';
+  for (let i = 0; i < startOffset; i++) html += '<div></div>';
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateKey = formatDateKey(new Date(year, month, d));
+    const dayGuests = guestsByDate[dateKey] || [];
+    const isToday = dateKey === todayKey;
+    const classes = ['cal-cell'];
+    if (dayGuests.length) classes.push('has-guest');
+    if (isToday) classes.push('is-today');
+    html += `<div class="${classes.join(' ')}" data-date="${dateKey}" data-has-guest="${dayGuests.length > 0}">
+      <div class="cal-daynum">${d}</div>
+      ${dayGuests.map(g => `<div class="cal-guest-chip">${escapeHtml(g.name)}</div>`).join('')}
+    </div>`;
+  }
+  document.getElementById('calGrid').innerHTML = html;
+
+  document.querySelectorAll('.cal-cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const dateKey = cell.dataset.date;
+      const hasGuest = cell.dataset.hasGuest === 'true';
+      if (hasGuest) openDetail(guestsByDate[dateKey][0].id);
+      else openForm(null, dateKey);
+    });
+  });
+}
+
+function renderGuestList() {
+  const list = view === 'calendar' ? getUpcoming().slice(0, 8) : getGuestList();
+  const container = document.getElementById('guestListContainer');
+  if (getGuestList().length === 0) {
+    container.innerHTML = '<div class="empty-msg">No guests yet. Click "+ Add Guest" to get started.</div>';
+    return;
+  }
+  container.innerHTML = list.map(g => {
+    const days = daysUntil(g.date);
+    const urgency = urgencyLabel(days);
+    return `<div class="guest-row" data-id="${g.id}">
+      <div class="guest-row-top">
+        <div class="guest-row-name">${escapeHtml(g.name)}</div>
+        ${urgency ? `<span class="tag" style="background:${urgency.color}">${urgency.text}</span>` : ''}
+      </div>
+      <div class="guest-row-date">${formatDisplayDate(g.date)}${g.time ? ' · ' + formatTime(g.time) : ''}</div>
+      ${g.instagram ? `<div class="guest-row-ig">@${escapeHtml(g.instagram.replace('@',''))}</div>` : ''}
+    </div>`;
+  }).join('');
+  container.querySelectorAll('.guest-row').forEach(row => row.addEventListener('click', () => openDetail(row.dataset.id)));
+}
+
+function openDetail(id) {
+  const g = guests[id];
+  if (!g) return;
+  const modal = document.getElementById('detailModal');
+  modal.innerHTML = `
+    <div class="modal-title-row">
+      <div class="modal-title">${escapeHtml(g.name)}</div>
+      <button class="modal-close" id="closeDetail">&times;</button>
+    </div>
+    ${g.instagram ? `<div class="modal-ig">@${escapeHtml(g.instagram.replace('@',''))}</div>` : ''}
+    <div class="modal-meta-row">
+      <div><div class="modal-meta-label">DATE</div><div class="modal-meta-val">${formatDisplayDate(g.date)}</div></div>
+      ${g.time ? `<div><div class="modal-meta-label">TIME</div><div class="modal-meta-val">${formatTime(g.time)}</div></div>` : ''}
+      ${g.episodeNum ? `<div><div class="modal-meta-label">EPISODE</div><div class="modal-meta-val">#${escapeHtml(g.episodeNum)}</div></div>` : ''}
+    </div>
+    ${g.topic ? `<div class="modal-section"><div class="modal-section-label">TOPIC</div><div class="modal-section-text">${escapeHtml(g.topic)}</div></div>` : ''}
+    ${g.openingQuestion ? `<div class="modal-section"><div class="modal-section-label">OPENING QUESTION</div><div class="modal-section-text italic">"${escapeHtml(g.openingQuestion)}"</div></div>` : ''}
+    ${g.notes ? `<div class="modal-section"><div class="modal-section-label">NOTES</div><div class="modal-section-text" style="white-space:pre-wrap;">${escapeHtml(g.notes)}</div></div>` : ''}
+    <div class="modal-actions">
+      <button class="modal-edit-btn" id="editGuestBtn">EDIT</button>
+      <button class="modal-del-btn" id="deleteGuestBtn">Delete</button>
+    </div>
+  `;
+  document.getElementById('detailOverlay').classList.add('visible');
+  document.getElementById('closeDetail').addEventListener('click', closeDetail);
+  document.getElementById('editGuestBtn').addEventListener('click', () => { closeDetail(); openForm(g); });
+  document.getElementById('deleteGuestBtn').addEventListener('click', async () => {
+    const ok = await deleteGuestFromDb(id);
+    if (ok) { delete guests[id]; closeDetail(); render(); }
+  });
+}
+function closeDetail() { document.getElementById('detailOverlay').classList.remove('visible'); }
+
+function openForm(guest, prefDate) {
+  editingGuest = guest ? { ...guest } : { id: 'g_' + Date.now(), name:'', instagram:'', date: prefDate||'', time:'', episodeNum:'', topic:'', openingQuestion:'', notes:'' };
+  renderForm();
+  document.getElementById('formOverlay').classList.add('visible');
+}
+function closeForm() { document.getElementById('formOverlay').classList.remove('visible'); editingGuest = null; }
+
+function renderForm() {
+  const isEdit = !!guests[editingGuest.id];
+  const modal = document.getElementById('formModal');
+  modal.innerHTML = `
+    <div class="modal-title" style="margin-bottom:20px;">${isEdit ? 'Edit Guest' : 'New Guest'}</div>
+    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="f-name" placeholder="Amy Lou" value="${escapeHtml(editingGuest.name)}"></div>
+    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="f-ig" placeholder="@amylou" value="${escapeHtml(editingGuest.instagram)}"></div>
+    <div class="form-row form-field">
+      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="f-date" value="${editingGuest.date}"></div>
+      <div><label class="form-label">Time</label><input class="form-input" type="time" id="f-time" value="${editingGuest.time}"></div>
+    </div>
+    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="f-ep" placeholder="16" value="${escapeHtml(editingGuest.episodeNum)}"></div>
+    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="f-topic" placeholder="Unschooling, deschooled family of 5" value="${escapeHtml(editingGuest.topic)}"></div>
+    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="f-question" placeholder="What was the moment...">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
+    <div class="form-field"><label class="form-label">Notes</label><textarea class="form-textarea" id="f-notes" style="min-height:80px;" placeholder="Any reminders, background info, logistics...">${escapeHtml(editingGuest.notes)}</textarea></div>
+    <div class="form-actions">
+      <button class="save-btn" id="saveBtn">SAVE GUEST</button>
+      <button class="cancel-btn" id="cancelBtn">Cancel</button>
+    </div>
+  `;
+
+  function checkValid() {
+    const name = document.getElementById('f-name').value.trim();
+    const date = document.getElementById('f-date').value;
+    document.getElementById('saveBtn').disabled = !name || !date;
+  }
+  document.getElementById('f-name').addEventListener('input', checkValid);
+  document.getElementById('f-date').addEventListener('input', checkValid);
+  checkValid();
+
+  document.getElementById('cancelBtn').addEventListener('click', closeForm);
+  document.getElementById('saveBtn').addEventListener('click', async () => {
+    const name = document.getElementById('f-name').value.trim();
+    const date = document.getElementById('f-date').value;
+    if (!name || !date) return;
+    editingGuest.name = name;
+    editingGuest.instagram = document.getElementById('f-ig').value.trim();
+    editingGuest.date = date;
+    editingGuest.time = document.getElementById('f-time').value;
+    editingGuest.episodeNum = document.getElementById('f-ep').value.trim();
+    editingGuest.topic = document.getElementById('f-topic').value.trim();
+    editingGuest.openingQuestion = document.getElementById('f-question').value.trim();
+    editingGuest.notes = document.getElementById('f-notes').value.trim();
+
+    const ok = await saveGuestToDb(editingGuest);
+    if (ok) {
+      guests[editingGuest.id] = editingGuest;
+      closeForm();
+      render();
+    }
+  });
+}
+
+document.getElementById('calBtn').addEventListener('click', () => { view = 'calendar'; render(); });
+document.getElementById('listBtn').addEventListener('click', () => { view = 'list'; render(); });
+document.getElementById('addBtn').addEventListener('click', () => openForm(null, ''));
+document.getElementById('prevMonth').addEventListener('click', () => { currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth()-1, 1); renderCalendar(); });
+document.getElementById('nextMonth').addEventListener('click', () => { currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth()+1, 1); renderCalendar(); });
+document.getElementById('detailOverlay').addEventListener('click', (e) => { if (e.target.id === 'detailOverlay') closeDetail(); });
+document.getElementById('formOverlay').addEventListener('click', (e) => { if (e.target.id === 'formOverlay') closeForm(); });
+
+loadGuests();
+</script>
+</body>
+</html>
