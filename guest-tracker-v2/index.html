@@ -409,16 +409,16 @@ function renderForm() {
   const modal = document.getElementById('formModal');
   modal.innerHTML = `
     <div class="modal-title" style="margin-bottom:20px;">${isEdit ? 'Edit Guest' : 'New Guest'}</div>
-    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="f-name" placeholder="Amy Lou" value="${escapeHtml(editingGuest.name)}"></div>
-    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="f-ig" placeholder="@amylou" value="${escapeHtml(editingGuest.instagram)}"></div>
+    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="f-name" autocomplete="off" placeholder="Amy Lou" value="${escapeHtml(editingGuest.name)}"></div>
+    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="f-ig" autocomplete="off" placeholder="@amylou" value="${escapeHtml(editingGuest.instagram)}"></div>
     <div class="form-row form-field">
-      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="f-date" value="${editingGuest.date}"></div>
-      <div><label class="form-label">Time</label><input class="form-input" type="time" id="f-time" value="${editingGuest.time}"></div>
+      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="f-date" autocomplete="off" value="${editingGuest.date}"></div>
+      <div><label class="form-label">Time</label><input class="form-input" type="time" id="f-time" autocomplete="off" value="${editingGuest.time}"></div>
     </div>
-    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="f-ep" placeholder="16" value="${escapeHtml(editingGuest.episodeNum)}"></div>
-    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="f-topic" placeholder="Unschooling, deschooled family of 5" value="${escapeHtml(editingGuest.topic)}"></div>
-    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="f-question" placeholder="What was the moment...">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
-    <div class="form-field"><label class="form-label">Notes</label><textarea class="form-textarea" id="f-notes" style="min-height:80px;" placeholder="Any reminders, background info, logistics...">${escapeHtml(editingGuest.notes)}</textarea></div>
+    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="f-ep" autocomplete="off" placeholder="16" value="${escapeHtml(editingGuest.episodeNum)}"></div>
+    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="f-topic" autocomplete="off" placeholder="Unschooling, deschooled family of 5" value="${escapeHtml(editingGuest.topic)}"></div>
+    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="f-question" autocomplete="off" placeholder="What was the moment...">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
+    <div class="form-field"><label class="form-label">Notes</label><textarea class="form-textarea" id="f-notes" autocomplete="off" style="min-height:80px;" placeholder="Any reminders, background info, logistics...">${escapeHtml(editingGuest.notes)}</textarea></div>
     <div class="form-actions">
       <button class="save-btn" id="saveBtn">SAVE GUEST</button>
       <button class="cancel-btn" id="cancelBtn">Cancel</button>
