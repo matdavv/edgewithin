@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free 30-Step Podcast Launch Checklist — Edge Within</title>
+<meta name="description" content="The exact 30 steps I used to go from 0 to 10,700 followers and 2.3M monthly views in 160 days. Free.">
+<meta property="og:title" content="Free 30-Step Podcast Launch Checklist">
+<meta property="og:description" content="0 to 10,700 followers and 2.3M monthly views in 160 days. Here's exactly how.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --gold: #b8860b;
+    --gold2: #9a7009;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #555555;
+    --grey3: #222222;
+  }
+  body {
+    background: var(--bg); color: var(--white);
+    font-family: 'Georgia', serif; line-height: 1.6;
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+
+  nav {
+    height: 56px; display: flex; align-items: center; padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+
+  main {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+  }
+
+  .wrap { max-width: 480px; width: 100%; text-align: center; }
+
+  .eyebrow { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; font-weight: 400; margin-bottom: 18px; }
+  h1 em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+  .sub { font-family: Arial, sans-serif; font-size: 15.5px; color: var(--grey); line-height: 1.75; margin-bottom: 32px; }
+
+  .proof-strip {
+    display: flex; justify-content: center; gap: 28px; margin-bottom: 36px;
+    padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .proof-item { text-align: center; }
+  .proof-val { font-size: 22px; font-weight: 700; color: var(--gold); font-family: Arial, sans-serif; line-height: 1; }
+  .proof-lbl { font-size: 10.5px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
+
+  .preview-list { text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; margin-bottom: 32px; }
+  .preview-list .label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .preview-item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--grey); font-family: Arial, sans-serif; margin-bottom: 9px; }
+  .preview-item:last-child { margin-bottom: 0; }
+  .check { width: 16px; height: 16px; min-width: 16px; border-radius: 4px; background: var(--gold); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+  .more-steps { font-size: 11px; color: var(--grey2); font-family: 'Courier New', monospace; letter-spacing: 0.08em; margin-top: 10px; padding-left: 26px; }
+
+  form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+  input[type="email"], input[type="text"] {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 15px 18px; color: var(--white); font-family: Arial, sans-serif; font-size: 15px;
+    outline: none; transition: border-color 0.2s; width: 100%;
+  }
+  input:focus { border-color: var(--gold); }
+  input::placeholder { color: var(--grey2); }
+  button {
+    background: var(--gold); color: var(--bg); font-family: 'Courier New', monospace;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 16px; border: none; border-radius: 8px; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  button:hover { background: var(--gold2); transform: translateY(-1px); }
+
+  .privacy { font-size: 12px; color: var(--grey2); font-family: Arial, sans-serif; margin-bottom: 28px; }
+
+  .footer-link { font-size: 13px; color: var(--grey); font-family: Arial, sans-serif; }
+  .footer-link a { color: var(--gold); text-decoration: none; }
+
+  footer { padding: 24px; text-align: center; border-top: 1px solid var(--border); }
+  footer p { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey2); }
+
+  /* Kit form override */
+  #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
+  #kit-form-wrapper .formkit-field input { background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 8px !important; color: #fff !important; font-family: Arial, sans-serif !important; font-size: 15px !important; padding: 15px 18px !important; width: 100% !important; }
+  #kit-form-wrapper .formkit-field input:focus { border-color: var(--gold) !important; outline: none !important; }
+  #kit-form-wrapper .formkit-field input::placeholder { color: var(--grey2) !important; }
+  #kit-form-wrapper .formkit-submit { background: var(--gold) !important; color: var(--bg) !important; font-family: 'Courier New', monospace !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; border-radius: 8px !important; border: none !important; padding: 16px !important; cursor: pointer !important; width: 100% !important; margin-top: 4px !important; }
+  #kit-form-wrapper .formkit-submit:hover { background: var(--gold2) !important; }
+  #kit-form-wrapper .formkit-guarantee { color: var(--grey2) !important; font-size: 12px !important; font-family: Arial, sans-serif !important; margin-top: 8px !important; }
+  #kit-form-wrapper .formkit-header, #kit-form-wrapper .formkit-subheader { display: none !important; }
+  #kit-form-wrapper [data-element="fields"] { display: flex; flex-direction: column; gap: 12px; }
+
+  @media (max-width: 480px) {
+    .proof-strip { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="eyebrow">Free Resource</div>
+    <h1>The exact steps that took me from <em>zero to 10,700 followers.</em></h1>
+    <p class="sub">Enter your email and I'll send you the same 30-step checklist I followed to launch and grow Edge Within, no prior audience, no paid ads.</p>
+
+    <div class="proof-strip">
+      <div class="proof-item"><div class="proof-val">160</div><div class="proof-lbl">days</div></div>
+      <div class="proof-item"><div class="proof-val">10.7K</div><div class="proof-lbl">followers</div></div>
+      <div class="proof-item"><div class="proof-val">2.3M</div><div class="proof-lbl">monthly views</div></div>
+      <div class="proof-item"><div class="proof-val">$0</div><div class="proof-lbl">paid ads</div></div>
+    </div>
+
+    <div class="preview-list">
+      <div class="label">What's inside</div>
+      <div class="preview-item"><span class="check">✓</span>Get clear on your WHY</div>
+      <div class="preview-item"><span class="check">✓</span>Name the show &amp; find your concept</div>
+      <div class="preview-item"><span class="check">✓</span>Book your first 3 guests</div>
+      <div class="preview-item"><span class="check">✓</span>Build a content bank before you launch</div>
+      <div class="preview-item"><span class="check">✓</span>Grow on Instagram from zero</div>
+      <div class="more-steps">+ 25 more steps</div>
+    </div>
+
+    <div id="kit-form-wrapper">
+      <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
+    </div>
+
+    <p class="footer-link" style="margin-top:24px;">Already grabbed it? <a href="/checklist/">Open the checklist →</a></p>
+  </div>
+</main>
+
+<footer>
+  <p>Edge Within with Mat Davenport &nbsp;·&nbsp; <a href="/" style="color:var(--gold);text-decoration:none;">edgewithinpodcast.com</a></p>
+</footer>
+
+</body>
+</html>
