@@ -416,7 +416,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
-    align-items: center;
+    align-items: stretch;
   }
 
   .free-visual {
@@ -459,6 +459,12 @@
   }
   .preview-check.done { background: #22C55E; border-color: #22C55E; color: #000; }
 
+  .free-text {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+  }
   .free-text h2 { margin-bottom: 14px; }
   .free-text p {
     font-size: 15px;
