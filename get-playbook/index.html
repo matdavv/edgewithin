@@ -338,7 +338,7 @@
     <div class="success-msg" id="successMsg">
       <div class="check">✓</div>
       <h3>You're in.</h3>
-      <p>Check your email for the checklist. Give it a few minutes, and check spam if it doesn't show up.</p>
+      <p>Check your email for the playbook. Give it a few minutes, and check spam if it doesn't show up.</p>
     </div>
   </div>
 </div>
@@ -375,7 +375,7 @@
         form.style.display = 'none';
         document.querySelector('.privacy').style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
-        setTimeout(() => { window.location.href = '/checklist/'; }, 2500);
+        setTimeout(() => { window.location.href = '/playbook/'; }, 2500);
       } else {
         btn.textContent = 'Something went wrong, DM @edgewithinpodcast';
         btn.disabled = false;
