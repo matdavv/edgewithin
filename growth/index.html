@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Within — Growth Trajectory & Projections</title>
+<meta name="description" content="0 to 10,700 followers and 2.3M monthly views in 160 days. Actual data plus end of year projections.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --gold: #b8860b;
+    --gold2: #9a7009;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #555555;
+    --grey3: #222222;
+  }
+  body { background: var(--bg); color: var(--white); font-family: 'Georgia', serif; line-height: 1.6; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); height: 56px;
+    display: flex; align-items: center; padding: 0 32px; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); text-decoration: none; }
+
+  .hero { padding: 130px 24px 60px; text-align: center; max-width: 900px; margin: 0 auto; }
+  .eyebrow { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  h1 { font-size: clamp(32px, 5.5vw, 56px); line-height: 1.1; font-weight: 400; margin-bottom: 18px; }
+  h1 em { color: var(--gold); font-style: normal; font-weight: 700; }
+  .hero p { font-family: Arial, sans-serif; font-size: 16px; color: var(--grey); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1080px; margin: 48px auto 0; background: var(--border); }
+  .stat-box { background: var(--bg); padding: 28px 20px; text-align: center; }
+  .stat-box .val { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--gold); font-family: Arial, sans-serif; line-height: 1; }
+  .stat-box .lbl { font-size: 12px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 6px; }
+
+  .section { max-width: 1080px; margin: 0 auto; padding: 64px 24px; }
+  .section-header { text-align: center; margin-bottom: 40px; }
+  .section-header h2 { font-size: clamp(22px, 3.5vw, 32px); font-weight: 400; margin-bottom: 10px; }
+  .section-header p { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); }
+
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-bottom: 24px; }
+  .chart-label { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey2); margin-bottom: 20px; }
+  canvas { width: 100% !important; height: 320px !important; }
+
+  .timeline { position: relative; max-width: 700px; margin: 0 auto; }
+  .tl-item { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+  .tl-dot-col { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--grey2); border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--grey2); flex-shrink: 0; margin-top: 4px; }
+  .tl-dot.active { background: var(--gold); box-shadow: 0 0 0 1px var(--gold), 0 0 16px rgba(184,134,11,0.5); }
+  .tl-line { width: 1px; flex: 1; background: var(--border); margin-top: 4px; min-height: 30px; }
+  .tl-content { flex: 1; padding-bottom: 4px; }
+  .tl-date { font-family: 'Courier New', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .tl-day { font-size: 10px; color: var(--grey2); font-family: 'Courier New', monospace; margin-bottom: 8px; }
+  .tl-stats { display: flex; gap: 24px; }
+  .tl-stat-val { font-size: 22px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; line-height: 1; }
+  .tl-stat-val.orange { color: var(--gold); }
+  .tl-stat-lbl { font-size: 11px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 2px; }
+
+  .proj-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .proj-table th { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey2); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  .proj-table td { font-family: Arial, sans-serif; font-size: 14px; padding: 16px; border-bottom: 1px solid var(--border); }
+  .proj-table tr:last-child td { border-bottom: none; }
+  .proj-table tr.highlight { background: var(--card2); }
+  .proj-table tr.highlight td { color: var(--gold); font-weight: 700; }
+  .proj-table td:first-child { color: var(--grey); font-weight: 700; }
+
+  .disclaimer { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 24px 28px; font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey); line-height: 1.7; }
+  .disclaimer strong { color: var(--white); }
+
+  footer { background: #0D0D0D; border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; }
+  footer p { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey2); }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .tl-stats { flex-direction: column; gap: 4px; }
+    .proj-table { font-size: 12px; }
+    .proj-table th, .proj-table td { padding: 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
+  <div class="nav-links">
+    <a href="/">← Home</a>
+    <a href="/mentorship/">Mentorship</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Growth Data &amp; Projections</div>
+  <h1>Zero to <em>10,700 followers.</em><br>In 160 days.</h1>
+  <p>Every number on this page is real. No paid ads, no prior audience. Launched January 20, 2026 with nothing — here's what's happened since, and where the trajectory points by December.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="val">160</div><div class="lbl">Days since launch</div></div>
+  <div class="stat-box"><div class="val">10.7K</div><div class="lbl">Followers today</div></div>
+  <div class="stat-box"><div class="val">2.3M</div><div class="lbl">Monthly views</div></div>
+  <div class="stat-box"><div class="val">$0</div><div class="lbl">Spent on ads</div></div>
+</div>
+
+<!-- Charts -->
+<div class="section">
+  <div class="section-header">
+    <div class="eyebrow" style="text-align:center;">The Data</div>
+    <h2>Actual growth, charted.</h2>
+    <p>Solid line is real data. Dashed line and shaded band show the projected range to December 2026.</p>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-label">Instagram Followers</div>
+    <canvas id="followersChart"></canvas>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-label">Monthly Views</div>
+    <canvas id="viewsChart"></canvas>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="section" style="background:#0D0D0D;max-width:100%;">
+  <div style="max-width:1080px;margin:0 auto;padding:0 24px;">
+    <div class="section-header">
+      <div class="eyebrow" style="text-align:center;">Milestones</div>
+      <h2>From zero. In real time.</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">Jan 20, 2026</div>
+          <div class="tl-day">Day 0 — Launch</div>
+          <div class="tl-stats">
+            <div><div class="tl-stat-val">0</div><div class="tl-stat-lbl">followers</div></div>
+            <div><div class="tl-stat-val">3</div><div class="tl-stat-lbl">episodes live</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">Mar 9, 2026</div>
+          <div class="tl-day">Day 48 — First milestone</div>
+          <div class="tl-stats">
+            <div><div class="tl-stat-val orange">444</div><div class="tl-stat-lbl">followers</div></div>
+            <div><div class="tl-stat-val">133K</div><div class="tl-stat-lbl">views/month</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">May 29, 2026</div>
+          <div class="tl-day">Day 129 — Breakthrough</div>
+          <div class="tl-stats">
+            <div><div class="tl-stat-val orange">2,684</div><div class="tl-stat-lbl">followers</div></div>
+            <div><div class="tl-stat-val">1M</div><div class="tl-stat-lbl">views/month</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">Jun 25, 2026</div>
+          <div class="tl-day">Day 156 — Viral moment</div>
+          <div class="tl-stats">
+            <div><div class="tl-stat-val orange">9,468</div><div class="tl-stat-lbl">followers</div></div>
+            <div><div class="tl-stat-val">2.2M</div><div class="tl-stat-lbl">views/month</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot active"></div></div>
+        <div class="tl-content">
+          <div class="tl-date" style="color:var(--gold);font-weight:700;">Jun 29, 2026 — TODAY</div>
+          <div class="tl-day">Day 160</div>
+          <div class="tl-stats">
+            <div><div class="tl-stat-val orange">10,700</div><div class="tl-stat-lbl">followers</div></div>
+            <div><div class="tl-stat-val">2.3M</div><div class="tl-stat-lbl">views/month</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Projections table -->
+<div class="section">
+  <div class="section-header">
+    <div class="eyebrow" style="text-align:center;">Projections</div>
+    <h2>Where this is heading.</h2>
+    <p>Three scenarios based on the actual growth rate from launch to today.</p>
+  </div>
+
+  <div class="chart-card" style="padding:0;overflow:hidden;">
+    <table class="proj-table">
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Conservative</th>
+          <th>Realistic</th>
+          <th>Optimistic</th>
+          <th>Est. Monthly Views</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Aug 2026</td><td>20,000</td><td>35,000</td><td>60,000</td><td>4M</td></tr>
+        <tr><td>Oct 2026</td><td>35,000</td><td>65,000</td><td>130,000</td><td>7M</td></tr>
+        <tr class="highlight"><td>Dec 2026</td><td>60,000</td><td>120,000</td><td>300,000</td><td>12M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="disclaimer">
+    <strong>A note on these numbers.</strong> The growth from 444 to 10,700 followers in 160 days has been genuinely exponential. Exponential curves almost always plateau eventually, which is why the realistic range sits well below the pure math projection. The most likely outcome, if current momentum holds, is somewhere in the <strong>80,000 to 120,000 follower range</strong> with <strong>10M+ monthly views</strong> by the end of 2026.
+  </div>
+</div>
+
+<footer>
+  <p>Edge Within with Mat Davenport &nbsp;·&nbsp; <a href="/">edgewithinpodcast.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank">@edgewithinpodcast</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+  Chart.defaults.color = '#888';
+  Chart.defaults.font.family = 'Arial, sans-serif';
+
+  const days = [0, 48, 129, 156, 160];
+  const followers = [0, 444, 2684, 9468, 10700];
+  const views = [0, 133000, 1000000, 2200000, 2300000];
+
+  // Projection: exponential model from day 160 to day 345 (Dec 31)
+  const projDays = [160, 200, 250, 297, 345];
+  const followersMid = [10700, 35000, 75000, 120000, 120000];
+  const followersLow = [10700, 20000, 40000, 60000, 60000];
+  const followersHigh = [10700, 60000, 150000, 250000, 300000];
+
+  const viewsMid = [2300000, 4000000, 6500000, 9000000, 12000000];
+  const viewsLow = [2300000, 3000000, 4500000, 6000000, 8000000];
+  const viewsHigh = [2300000, 5500000, 9000000, 13000000, 18000000];
+
+  function makeChart(ctx, actualLabels, actualData, projLabels, projMid, projLow, projHigh, formatFn) {
+    const allLabels = [...actualLabels, ...projLabels.slice(1)];
+    return new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: allLabels,
+        datasets: [
+          {
+            label: 'Actual',
+            data: [...actualData, ...Array(projLabels.length - 1).fill(null)],
+            borderColor: '#b8860b',
+            backgroundColor: '#b8860b',
+            borderWidth: 3,
+            pointRadius: 5,
+            pointBackgroundColor: '#b8860b',
+            tension: 0.3,
+          },
+          {
+            label: 'Projected (mid)',
+            data: [...Array(actualLabels.length - 1).fill(null), actualData[actualData.length-1], ...projMid.slice(1)],
+            borderColor: '#b8860b',
+            borderDash: [6, 4],
+            borderWidth: 2,
+            pointRadius: 0,
+            tension: 0.3,
+          },
+          {
+            label: 'High',
+            data: [...Array(actualLabels.length - 1).fill(null), actualData[actualData.length-1], ...projHigh.slice(1)],
+            borderColor: 'transparent',
+            backgroundColor: 'rgba(184,134,11,0.1)',
+            pointRadius: 0,
+            fill: '+1',
+            tension: 0.3,
+          },
+          {
+            label: 'Low',
+            data: [...Array(actualLabels.length - 1).fill(null), actualData[actualData.length-1], ...projLow.slice(1)],
+            borderColor: 'transparent',
+            pointRadius: 0,
+            tension: 0.3,
+          },
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: {
+            display: true,
+            labels: { filter: (item) => item.text === 'Actual' || item.text === 'Projected (mid)', boxWidth: 12, font: { size: 11 } }
+          },
+          tooltip: {
+            backgroundColor: '#111',
+            borderColor: '#333',
+            borderWidth: 1,
+            callbacks: {
+              label: function(ctx) {
+                if (ctx.parsed.y === null) return null;
+                return ctx.dataset.label + ': ' + formatFn(ctx.parsed.y);
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: 'Days since launch (Jan 20)', color: '#555', font: { size: 11 } },
+            grid: { color: '#1E1E1E' },
+            ticks: { color: '#555' }
+          },
+          y: {
+            grid: { color: '#1E1E1E' },
+            ticks: { color: '#555', callback: (v) => formatFn(v) }
+          }
+        }
+      }
+    });
+  }
+
+  const fFormat = (v) => v >= 1000 ? (v/1000).toFixed(0) + 'K' : v;
+  const vFormat = (v) => v >= 1000000 ? (v/1000000).toFixed(1) + 'M' : v >= 1000 ? (v/1000).toFixed(0) + 'K' : v;
+
+  makeChart(document.getElementById('followersChart'), days, followers, projDays, followersMid, followersLow, followersHigh, fFormat);
+  makeChart(document.getElementById('viewsChart'), days, views, projDays, viewsMid, viewsLow, viewsHigh, vFormat);
+</script>
+</body>
+</html>
