@@ -326,65 +326,26 @@
       <div class="more-steps">8 categories, full of videos and templates</div>
     </div>
 
-    <form id="toolkitForm">
-      <input type="text" id="t-name" name="name" required placeholder="Full Name" autocomplete="off">
-      <input type="tel" id="t-phone" name="phone" required placeholder="Phone" autocomplete="off">
-      <input type="email" id="t-email" name="email" required placeholder="Email" autocomplete="off">
-      <input type="text" id="t-ig" name="instagram" placeholder="Instagram handle" autocomplete="off">
-      <button type="submit" class="submit-btn" id="submitBtn">Send Me The Checklist</button>
-    </form>
-    <p class="privacy">No spam. Unsubscribe any time.</p>
-
-    <div class="success-msg" id="successMsg">
-      <div class="check">✓</div>
-      <h3>You're in.</h3>
-      <p>Check your email for the playbook. Give it a few minutes, and check spam if it doesn't show up.</p>
+    <div id="kit-form-wrapper">
+      <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
     </div>
+
+    <style>
+      #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
+      #kit-form-wrapper .formkit-field input { background: var(--card) !important; border: 1px solid var(--border) !important; border-radius: 8px !important; color: var(--white) !important; font-family: Arial, sans-serif !important; font-size: 15px !important; padding: 15px 18px !important; width: 100% !important; }
+      #kit-form-wrapper .formkit-field input:focus { border-color: var(--gold) !important; outline: none !important; }
+      #kit-form-wrapper .formkit-field input::placeholder { color: var(--grey2) !important; }
+      #kit-form-wrapper [data-element="fields"] { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+      #kit-form-wrapper .formkit-submit { background: var(--gold) !important; color: var(--bg) !important; font-family: 'Courier New', monospace !important; font-size: 13px !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; padding: 16px !important; border: none !important; border-radius: 8px !important; cursor: pointer !important; width: 100% !important; margin-top: 4px !important; }
+      #kit-form-wrapper .formkit-submit:hover { background: var(--gold2) !important; }
+      #kit-form-wrapper .formkit-guarantee { color: var(--grey2) !important; font-size: 12px !important; font-family: Arial, sans-serif !important; text-align: center !important; margin-top: 12px !important; }
+      #kit-form-wrapper .formkit-header, #kit-form-wrapper .formkit-subheader { display: none !important; }
+    </style>
   </div>
 </div>
 
 <footer>
   <p>Edge Within with Mat Davenport &nbsp;·&nbsp; <a href="/" style="color:var(--gold);text-decoration:none;">edgewithinpodcast.com</a></p>
 </footer>
-
-<script>
-  const form = document.getElementById('toolkitForm');
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    const payload = {
-      name: document.getElementById('t-name').value.trim(),
-      phone: document.getElementById('t-phone').value.trim(),
-      email: document.getElementById('t-email').value.trim(),
-      instagram: document.getElementById('t-ig').value.trim() || 'N/A',
-      _subject: 'New Toolkit Lead - Edge Within',
-      _replyto: document.getElementById('t-email').value.trim(),
-    };
-
-    try {
-      const res = await fetch('https://formspree.io/f/xzdlvjrn', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (res.ok) {
-        form.style.display = 'none';
-        document.querySelector('.privacy').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-        setTimeout(() => { window.location.href = '/playbook/'; }, 2500);
-      } else {
-        btn.textContent = 'Something went wrong, DM @edgewithinpodcast';
-        btn.disabled = false;
-      }
-    } catch {
-      btn.textContent = 'Something went wrong, DM @edgewithinpodcast';
-      btn.disabled = false;
-    }
-  });
-</script>
 </body>
 </html>

@@ -899,86 +899,21 @@
         <h2 style="margin-bottom:14px;">Not ready to commit yet? Start here.</h2>
         <p style="font-size:15px;color:var(--grey);font-family:Arial,sans-serif;margin-bottom:24px;line-height:1.7;">8 categories, real videos, and real templates, the exact system from "I want to start a podcast" to episode one being live. Enter your details and I'll send it straight to you.</p>
 
-        <form id="homeToolkitForm">
-          <input type="text" id="h-name" name="name" required placeholder="Full Name" autocomplete="off">
-          <input type="tel" id="h-phone" name="phone" required placeholder="Phone" autocomplete="off">
-          <input type="email" id="h-email" name="email" required placeholder="Email" autocomplete="off">
-          <input type="text" id="h-ig" name="instagram" placeholder="Instagram handle" autocomplete="off">
-          <button type="submit" class="submit-btn" id="homeSubmitBtn">Send Me The Playbook</button>
-        </form>
-        <p class="privacy" id="homePrivacy">No spam. Unsubscribe any time.</p>
-
-        <div class="success-msg" id="homeSuccessMsg">
-          <div class="check">✓</div>
-          <h3>You're in.</h3>
-          <p>Check your email for the playbook. Give it a few minutes, and check spam if it doesn't show up.</p>
+        <div id="kit-form-wrapper">
+          <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
         </div>
 
         <style>
-          #homeToolkitForm { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
-          #homeToolkitForm input[type="text"], #homeToolkitForm input[type="email"], #homeToolkitForm input[type="tel"] {
-            background: #111; border: 1px solid #1E1E1E; border-radius: 8px;
-            padding: 15px 18px; color: #fff; font-family: Arial, sans-serif; font-size: 15px;
-            outline: none; transition: border-color 0.2s; width: 100%;
-          }
-          #homeToolkitForm input:focus { border-color: #b8860b; }
-          #homeToolkitForm input::placeholder { color: #555; }
-          #homeToolkitForm .submit-btn {
-            background: #b8860b; color: #0A0A0A; font-family: 'Courier New', monospace;
-            font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-            padding: 16px; border: none; border-radius: 8px; cursor: pointer;
-            transition: background 0.2s, transform 0.2s; margin-top: 4px;
-          }
-          #homeToolkitForm .submit-btn:hover { background: #9a7009; transform: translateY(-1px); }
-          #homeToolkitForm .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-          #homePrivacy { font-size: 12px; color: #555; font-family: Arial, sans-serif; text-align: center; }
-          #homeSuccessMsg { display: none; background: #0a110a; border: 1px solid #22C55E; border-radius: 10px; padding: 28px; text-align: center; }
-          #homeSuccessMsg .check { font-size: 28px; margin-bottom: 10px; }
-          #homeSuccessMsg h3 { color: #22C55E; font-size: 18px; margin-bottom: 8px; }
-          #homeSuccessMsg p { font-family: Arial, sans-serif; font-size: 14px; color: #888; }
+          #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
+          #kit-form-wrapper .formkit-field input { background: #111 !important; border: 1px solid #1E1E1E !important; border-radius: 8px !important; color: #fff !important; font-family: Arial, sans-serif !important; font-size: 14px !important; padding: 13px 16px !important; width: 100% !important; }
+          #kit-form-wrapper .formkit-field input:focus { border-color: #b8860b !important; outline: none !important; }
+          #kit-form-wrapper .formkit-field input::placeholder { color: #555 !important; }
+          #kit-form-wrapper .formkit-submit { background: #b8860b !important; color: #0A0A0A !important; font-family: 'Courier New', monospace !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; border-radius: 8px !important; border: none !important; padding: 14px 28px !important; cursor: pointer !important; width: 100% !important; margin-top: 8px !important; }
+          #kit-form-wrapper .formkit-submit:hover { background: #9a7009 !important; }
+          #kit-form-wrapper .formkit-guarantee { color: #555 !important; font-size: 11px !important; font-family: Arial, sans-serif !important; }
+          #kit-form-wrapper .formkit-header, #kit-form-wrapper .formkit-subheader { display: none !important; }
+          #kit-form-wrapper [data-element="fields"] { display: flex; flex-direction: column; gap: 10px; }
         </style>
-
-        <script>
-          (function() {
-            const form = document.getElementById('homeToolkitForm');
-            form.addEventListener('submit', async function(e) {
-              e.preventDefault();
-              const btn = document.getElementById('homeSubmitBtn');
-              btn.textContent = 'Sending...';
-              btn.disabled = true;
-
-              const payload = {
-                name: document.getElementById('h-name').value.trim(),
-                phone: document.getElementById('h-phone').value.trim(),
-                email: document.getElementById('h-email').value.trim(),
-                instagram: document.getElementById('h-ig').value.trim() || 'N/A',
-                _subject: 'New Toolkit Lead - Edge Within (Homepage)',
-                _replyto: document.getElementById('h-email').value.trim(),
-              };
-
-              try {
-                const res = await fetch('https://formspree.io/f/xzdlvjrn', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                  body: JSON.stringify(payload)
-                });
-
-                if (res.ok) {
-                  form.style.display = 'none';
-                  document.getElementById('homePrivacy').style.display = 'none';
-                  document.getElementById('homeSuccessMsg').style.display = 'block';
-                  setTimeout(() => { window.location.href = '/playbook/'; }, 2500);
-                } else {
-                  btn.textContent = 'Something went wrong, DM @edgewithinpodcast';
-                  btn.disabled = false;
-                }
-              } catch {
-                btn.textContent = 'Something went wrong, DM @edgewithinpodcast';
-                btn.disabled = false;
-              }
-            });
-          })();
-        </script>
       </div>
     </div>
   </div>
