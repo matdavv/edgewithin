@@ -409,16 +409,16 @@ function renderForm() {
   const modal = document.getElementById('formModal');
   modal.innerHTML = `
     <div class="modal-title" style="margin-bottom:20px;">${isEdit ? 'Edit Guest' : 'New Guest'}</div>
-    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="f-name" autocomplete="off" placeholder="Amy Lou" value="${escapeHtml(editingGuest.name)}"></div>
-    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="f-ig" autocomplete="off" placeholder="@amylou" value="${escapeHtml(editingGuest.instagram)}"></div>
+    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="f-name" name="guestname-noauto" autocomplete="new-password" placeholder="Amy Lou" value="${escapeHtml(editingGuest.name)}"></div>
+    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="f-ig" name="guestig-noauto" autocomplete="new-password" placeholder="@amylou" value="${escapeHtml(editingGuest.instagram)}"></div>
     <div class="form-row form-field">
-      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="f-date" autocomplete="off" value="${editingGuest.date}"></div>
-      <div><label class="form-label">Time</label><input class="form-input" type="time" id="f-time" autocomplete="off" value="${editingGuest.time}"></div>
+      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="f-date" name="guestdate-noauto" autocomplete="off" value="${editingGuest.date}"></div>
+      <div><label class="form-label">Time</label><input class="form-input" type="time" id="f-time" name="guesttime-noauto" autocomplete="off" value="${editingGuest.time}"></div>
     </div>
-    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="f-ep" autocomplete="off" placeholder="16" value="${escapeHtml(editingGuest.episodeNum)}"></div>
-    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="f-topic" autocomplete="off" placeholder="Unschooling, deschooled family of 5" value="${escapeHtml(editingGuest.topic)}"></div>
-    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="f-question" autocomplete="off" placeholder="What was the moment...">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
-    <div class="form-field"><label class="form-label">Notes</label><textarea class="form-textarea" id="f-notes" autocomplete="off" style="min-height:80px;" placeholder="Any reminders, background info, logistics...">${escapeHtml(editingGuest.notes)}</textarea></div>
+    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="f-ep" name="guestep-noauto" autocomplete="new-password" placeholder="16" value="${escapeHtml(editingGuest.episodeNum)}"></div>
+    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="f-topic" name="guesttopic-noauto" autocomplete="new-password" placeholder="Unschooling, deschooled family of 5" value="${escapeHtml(editingGuest.topic)}"></div>
+    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="f-question" name="guestq-noauto" autocomplete="new-password" placeholder="What was the moment...">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
+    <div class="form-field"><label class="form-label">Notes</label><textarea class="form-textarea" id="f-notes" name="guestnotes-noauto" autocomplete="new-password" style="min-height:80px;" placeholder="Any reminders, background info, logistics...">${escapeHtml(editingGuest.notes)}</textarea></div>
     <div class="form-actions">
       <button class="save-btn" id="saveBtn">SAVE GUEST</button>
       <button class="cancel-btn" id="cancelBtn">Cancel</button>
@@ -433,6 +433,19 @@ function renderForm() {
   document.getElementById('f-name').addEventListener('input', checkValid);
   document.getElementById('f-date').addEventListener('input', checkValid);
   checkValid();
+
+  // Defeat aggressive browser autofill on a blank "new guest" form
+  if (!isEdit) {
+    setTimeout(() => {
+      if (!editingGuest.name) document.getElementById('f-name').value = '';
+      if (!editingGuest.instagram) document.getElementById('f-ig').value = '';
+      if (!editingGuest.episodeNum) document.getElementById('f-ep').value = '';
+      if (!editingGuest.topic) document.getElementById('f-topic').value = '';
+      if (!editingGuest.openingQuestion) document.getElementById('f-question').value = '';
+      if (!editingGuest.notes) document.getElementById('f-notes').value = '';
+      checkValid();
+    }, 80);
+  }
 
   document.getElementById('cancelBtn').addEventListener('click', closeForm);
   document.getElementById('saveBtn').addEventListener('click', async () => {
