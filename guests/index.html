@@ -412,15 +412,15 @@ function renderForm() {
   const modal = document.getElementById('formModal');
   modal.innerHTML = `
     <div class="modal-title" style="margin-bottom:20px;">${isEdit ? 'Edit Guest' : 'New Guest'}</div>
-    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="${fid('f-name')}" autocomplete="off" placeholder="Amy Lou" value="${escapeHtml(editingGuest.name)}"></div>
-    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="${fid('f-ig')}" autocomplete="off" placeholder="@amylou" value="${escapeHtml(editingGuest.instagram)}"></div>
+    <div class="form-field"><label class="form-label">Guest name *</label><input class="form-input" id="${fid('f-name')}" autocomplete="off" data-form-type="other" placeholder="e.g. Jordan Smith" value="${escapeHtml(editingGuest.name)}"></div>
+    <div class="form-field"><label class="form-label">Instagram handle</label><input class="form-input" id="${fid('f-ig')}" autocomplete="off" data-form-type="other" placeholder="@theirhandle" value="${escapeHtml(editingGuest.instagram)}"></div>
     <div class="form-row form-field">
-      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="${fid('f-date')}" autocomplete="off" value="${editingGuest.date}"></div>
-      <div><label class="form-label">Time</label><input class="form-input" type="time" id="${fid('f-time')}" autocomplete="off" value="${editingGuest.time}"></div>
+      <div><label class="form-label">Date *</label><input class="form-input" type="date" id="${fid('f-date')}" autocomplete="off" data-form-type="other" value="${editingGuest.date}"></div>
+      <div><label class="form-label">Time</label><input class="form-input" type="time" id="${fid('f-time')}" autocomplete="off" data-form-type="other" value="${editingGuest.time}"></div>
     </div>
-    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="${fid('f-ep')}" autocomplete="off" placeholder="16" value="${escapeHtml(editingGuest.episodeNum)}"></div>
-    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="${fid('f-topic')}" autocomplete="off" placeholder="Unschooling, deschooled family of 5" value="${escapeHtml(editingGuest.topic)}"></div>
-    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="${fid('f-question')}" autocomplete="off" placeholder="What was the moment...">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
+    <div class="form-field"><label class="form-label">Episode number</label><input class="form-input" id="${fid('f-ep')}" autocomplete="off" data-form-type="other" placeholder="e.g. 18" value="${escapeHtml(editingGuest.episodeNum)}"></div>
+    <div class="form-field"><label class="form-label">Topic / what they're known for</label><input class="form-input" id="${fid('f-topic')}" autocomplete="off" data-form-type="other" placeholder="What are they known for" value="${escapeHtml(editingGuest.topic)}"></div>
+    <div class="form-field"><label class="form-label">Opening question</label><textarea class="form-textarea" id="${fid('f-question')}" autocomplete="off" data-form-type="other" placeholder="Your opening question for them">${escapeHtml(editingGuest.openingQuestion)}</textarea></div>
     <div class="form-field"><label class="form-label">Notes</label><textarea class="form-textarea" id="${fid('f-notes')}" autocomplete="off" style="min-height:80px;" placeholder="Any reminders, background info, logistics...">${escapeHtml(editingGuest.notes)}</textarea></div>
     <div class="form-actions">
       <button class="save-btn" id="${fid('saveBtn')}">SAVE GUEST</button>
