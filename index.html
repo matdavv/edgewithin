@@ -111,13 +111,40 @@
   }
   .nav-cta:hover { background: #9a7009 !important; transform: scale(1.03); }
 
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+    z-index: 101;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+    display: block;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+  }
+
   /* ── Hero ── */
   .hero {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 68px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .hero-left {
@@ -189,6 +216,7 @@
     position: relative;
     background: #0D0D0D;
     overflow: hidden;
+    min-height: 420px;
   }
 
   .hero-photo {
@@ -241,7 +269,8 @@
     border-top: 1px solid var(--grey3);
     border-bottom: 1px solid var(--grey3);
     padding: 22px 32px;
-    overflow: hidden;
+    overflow: visible;
+    margin-top: 0;
   }
   .velocity-inner {
     max-width: 1100px;
@@ -260,8 +289,18 @@
   .velocity-sep { color: var(--grey3); }
 
   /* ── Section layout ── */
-  .section { padding: 96px 32px; max-width: 1100px; margin: 0 auto; }
-  .section-full { padding: 96px 32px; }
+  .section { 
+    padding: 96px 32px; 
+    max-width: 1100px; 
+    margin: 0 auto;
+    min-height: auto !important;
+    overflow: visible;
+  }
+  .section-full { 
+    padding: 96px 32px;
+    min-height: auto !important;
+    overflow: visible;
+  }
   .section-full .inner { max-width: 1100px; margin: 0 auto; }
   .section-header { margin-bottom: 48px; }
   .section-header p { font-size: 16px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 10px; line-height: 1.7; max-width: 560px; }
@@ -474,6 +513,11 @@
     margin-bottom: 24px;
   }
 
+  #kit-form-wrapper {
+    min-height: 320px;
+    width: 100%;
+  }
+
   /* ── Instagram strip ── */
   .ig-strip {
     background: #0D0D0D;
@@ -602,14 +646,77 @@
     .free-block { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr; gap: 32px; }
     .mobile-cta { display: block; }
-    nav .nav-links { display: none; }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
+    nav {
+      padding: 0 16px;
+      height: 60px;
+    }
+    nav .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(10,10,10,0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      gap: 16px;
+      list-style: none;
+      z-index: 99;
+    }
+    nav .nav-links.active {
+      display: flex;
+    }
+    nav .nav-links a {
+      display: block;
+      padding: 10px 0;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .nav-cta {
+      padding: 8px 14px !important;
+      font-size: 11px !important;
+      width: 100%;
+      text-align: center;
+    }
     .section { padding: 64px 20px; }
     .section-full { padding: 64px 20px; }
     .mentorship-tiers { flex-direction: column; }
     .ig-stats { gap: 28px; }
+    .spotify-embed-col {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .spotify-embed-col iframe {
+      max-width: 100% !important;
+      height: 320px !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .section { padding: 48px 16px; }
+    .section-full { padding: 48px 16px; }
+    .mentorship-tiers { flex-direction: column; }
+    .ig-stats { gap: 20px; }
+    .hero-left {
+      padding: 40px 20px;
+    }
+    .hero-tagline {
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      gap: 10px;
+    }
+    .btn {
+      padding: 12px 20px;
+      font-size: 13px;
+    }
   }
 </style>
 </head>
@@ -621,7 +728,12 @@
     <span class="nav-logo-dot"></span>
     Edge Within
   </a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="#show">The Show</a></li>
     <li><a href="#show">Episodes</a></li>
     <li><a href="#mentorship">Mentorship</a></li>
@@ -708,7 +820,7 @@
     <div style="display:grid;gap:48px;align-items:center;margin-bottom:48px;" class="show-grid">
       <div>
         <h2 style="margin-bottom:16px;">New episodes every week.</h2>
-        <p style="font-family:Arial,sans-serif;font-size:15px;color:var(--grey);line-height:1.8;margin-bottom:20px;">One guest. One conversation. No script. Each episode is a deep dive with someone worth sitting across from. The kind of talk you walk away from thinking differently.</p>
+        <p style="font-family:Arial,sans-serif;font-size:15px;color:var(--grey);line-height:1.8;margin-bottom:20px;">One guest. One conversation. No script. Each episode is a deep dive with someone worth listening to.</p>
         <div class="listen-links">
           <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs?si=RnJXUleVRgOoAUzwj9iU5g" target="_blank" rel="noopener" class="listen-link">
             <span class="listen-icon">🎵</span>
@@ -743,7 +855,7 @@
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;" class="ep-grid">
 
       <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener" style="text-decoration:none;">
-        <div style="background:#111;border:2px solid #b8860b;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;" onmouseover="this.style.borderColor='#b8860b';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#b8860b';this.style.transform='translateY(0)'">
+        <div style="background:#111;border:2px solid #b8860b;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;">
           <img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bef678b141276299a8b39e0c9e" alt="Montana Lower" style="width:100%;height:200px;object-fit:contain;background:#0a0a0a;display:block;">
           <div style="padding:16px 18px;">
             <div style="font-family:'Courier New',monospace;font-size:10px;color:#b8860b;letter-spacing:0.1em;margin-bottom:6px;">EP 15 · Latest</div>
@@ -754,7 +866,7 @@
         </div>
       </a>
       <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener" style="text-decoration:none;">
-        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;" onmouseover="this.style.borderColor='#b8860b';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#1E1E1E';this.style.transform='translateY(0)'">
+        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;">
           <img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bee4995caa827041ec6577c35a" alt="Hannah Vela" style="width:100%;height:200px;object-fit:contain;background:#0a0a0a;display:block;">
           <div style="padding:16px 18px;">
             <div style="font-family:'Courier New',monospace;font-size:10px;color:#555555;letter-spacing:0.1em;margin-bottom:6px;">EP 14</div>
@@ -765,7 +877,7 @@
         </div>
       </a>
       <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener" style="text-decoration:none;">
-        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;" onmouseover="this.style.borderColor='#b8860b';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#1E1E1E';this.style.transform='translateY(0)'">
+        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;">
           <img src="https://image-cdn-ak.spotifycdn.com/image/ab6772ab000015be52332d08ec2173a9245ebce6" alt="Billy Otto" style="width:100%;height:200px;object-fit:contain;background:#0a0a0a;display:block;">
           <div style="padding:16px 18px;">
             <div style="font-family:'Courier New',monospace;font-size:10px;color:#555555;letter-spacing:0.1em;margin-bottom:6px;">EP 13</div>
@@ -776,7 +888,7 @@
         </div>
       </a>
       <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener" style="text-decoration:none;">
-        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;" onmouseover="this.style.borderColor='#b8860b';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#1E1E1E';this.style.transform='translateY(0)'">
+        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;">
           <img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015beef310ad64bc83e85135a3225" alt="Sage Jefferys" style="width:100%;height:200px;object-fit:contain;background:#0a0a0a;display:block;">
           <div style="padding:16px 18px;">
             <div style="font-family:'Courier New',monospace;font-size:10px;color:#555555;letter-spacing:0.1em;margin-bottom:6px;">EP 12</div>
@@ -787,7 +899,7 @@
         </div>
       </a>
       <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener" style="text-decoration:none;">
-        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;" onmouseover="this.style.borderColor='#b8860b';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='#1E1E1E';this.style.transform='translateY(0)'">
+        <div style="background:#111;border:1px solid #1E1E1E;border-radius:10px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;">
           <img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be0631c0a9b7731af07258510d" alt="Daine McDonald" style="width:100%;height:200px;object-fit:contain;background:#0a0a0a;display:block;">
           <div style="padding:16px 18px;">
             <div style="font-family:'Courier New',monospace;font-size:10px;color:#555555;letter-spacing:0.1em;margin-bottom:6px;">EP 11</div>
@@ -798,7 +910,7 @@
         </div>
       </a>
       <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener" style="text-decoration:none;">
-        <div style="background:transparent;border:1px solid #1E1E1E;border-radius:10px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;min-height:160px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#b8860b'" onmouseout="this.style.borderColor='#1E1E1E'">
+        <div style="background:transparent;border:1px solid #1E1E1E;border-radius:10px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:268px;">
           <div style="font-size:24px;">🎙</div>
           <div style="font-size:13px;color:#888;font-family:Arial,sans-serif;">All 15 episodes</div>
           <div style="font-size:12px;font-weight:700;color:#b8860b;font-family:'Courier New',monospace;letter-spacing:0.08em;">View on Spotify →</div>
@@ -816,12 +928,12 @@
     <div>
       <div class="eyebrow" style="margin-bottom:12px;">Meet Mat</div>
       <h2 style="margin-bottom:20px;">Why I started this.</h2>
-      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">In all honesty, I wanted to get better at listening. Better at communicating. I wanted to put myself in rooms with people who were genuinely striving to become the best version of themselves, people living with consciousness, who had real lessons worth sharing.</p>
-      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">I'm a curious guy. I wanted to know more, while expanding and meeting my own edge. And I wanted to take what I learned and share it further than the room it happened in.</p>
-      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">I launched Edge Within on January 20, 2026. Zero followers, no audience, no plan beyond the next 7 days.</p>
-      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">Every guest, every clip, every conversation has been built from scratch, in real time, since then.</p>
-      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:28px;">Today: 11,100+ followers and 2.4M monthly views. No paid ads. Just conversations people wanted to pass on.</p>
-      <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-family:'Courier New',monospace;font-size:12px;color:#b8860b;text-decoration:none;letter-spacing:0.1em;">@rawmatdavenport on Instagram →</a>
+      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">In all honesty, I wanted to get better at listening. Better at communicating. I wanted deep conversations with people I admired.</p>
+      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">I'm a curious guy. I wanted to know more, while expanding and meeting my own edge. That meant building something, consistently, from scratch.</p>
+      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">I launched Edge Within on January 20, 2026. Zero followers, no audience, no plan beyond the next 7 days. But a clear system for how to think about it.</p>
+      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:16px;">Every guest, every clip, every conversation has been built from scratch, in real time, with intention.</p>
+      <p style="font-family:Arial,sans-serif;font-size:16px;color:var(--grey);line-height:1.85;margin-bottom:28px;">Today: 11,100+ followers and 2.4M monthly views. No paid ads. Just consistency, curiosity, and showing up when the moment gets real.</p>
+      <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-family:'Courier New',monospace;font-size:12px;color:#b8860b;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Follow @rawmatdavenport →</a>
     </div>
   </div>
 </div>
@@ -858,7 +970,7 @@
   <div class="mentorship-block">
     <div>
       <h2 style="margin-bottom:14px;">Build your podcast.<br>With me in your corner.</h2>
-      <p>I went from zero to 2.4M monthly views with no paid ads and no prior audience. Just the right system, applied consistently. Now I teach everything I did, with direct access to me while you build yours.</p>
+      <p>I went from zero to 2.4M monthly views with no paid ads and no prior audience. Just the right system, applied consistently. Now I teach everything I did, with direct access to me while you build.</p>
       <p>5 founding member spots. The lowest price this program will ever be.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
         <a href="/mentorship/" class="btn btn-primary">See Full Details</a>
@@ -903,7 +1015,7 @@
       <div class="free-text">
         <div class="eyebrow">Start Here</div>
         <h2 style="margin-bottom:14px;">Not ready to commit yet? Start here.</h2>
-        <p style="font-size:15px;color:var(--grey);font-family:Arial,sans-serif;margin-bottom:24px;line-height:1.7;">8 categories, real videos, and real templates, the exact system from "I want to start a podcast" to episode one being live. Enter your details and I'll send it straight to you.</p>
+        <p style="font-size:15px;color:var(--grey);font-family:Arial,sans-serif;margin-bottom:24px;line-height:1.7;">8 categories, real videos, and real templates, the exact system from "I want to start" to "my show is live".</p>
 
         <div id="kit-form-wrapper">
           <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
@@ -911,11 +1023,11 @@
 
         <style>
           #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
-          #kit-form-wrapper .formkit-field input { background: #111 !important; border: 1px solid #1E1E1E !important; border-radius: 8px !important; color: #fff !important; font-family: Arial, sans-serif !important; font-size: 14px !important; padding: 13px 16px !important; height: 48px !important; box-sizing: border-box !important; width: 100% !important; }
+          #kit-form-wrapper .formkit-field input { background: #111 !important; border: 1px solid #1E1E1E !important; border-radius: 8px !important; color: #fff !important; font-family: Arial, sans-serif !important; font-size: 15px !important; padding: 14px 16px !important; }
           #kit-form-wrapper .formkit-field input:focus { border-color: #b8860b !important; outline: none !important; }
           #kit-form-wrapper .formkit-field input::placeholder { color: #555 !important; }
           #kit-form-wrapper label, #kit-form-wrapper .formkit-label { color: #999 !important; font-family: Arial, sans-serif !important; font-size: 12px !important; margin-bottom: 4px !important; display: block !important; }
-          #kit-form-wrapper .formkit-submit { background: #b8860b !important; color: #0A0A0A !important; font-family: 'Courier New', monospace !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; border-radius: 8px !important; border: none !important; padding: 14px 28px !important; cursor: pointer !important; width: 100% !important; margin-top: 8px !important; }
+          #kit-form-wrapper .formkit-submit { background: #b8860b !important; color: #0A0A0A !important; font-family: 'Courier New', monospace !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; padding: 14px !important; border-radius: 8px !important; width: 100% !important; cursor: pointer !important; }
           #kit-form-wrapper .formkit-submit:hover { background: #9a7009 !important; }
           #kit-form-wrapper .formkit-guarantee { color: #555 !important; font-size: 11px !important; font-family: Arial, sans-serif !important; }
           #kit-form-wrapper .formkit-header, #kit-form-wrapper .formkit-subheader { display: none !important; }
@@ -933,8 +1045,8 @@
       <div class="footer-logo"><span class="footer-logo-dot"></span>Edge Within</div>
       <p>Real, raw, honest conversations about mindset, identity and growth. Hosted by Mat Davenport.</p>
       <div style="margin-top:16px;display:flex;gap:14px;">
-        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" style="font-size:12px;color:var(--orange);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;">@edgewithinpodcast</a>
-        <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-size:12px;color:var(--grey);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;">@rawmatdavenport</a>
+        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" style="font-size:12px;color:var(--orange);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@edgewithinpodcast</a>
+        <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-size:12px;color:var(--grey);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@rawmatdavenport</a>
       </div>
     </div>
 
@@ -955,7 +1067,7 @@
         <li><a href="#mentorship">Course + Mentorship</a></li>
         <li><a href="#free">Free Launch Checklist</a></li>
         <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">DM on Instagram</a></li>
-        <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a> &nbsp;·&nbsp; <a href="mailto:mat@edgewithinpodcast.com" style="color:inherit;text-decoration:none;">mat@edgewithinpodcast.com</a></li>
+        <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a> &nbsp;·&nbsp; <a href="mailto:mat@edgewithinpodcast.com" style="color:inherit;text-decoration:none;">Email</a></li>
       </ul>
     </div>
   </div>
@@ -970,6 +1082,23 @@
 <a href="#mentorship" class="mobile-cta">Claim Your Founding Spot →</a>
 
 <script>
+  // Mobile nav hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+
   // Fade in on scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
