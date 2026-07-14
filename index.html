@@ -398,47 +398,82 @@
   .ep-title { font-size: 15px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; margin-bottom: 6px; line-height: 1.4; }
   .ep-desc { font-size: 13px; color: var(--grey); font-family: Arial, sans-serif; line-height: 1.6; }
 
-  /* ── Mentorship teaser ── */
+  /* ── Mentorship teaser (high contrast band) ── */
+  .mentorship-section {
+    background:
+      radial-gradient(ellipse 80% 70% at 15% 20%, rgba(184,134,11,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 90% 80%, rgba(184,134,11,0.1) 0%, transparent 50%),
+      linear-gradient(180deg, #14100a 0%, #0F0A04 50%, #120e08 100%);
+    border-top: 1px solid rgba(184,134,11,0.35);
+    border-bottom: 1px solid rgba(184,134,11,0.25);
+    padding: 88px 32px;
+  }
+  .mentorship-section .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .mentorship-section > .inner > .eyebrow,
+  .mentorship-section .eyebrow {
+    color: var(--orange);
+  }
+
   .mentorship-block {
-    background: var(--card2);
-    border: 1px solid var(--orange);
-    border-radius: 12px;
-    padding: clamp(40px, 6vw, 64px);
+    background: rgba(20, 16, 10, 0.85);
+    border: 1.5px solid rgba(184,134,11,0.55);
+    border-radius: 14px;
+    padding: clamp(36px, 5vw, 56px);
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 48px;
     align-items: center;
+    box-shadow:
+      0 0 0 1px rgba(184,134,11,0.08),
+      0 24px 60px rgba(0,0,0,0.45),
+      0 0 80px rgba(184,134,11,0.06);
   }
 
-  .mentorship-block h2 { margin-bottom: 14px; }
+  .mentorship-block h2 { margin-bottom: 14px; color: var(--white); }
   .mentorship-block p {
     font-size: 15px;
-    color: var(--grey);
+    color: #b0b0b0;
     font-family: Arial, sans-serif;
     line-height: 1.8;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     max-width: 520px;
   }
+  .mentorship-block p:last-of-type { margin-bottom: 24px; }
 
   .mentorship-tiers {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    min-width: 240px;
+    min-width: 260px;
   }
 
   .tier-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px 20px;
+    background: #F4F3F0;
+    border: 1px solid #e0dcd4;
+    border-radius: 10px;
+    padding: 20px 22px;
     text-align: center;
   }
-  .tier-card.featured { border-color: var(--orange); background: #0a0603; }
-  .tier-name { font-size: 11px; color: var(--grey2); font-family: 'Courier New', monospace; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
-  .tier-price { font-size: 26px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; line-height: 1; }
+  .tier-card.featured {
+    border: 2px solid var(--orange);
+    background: #fffdf8;
+    box-shadow: 0 8px 28px rgba(184,134,11,0.15);
+  }
+  .tier-name {
+    font-size: 11px; color: #666; font-family: 'Courier New', monospace;
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .tier-price {
+    font-size: 28px; font-weight: 700; color: #0A0A0A;
+    font-family: Arial, sans-serif; line-height: 1;
+  }
   .tier-card.featured .tier-price { color: var(--orange); }
-  .tier-desc { font-size: 11px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
+  .tier-desc {
+    font-size: 11px; color: #666; font-family: Arial, sans-serif; margin-top: 6px;
+  }
 
   .founding-note {
     text-align: center;
@@ -448,6 +483,19 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-top: 8px;
+    padding: 10px 12px;
+    background: rgba(184,134,11,0.12);
+    border: 1px solid rgba(184,134,11,0.35);
+    border-radius: 6px;
+  }
+
+  .mentorship-block .btn-secondary {
+    border-color: rgba(184,134,11,0.4);
+    color: var(--white);
+  }
+  .mentorship-block .btn-secondary:hover {
+    border-color: var(--orange);
+    background: rgba(184,134,11,0.1);
   }
 
   /* ── Free resource ── */
@@ -655,6 +703,7 @@
     .about-mat-grid { grid-template-columns: 1fr !important; }
     .show-grid { grid-template-columns: 1fr; }
     .spotify-embed-col { display: block; width: 100%; }
+    .mentorship-section { padding: 64px 24px; }
     .mentorship-block { grid-template-columns: 1fr; }
     .mentorship-tiers { flex-direction: row; }
     .free-block { grid-template-columns: 1fr; }
@@ -995,30 +1044,32 @@
 </div>
 
 <!-- ── Mentorship ── -->
-<div class="section fade-in" id="mentorship">
-  <div class="eyebrow">Podcast Mentorship</div>
-  <div class="mentorship-block">
-    <div>
-      <h2 style="margin-bottom:14px;">Build your podcast.<br>With a clear path.</h2>
-      <p>A finishable curriculum: identity, mindset, setup, guests, clips, launch, and growth. Same sequence as the free Playbook, with full depth, community, and optional direct access while you build.</p>
-      <p>5 founding spots. Lowest price this program will ever be. No income guarantees. A system for a show you are proud of.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="/mentorship/" class="btn btn-primary">See Full Details</a>
-        <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener" class="btn btn-secondary">DM to Apply</a>
+<div class="mentorship-section fade-in" id="mentorship">
+  <div class="inner">
+    <div class="eyebrow" style="margin-bottom:16px;">Podcast Mentorship</div>
+    <div class="mentorship-block">
+      <div>
+        <h2 style="margin-bottom:14px;">Build your podcast.<br>With a clear path.</h2>
+        <p>A finishable curriculum: identity, mindset, setup, guests, clips, launch, and growth. Same sequence as the free Playbook, with full depth, community, and optional direct access while you build.</p>
+        <p>5 founding spots. Lowest price this program will ever be. No income guarantees. A system for a show you are proud of.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/mentorship/" class="btn btn-primary">See Full Details</a>
+          <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener" class="btn btn-secondary">DM to Apply</a>
+        </div>
       </div>
-    </div>
-    <div class="mentorship-tiers">
-      <div class="tier-card">
-        <div class="tier-name">Foundations</div>
-        <div class="tier-price">$3,000</div>
-        <div class="tier-desc">USD · Self-paced course · Lifetime access</div>
+      <div class="mentorship-tiers">
+        <div class="tier-card">
+          <div class="tier-name">Foundations</div>
+          <div class="tier-price">$3,000</div>
+          <div class="tier-desc">USD · Self-paced course · Lifetime access</div>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-name">Accelerator</div>
+          <div class="tier-price">$5,000</div>
+          <div class="tier-desc">USD · Course + WhatsApp + weekly calls</div>
+        </div>
+        <div class="founding-note">Founding rate · 5 spots only</div>
       </div>
-      <div class="tier-card featured">
-        <div class="tier-name">Accelerator</div>
-        <div class="tier-price">$5,000</div>
-        <div class="tier-desc">USD · Course + WhatsApp + weekly calls</div>
-      </div>
-      <div class="founding-note">Founding rate · 5 spots only</div>
     </div>
   </div>
 </div>
