@@ -55,28 +55,36 @@
     letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
   }
 
-  /* Hero */
+  /* Hero — single column stack */
   .hero {
-    padding-top: 56px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-  }
-  .hero-left {
+    padding: 88px 24px 40px;
     background: #0D0D0D;
-    padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 56px);
-    display: flex; flex-direction: column; justify-content: center; gap: 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 28px;
   }
-  .hero-left h1 {
-    font-size: clamp(30px, 4.2vw, 50px); line-height: 1.06; font-weight: 400;
+  .hero-copy {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
   }
-  .hero-left h1 em { color: var(--gold); font-style: normal; font-weight: 700; }
-  .hero-left h1 .muted { color: var(--grey); font-style: italic; }
+  .hero-copy h1 {
+    font-size: clamp(32px, 5vw, 52px); line-height: 1.06; font-weight: 400;
+  }
+  .hero-copy h1 em { color: var(--gold); font-style: normal; font-weight: 700; }
+  .hero-copy h1 .muted { color: var(--grey); font-style: italic; }
   .hero-sub {
-    font-family: Arial, sans-serif; font-size: 15px; color: var(--grey);
-    line-height: 1.65; max-width: 420px;
+    font-family: Arial, sans-serif; font-size: 15.5px; color: var(--grey);
+    line-height: 1.65; max-width: 480px;
   }
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 2px; }
+  .hero-btns {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 4px;
+  }
   .btn-primary {
     display: inline-block; background: var(--gold); color: var(--bg);
     font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
@@ -96,28 +104,42 @@
     background: rgba(184,134,11,0.12); border: 1px solid var(--gold);
     color: var(--gold); font-family: 'Courier New', monospace; font-size: 11px;
     font-weight: 700; letter-spacing: 0.08em; padding: 10px 16px;
-    border-radius: 6px; text-transform: uppercase; width: fit-content;
+    border-radius: 6px; text-transform: uppercase;
   }
 
-  .hero-right {
-    background: #0D0D0D; padding: clamp(36px, 5vw, 56px) clamp(28px, 4vw, 48px);
-    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-  }
   .hero-card {
-    width: 100%; max-width: 360px;
+    width: 100%; max-width: 300px;
     border: 1px solid var(--gold); border-radius: 14px; overflow: hidden;
     background: var(--card2);
   }
   .hero-logo { width: 100%; display: block; }
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
-  .stat { padding: 12px; border-top: 1px solid var(--grey3); }
-  .stat:nth-child(3n+2) { border-left: 1px solid var(--grey3); border-right: 1px solid var(--grey3); }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 720px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .hero-stat {
+    padding: 18px 12px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .hero-stat:last-child { border-right: none; }
   .stat-val {
-    font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: var(--gold);
+    font-size: clamp(20px, 2.8vw, 28px); font-weight: 700; color: var(--gold);
     font-family: Arial, sans-serif; line-height: 1;
   }
   .stat-val.w { color: var(--white); }
-  .stat-lbl { font-size: 10.5px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
+  .stat-lbl {
+    font-size: 11px; color: var(--grey); font-family: Arial, sans-serif;
+    margin-top: 6px; letter-spacing: 0.02em;
+  }
 
   /* Sections */
   .section {
@@ -328,10 +350,12 @@
   }
 
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { order: -1; padding: 24px 24px 12px; align-items: center; }
-    .hero-card { max-width: 300px; }
-    .hero-left { padding: 28px 24px 40px; }
+    .hero { padding: 80px 20px 32px; gap: 24px; }
+    .hero-card { max-width: 260px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .hero-stat { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .hero-stat:nth-child(2n) { border-right: none; }
+    .hero-stat:nth-last-child(-n+2) { border-bottom: none; }
     .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
     .phase-strip::before { display: none; }
     .feature-cards { grid-template-columns: 1fr; }
@@ -360,7 +384,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
+  <div class="hero-copy">
     <div class="eyebrow">Edge Within · Podcast Mentorship</div>
     <h1>
       Build Something<br>
@@ -377,35 +401,26 @@
     <div class="founding-pill">Founding intake · Only 5 spots</div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-card">
-      <img src="https://edgewithinpodcast.com/logo.jpg" alt="Edge Within with Mat Davenport" class="hero-logo">
-      <div class="stats-grid">
-        <div class="stat">
-          <div class="stat-val">2.8M</div>
-          <div class="stat-lbl">Monthly views</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val">13.1K</div>
-          <div class="stat-lbl">Followers</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val w">$0</div>
-          <div class="stat-lbl">Paid ads</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val w">160</div>
-          <div class="stat-lbl">Days to 10K</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val w">Full</div>
-          <div class="stat-lbl">Curriculum</div>
-        </div>
-        <div class="stat">
-          <div class="stat-val w">5</div>
-          <div class="stat-lbl">Founding spots</div>
-        </div>
-      </div>
+  <div class="hero-card">
+    <img src="https://edgewithinpodcast.com/logo.jpg" alt="Edge Within with Mat Davenport" class="hero-logo">
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="stat-val">2.8M</div>
+      <div class="stat-lbl">Monthly views</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-val">13.1K</div>
+      <div class="stat-lbl">Followers</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-val w">$0</div>
+      <div class="stat-lbl">Paid ads</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-val w">5</div>
+      <div class="stat-lbl">Founding spots</div>
     </div>
   </div>
 </section>
