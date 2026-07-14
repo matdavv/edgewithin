@@ -257,7 +257,7 @@
       line-height: 1.6;
     }
 
-    /* Light form card on dark bg */
+    /* Light form card on dark bg + Kit embed */
     .form-card {
       background: #F4F3F0;
       border: none;
@@ -284,52 +284,8 @@
       font-size: 13.5px;
       color: #666;
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       line-height: 1.5;
-    }
-    .form-card label {
-      display: block;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      color: #444;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-    .form-card .field { margin-bottom: 14px; }
-    .form-card input {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      background: #fff;
-      color: #0A0A0A;
-      font-size: 15px;
-      font-family: Arial, sans-serif;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-card input:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(184,134,11,0.15);
-    }
-    .form-card input::placeholder { color: #999; }
-    .btn-primary {
-      width: 100%;
-      background: var(--gold);
-      color: #0A0A0A;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-family: Arial, sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      margin-top: 4px;
-    }
-    .btn-primary:hover {
-      background: var(--gold2);
-      transform: translateY(-1px);
     }
     .form-proof {
       text-align: center;
@@ -338,6 +294,80 @@
       color: #888;
       margin-top: 14px;
       line-height: 1.5;
+    }
+
+    /* Kit form (same form as before: edge-within.kit.com/72d22088c1) */
+    #kit-form-wrapper .formkit-form {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+    #kit-form-wrapper .formkit-header,
+    #kit-form-wrapper .formkit-subheader {
+      display: none !important;
+    }
+    #kit-form-wrapper [data-element="fields"] {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    #kit-form-wrapper .formkit-field input,
+    #kit-form-wrapper .formkit-field select,
+    #kit-form-wrapper .formkit-field textarea {
+      background: #fff !important;
+      border: 1px solid #ddd !important;
+      border-radius: 8px !important;
+      color: #0A0A0A !important;
+      font-family: Arial, sans-serif !important;
+      font-size: 15px !important;
+      padding: 12px 14px !important;
+      width: 100% !important;
+    }
+    #kit-form-wrapper .formkit-field input:focus,
+    #kit-form-wrapper .formkit-field select:focus {
+      border-color: var(--gold) !important;
+      outline: none !important;
+      box-shadow: 0 0 0 3px rgba(184,134,11,0.15) !important;
+    }
+    #kit-form-wrapper .formkit-field input::placeholder {
+      color: #999 !important;
+    }
+    #kit-form-wrapper label,
+    #kit-form-wrapper .formkit-label {
+      color: #444 !important;
+      font-family: Arial, sans-serif !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      margin-bottom: 6px !important;
+      display: block !important;
+    }
+    #kit-form-wrapper .formkit-submit {
+      background: var(--gold) !important;
+      color: #0A0A0A !important;
+      font-family: Arial, sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      padding: 14px !important;
+      border-radius: 8px !important;
+      width: 100% !important;
+      cursor: pointer !important;
+      border: none !important;
+    }
+    #kit-form-wrapper .formkit-submit:hover {
+      background: var(--gold2) !important;
+    }
+    #kit-form-wrapper .formkit-guarantee {
+      color: #888 !important;
+      font-size: 12px !important;
+      font-family: Arial, sans-serif !important;
+      text-align: center !important;
+      margin-top: 12px !important;
+    }
+    #kit-form-wrapper .formkit-alert {
+      font-family: Arial, sans-serif !important;
+      font-size: 13px !important;
     }
 
     /* Prose */
@@ -674,26 +704,10 @@
         <p class="form-desc">
           Drop your details and I'll email you the full playbook. Worksheets, templates, the lot.
         </p>
-        <!-- Wire to ConvertKit / Mailchimp / form app -->
-        <form action="#" method="POST">
-          <div class="field">
-            <label for="name">Full Name *</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="phone">Phone *</label>
-            <input id="phone" name="phone" type="tel" placeholder="0412 345 678" required autocomplete="tel">
-          </div>
-          <div class="field">
-            <label for="email">Email *</label>
-            <input id="email" name="email" type="email" placeholder="you@email.com" required autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="instagram">Instagram handle</label>
-            <input id="instagram" name="instagram" type="text" placeholder="@yourhandle" autocomplete="username">
-          </div>
-          <button type="submit" class="btn-primary">Get Instant Access</button>
-        </form>
+        <!-- Same Kit form as before (edge-within.kit.com) -->
+        <div id="kit-form-wrapper">
+          <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
+        </div>
         <p class="form-proof">
           Free. No spam. Built from the real system behind Edge Within.
         </p>
