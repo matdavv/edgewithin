@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edge Within. Podcast Mentorship</title>
-<meta name="description" content="Build a podcast worth listening to. Course + optional direct mentorship with Mat Davenport. 5 founding spots.">
+<title>Edge Within · Podcast Mentorship</title>
+<meta name="description" content="Full podcast curriculum + optional direct mentorship with Mat Davenport. 5 founding spots at the lowest price this will ever be.">
 <meta property="og:title" content="Edge Within Podcast Mentorship">
-<meta property="og:description" content="0 to 11K followers and 2.4M monthly views. Now teaching everything I did.">
+<meta property="og:description" content="0 to 13.1K followers and 2.8M monthly views. Course + community + optional mentorship.">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -21,154 +21,328 @@
     --grey2: #555555;
     --grey3: #222222;
   }
-  html { scroll-behavior: smooth; scroll-padding-top: 56px; }
-  body { background: var(--bg); color: var(--white); font-family: 'Georgia', serif; line-height: 1.6; overflow-x: hidden; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body { background: var(--bg); color: var(--white); font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; overflow-x: hidden; }
 
-  /* Nav */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border); height: 56px;
-    display: flex; align-items: center; padding: 0 32px; justify-content: space-between;
+    display: flex; align-items: center; padding: 0 28px; justify-content: space-between;
   }
-  .nav-logo { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-logo {
+    font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--white);
+    text-decoration: none; display: flex; align-items: center; gap: 8px;
+  }
   .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
-  .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
-  .nav-links a { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); text-decoration: none; transition: color 0.2s; }
+  .nav-links { display: flex; gap: 22px; align-items: center; list-style: none; }
+  .nav-links a {
+    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey);
+    text-decoration: none; transition: color 0.2s;
+  }
   .nav-links a:hover { color: var(--white); }
-  .nav-cta { background: var(--gold) !important; color: var(--bg) !important; font-family: 'Courier New', monospace !important; font-size: 11px !important; font-weight: 700 !important; letter-spacing: 0.06em; padding: 8px 18px; border-radius: 5px; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
-  .nav-cta:hover { background: var(--gold2) !important; transform: scale(1.03); }
+  .nav-cta {
+    background: var(--gold) !important; color: var(--bg) !important;
+    font-family: 'Courier New', monospace !important; font-size: 11px !important;
+    font-weight: 700 !important; letter-spacing: 0.06em; padding: 8px 16px;
+    border-radius: 5px; text-transform: uppercase;
+  }
+  .nav-cta:hover { background: var(--gold2) !important; }
+
+  .eyebrow {
+    font-family: 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+  }
 
   /* Hero */
-  .hero { padding-top: 56px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
-  .hero-left { background: #0D0D0D; padding: clamp(64px, 9vw, 120px) clamp(32px, 5vw, 64px); display: flex; flex-direction: column; justify-content: center; gap: 20px; position: relative; overflow: hidden; }
-  .hero-glow { position: absolute; top: -150px; left: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(184,134,11,0.1) 0%, transparent 65%); pointer-events: none; }
-  .eyebrow { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
-  .hero-left h1 { font-size: clamp(32px, 4.5vw, 60px); line-height: 1.05; font-weight: 400; }
+  .hero {
+    padding-top: 56px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    min-height: calc(100vh - 56px);
+    max-height: 900px;
+  }
+  .hero-left {
+    background: #0D0D0D;
+    padding: clamp(48px, 7vw, 88px) clamp(28px, 5vw, 56px);
+    display: flex; flex-direction: column; justify-content: center; gap: 18px;
+  }
+  .hero-left h1 {
+    font-size: clamp(32px, 4.5vw, 56px); line-height: 1.06; font-weight: 400;
+  }
   .hero-left h1 em { color: var(--gold); font-style: normal; font-weight: 700; }
   .hero-left h1 .muted { color: var(--grey); font-style: italic; }
-  .hero-sub { font-family: Arial, sans-serif; font-size: 16px; color: var(--grey); line-height: 1.7; max-width: 440px; }
-  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { display: inline-block; background: var(--gold); color: var(--bg); font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-  .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
-  .btn-secondary { display: inline-block; border: 1px solid var(--grey3); color: var(--grey); font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; padding: 14px 28px; border-radius: 6px; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+  .hero-sub {
+    font-family: Arial, sans-serif; font-size: 15.5px; color: var(--grey);
+    line-height: 1.7; max-width: 440px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--bg);
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 24px;
+    border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-block; border: 1px solid var(--grey3); color: var(--grey);
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    padding: 14px 24px; border-radius: 6px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
   .btn-secondary:hover { border-color: var(--gold); color: var(--white); }
-  .founding-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(184,134,11,0.12); border: 1px solid var(--gold); color: var(--gold); font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; padding: 10px 18px; border-radius: 6px; text-transform: uppercase; animation: pulse 3s infinite ease-in-out; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.75} }
+  .founding-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(184,134,11,0.12); border: 1px solid var(--gold);
+    color: var(--gold); font-family: 'Courier New', monospace; font-size: 11px;
+    font-weight: 700; letter-spacing: 0.08em; padding: 10px 16px;
+    border-radius: 6px; text-transform: uppercase; width: fit-content;
+  }
 
-  .hero-right { background: #0D0D0D; padding: clamp(64px, 9vw, 120px) clamp(32px, 5vw, 56px); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0; }
-  .hero-card { width: 100%; max-width: 400px; border: 2px solid var(--gold); border-radius: 14px; overflow: hidden; background: var(--card2); }
+  .hero-right {
+    background: #0D0D0D; padding: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 48px);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  }
+  .hero-card {
+    width: 100%; max-width: 400px;
+    border: 1px solid var(--gold); border-radius: 14px; overflow: hidden;
+    background: var(--card2);
+  }
   .hero-logo { width: 100%; display: block; }
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; width: 100%; }
-  .stat { padding: 18px 16px; border-top: 1px solid var(--grey3); }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .stat { padding: 16px 14px; border-top: 1px solid var(--grey3); }
   .stat:nth-child(3n+2) { border-left: 1px solid var(--grey3); border-right: 1px solid var(--grey3); }
-  .stat-val { font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; color: var(--gold); font-family: Arial, sans-serif; line-height: 1; }
+  .stat-val {
+    font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; color: var(--gold);
+    font-family: Arial, sans-serif; line-height: 1;
+  }
   .stat-val.w { color: var(--white); }
   .stat-lbl { font-size: 10.5px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
 
-  /* Offer section */
-  .offer { padding: 72px clamp(24px, 5vw, 64px); background: var(--bg); border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
-  .offer-heading { text-align: center; max-width: 640px; margin: 0 auto 48px; }
-  .offer-heading h2 { font-size: clamp(22px, 2.8vw, 32px); font-weight: 400; }
-  .offer-heading h2 em { color: var(--gold); font-style: normal; }
+  /* Sections */
+  .section {
+    padding: 72px clamp(24px, 5vw, 48px);
+    max-width: 1080px; margin: 0 auto;
+  }
+  .section-full {
+    padding: 72px clamp(24px, 5vw, 48px);
+    background: #0D0D0D; border-top: 1px solid var(--border);
+  }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-header { max-width: 640px; margin-bottom: 36px; }
+  .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
+  .section-header h2 {
+    font-size: clamp(24px, 3.2vw, 36px); font-weight: 400; line-height: 1.15; margin-bottom: 12px;
+  }
+  .section-header h2 em { color: var(--gold); font-style: normal; }
+  .section-header p {
+    font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7;
+  }
+
+  .story p {
+    font-family: Arial, sans-serif; font-size: 15.5px; color: var(--grey);
+    line-height: 1.75; margin-bottom: 14px; max-width: 620px;
+  }
+  .story p.strong { color: var(--white); font-size: 16px; }
+  .story p:last-child { margin-bottom: 0; }
 
   /* Phase strip */
-  .phase-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 56px; position: relative; }
-  .phase-strip::before { content: ''; position: absolute; top: 19px; left: 12.5%; right: 12.5%; height: 1px; background: var(--grey3); z-index: 0; }
+  .phase-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    margin: 0 auto 48px; max-width: 900px; position: relative;
+  }
+  .phase-strip::before {
+    content: ''; position: absolute; top: 19px; left: 12.5%; right: 12.5%;
+    height: 1px; background: var(--grey3); z-index: 0;
+  }
   .phase-step { text-align: center; position: relative; z-index: 1; padding: 0 8px; }
-  .phase-num { width: 38px; height: 38px; border-radius: 50%; background: var(--card2); border: 2px solid var(--gold); color: var(--gold); font-family: 'Courier New', monospace; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+  .phase-num {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--card2);
+    border: 2px solid var(--gold); color: var(--gold);
+    font-family: 'Courier New', monospace; font-size: 14px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+  }
   .phase-name { font-family: Arial, sans-serif; font-size: 13.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
   .phase-desc { font-family: Arial, sans-serif; font-size: 11.5px; color: var(--grey2); line-height: 1.5; }
 
-  /* Offer grid: cards + pricing */
-  .offer-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: start; }
-  .offer-right { position: sticky; top: 80px; }
-  .feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-  .feature-icon { font-size: 22px; margin-bottom: 10px; }
-  .feature-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
-  .feature-desc { font-family: Arial, sans-serif; font-size: 12.5px; color: var(--grey); line-height: 1.6; }
+  /* Features */
+  .feature-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px;
+  }
+  .feature-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+  }
+  .feature-card.wide { grid-column: 1 / -1; }
+  .feature-icon { font-size: 20px; margin-bottom: 8px; }
+  .feature-title {
+    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--white); margin-bottom: 6px; line-height: 1.3;
+  }
+  .feature-desc {
+    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); line-height: 1.55;
+  }
 
-  /* Outcome callout */
-  .outcome-callout { margin-top: 48px; background: var(--card2); border: 1px solid var(--gold); border-radius: 10px; padding: 28px 32px; text-align: center; }
-  .outcome-callout .feature-icon { font-size: 26px; }
-  .outcome-callout h3 { font-family: Arial, sans-serif; font-size: 17px; color: var(--gold); margin-bottom: 8px; }
-  .outcome-callout p { font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+  .outcome-callout {
+    background: var(--card2); border: 1px solid var(--gold);
+    border-radius: 10px; padding: 24px 28px; text-align: center;
+  }
+  .outcome-callout h3 {
+    font-family: Arial, sans-serif; font-size: 16px; color: var(--gold); margin-bottom: 8px;
+  }
+  .outcome-callout p {
+    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey);
+    line-height: 1.6; max-width: 480px; margin: 0 auto;
+  }
 
-  .bullets { display: flex; flex-direction: column; gap: 14px; }
-  .bullet { display: flex; align-items: flex-start; gap: 10px; font-family: Arial, sans-serif; font-size: 14.5px; color: var(--grey); line-height: 1.6; }
-  .bullet-dot { width: 6px; height: 6px; min-width: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; }
-  .bullet strong { color: var(--white); }
-  .offer-right { display: flex; flex-direction: column; gap: 12px; }
-  .tier { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; }
-  .tier.featured { background: var(--card2); border-color: var(--gold); border-width: 2px; position: relative; }
-  .tier-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--bg); font-family: 'Courier New', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; white-space: nowrap; }
-  .tier-name { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey2); margin-bottom: 6px; }
-  .tier-price { font-size: 32px; font-weight: 700; color: var(--white); font-family: Arial, sans-serif; line-height: 1; }
+  /* Pricing */
+  .pricing-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    max-width: 860px; margin: 0 auto 24px;
+  }
+  .tier {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 26px; display: flex; flex-direction: column;
+  }
+  .tier.featured {
+    background: var(--card2); border: 2px solid var(--gold); position: relative;
+  }
+  .tier-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--bg); font-family: 'Courier New', monospace;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+  }
+  .tier-name {
+    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--grey2); margin-bottom: 8px;
+  }
+  .tier-price {
+    font-size: 36px; font-weight: 700; color: var(--white);
+    font-family: Arial, sans-serif; line-height: 1; margin-bottom: 4px;
+  }
   .tier.featured .tier-price { color: var(--gold); }
-  .tier-desc { font-size: 12px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 4px; }
-  .founding-note { font-family: 'Courier New', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 8px 0; }
+  .tier-period {
+    font-family: Arial, sans-serif; font-size: 12.5px; color: var(--grey); margin-bottom: 20px;
+  }
+  .tier-list {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 24px; flex: 1;
+  }
+  .tier-list li {
+    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey);
+    padding-left: 18px; position: relative; line-height: 1.4;
+  }
+  .tier-list li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+  }
+  .tier .btn-primary { text-align: center; width: 100%; }
+  .founding-note {
+    text-align: center; font-family: Arial, sans-serif; font-size: 13.5px;
+    color: var(--grey); max-width: 560px; margin: 0 auto; line-height: 1.6;
+  }
+  .founding-note strong { color: var(--gold); }
 
   /* Form */
-  .form-section { background: #0D0D0D; border-top: 1px solid var(--border); padding: 72px 24px; }
+  .form-section {
+    background: #0D0D0D; border-top: 1px solid var(--border); padding: 72px 24px;
+  }
   .form-inner { max-width: 640px; margin: 0 auto; }
-  .form-header { text-align: center; margin-bottom: 40px; }
-  .form-header h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 400; margin-bottom: 10px; }
-  .form-header p { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .field { display: flex; flex-direction: column; gap: 7px; }
+  .form-header { text-align: center; margin-bottom: 36px; }
+  .form-header h2 {
+    font-size: clamp(22px, 3vw, 32px); font-weight: 400; margin: 10px 0;
+  }
+  .form-header p {
+    font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
   .field.full { grid-column: 1 / -1; }
-  label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey2); }
+  label {
+    font-family: 'Courier New', monospace; font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey2);
+  }
   input, select, textarea {
     background: var(--card); border: 1px solid var(--border); border-radius: 8px;
-    padding: 13px 16px; color: var(--white); font-family: Arial, sans-serif; font-size: 14px;
-    outline: none; transition: border-color 0.2s; width: 100%; appearance: none;
+    padding: 12px 14px; color: var(--white); font-family: Arial, sans-serif;
+    font-size: 14px; outline: none; width: 100%; appearance: none;
   }
   input:focus, select:focus, textarea:focus { border-color: var(--gold); }
   input::placeholder, textarea::placeholder { color: var(--grey2); }
-  select { cursor: pointer; }
-  select option { background: var(--card); color: var(--white); }
-  textarea { resize: vertical; min-height: 90px; }
+  select option { background: var(--card); }
+  textarea { resize: vertical; min-height: 88px; }
   .submit-btn {
-    width: 100%; background: var(--gold); color: var(--bg); font-family: 'Courier New', monospace;
-    font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 16px; border: none; border-radius: 8px; cursor: pointer;
-    transition: background 0.2s, transform 0.2s; margin-top: 8px;
+    width: 100%; background: var(--gold); color: var(--bg);
+    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
+    padding: 15px; border: none; border-radius: 8px; cursor: pointer;
+    margin-top: 8px; transition: background 0.2s;
   }
-  .submit-btn:hover { background: var(--gold2); transform: translateY(-1px); }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .form-dm { text-align: center; font-family: Arial, sans-serif; font-size: 13px; color: var(--grey2); margin-top: 16px; }
+  .submit-btn:hover { background: var(--gold2); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .form-dm {
+    text-align: center; font-family: Arial, sans-serif; font-size: 13px;
+    color: var(--grey2); margin-top: 14px;
+  }
   .form-dm a { color: var(--gold); text-decoration: none; }
-  .success-msg { display: none; background: #0a110a; border: 1px solid #22C55E; border-radius: 10px; padding: 28px; text-align: center; }
+  .success-msg {
+    display: none; background: #0a110a; border: 1px solid #22C55E;
+    border-radius: 10px; padding: 28px; text-align: center;
+  }
   .success-msg .check { font-size: 28px; margin-bottom: 10px; }
   .success-msg h3 { color: #22C55E; font-size: 18px; margin-bottom: 8px; }
   .success-msg p { font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); }
 
-  /* Footer */
-  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  /* FAQ */
+  .faq-list { max-width: 680px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; background: none; border: none; color: var(--white);
+    font-family: Arial, sans-serif; font-size: 15px; font-weight: 700;
+    text-align: left; padding: 18px 0; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-q::after {
+    content: '+'; color: var(--gold); font-size: 20px; font-weight: 400; flex-shrink: 0;
+  }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    display: none; font-family: Arial, sans-serif; font-size: 14.5px;
+    color: var(--grey); line-height: 1.7; padding: 0 0 18px;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 28px 32px; display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
   footer p { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey2); }
   footer a { color: var(--gold); text-decoration: none; }
 
-  /* Mobile sticky */
-  .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--gold); color: var(--bg); text-align: center; padding: 15px; font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; z-index: 200; }
+  .mobile-cta {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--gold); color: var(--bg); text-align: center;
+    padding: 15px; font-family: Arial, sans-serif; font-size: 14px;
+    font-weight: 700; text-decoration: none; z-index: 200;
+  }
 
-  /* Responsive */
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-right { order: -1; padding: 40px 24px 24px; align-items: center; }
+    .hero { grid-template-columns: 1fr; max-height: none; min-height: auto; }
+    .hero-right { order: -1; padding: 32px 24px 16px; align-items: center; }
     .hero-card { max-width: 320px; }
-    .hero-left { padding: 40px 24px 56px; }
-    .offer { padding: 56px 24px; }
-    .offer-grid { grid-template-columns: 1fr; gap: 40px; }
-    .offer-right { position: static; }
-    .feature-cards { grid-template-columns: 1fr; }
+    .hero-left { padding: 32px 24px 48px; }
     .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
     .phase-strip::before { display: none; }
+    .feature-cards { grid-template-columns: 1fr; }
+    .feature-card.wide { grid-column: 1; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
     .form-grid { grid-template-columns: 1fr; }
     .field.full { grid-column: 1; }
-    nav .nav-links { display: none; }
+    nav .nav-links a:not(.nav-cta) { display: none; }
     .mobile-cta { display: block; }
-    footer { flex-direction: column; text-align: center; }
+    footer { flex-direction: column; text-align: center; padding-bottom: 72px; }
   }
 </style>
 </head>
@@ -177,9 +351,10 @@
 <nav>
   <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
   <ul class="nav-links">
-    <li><a href="/">← Home</a></li>
-    <li><a href="#offer">The Offer</a></li>
-    <li><a href="#apply">Pricing</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/get-playbook/">Playbook</a></li>
+    <li><a href="#offer">What's included</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#apply" class="nav-cta">Apply Now</a></li>
   </ul>
 </nav>
@@ -187,19 +362,20 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-glow"></div>
     <div class="eyebrow">Edge Within · Podcast Mentorship</div>
     <h1>
       Build Something<br>
       <em>Worth Saying.</em><br>
       <span class="muted">To the World.</span>
     </h1>
-    <p class="hero-sub">A full podcast curriculum and optional direct mentorship with Mat Davenport. 5 founding spots at the lowest price this will ever be.</p>
+    <p class="hero-sub">
+      A full podcast curriculum, private community, and optional direct mentorship with Mat Davenport. 5 founding spots at the lowest price this will ever be.
+    </p>
     <div class="hero-btns">
       <a href="#apply" class="btn-primary">Apply for a Spot</a>
       <a href="#offer" class="btn-secondary">See What's Included</a>
     </div>
-    <div class="founding-pill">🔥 Founding Intake · Only 5 Spots</div>
+    <div class="founding-pill">Founding intake · Only 5 spots</div>
   </div>
 
   <div class="hero-right">
@@ -207,11 +383,11 @@
       <img src="https://edgewithinpodcast.com/logo.jpg" alt="Edge Within with Mat Davenport" class="hero-logo">
       <div class="stats-grid">
         <div class="stat">
-          <div class="stat-val">2.4M</div>
+          <div class="stat-val">2.8M</div>
           <div class="stat-lbl">Monthly views</div>
         </div>
         <div class="stat">
-          <div class="stat-val">11.1K</div>
+          <div class="stat-val">13.1K</div>
           <div class="stat-lbl">Followers</div>
         </div>
         <div class="stat">
@@ -223,8 +399,8 @@
           <div class="stat-lbl">Days to 10K</div>
         </div>
         <div class="stat">
-          <div class="stat-val w">8</div>
-          <div class="stat-lbl">Course modules</div>
+          <div class="stat-val w">Full</div>
+          <div class="stat-lbl">Curriculum</div>
         </div>
         <div class="stat">
           <div class="stat-val w">5</div>
@@ -235,97 +411,146 @@
   </div>
 </section>
 
+<!-- STORY -->
+<section class="section-full">
+  <div class="section-inner story">
+    <div class="eyebrow" style="margin-bottom:14px;">Why this exists</div>
+    <h2 style="font-size:clamp(24px,3.2vw,36px);font-weight:400;line-height:1.15;margin-bottom:20px;max-width:640px;">
+      I sat on the idea longer than I care to admit.
+    </h2>
+    <p class="strong">
+      Starting is easy. Growing is where most people stall. Not because they lack talent. Because they don't have a sequence.
+    </p>
+    <p>
+      Day one for Edge Within was a back garden under trees. No studio. No audience. No paid ads. What I had was a clear order: what to do next, what to ignore, and how to keep showing up when the quiet early days tried to talk me out of it.
+    </p>
+    <p>
+      I learned the foundations from mentors including Chris Griffin, host of The Pocket Podcast. This program is that foundation plus what I ran on my own show: the tools, the clip craft, the guest pipeline, and the weekly rhythm.
+    </p>
+    <p class="strong">
+      No income guarantees. What you get is a system, a community, and optional direct access while you build a show you're proud of.
+    </p>
+  </div>
+</section>
+
 <!-- OFFER -->
-<div id="offer">
-  <div class="offer">
-    <div class="offer-heading">
-      <h2>A curriculum, a community,<br><em>and someone in your corner.</em></h2>
-      <p style="font-family:Arial,sans-serif;font-size:14.5px;color:var(--grey);line-height:1.7;margin-top:16px;">The exact path from "I want to start a podcast" to a show that's actually generating income, built from what got Edge Within to 11,100+ followers and 2.4M monthly views, not theory.</p>
+<section class="section" id="offer">
+  <div class="section-header center">
+    <div class="eyebrow" style="margin-bottom:12px;">What's included</div>
+    <h2>A curriculum, a community,<br><em>and someone in your corner.</em></h2>
+    <p style="margin-top:12px;">
+      The path from "I want to start" to a published show with momentum. Built from a real launch, not theory.
+    </p>
+  </div>
+
+  <div class="phase-strip">
+    <div class="phase-step">
+      <div class="phase-num">1</div>
+      <div class="phase-name">Foundation</div>
+      <div class="phase-desc">Identity &amp; fundamentals</div>
     </div>
-
-    <div class="phase-strip">
-      <div class="phase-step">
-        <div class="phase-num">1</div>
-        <div class="phase-name">Foundation</div>
-        <div class="phase-desc">Identity & Fundamentals</div>
-      </div>
-      <div class="phase-step">
-        <div class="phase-num">2</div>
-        <div class="phase-name">Production</div>
-        <div class="phase-desc">Recording & Editing</div>
-      </div>
-      <div class="phase-step">
-        <div class="phase-num">3</div>
-        <div class="phase-name">Launch & Growth</div>
-        <div class="phase-desc">Launch & Instagram</div>
-      </div>
-      <div class="phase-step">
-        <div class="phase-num">4</div>
-        <div class="phase-name">Sustain & Monetise</div>
-        <div class="phase-desc">Grow & Get Paid</div>
-      </div>
+    <div class="phase-step">
+      <div class="phase-num">2</div>
+      <div class="phase-name">Production</div>
+      <div class="phase-desc">Recording &amp; editing</div>
     </div>
-
-    <div class="offer-grid">
-      <div class="offer-left">
-        <div class="feature-cards">
-          <div class="feature-card">
-            <div class="feature-icon">👥</div>
-            <div class="feature-title">Private founding community</div>
-            <div class="feature-desc">You're not doing this alone. Share wins, ask the question you'd never post publicly, build alongside people who are actually serious.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🎧</div>
-            <div class="feature-title">Direct episode feedback</div>
-            <div class="feature-desc">Post a clip or full episode before it goes live and get real notes. The kind that catches what you can't hear in your own work.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🧰</div>
-            <div class="feature-title">Real templates, not advice</div>
-            <div class="feature-desc">Guest pipeline tracker, launch checklist, media kit, content calendar, my actual AI prompts, Auphonic settings, folder structure.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🔓</div>
-            <div class="feature-title">Lifetime access</div>
-            <div class="feature-desc">All future updates included. New modules, new templates, same one-time price.</div>
-          </div>
-          <div class="feature-card" style="grid-column: 1 / -1;">
-            <div class="feature-icon">💬</div>
-            <div class="feature-title">Mentorship tier: direct WhatsApp access + weekly calls for 3 months</div>
-            <div class="feature-desc">Real-time answers, not pre-written advice. I'm building my own show at the same time as you, so when you hit a wall, you're getting what's working for me this week, not recycled theory.</div>
-          </div>
-        </div>
-
-        <div class="outcome-callout">
-          <div class="feature-icon">🎙️</div>
-          <h3>By the end, you'll have a published show.</h3>
-          <p>Not notes. Not good intentions. Real episodes, live, with an audience starting to build.</p>
-        </div>
-      </div>
-
-      <div class="offer-right" id="apply">
-        <div class="tier">
-          <div class="tier-name">Foundations</div>
-          <div class="tier-price">$3,000</div>
-          <div class="tier-desc">USD · course only · self-paced · lifetime access</div>
-        </div>
-        <div class="tier featured">
-          <div class="tier-badge">Most Popular</div>
-          <div class="tier-name">Accelerator</div>
-          <div class="tier-price">$5,000</div>
-          <div class="tier-desc">USD · course + direct WhatsApp + weekly calls for 3 months</div>
-        </div>
-        <div class="founding-note">Founding rate · price increases after this cohort</div>
-      </div>
+    <div class="phase-step">
+      <div class="phase-num">3</div>
+      <div class="phase-name">Launch &amp; Growth</div>
+      <div class="phase-desc">Launch &amp; Instagram</div>
+    </div>
+    <div class="phase-step">
+      <div class="phase-num">4</div>
+      <div class="phase-name">Sustain</div>
+      <div class="phase-desc">Rhythm &amp; opportunities</div>
     </div>
   </div>
-</div>
+
+  <div class="feature-cards">
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <div class="feature-title">Private founding community</div>
+      <div class="feature-desc">Share wins, ask the question you'd never post publicly, build alongside people who are serious about showing up.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎧</div>
+      <div class="feature-title">Direct episode feedback</div>
+      <div class="feature-desc">Post a clip or full episode before it goes live and get real notes. The kind that catch what you can't hear in your own work.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧰</div>
+      <div class="feature-title">Real templates, not advice</div>
+      <div class="feature-desc">Guest pipeline tracker, launch checklist, media kit, content calendar, AI prompts, Auphonic settings, folder structure.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔓</div>
+      <div class="feature-title">Lifetime access</div>
+      <div class="feature-desc">All future updates included. New modules, new templates, same one-time price.</div>
+    </div>
+    <div class="feature-card wide">
+      <div class="feature-icon">💬</div>
+      <div class="feature-title">Accelerator: WhatsApp + weekly calls for 3 months</div>
+      <div class="feature-desc">Real-time answers, not pre-written advice. I'm building my own show at the same time as you, so when you hit a wall, you're getting what's working this week.</div>
+    </div>
+  </div>
+
+  <div class="outcome-callout">
+    <h3>By the end, you'll have a published show.</h3>
+    <p>Not notes. Not good intentions. Real episodes, live, with an audience starting to build.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section-full" id="pricing">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="eyebrow" style="margin-bottom:12px;">Pricing</div>
+      <h2>Two ways to join.</h2>
+      <p style="margin-top:10px;">Self-paced course, or course plus me in your corner for 90 days.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="tier">
+        <div class="tier-name">Foundations</div>
+        <div class="tier-price">$3,000</div>
+        <div class="tier-period">USD · one-time · lifetime access</div>
+        <ul class="tier-list">
+          <li>Full video curriculum (self-paced)</li>
+          <li>Lifetime access + future updates</li>
+          <li>Launch &amp; grow trackers</li>
+          <li>Guest pipeline &amp; outreach templates</li>
+          <li>Private community access</li>
+        </ul>
+        <a href="#apply" class="btn-primary">Apply for Foundations</a>
+      </div>
+
+      <div class="tier featured">
+        <div class="tier-badge">Most popular</div>
+        <div class="tier-name">Accelerator</div>
+        <div class="tier-price">$5,000</div>
+        <div class="tier-period">USD · founding rate · 3 months mentorship</div>
+        <ul class="tier-list">
+          <li>Everything in Foundations</li>
+          <li>Direct WhatsApp access to Mat</li>
+          <li>Weekly 1:1 calls for 3 months</li>
+          <li>Personal review of your first 3 episodes</li>
+          <li>Founding rate locked for life</li>
+        </ul>
+        <a href="#apply" class="btn-primary">Apply for Accelerator</a>
+      </div>
+    </div>
+
+    <p class="founding-note">
+      Founding members get the <strong>lowest price this program will ever be</strong>. After the first 5 students, the Accelerator rate rises. No income promises. A serious environment for people ready to build.
+    </p>
+  </div>
+</section>
 
 <!-- FORM -->
-<div class="form-section">
+<div class="form-section" id="apply">
   <div class="form-inner">
     <div class="form-header">
-      <div class="eyebrow" style="text-align:center;margin-bottom:12px;">Apply Now</div>
+      <div class="eyebrow">Apply now</div>
       <h2>Claim your founding spot</h2>
       <p>Mat reviews every application personally and replies within 24 hours via Instagram or email.</p>
     </div>
@@ -334,22 +559,22 @@
       <div class="form-grid">
         <div class="field">
           <label>Your name</label>
-          <input type="text" name="name" required placeholder="Mat Davenport">
+          <input type="text" name="name" required placeholder="Your name" autocomplete="name">
         </div>
         <div class="field">
           <label>Instagram handle</label>
-          <input type="text" name="instagram" required placeholder="@yourhandle">
+          <input type="text" name="instagram" required placeholder="@yourhandle" autocomplete="username">
         </div>
         <div class="field">
           <label>Email</label>
-          <input type="email" name="email" required placeholder="you@email.com">
+          <input type="email" name="email" required placeholder="you@email.com" autocomplete="email">
         </div>
         <div class="field">
           <label>Which option?</label>
           <select name="option" required>
             <option value="" disabled selected>Select one</option>
-            <option value="course">Course Only. $3,000 USD</option>
-            <option value="mentorship">Course + Mentorship. $5,000 USD</option>
+            <option value="course">Course Only · $3,000 USD</option>
+            <option value="mentorship">Course + Mentorship · $5,000 USD</option>
             <option value="unsure">Not sure yet</option>
           </select>
         </div>
@@ -357,9 +582,9 @@
           <label>Do you have a podcast?</label>
           <select name="podcast_status" required>
             <option value="" disabled selected>Select one</option>
-            <option value="not_yet">Not yet. planning to start</option>
-            <option value="early">Yes. early stage</option>
-            <option value="going">Yes. been going a while</option>
+            <option value="not_yet">Not yet. Planning to start</option>
+            <option value="early">Yes. Early stage</option>
+            <option value="going">Yes. Been going a while</option>
           </select>
         </div>
         <div class="field">
@@ -374,15 +599,15 @@
         </div>
         <div class="field full">
           <label>Biggest challenge right now</label>
-          <textarea name="challenge" required placeholder="Be honest. This helps Mat understand where you're at and how he can help."></textarea>
+          <textarea name="challenge" required placeholder="Be honest. This helps Mat understand where you're at."></textarea>
         </div>
         <div class="field full">
           <label>Anything else? (optional)</label>
-          <textarea name="extra" placeholder="Any other context that would help Mat understand your situation."></textarea>
+          <textarea name="extra" placeholder="Any other context that would help."></textarea>
         </div>
       </div>
       <button type="submit" class="submit-btn">Submit Application</button>
-      <div class="form-dm">Prefer to DM? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast on Instagram →</a></div>
+      <div class="form-dm">Prefer to DM? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast on Instagram</a></div>
 
       <div class="success-msg" id="successMsg">
         <div class="check">✓</div>
@@ -393,14 +618,62 @@
   </div>
 </div>
 
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-header center">
+    <div class="eyebrow" style="margin-bottom:12px;">FAQ</div>
+    <h2>Common questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button type="button" class="faq-q">Do I need equipment or experience?</button>
+      <div class="faq-a">No. The curriculum covers setup from scratch, including budget options. Many shows start with less than perfect gear.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">How much time do I need per week?</button>
+      <div class="faq-a">Plan for 5 to 8 hours: recording, editing, posting. The systems are built to keep that from taking over your life.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Will this make me money?</button>
+      <div class="faq-a">No guarantees. Mat is still working toward his first sponsor too. This is about building a show you're proud of, an audience that cares, and a platform that can open doors. Income can follow. It isn't the promise.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Who is teaching this?</button>
+      <div class="faq-a">Mat Davenport, Australia. Host of Edge Within. Learned from mentors including Chris Griffin (The Pocket Podcast / Podcast Jungle). This program is his own take, applied in real time on his show since January 2026.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">When does the price go up?</button>
+      <div class="faq-a">After the first 5 founding members confirm. Once they're gone, the next intake opens at a higher rate. The founding Accelerator price does not return.</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q">Is there a free option first?</button>
+      <div class="faq-a">Yes. Grab the free Edge Within Playbook for the eight-step system and templates. Mentorship is for people ready to go deeper with structure, community, and optional direct access. <a href="/get-playbook/" style="color:var(--gold);">Get the free playbook →</a></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p>© 2026 Edge Within with Mat Davenport</p>
-  <p><a href="/">← Back to home</a> &nbsp;·&nbsp; <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a> &nbsp;·&nbsp; <a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a></p>
+  <p>
+    <a href="/">Home</a> ·
+    <a href="/get-playbook/">Playbook</a> ·
+    <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a> ·
+    <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a>
+  </p>
 </footer>
 
-<a href="#apply" class="mobile-cta">Apply for a Founding Spot →</a>
+<a href="#apply" class="mobile-cta">Apply for a Founding Spot</a>
 
 <script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+
   const form = document.getElementById('applyForm');
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
