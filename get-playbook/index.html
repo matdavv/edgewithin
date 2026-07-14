@@ -139,94 +139,94 @@
       max-width: 1080px;
     }
 
-    /* Hero: short pitch, then form + story, then steps */
+    /* Hero: single column — pitch → form → story → steps */
     .hero {
-      padding: 96px 24px 48px;
-      max-width: 1080px;
+      padding: 88px 24px 48px;
+      max-width: 720px;
       margin: 0 auto;
     }
     .hero-intro {
       text-align: center;
-      max-width: 720px;
-      margin: 0 auto 40px;
+      max-width: 640px;
+      margin: 0 auto 32px;
     }
-    .hero-intro .eyebrow { margin-bottom: 16px; }
+    .hero-intro .eyebrow { margin-bottom: 14px; }
     .hero-intro h1 {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .hero-sub {
-      font-size: clamp(16px, 2.2vw, 19px);
+      font-size: clamp(16px, 2.2vw, 18px);
       color: var(--grey);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       font-family: Arial, sans-serif;
     }
     .hero-now {
       color: var(--gold);
       font-family: Arial, sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .hero-intro .lead {
       margin: 0 auto;
-      font-size: 15.5px;
-      max-width: 560px;
+      font-size: 15px;
+      max-width: 480px;
+      line-height: 1.65;
     }
 
-    /* Form + problem side by side (like PodPro) */
+    /* Single column: form then story */
     .hero-convert {
-      display: grid;
-      grid-template-columns: minmax(280px, 400px) 1fr;
-      gap: 40px 48px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      max-width: 920px;
+      gap: 40px;
+      width: 100%;
+      max-width: 440px;
       margin: 0 auto 56px;
     }
-    @media (max-width: 800px) {
-      .hero-convert {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        max-width: 480px;
-      }
+    .hero-story {
+      width: 100%;
+      max-width: 480px;
     }
     .hero-story h2 {
-      font-size: clamp(24px, 3.5vw, 32px);
-      margin-bottom: 16px;
+      font-size: clamp(22px, 3.2vw, 28px);
+      margin-bottom: 14px;
+      line-height: 1.2;
     }
     .hero-story p {
       font-family: Arial, sans-serif;
-      font-size: 15.5px;
+      font-size: 15px;
       color: var(--grey);
       line-height: 1.7;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .hero-story p:last-child { margin-bottom: 0; }
     .hero-story p.strong {
       color: var(--white);
-      font-size: 16px;
+      font-size: 15.5px;
     }
 
-    /* Steps after form */
+    /* Steps */
     .hero-steps {
-      max-width: 920px;
+      max-width: 720px;
       margin: 0 auto;
     }
     .hero-steps .order-note {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 560px) {
       .steps-grid { grid-template-columns: 1fr; }
     }
     .step-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 18px 20px;
+      padding: 16px 18px;
       transition: border-color 0.2s, transform 0.2s;
     }
     .step-card:hover {
@@ -235,83 +235,105 @@
     }
     .step-num {
       font-family: 'Courier New', monospace;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--gold);
       letter-spacing: 0.12em;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .step-card p {
       font-family: Arial, sans-serif;
-      font-size: 14.5px;
+      font-size: 14px;
       color: var(--white);
       line-height: 1.45;
     }
     .order-note {
       font-family: Arial, sans-serif;
-      font-size: 15px;
+      font-size: 14.5px;
       color: var(--grey);
       text-align: center;
-      max-width: 560px;
-      margin: 0 auto 36px;
+      max-width: 480px;
+      margin: 0 auto 28px;
       line-height: 1.6;
     }
 
-    /* Light form card on dark bg + Kit embed */
+    /* Light form card — tight */
     .form-card {
       background: #F4F3F0;
       border: none;
-      border-radius: 14px;
-      padding: 28px 26px;
+      border-radius: 12px;
+      padding: 22px 22px 18px;
       width: 100%;
-      max-width: 400px;
+      max-width: 440px;
       margin: 0;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
       color: #1a1a1a;
     }
-    @media (max-width: 800px) {
-      .form-card { margin: 0 auto; }
-    }
     .form-card h3 {
-      font-size: 18px;
-      margin-bottom: 6px;
+      font-size: 17px;
+      margin-bottom: 4px;
       text-align: left;
       color: #0A0A0A;
       font-family: Arial, sans-serif;
     }
     .form-card .form-desc {
       font-family: Arial, sans-serif;
-      font-size: 13.5px;
+      font-size: 13px;
       color: #666;
       text-align: left;
-      margin-bottom: 16px;
-      line-height: 1.5;
+      margin-bottom: 14px;
+      line-height: 1.45;
     }
     .form-proof {
       text-align: center;
       font-family: Arial, sans-serif;
-      font-size: 12px;
-      color: #888;
-      margin-top: 14px;
-      line-height: 1.5;
+      font-size: 11.5px;
+      color: #999;
+      margin-top: 12px;
+      line-height: 1.4;
     }
 
-    /* Kit form (same form as before: edge-within.kit.com/72d22088c1) */
+    /* Kit form — tight spacing, no branding */
+    #kit-form-wrapper {
+      margin: 0;
+      min-height: 0;
+    }
     #kit-form-wrapper .formkit-form {
       background: transparent !important;
       border: none !important;
       padding: 0 !important;
+      margin: 0 !important;
       max-width: 100% !important;
+      min-height: 0 !important;
+      box-shadow: none !important;
     }
     #kit-form-wrapper .formkit-header,
-    #kit-form-wrapper .formkit-subheader {
+    #kit-form-wrapper .formkit-subheader,
+    #kit-form-wrapper .formkit-powered-by-convertkit-container,
+    #kit-form-wrapper .formkit-powered-by,
+    #kit-form-wrapper a[href*="kit.com"],
+    #kit-form-wrapper a[href*="convertkit.com"] {
       display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
     }
-    #kit-form-wrapper [data-element="fields"] {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 16px;
+    #kit-form-wrapper .formkit-guarantee {
+      display: none !important; /* avoid double spam line with .form-proof */
+    }
+    #kit-form-wrapper [data-element="fields"],
+    #kit-form-wrapper .formkit-fields {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      margin: 0 0 10px !important;
+      padding: 0 !important;
+    }
+    #kit-form-wrapper .formkit-field {
+      margin: 0 !important;
+      padding: 0 !important;
     }
     #kit-form-wrapper .formkit-field input,
     #kit-form-wrapper .formkit-field select,
@@ -322,8 +344,11 @@
       color: #0A0A0A !important;
       font-family: Arial, sans-serif !important;
       font-size: 15px !important;
-      padding: 12px 14px !important;
+      padding: 11px 13px !important;
       width: 100% !important;
+      margin: 0 !important;
+      min-height: 0 !important;
+      box-shadow: none !important;
     }
     #kit-form-wrapper .formkit-field input:focus,
     #kit-form-wrapper .formkit-field select:focus {
@@ -336,38 +361,35 @@
     }
     #kit-form-wrapper label,
     #kit-form-wrapper .formkit-label {
-      color: #444 !important;
-      font-family: Arial, sans-serif !important;
-      font-size: 12px !important;
-      font-weight: 600 !important;
-      margin-bottom: 6px !important;
-      display: block !important;
+      display: none !important; /* placeholders already name the fields */
     }
-    #kit-form-wrapper .formkit-submit {
+    #kit-form-wrapper .formkit-submit,
+    #kit-form-wrapper [data-element="submit"] {
       background: var(--gold) !important;
       color: #0A0A0A !important;
       font-family: Arial, sans-serif !important;
       font-size: 14px !important;
       font-weight: 700 !important;
-      padding: 14px !important;
+      padding: 13px !important;
       border-radius: 8px !important;
       width: 100% !important;
       cursor: pointer !important;
       border: none !important;
+      margin: 0 !important;
     }
     #kit-form-wrapper .formkit-submit:hover {
       background: var(--gold2) !important;
     }
-    #kit-form-wrapper .formkit-guarantee {
-      color: #888 !important;
-      font-size: 12px !important;
-      font-family: Arial, sans-serif !important;
-      text-align: center !important;
-      margin-top: 12px !important;
-    }
     #kit-form-wrapper .formkit-alert {
       font-family: Arial, sans-serif !important;
       font-size: 13px !important;
+      margin: 8px 0 0 !important;
+    }
+    /* Collapse leftover Kit spacer nodes */
+    #kit-form-wrapper ul {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
     }
 
     /* Prose */
@@ -669,7 +691,8 @@
     @media (max-width: 560px) {
       .nav-links a:not(.nav-cta) { display: none; }
       .btn-ghost { display: block; margin: 12px auto 0; margin-left: auto; }
-      .hero { padding-top: 84px; }
+      .hero { padding: 80px 18px 40px; }
+      .form-card { padding: 20px 18px 16px; }
     }
   </style>
 </head>
