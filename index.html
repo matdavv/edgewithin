@@ -798,10 +798,10 @@
   </button>
   <ul class="nav-links" id="nav-menu">
     <li><a href="#show">The Show</a></li>
-    <li><a href="#free">Free Playbook</a></li>
+    <li><a href="/get-playbook/">Free Playbook</a></li>
     <li><a href="#mentorship">Mentorship</a></li>
     <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href="#free" class="nav-cta">Get the Playbook</a></li>
+    <li><a href="/get-playbook/" class="nav-cta">Get the Playbook</a></li>
   </ul>
 </nav>
 
@@ -814,7 +814,7 @@
     <p class="hero-tagline">Long-form conversations about mindset, identity and what it takes to build something that matters. No scripts. No agenda. Just truth.</p>
     <div class="hero-actions">
       <a href="#show" class="btn btn-primary">Listen Now</a>
-      <a href="#free" class="btn btn-secondary">Get the Free Playbook</a>
+      <a href="/get-playbook/" class="btn btn-secondary">Get the Free Playbook</a>
     </div>
   </div>
 
@@ -1054,7 +1054,6 @@
         <p>5 founding spots. Lowest price this program will ever be. No income guarantees. A system for a show you are proud of.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="/mentorship/" class="btn btn-primary">See Full Details</a>
-          <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener" class="btn btn-secondary">DM to Apply</a>
         </div>
       </div>
       <div class="mentorship-tiers">
@@ -1090,7 +1089,7 @@
       <h4>Navigate</h4>
       <ul>
         <li><a href="#show">The Show</a></li>
-        <li><a href="#free">Free Playbook</a></li>
+        <li><a href="/get-playbook/">Free Playbook</a></li>
         <li><a href="#mentorship">Mentorship</a></li>
         <li><a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs?si=RnJXUleVRgOoAUzwj9iU5g" target="_blank" rel="noopener">Spotify</a></li>
         <li><a href="https://podcasts.apple.com/au/podcast/edge-within-with-mat-davenport/id1870199850" target="_blank" rel="noopener">Apple Podcasts</a></li>
@@ -1100,9 +1099,9 @@
     <div class="footer-col">
       <h4>Work with Mat</h4>
       <ul>
-        <li><a href="#free">Free Playbook</a></li>
+        <li><a href="/get-playbook/">Free Playbook</a></li>
         <li><a href="/mentorship/">Course + Mentorship</a></li>
-        <li><a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">DM on Instagram</a></li>
+        <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a></li>
         <li><a href="mailto:mat@edgewithinpodcast.com">Email</a></li>
       </ul>
@@ -1116,7 +1115,7 @@
 </footer>
 
 <!-- Mobile sticky CTA: free playbook first for cold traffic -->
-<a href="#free" class="mobile-cta" id="mobile-cta">Get the Free Playbook</a>
+<a href="/get-playbook/" class="mobile-cta" id="mobile-cta">Get the Free Playbook</a>
 
 <script>
   // Mobile nav hamburger
@@ -1154,10 +1153,10 @@
     const mentObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          mobileCta.href = '#mentorship';
+          mobileCta.href = '/mentorship/';
           mobileCta.textContent = 'See Mentorship';
         } else if (e.boundingClientRect.top > 0) {
-          mobileCta.href = '#free';
+          mobileCta.href = '/get-playbook/';
           mobileCta.textContent = 'Get the Free Playbook';
         }
       });
