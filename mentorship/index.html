@@ -292,54 +292,76 @@
   }
   .founding-note strong { color: var(--gold); }
 
-  /* Form */
+  /* Form (high contrast cream card) */
   .form-section {
-    background: #0D0D0D; border-top: 1px solid var(--border); padding: 72px 24px;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(184,134,11,0.16) 0%, transparent 55%),
+      linear-gradient(180deg, #120e08 0%, #0D0D0D 55%, #0A0A0A 100%);
+    border-top: 1px solid rgba(184,134,11,0.3);
+    padding: 72px 24px;
   }
-  .form-inner { max-width: 640px; margin: 0 auto; }
-  .form-header { text-align: center; margin-bottom: 36px; }
+  .form-inner { max-width: 680px; margin: 0 auto; }
+  .form-card {
+    background: #F4F3F0;
+    border: 1px solid #e0dcd4;
+    border-radius: 14px;
+    padding: clamp(28px, 4vw, 40px) clamp(22px, 4vw, 36px);
+    box-shadow:
+      0 0 0 1px rgba(184,134,11,0.08),
+      0 24px 60px rgba(0,0,0,0.4),
+      0 0 60px rgba(184,134,11,0.06);
+    color: #1a1a1a;
+  }
+  .form-header { text-align: center; margin-bottom: 28px; }
+  .form-header .eyebrow { color: var(--gold); }
   .form-header h2 {
     font-size: clamp(22px, 3vw, 32px); font-weight: 400; margin: 10px 0;
+    color: #0A0A0A;
   }
   .form-header p {
-    font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7;
+    font-family: Arial, sans-serif; font-size: 15px; color: #555; line-height: 1.7;
   }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field.full { grid-column: 1 / -1; }
   label {
     font-family: 'Courier New', monospace; font-size: 10px;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey2);
+    letter-spacing: 0.12em; text-transform: uppercase; color: #555;
   }
   input, select, textarea {
-    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
-    padding: 12px 14px; color: var(--white); font-family: Arial, sans-serif;
+    background: #fff; border: 1px solid #d4d0c8; border-radius: 8px;
+    padding: 12px 14px; color: #0A0A0A; font-family: Arial, sans-serif;
     font-size: 14px; outline: none; width: 100%; appearance: none;
   }
-  input:focus, select:focus, textarea:focus { border-color: var(--gold); }
-  input::placeholder, textarea::placeholder { color: var(--grey2); }
-  select option { background: var(--card); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184,134,11,0.15);
+  }
+  input::placeholder, textarea::placeholder { color: #999; }
+  select { background-image: linear-gradient(45deg, transparent 50%, #666 50%), linear-gradient(135deg, #666 50%, transparent 50%); background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px); background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 32px; }
+  select option { background: #fff; color: #0A0A0A; }
   textarea { resize: vertical; min-height: 88px; }
   .submit-btn {
     width: 100%; background: var(--gold); color: var(--bg);
     font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
     padding: 15px; border: none; border-radius: 8px; cursor: pointer;
-    margin-top: 8px; transition: background 0.2s;
+    margin-top: 8px; transition: background 0.2s, transform 0.15s;
   }
-  .submit-btn:hover { background: var(--gold2); }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .submit-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
   .form-dm {
     text-align: center; font-family: Arial, sans-serif; font-size: 13px;
-    color: var(--grey2); margin-top: 14px;
+    color: #666; margin-top: 14px;
   }
-  .form-dm a { color: var(--gold); text-decoration: none; }
+  .form-dm a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .form-dm a:hover { text-decoration: underline; }
   .success-msg {
-    display: none; background: #0a110a; border: 1px solid #22C55E;
-    border-radius: 10px; padding: 28px; text-align: center;
+    display: none; background: #eef8ef; border: 1px solid #22C55E;
+    border-radius: 10px; padding: 28px; text-align: center; margin-top: 8px;
   }
-  .success-msg .check { font-size: 28px; margin-bottom: 10px; }
-  .success-msg h3 { color: #22C55E; font-size: 18px; margin-bottom: 8px; }
-  .success-msg p { font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); }
+  .success-msg .check { font-size: 28px; margin-bottom: 10px; color: #16a34a; }
+  .success-msg h3 { color: #15803d; font-size: 18px; margin-bottom: 8px; }
+  .success-msg p { font-family: Arial, sans-serif; font-size: 14px; color: #444; }
 
   /* FAQ */
   .faq-list { max-width: 680px; margin: 0 auto; }
@@ -589,72 +611,74 @@
 <!-- FORM -->
 <div class="form-section" id="apply">
   <div class="form-inner">
-    <div class="form-header">
-      <div class="eyebrow">Apply now</div>
-      <h2>Claim your founding spot</h2>
-      <p>Mat reviews every application personally and replies within 24 hours via Instagram or email.</p>
+    <div class="form-card">
+      <div class="form-header">
+        <div class="eyebrow">Apply now</div>
+        <h2>Claim your founding spot</h2>
+        <p>Mat reviews every application personally and replies within 24 hours via Instagram or email.</p>
+      </div>
+
+      <form id="applyForm">
+        <div class="form-grid">
+          <div class="field">
+            <label>Your name</label>
+            <input type="text" name="name" required placeholder="Your name" autocomplete="name">
+          </div>
+          <div class="field">
+            <label>Instagram handle</label>
+            <input type="text" name="instagram" required placeholder="@yourhandle" autocomplete="username">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="you@email.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label>Which option?</label>
+            <select name="option" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="course">Course Only · $3,000 USD</option>
+              <option value="mentorship">Course + Mentorship · $5,000 USD</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Do you have a podcast?</label>
+            <select name="podcast_status" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="not_yet">Not yet. Planning to start</option>
+              <option value="early">Yes. Early stage</option>
+              <option value="going">Yes. Been going a while</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Hours per week you can commit</label>
+            <select name="hours" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="less_3">Less than 3 hours</option>
+              <option value="3_5">3 to 5 hours</option>
+              <option value="5_10">5 to 10 hours</option>
+              <option value="10_plus">10+ hours</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Biggest challenge right now</label>
+            <textarea name="challenge" required placeholder="Be honest. This helps Mat understand where you're at."></textarea>
+          </div>
+          <div class="field full">
+            <label>Anything else? (optional)</label>
+            <textarea name="extra" placeholder="Any other context that would help."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Submit Application</button>
+        <div class="form-dm">Prefer to DM? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast on Instagram</a></div>
+
+        <div class="success-msg" id="successMsg">
+          <div class="check">✓</div>
+          <h3>Application received.</h3>
+          <p>Mat will review it and be in touch within 24 hours via Instagram or email.</p>
+        </div>
+      </form>
     </div>
-
-    <form id="applyForm">
-      <div class="form-grid">
-        <div class="field">
-          <label>Your name</label>
-          <input type="text" name="name" required placeholder="Your name" autocomplete="name">
-        </div>
-        <div class="field">
-          <label>Instagram handle</label>
-          <input type="text" name="instagram" required placeholder="@yourhandle" autocomplete="username">
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="email" name="email" required placeholder="you@email.com" autocomplete="email">
-        </div>
-        <div class="field">
-          <label>Which option?</label>
-          <select name="option" required>
-            <option value="" disabled selected>Select one</option>
-            <option value="course">Course Only · $3,000 USD</option>
-            <option value="mentorship">Course + Mentorship · $5,000 USD</option>
-            <option value="unsure">Not sure yet</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Do you have a podcast?</label>
-          <select name="podcast_status" required>
-            <option value="" disabled selected>Select one</option>
-            <option value="not_yet">Not yet. Planning to start</option>
-            <option value="early">Yes. Early stage</option>
-            <option value="going">Yes. Been going a while</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Hours per week you can commit</label>
-          <select name="hours" required>
-            <option value="" disabled selected>Select one</option>
-            <option value="less_3">Less than 3 hours</option>
-            <option value="3_5">3 to 5 hours</option>
-            <option value="5_10">5 to 10 hours</option>
-            <option value="10_plus">10+ hours</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label>Biggest challenge right now</label>
-          <textarea name="challenge" required placeholder="Be honest. This helps Mat understand where you're at."></textarea>
-        </div>
-        <div class="field full">
-          <label>Anything else? (optional)</label>
-          <textarea name="extra" placeholder="Any other context that would help."></textarea>
-        </div>
-      </div>
-      <button type="submit" class="submit-btn">Submit Application</button>
-      <div class="form-dm">Prefer to DM? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast on Instagram</a></div>
-
-      <div class="success-msg" id="successMsg">
-        <div class="check">✓</div>
-        <h3>Application received.</h3>
-        <p>Mat will review it and be in touch within 24 hours via Instagram or email.</p>
-      </div>
-    </form>
   </div>
 </div>
 
