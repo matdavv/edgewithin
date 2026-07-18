@@ -1,1045 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Edge Within Playbook | Free Podcast System</title>
-  <meta name="description" content="The exact system that took Edge Within from zero to 2.8M monthly views. Free playbook: 8 steps, worksheets, and templates. No fluff.">
-  <meta property="og:title" content="The Edge Within Playbook">
-  <meta property="og:description" content="0 to 2.8M monthly views. $0 on ads. Get the free playbook.">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Edge Within Playbook | Get the Playbook</title>
+<meta name="description" content="The exact system behind Edge Within: from zero to 2.8M monthly views, $0 on ads. Free playbook with 8 steps, worksheets, checklists and templates. Built for real life.">
+<meta property="og:title" content="The Edge Within Playbook">
+<meta property="og:description" content="Build a podcast that fits your real life. Zero followers, no paid ads, back garden studio. Get the free playbook.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root { --brand:#b8860b; --ink:#0a0a0a; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',system-ui,sans-serif; background:var(--ink); color:#fff; -webkit-font-smoothing:antialiased; }
+  .serif { font-family:'Playfair Display',Georgia,serif; font-weight:700; line-height:1.05; }
+  .accent { color:var(--brand); }
+  .accent-bg { background:var(--brand); }
+  .sec-dark { background:#111; }
+  .card { background:rgba(24,24,27,.7); border:1px solid rgba(255,255,255,.1); border-radius:1.5rem; transition:transform .2s ease, border-color .2s ease; }
+  .card:hover { transform:translateY(-2px); border-color:rgba(184,134,11,.4); }
+  .step-num { width:30px;height:30px;flex:none;display:flex;align-items:center;justify-content:center;
+              border-radius:9999px;background:rgba(184,134,11,.15);color:var(--brand);
+              font-size:12px;font-weight:700;letter-spacing:.5px; }
+  .nav-scrolled { background:rgba(10,10,10,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.08); }
+  .hero-grad { background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,134,11,.18), transparent 70%); }
+  .reveal { opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
 
-    :root {
-      --bg: #0A0A0A;
-      --card: #111111;
-      --border: #1E1E1E;
-      --gold: #b8860b;
-      --gold2: #9a7009;
-      --white: #FFFFFF;
-      --grey: #888888;
-      --grey2: #555555;
-    }
+  /* Light form card like the screenshot - white at the top */
+  .form-card {
+    background: #F4F3F0;
+    border: none;
+    border-radius: 12px;
+    padding: 22px 22px 18px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    color: #1a1a1a;
+  }
+  .form-card h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+    text-align: left;
+    color: #0A0A0A;
+    font-family: Arial, sans-serif;
+  }
+  .form-card .form-desc {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #666;
+    text-align: left;
+    margin-bottom: 14px;
+    line-height: 1.45;
+  }
+  .form-proof {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 11.5px;
+    color: #999;
+    margin-top: 12px;
+    line-height: 1.4;
+  }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: Georgia, 'Times New Roman', serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Nav */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      height: 64px;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .nav-logo-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .nav-links a {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      color: var(--grey);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      background: var(--gold);
-      color: var(--bg) !important;
-      font-weight: 700 !important;
-      padding: 9px 18px;
-      border-radius: 5px;
-      font-size: 12px !important;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-family: 'Courier New', monospace !important;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { background: var(--gold2) !important; transform: scale(1.03); }
-
-    /* Layout */
-    .section {
-      padding: 72px 24px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    .section-narrow {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .section-center { text-align: center; }
-    .eyebrow {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-    h1 {
-      font-size: clamp(34px, 5.5vw, 56px);
-      line-height: 1.08;
-      font-weight: 400;
-      margin-bottom: 16px;
-    }
-    h2 {
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    h3 {
-      font-size: 18px;
-      font-weight: 700;
-      font-family: Arial, sans-serif;
-    }
-    .lead {
-      font-family: Arial, sans-serif;
-      font-size: 17px;
-      color: var(--grey);
-      line-height: 1.7;
-      max-width: 620px;
-    }
-    .section-center .lead { margin-left: auto; margin-right: auto; }
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0 auto;
-      max-width: 1080px;
-    }
-
-    /* Hero: single column - pitch → form → story → steps */
-    .hero {
-      padding: 88px 24px 48px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .hero-intro {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto 32px;
-    }
-    .hero-intro .eyebrow { margin-bottom: 14px; }
-    .hero-intro h1 {
-      margin-bottom: 12px;
-    }
-    .hero-sub {
-      font-size: clamp(16px, 2.2vw, 18px);
-      color: var(--grey);
-      margin-bottom: 4px;
-      font-family: Arial, sans-serif;
-    }
-    .hero-now {
-      color: var(--gold);
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 14px;
-    }
-    .hero-intro .lead {
-      margin: 0 auto;
-      font-size: 15px;
-      max-width: 480px;
-      line-height: 1.65;
-    }
-
-    /* Single column: form then story */
-    .hero-convert {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      width: 100%;
-      max-width: 440px;
-      margin: 0 auto 56px;
-    }
-    .hero-story {
-      width: 100%;
-      max-width: 480px;
-    }
-    .hero-story h2 {
-      font-size: clamp(22px, 3.2vw, 28px);
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
-    .hero-story p {
-      font-family: Arial, sans-serif;
-      font-size: 15px;
-      color: var(--grey);
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
-    .hero-story p:last-child { margin-bottom: 0; }
-    .hero-story p.strong {
-      color: var(--white);
-      font-size: 15.5px;
-    }
-
-    /* Steps */
-    .hero-steps {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .hero-steps .order-note {
-      margin-bottom: 20px;
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    @media (max-width: 560px) {
-      .steps-grid { grid-template-columns: 1fr; }
-    }
-    .step-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 18px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .step-card:hover {
-      border-color: #3a2e10;
-      transform: translateY(-2px);
-    }
-    .step-num {
-      font-family: 'Courier New', monospace;
-      font-size: 11px;
-      color: var(--gold);
-      letter-spacing: 0.12em;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .step-card p {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: var(--white);
-      line-height: 1.45;
-    }
-    .order-note {
-      font-family: Arial, sans-serif;
-      font-size: 14.5px;
-      color: var(--grey);
-      text-align: center;
-      max-width: 480px;
-      margin: 0 auto 28px;
-      line-height: 1.6;
-    }
-
-    /* Light form card - tight */
-    .form-card {
-      background: #F4F3F0;
-      border: none;
-      border-radius: 12px;
-      padding: 22px 22px 18px;
-      width: 100%;
-      max-width: 440px;
-      margin: 0;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-      color: #1a1a1a;
-    }
-    .form-card h3 {
-      font-size: 17px;
-      margin-bottom: 4px;
-      text-align: left;
-      color: #0A0A0A;
-      font-family: Arial, sans-serif;
-    }
-    .form-card .form-desc {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      color: #666;
-      text-align: left;
-      margin-bottom: 14px;
-      line-height: 1.45;
-    }
-    .form-proof {
-      text-align: center;
-      font-family: Arial, sans-serif;
-      font-size: 11.5px;
-      color: #999;
-      margin-top: 12px;
-      line-height: 1.4;
-    }
-
-    /* Kit form - tight spacing, no branding */
-    #kit-form-wrapper {
-      margin: 0;
-      min-height: 0;
-    }
-    #kit-form-wrapper .formkit-form {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      max-width: 100% !important;
-      min-height: 0 !important;
-      box-shadow: none !important;
-    }
-    #kit-form-wrapper .formkit-header,
-    #kit-form-wrapper .formkit-subheader,
-    #kit-form-wrapper .formkit-powered-by-convertkit-container,
-    #kit-form-wrapper .formkit-powered-by,
-    #kit-form-wrapper a[href*="kit.com"],
-    #kit-form-wrapper a[href*="convertkit.com"] {
-      display: none !important;
-      height: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      overflow: hidden !important;
-      visibility: hidden !important;
-    }
-    #kit-form-wrapper .formkit-guarantee {
-      display: none !important; /* avoid double spam line with .form-proof */
-    }
-    #kit-form-wrapper [data-element="fields"],
-    #kit-form-wrapper .formkit-fields {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 8px !important;
-      margin: 0 0 10px !important;
-      padding: 0 !important;
-    }
-    #kit-form-wrapper .formkit-field {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    #kit-form-wrapper .formkit-field input,
-    #kit-form-wrapper .formkit-field select,
-    #kit-form-wrapper .formkit-field textarea {
-      background: #fff !important;
-      border: 1px solid #ddd !important;
-      border-radius: 8px !important;
-      color: #0A0A0A !important;
-      font-family: Arial, sans-serif !important;
-      font-size: 15px !important;
-      padding: 11px 13px !important;
-      width: 100% !important;
-      margin: 0 !important;
-      min-height: 0 !important;
-      box-shadow: none !important;
-    }
-    #kit-form-wrapper .formkit-field input:focus,
-    #kit-form-wrapper .formkit-field select:focus {
-      border-color: var(--gold) !important;
-      outline: none !important;
-      box-shadow: 0 0 0 3px rgba(184,134,11,0.15) !important;
-    }
-    #kit-form-wrapper .formkit-field input::placeholder {
-      color: #999 !important;
-    }
-    #kit-form-wrapper label,
-    #kit-form-wrapper .formkit-label {
-      display: none !important; /* placeholders already name the fields */
-    }
-    #kit-form-wrapper .formkit-submit,
-    #kit-form-wrapper [data-element="submit"] {
-      background: var(--gold) !important;
-      color: #0A0A0A !important;
-      font-family: Arial, sans-serif !important;
-      font-size: 14px !important;
-      font-weight: 700 !important;
-      padding: 13px !important;
-      border-radius: 8px !important;
-      width: 100% !important;
-      cursor: pointer !important;
-      border: none !important;
-      margin: 0 !important;
-    }
-    #kit-form-wrapper .formkit-submit:hover {
-      background: var(--gold2) !important;
-    }
-    #kit-form-wrapper .formkit-alert {
-      font-family: Arial, sans-serif !important;
-      font-size: 13px !important;
-      margin: 8px 0 0 !important;
-    }
-    /* Collapse leftover Kit spacer nodes */
-    #kit-form-wrapper ul {
-      margin: 0 !important;
-      padding: 0 !important;
-      list-style: none !important;
-    }
-
-    /* Prose */
-    .prose p {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: var(--grey);
-      line-height: 1.75;
-      margin-bottom: 16px;
-      max-width: 640px;
-    }
-    .prose p.strong {
-      color: var(--white);
-      font-size: 17px;
-    }
-    .bullet-list {
-      list-style: none;
-      margin: 20px 0 28px;
-      max-width: 560px;
-    }
-    .bullet-list li {
-      font-family: Arial, sans-serif;
-      font-size: 15.5px;
-      color: var(--white);
-      padding: 12px 0 12px 28px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      line-height: 1.45;
-    }
-    .bullet-list li:last-child { border-bottom: none; }
-    .bullet-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 18px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    /* Detailed steps */
-    .detail-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 32px 0 36px;
-    }
-    .detail-step {
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 16px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 22px;
-      align-items: start;
-    }
-    .detail-step .num {
-      font-family: 'Courier New', monospace;
-      font-size: 22px;
-      color: var(--gold);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-    .detail-step h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: var(--white);
-    }
-    .detail-step p {
-      font-family: Arial, sans-serif;
-      font-size: 14.5px;
-      color: var(--grey);
-      line-height: 1.5;
-    }
-    @media (max-width: 500px) {
-      .detail-step {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-    }
-
-    /* Feature block */
-    .feature-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      padding: 64px 24px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    @media (max-width: 800px) {
-      .feature-block {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 48px 24px;
-      }
-    }
-    .feature-visual {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 36px 28px;
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 40%, rgba(184,134,11,0.08), transparent 60%);
-      pointer-events: none;
-    }
-    .feature-visual .big-stat {
-      font-size: clamp(48px, 8vw, 72px);
-      font-weight: 400;
-      line-height: 1;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .feature-visual .big-label {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: var(--grey);
-    }
-    .feature-visual .stat-row {
-      display: flex;
-      gap: 28px;
-      margin-top: 24px;
-      flex-wrap: wrap;
-    }
-    .feature-visual .mini-stat strong {
-      display: block;
-      font-size: 22px;
-      color: var(--white);
-      font-family: Georgia, serif;
-      font-weight: 400;
-    }
-    .feature-visual .mini-stat span {
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      color: var(--grey);
-    }
-
-    /* Include grid */
-    .include-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 28px 0 36px;
-    }
-    @media (max-width: 600px) {
-      .include-grid { grid-template-columns: 1fr; }
-    }
-    .include-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px 20px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-    .include-check {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(184,134,11,0.15);
-      border: 1px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-    .include-check svg {
-      width: 12px;
-      height: 12px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 2.5;
-    }
-    .include-item p {
-      font-family: Arial, sans-serif;
-      font-size: 14.5px;
-      color: var(--white);
-      line-height: 1.45;
-    }
-    .include-item p span {
-      display: block;
-      color: var(--grey);
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    /* Stats */
-    .stats-strip {
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 40px 24px;
-    }
-    .stats-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      text-align: center;
-    }
-    @media (max-width: 700px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    }
-    .stat-block .val {
-      font-size: clamp(28px, 4vw, 40px);
-      color: var(--gold);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-    .stat-block .lbl {
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      color: var(--grey);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* CTA */
-    .cta-band {
-      text-align: center;
-      padding: 64px 24px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    .cta-band p {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: var(--grey);
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-    .btn-inline {
-      display: inline-block;
-      background: var(--gold);
-      color: #0A0A0A;
-      padding: 14px 32px;
-      border-radius: 7px;
-      font-family: Arial, sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-inline:hover {
-      background: var(--gold2);
-      transform: translateY(-1px);
-    }
-    .btn-ghost {
-      display: inline-block;
-      background: transparent;
-      color: var(--grey);
-      padding: 14px 24px;
-      border-radius: 7px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      transition: color 0.2s, border-color 0.2s;
-      margin-left: 10px;
-    }
-    .btn-ghost:hover {
-      color: var(--white);
-      border-color: var(--grey2);
-    }
-
-    /* Footer */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-    }
-    .footer p {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      color: var(--grey2);
-    }
-    .footer a {
-      color: var(--grey);
-      text-decoration: none;
-    }
-    .footer a:hover { color: var(--white); }
-
-    @media (max-width: 560px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-      .btn-ghost { display: block; margin: 12px auto 0; margin-left: auto; }
-      .hero { padding: 80px 18px 40px; }
-      .form-card { padding: 20px 18px 16px; }
-    }
-  </style>
+  /* Kit overrides inside light card */
+  #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
+  #kit-form-wrapper .formkit-header,
+  #kit-form-wrapper .formkit-subheader,
+  #kit-form-wrapper .formkit-powered-by-convertkit-container,
+  #kit-form-wrapper .formkit-powered-by,
+  #kit-form-wrapper a[href*="kit.com"],
+  #kit-form-wrapper a[href*="convertkit.com"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; }
+</style>
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <span class="nav-logo-dot"></span>
-      Edge Within
+<!-- NAV -->
+<nav id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="https://edgewithinpodcast.com" class="flex items-center gap-2.5">
+      <span class="w-8 h-8 rounded-full accent-bg flex items-center justify-center"><i class="fa-solid fa-microphone text-black text-sm"></i></span>
+      <span class="font-semibold tracking-tight text-lg">Edge Within</span>
+      <span class="hidden sm:inline px-2.5 py-0.5 text-[11px] rounded-full border border-white/20 text-white/60">Playbook</span>
     </a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/mentorship/">Mentorship</a>
-      <a href="#get-access" class="nav-cta">Get the Playbook</a>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="hero-intro">
-      <p class="eyebrow">Free Podcast Playbook</p>
-      <h1>Build a podcast people<br>choose to listen to.</h1>
-      <p class="hero-sub">Not someday. Not when you have more time.</p>
-      <p class="hero-now">Now.</p>
-      <p class="lead">
-        The system I used to build Edge Within from a back garden with zero followers and no paid ads. No fluff. Just the order and tools that worked.
-      </p>
-    </div>
-
-    <div class="hero-convert" id="get-access">
-      <div class="form-card">
-        <h3>Get the Playbook</h3>
-        <p class="form-desc">
-          Drop your details and I'll email you the full playbook. Worksheets, templates, the lot.
-        </p>
-        <!-- Same Kit form as before (edge-within.kit.com) -->
-        <div id="kit-form-wrapper">
-          <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
-        </div>
-        <p class="form-proof">
-          Free. No spam. Built from the real system behind Edge Within.
-        </p>
-      </div>
-
-      <div class="hero-story">
-        <h2>I sat on this idea longer than I care to admit.</h2>
-        <p class="strong">
-          I knew the conversations I wanted. I just didn't know the order. So I overthought gear, second-guessed the name, and waited for a cleaner start that never came.
-        </p>
-        <p>
-          When I finally launched, day one was a back garden under trees. No studio. No audience. What changed wasn't talent. It was having a sequence I could follow when the quiet early days tried to talk me out of it.
-        </p>
-        <p>
-          I learned the foundations from mentors including Chris Griffin, host of The Pocket Podcast. What you're getting here is the order I used after that, on my own show, from zero.
-        </p>
-        <p>
-          The podcast was never the hard part. <strong style="color:var(--white)">The lack of clarity was.</strong> This playbook is the order I wish I'd had sooner. What moves the needle. What to ignore.
-        </p>
-      </div>
-    </div>
-
-    <div class="hero-steps">
-      <p class="order-note">
-        Laid out in the order I used. Stop guessing. Start building.
-      </p>
-      <div class="steps-grid">
-        <div class="step-card">
-          <span class="step-num">01</span>
-          <p>Get clear on your real reason so everything after that gets easier.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">02</span>
-          <p>Lock in a name and identity that will still feel right later.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">03</span>
-          <p>Choose a simple format and a commitment you can keep.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">04</span>
-          <p>Build the minimal systems so you can start recording this week.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">05</span>
-          <p>Use the pre-record mindset that gets you (and your guest) in the right headspace.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">06</span>
-          <p>Run conversations that create moments people remember.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">07</span>
-          <p>Launch your first episodes without overthinking every detail.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-num">08</span>
-          <p>Set up the weekly rhythm that compounds into real growth.</p>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="divider"></div>
-
-  <section class="section">
-    <div class="section-narrow">
-      <p class="eyebrow">Inside the playbook</p>
-      <h2>Eight clear steps. Nothing extra.</h2>
-      <p class="lead" style="margin-bottom:8px;">
-        No fluff. No theory dump. Just the eight things that mattered when I built Edge Within from a back garden with zero followers.
-      </p>
-    </div>
-
-    <div class="detail-steps section-narrow" style="max-width:720px;margin-left:auto;margin-right:auto;">
-      <div class="detail-step">
-        <span class="num">01</span>
-        <div>
-          <h3>Find Your Why</h3>
-          <p>Get past "I want an audience" and lock the honest reason. When your why is real, showing up stops feeling optional.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">02</span>
-        <div>
-          <h3>Name &amp; Identity</h3>
-          <p>Pick a name and identity that still feels right six months from now. Not something you outgrow after episode four.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">03</span>
-        <div>
-          <h3>Format &amp; Commitment</h3>
-          <p>Choose a format you can keep. Commitment math beats ambition. Consistency compounds. Perfection doesn't.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">04</span>
-        <div>
-          <h3>Build Your Setup</h3>
-          <p>Minimal gear, folder structure, Auphonic settings that work. Start recording this week. Not after you buy a studio.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">05</span>
-        <div>
-          <h3>Pre-Record Mindset</h3>
-          <p>The ritual that gets you and your guest into the right state before the red light. State over scripts.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">06</span>
-        <div>
-          <h3>The Conversation</h3>
-          <p>How to run conversations that create moments people remember. Moments they clip, share, and come back for.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">07</span>
-        <div>
-          <h3>Launch</h3>
-          <p>Drop your first episodes without overthinking it. Stack 3 to 5 before you go public so launch day feels like an arrival, not a test.</p>
-        </div>
-      </div>
-      <div class="detail-step">
-        <span class="num">08</span>
-        <div>
-          <h3>Sustain &amp; Grow</h3>
-          <p>The weekly rhythm, guest pipeline, and habits that turn quiet early days into real momentum.</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="order-note" style="margin-bottom:32px;">
-      Same order I used. Do them in sequence and you stop wasting time on the wrong stuff.
-    </p>
-
-    <div style="text-align:center;">
-      <a href="#get-access" class="btn-inline">Get Instant Access</a>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="section">
-    <div class="section-narrow prose">
-      <p class="eyebrow">Mindset</p>
-      <h2>Why most podcasts never grow</h2>
-      <p class="strong">Most people treat their show like a hobby.</p>
-      <ul class="bullet-list">
-        <li>They show up inconsistently.</li>
-        <li>They over-prepare the wrong things.</li>
-        <li>They chase downloads instead of impact.</li>
-        <li>They wait for permission before taking themselves seriously.</li>
-      </ul>
-      <p>
-        This playbook flips that. Think like the listener. Build a show someone would choose with their limited attention. Act like it matters before the numbers catch up.
-      </p>
-      <p class="strong">That shift alone changes how you show up.</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="feature-block">
-    <div class="prose">
-      <p class="eyebrow">Guests</p>
-      <h2>You don't need to be famous to book great guests.</h2>
-      <p>
-        Biggest myth in podcasting: you need a massive audience first. <strong style="color:var(--white)">You don't.</strong>
-      </p>
-      <p>Inside you'll get:</p>
-      <ul class="bullet-list">
-        <li>How to give guests a reason to say yes that has nothing to do with your download numbers.</li>
-        <li>How guest quality compounds. Each episode makes the next one easier.</li>
-        <li>A pipeline tracker so nothing falls through the cracks.</li>
-      </ul>
-      <a href="#get-access" class="btn-inline">Get Instant Access</a>
-    </div>
-    <div class="feature-visual">
-      <div class="big-stat">Day 0</div>
-      <div class="big-label">No audience required to start booking</div>
-      <div class="stat-row">
-        <div class="mini-stat">
-          <strong>Pipeline</strong>
-          <span>Tracker included</span>
-        </div>
-        <div class="mini-stat">
-          <strong>Outreach</strong>
-          <span>Works from day one</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <section class="section">
-    <div class="section-center" style="max-width:720px;margin:0 auto 8px;">
-      <p class="eyebrow">What you get</p>
-      <h2>Everything you need in one place</h2>
-      <p class="lead" style="margin-bottom:8px;">
-        No guesswork. No overwhelm. Clarity, plus the templates to act on it.
-      </p>
-    </div>
-
-    <div class="include-grid" style="max-width:800px;margin-left:auto;margin-right:auto;">
-      <div class="include-item">
-        <div class="include-check">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-        </div>
-        <p>An eight-step roadmap<span>In the order that compounds</span></p>
-      </div>
-      <div class="include-item">
-        <div class="include-check">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-        </div>
-        <p>Worksheets for why, name and format<span>Fillable templates, not theory dumps</span></p>
-      </div>
-      <div class="include-item">
-        <div class="include-check">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-        </div>
-        <p>Setup and editing cheat sheets<span>Folder structure + Auphonic settings</span></p>
-      </div>
-      <div class="include-item">
-        <div class="include-check">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-        </div>
-        <p>Conversation and launch guides<span>Pre-record ritual + launch checklist</span></p>
-      </div>
-      <div class="include-item">
-        <div class="include-check">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-        </div>
-        <p>Guest pipeline tracker<span>Google Sheet ready to copy</span></p>
-      </div>
-      <div class="include-item">
-        <div class="include-check">
-          <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-        </div>
-        <p>Weekly growth rhythm<span>What to do every week from zero</span></p>
-      </div>
-    </div>
-
-    <p class="order-note" style="max-width:520px;">
-      If you're serious about your voice being heard. If you feel the pull to start or grow your show. If you're tired of spinning your wheels. Start here.
-    </p>
-  </section>
-
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat-block">
-        <div class="val">2.8M</div>
-        <div class="lbl">Monthly views</div>
-      </div>
-      <div class="stat-block">
-        <div class="val">13.1K</div>
-        <div class="lbl">Followers</div>
-      </div>
-      <div class="stat-block">
-        <div class="val">160</div>
-        <div class="lbl">Days from zero</div>
-      </div>
-      <div class="stat-block">
-        <div class="val">$0</div>
-        <div class="lbl">Spent on ads</div>
-      </div>
+    <div class="flex items-center gap-5 text-sm">
+      <a href="https://edgewithinpodcast.com/mentorship/" class="hidden sm:inline text-white/70 hover:text-white transition">Mentorship</a>
+      <a href="#get-playbook" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Get the Playbook</a>
     </div>
   </div>
+</nav>
 
-  <section class="section">
-    <div class="section-narrow prose">
-      <p class="eyebrow">Built from a real show</p>
-      <h2>What happens when you build it the right way</h2>
-      <p class="strong">
-        It wasn't a viral moment. It was stacking the right moves until the quiet early days stopped being quiet.
-      </p>
-      <p>
-        Day one was a back garden under trees. No studio. No audience. Guests said yes before anyone knew the show. Clips landed because the conversations were worth clipping. Momentum came from the sequence, not from luck.
-      </p>
-      <p>
-        When the show is built properly, ideas travel further. Conversations hit deeper. Strangers become listeners. Listeners become community. Community opens doors.
-      </p>
-      <p>
-        This playbook is that sequence. Simplified, ordered, ready to use.
-      </p>
+<!-- HERO with white form at top -->
+<header class="pt-20 pb-12 overflow-hidden">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[.07] border border-white/15 mb-8">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs font-semibold tracking-[1.5px]">FREE PLAYBOOK</span>
     </div>
-  </section>
 
-  <div class="divider"></div>
+    <h1 class="serif text-4xl md:text-6xl tracking-tight mb-4">
+      Build your own podcast,<br>meet your <span class="accent">edge</span>, evolve &amp; inspire.
+    </h1>
 
-  <section class="cta-band" id="final-cta">
-    <p class="eyebrow">Start here</p>
-    <h2>Get the playbook and build your show the right way.</h2>
-    <p>
-      Free access to the full eight-step system, worksheets, and templates. Same process I used for Edge Within. Ready when you are.
+    <p class="text-lg text-white/70 mb-1">Not someday. Not when you have more time.</p>
+    <p class="text-xl md:text-2xl accent font-semibold mb-6">Now.</p>
+
+    <p class="text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
+      The system I used to build Edge Within from a back garden with zero followers and no paid ads. 
+      No fluff. Just the order and tools that worked.
     </p>
-    <a href="#get-access" class="btn-inline">Get Instant Access</a>
-    <a href="/mentorship/" class="btn-ghost">Prefer mentorship?</a>
-  </section>
+  </div>
 
-  <footer class="footer">
-    <p>
-      © 2026 <a href="/">Edge Within</a> with Mat Davenport ·
-      <a href="/mentorship/">Mentorship</a> ·
-      <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a>
-    </p>
-  </footer>
+  <!-- WHITE FORM CARD AT THE TOP (like the screenshot) -->
+  <div class="max-w-xl mx-auto px-6">
+    <div class="form-card">
+      <h3>Get the Playbook</h3>
+      <p class="form-desc">Drop your details and I'll email you the full playbook. Worksheets, templates, the lot.</p>
+      
+      <div id="kit-form-wrapper">
+        <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
+      </div>
+      
+      <p class="form-proof">Free. No spam. Built from the real system behind Edge Within.</p>
+    </div>
+  </div>
+</header>
 
+<!-- STATS -->
+<section id="stats" class="border-y border-white/10 py-8">
+  <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-7 text-center">
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">2.8M</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">MONTHLY VIEWS</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">13.1K</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">160</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">DAYS FROM ZERO</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums accent">$0</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">SPENT ON ADS</div></div>
+  </div>
+</section>
+
+<!-- MINDSET -->
+<section class="max-w-2xl mx-auto px-6 py-16 reveal">
+  <div class="text-xs tracking-[2px] accent font-semibold mb-4">MINDSET</div>
+  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">Why most podcasts never grow</h2>
+  <p class="text-lg text-white/70 mb-6">Most people treat their show like a hobby.</p>
+  <ul class="space-y-3 text-white/75 leading-relaxed">
+    <li>They show up inconsistently.</li>
+    <li>They over-prepare the wrong things.</li>
+    <li>They chase downloads instead of impact.</li>
+    <li>They wait for permission before taking themselves seriously.</li>
+  </ul>
+  <p class="mt-6 text-lg text-white/75">This playbook flips that. Think like the listener. Build a show someone would choose with their limited attention. Act like it matters before the numbers catch up.</p>
+  <p class="mt-4 text-white">That shift alone changes how you show up.</p>
+</section>
+
+<!-- BUILT FROM A REAL SHOW -->
+<section class="max-w-2xl mx-auto px-6 py-16 reveal">
+  <div class="text-xs tracking-[2px] accent font-semibold mb-4">BUILT FROM A REAL SHOW</div>
+  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">What happens when you build it the right way</h2>
+  <p class="text-lg text-white/70 mb-6">It wasn't a viral moment. It was stacking the right moves until the quiet early days stopped being quiet.</p>
+  
+  <div class="space-y-5 text-lg text-white/75 leading-relaxed">
+    <p>Day one was a back garden under trees. No studio. No audience. Guests said yes before anyone knew the show. Clips landed because the conversations were worth clipping. Momentum came from the sequence, not from luck.</p>
+    
+    <p>When the show is built properly, ideas travel further. Conversations hit deeper. Strangers become listeners. Listeners become community. Community opens doors.</p>
+  </div>
+  
+  <p class="mt-6 text-white">This playbook is that sequence. Simplified, ordered, ready to use.</p>
+</section>
+
+
+<!-- 8 STEPS (compacted from 9) -->
+<section id="steps" class="sec-dark border-y border-white/10 py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-[2px] accent font-semibold mb-4">INSIDE THE PLAYBOOK</div>
+      <h2 class="serif text-4xl md:text-5xl tracking-tight mb-4">Eight clear steps. Nothing extra.</h2>
+      <p class="text-white/60 max-w-lg mx-auto">No theory dump. Just what actually mattered when I built Edge Within around a full life.</p>
+    </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">01</div><div><h3 class="font-semibold text-lg mb-1.5">Align with your identity and why</h3><p class="text-sm text-white/60 leading-relaxed">Get clear on who you actually are and why this show exists in your real life. Not a fantasy version of it.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">02</div><div><h3 class="font-semibold text-lg mb-1.5">Design for Your Actual Capacity</h3><p class="text-sm text-white/60 leading-relaxed">Choose a format and commitment that can survive a full life (kids, business, bad weeks). Commitment math beats ambition.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">03</div><div><h3 class="font-semibold text-lg mb-1.5">Build a Guest Relationship System</h3><p class="text-sm text-white/60 leading-relaxed">Create a pipeline where quality compounds. Give people a real reason to say yes that has nothing to do with your numbers.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">04</div><div><h3 class="font-semibold text-lg mb-1.5">Set Up Stupidly Simple Systems</h3><p class="text-sm text-white/60 leading-relaxed">Minimal gear, folder structure, and processes. The goal is to remove friction so you can actually start.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">05</div><div><h3 class="font-semibold text-lg mb-1.5">Master Pre-Record State &amp; The Conversation</h3><p class="text-sm text-white/60 leading-relaxed">The ritual that gets you and your guest in the right headspace + how to lead conversations that create moments worth clipping.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">06</div><div><h3 class="font-semibold text-lg mb-1.5">Build One Repeatable Rhythm</h3><p class="text-sm text-white/60 leading-relaxed">Combine recording, editing, and reviewing into one sustainable weekly system instead of separate overwhelming tasks.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">07</div><div><h3 class="font-semibold text-lg mb-1.5">Launch</h3><p class="text-sm text-white/60 leading-relaxed">Stack episodes and get it out there so launch day feels like an arrival, not a test.</p></div></div>
+      
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">08</div><div><h3 class="font-semibold text-lg mb-1.5">Grow &amp; Earn in Alignment</h3><p class="text-sm text-white/60 leading-relaxed">Build real momentum and monetize in a way that matches your identity and protects your life.</p></div></div>
+    </div>
+
+    <p class="text-center mt-10 text-sm text-white/50 reveal">Same order I used. Do them in sequence and you stop wasting time on the wrong stuff.</p>
+  </div>
+</section>
+
+<!-- GUESTS -->
+<section class="max-w-3xl mx-auto px-6 py-16 reveal">
+  <div class="text-xs tracking-[2px] accent font-semibold mb-4">GUESTS</div>
+  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">You don't need to be famous to book great guests.</h2>
+  <p class="text-lg text-white/70 mb-8">Biggest myth in podcasting: you need a massive audience first. <span class="text-white font-semibold">You don't.</span></p>
+  <ul class="space-y-4">
+    <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How to give guests a reason to say yes that has nothing to do with your download numbers.</span></li>
+    <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How guest quality compounds. Each episode makes the next one easier.</span></li>
+    <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How to keep track of outreach so nothing falls through the cracks.</span></li>
+  </ul>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="sec-dark border-y border-white/10 py-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <div class="text-xs tracking-[2px] accent font-semibold mb-4">WHAT ACTUALLY ARRIVES</div>
+      <h2 class="serif text-4xl tracking-tight mb-3">Not just a PDF of advice.</h2>
+      <p class="text-white/60 max-w-lg mx-auto">Things you fill in, copy, and work from, so the steps turn into a show instead of a nice read.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="card p-6 reveal"><i class="fa-solid fa-pen-to-square accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Fillable worksheets</h3><p class="text-sm text-white/55">Google Docs you copy and write straight into. Not blank pages. Prompts that get you to an answer.</p></div>
+      <div class="card p-6 reveal"><i class="fa-solid fa-list-check accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Printable checklists</h3><p class="text-sm text-white/55">One page per stage. Stick it above the desk and stop holding it all in your head.</p></div>
+      <div class="card p-6 reveal"><i class="fa-solid fa-sliders accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Copy-my-settings sheets</h3><p class="text-sm text-white/55">Exact Auphonic values and folder structure. Match them and skip the trial and error.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="get-playbook" class="py-16 text-center">
+  <div class="max-w-xl mx-auto px-6">
+    <p class="text-white/60 mb-4">Ready when you are.</p>
+    <a href="#get-playbook" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl accent-bg text-black font-semibold text-lg hover:brightness-110 active:scale-[.98] transition">
+      Get the Playbook
+      <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <p class="mt-3 text-sm text-white/40">Free. Instant access to the full system + templates.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-10">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/45 text-center">
+    <div>© 2026 Edge Within with Mat Davenport</div>
+    <div class="flex items-center gap-6">
+      <a href="https://edgewithinpodcast.com/" class="hover:text-white transition">Podcast</a>
+      <a href="https://edgewithinpodcast.com/mentorship/" class="hover:text-white transition">Mentorship</a>
+      <a href="https://www.instagram.com/edgewithinpodcast/" class="hover:text-white transition">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Nav
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Scroll reveal
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.1, rootMargin:'0px 0px -40px'});
+    document.querySelectorAll('.reveal').forEach((el,i) => {
+      el.style.transitionDelay = (i % 4 * 60) + 'ms';
+      io.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+})();
+</script>
 </body>
 </html>
