@@ -46,7 +46,7 @@
   .form-card h3 {
     font-size: 17px;
     margin-bottom: 4px;
-    text-align: left;
+    text-align: center;
     color: #0A0A0A;
     font-family: Arial, sans-serif;
   }
@@ -54,7 +54,7 @@
     font-family: Arial, sans-serif;
     font-size: 13px;
     color: #666;
-    text-align: left;
+    text-align: center;
     margin-bottom: 14px;
     line-height: 1.45;
   }
@@ -167,7 +167,7 @@
       <span class="hidden sm:inline px-2.5 py-0.5 text-[11px] rounded-full border border-white/20 text-white/60">Playbook</span>
     </a>
     <div class="flex items-center gap-5 text-sm">
-      <a href="#get-playbook" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Join the Waitlist</a>
+      <a href="#waitlist-form" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Join the Waitlist</a>
     </div>
   </div>
 </nav>
@@ -194,7 +194,7 @@
   </div>
 
   <!-- WHITE FORM CARD AT THE TOP (like the screenshot) -->
-  <div class="max-w-xl mx-auto px-6">
+  <div id="waitlist-form" class="max-w-xl mx-auto px-6">
     <div class="form-card">
       <h3>Join the Waitlist</h3>
       <p class="form-desc">Drop your details and I'll email you the full playbook. Worksheets, templates, the lot.</p>
@@ -211,10 +211,22 @@
 <!-- STATS -->
 <section id="stats" class="border-y border-white/10 py-8">
   <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-7 text-center">
-    <div><div class="text-3xl font-bold tracking-tight tabular-nums">2.8M</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">MONTHLY VIEWS</div></div>
-    <div><div class="text-3xl font-bold tracking-tight tabular-nums">13.8K</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div></div>
-    <div><div class="text-3xl font-bold tracking-tight tabular-nums">160</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">DAYS FROM ZERO</div></div>
-    <div><div class="text-3xl font-bold tracking-tight tabular-nums accent">$0</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">SPENT ON ADS</div></div>
+    <div>
+      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="2800000" data-format="M">0</div>
+      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">MONTHLY VIEWS</div>
+    </div>
+    <div>
+      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="13800" data-format="K">0</div>
+      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div>
+    </div>
+    <div>
+      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="160" data-format="plain">0</div>
+      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">DAYS FROM ZERO</div>
+    </div>
+    <div>
+      <div class="counter text-3xl font-bold tracking-tight tabular-nums accent" data-target="0" data-format="dollar">0</div>
+      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">SPENT ON ADS</div>
+    </div>
   </div>
 </section>
 
@@ -293,10 +305,10 @@
 </section>
 
 <!-- FINAL CTA -->
-<section id="get-playbook" class="py-16 text-center">
+<section id="final-cta" class="py-16 text-center">
   <div class="max-w-xl mx-auto px-6">
     <p class="text-white/60 mb-4">Only 50 spots at launch.</p>
-    <a href="#get-playbook" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl accent-bg text-black font-semibold text-lg hover:brightness-110 active:scale-[.98] transition">
+    <a href="#waitlist-form" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl accent-bg text-black font-semibold text-lg hover:brightness-110 active:scale-[.98] transition">
       Join the Waitlist
       <i class="fa-solid fa-arrow-right"></i>
     </a>
@@ -334,6 +346,65 @@
     });
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Format number nicely
+  function formatNumber(num, format) {
+    if (format === 'M') {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (format === 'K') {
+      return (num / 1000).toFixed(1) + 'K';
+    } else if (format === 'dollar') {
+      return '$' + Math.floor(num);
+    } else {
+      return Math.floor(num);
+    }
+  }
+
+  // Smooth counter - longer and smoother
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const format = el.dataset.format || 'plain';
+    const duration = 2400;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      // Smoother ease
+      const eased = 1 - Math.pow(1 - progress, 2.5);
+      const current = target * eased;
+
+      el.textContent = formatNumber(current, format);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = formatNumber(target, format);
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // Start when stats visible
+  const statsSection = document.getElementById('stats');
+  if (statsSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = statsSection.querySelectorAll('.counter');
+          counters.forEach((counter, index) => {
+            // slight stagger
+            setTimeout(() => {
+              counter.textContent = formatNumber(0, counter.dataset.format || 'plain');
+              animateCounter(counter);
+            }, index * 150);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    observer.observe(statsSection);
   }
 })();
 </script>
