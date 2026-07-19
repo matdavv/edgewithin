@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Edge Within Playbook | Get the Playbook</title>
-<meta name="description" content="The exact system behind Edge Within: from zero to 2.8M monthly views, $0 on ads. Free playbook with 8 steps, worksheets, checklists and templates. Built for real life.">
+<title>The Edge Within Playbook | Early Access Waitlist</title>
+<meta name="description" content="The exact system behind Edge Within: from zero to 2.8M monthly views, $0 on ads. Join the waitlist for early access. Only the first 50 get it free at launch.">
 <meta property="og:title" content="The Edge Within Playbook">
 <meta property="og:description" content="Build a podcast that fits your real life. Zero followers, no paid ads, back garden studio. Get the free playbook.">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -58,6 +58,92 @@
     margin-bottom: 14px;
     line-height: 1.45;
   }
+    /* Kit form overrides - matching current live page */
+  #kit-form-wrapper {
+    margin: 0;
+    min-height: 0;
+  }
+  #kit-form-wrapper .formkit-form {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+  }
+  #kit-form-wrapper .formkit-header,
+  #kit-form-wrapper .formkit-subheader,
+  #kit-form-wrapper .formkit-powered-by-convertkit-container,
+  #kit-form-wrapper .formkit-powered-by,
+  #kit-form-wrapper a[href*="kit.com"],
+  #kit-form-wrapper a[href*="convertkit.com"] {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+  }
+  #kit-form-wrapper .formkit-guarantee {
+    display: none !important;
+  }
+  #kit-form-wrapper [data-element="fields"],
+  #kit-form-wrapper .formkit-fields {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+  }
+  #kit-form-wrapper .formkit-field {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #kit-form-wrapper .formkit-field input,
+  #kit-form-wrapper .formkit-field select {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    color: #1a1a1a !important;
+    font-size: 15px !important;
+    padding: 11px 13px !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+  #kit-form-wrapper .formkit-submit,
+  #kit-form-wrapper [data-element="submit"] {
+    background: #b8860b !important;
+    color: #0A0A0A !important;
+    font-weight: 700 !important;
+    padding: 12px 18px !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    border: none !important;
+  }
+  .mindset-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px 0;
+  }
+  .mindset-list li {
+    padding: 13px 0 13px 26px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: #c4c4c4;
+    font-size: 15.5px;
+    line-height: 1.45;
+  }
+  .mindset-list li:last-child {
+    border-bottom: none;
+  }
+  .mindset-list li:before {
+    content: "•";
+    color: #b8860b;
+    position: absolute;
+    left: 0;
+    font-size: 19px;
+    line-height: 1;
+  }
   .form-proof {
     text-align: center;
     font-family: Arial, sans-serif;
@@ -67,15 +153,8 @@
     line-height: 1.4;
   }
 
-  /* Kit overrides inside light card */
-  #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
-  #kit-form-wrapper .formkit-header,
-  #kit-form-wrapper .formkit-subheader,
-  #kit-form-wrapper .formkit-powered-by-convertkit-container,
-  #kit-form-wrapper .formkit-powered-by,
-  #kit-form-wrapper a[href*="kit.com"],
-  #kit-form-wrapper a[href*="convertkit.com"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; }
-</style>
+  
+    </style>
 </head>
 <body>
 
@@ -88,8 +167,7 @@
       <span class="hidden sm:inline px-2.5 py-0.5 text-[11px] rounded-full border border-white/20 text-white/60">Playbook</span>
     </a>
     <div class="flex items-center gap-5 text-sm">
-      <a href="https://edgewithinpodcast.com/mentorship/" class="hidden sm:inline text-white/70 hover:text-white transition">Mentorship</a>
-      <a href="#get-playbook" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Get the Playbook</a>
+      <a href="#get-playbook" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Join the Waitlist</a>
     </div>
   </div>
 </nav>
@@ -99,7 +177,7 @@
   <div class="max-w-3xl mx-auto px-6 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[.07] border border-white/15 mb-8">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="text-xs font-semibold tracking-[1.5px]">FREE PLAYBOOK</span>
+      <span class="text-xs font-semibold tracking-[1.5px]">FIRST 50 FREE</span>
     </div>
 
     <h1 class="serif text-4xl md:text-6xl tracking-tight mb-4">
@@ -107,7 +185,7 @@
     </h1>
 
     <p class="text-lg text-white/70 mb-1">Not someday. Not when you have more time.</p>
-    <p class="text-xl md:text-2xl accent font-semibold mb-6">Now.</p>
+    <p class="text-xl md:text-2xl accent font-semibold mb-6">Join the first 50.</p>
 
     <p class="text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
       The system I used to build Edge Within from a back garden with zero followers and no paid ads. 
@@ -118,14 +196,14 @@
   <!-- WHITE FORM CARD AT THE TOP (like the screenshot) -->
   <div class="max-w-xl mx-auto px-6">
     <div class="form-card">
-      <h3>Get the Playbook</h3>
+      <h3>Join the Waitlist</h3>
       <p class="form-desc">Drop your details and I'll email you the full playbook. Worksheets, templates, the lot.</p>
       
       <div id="kit-form-wrapper">
         <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
       </div>
       
-      <p class="form-proof">Free. No spam. Built from the real system behind Edge Within.</p>
+      <p class="form-proof">Only the first 50 get it free at launch. No spam.</p>
     </div>
   </div>
 </header>
@@ -134,40 +212,22 @@
 <section id="stats" class="border-y border-white/10 py-8">
   <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-7 text-center">
     <div><div class="text-3xl font-bold tracking-tight tabular-nums">2.8M</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">MONTHLY VIEWS</div></div>
-    <div><div class="text-3xl font-bold tracking-tight tabular-nums">13.1K</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">13.8K</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div></div>
     <div><div class="text-3xl font-bold tracking-tight tabular-nums">160</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">DAYS FROM ZERO</div></div>
     <div><div class="text-3xl font-bold tracking-tight tabular-nums accent">$0</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">SPENT ON ADS</div></div>
   </div>
 </section>
 
-<!-- MINDSET -->
+<!-- THE REAL STORY -->
 <section class="max-w-2xl mx-auto px-6 py-16 reveal">
-  <div class="text-xs tracking-[2px] accent font-semibold mb-4">MINDSET</div>
-  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">Why most podcasts never grow</h2>
-  <p class="text-lg text-white/70 mb-6">Most people treat their show like a hobby.</p>
-  <ul class="space-y-3 text-white/75 leading-relaxed">
-    <li>They show up inconsistently.</li>
-    <li>They over-prepare the wrong things.</li>
-    <li>They chase downloads instead of impact.</li>
-    <li>They wait for permission before taking themselves seriously.</li>
-  </ul>
-  <p class="mt-6 text-lg text-white/75">This playbook flips that. Think like the listener. Build a show someone would choose with their limited attention. Act like it matters before the numbers catch up.</p>
-  <p class="mt-4 text-white">That shift alone changes how you show up.</p>
-</section>
-
-<!-- BUILT FROM A REAL SHOW -->
-<section class="max-w-2xl mx-auto px-6 py-16 reveal">
-  <div class="text-xs tracking-[2px] accent font-semibold mb-4">BUILT FROM A REAL SHOW</div>
-  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">What happens when you build it the right way</h2>
-  <p class="text-lg text-white/70 mb-6">It wasn't a viral moment. It was stacking the right moves until the quiet early days stopped being quiet.</p>
-  
-  <div class="space-y-5 text-lg text-white/75 leading-relaxed">
-    <p>Day one was a back garden under trees. No studio. No audience. Guests said yes before anyone knew the show. Clips landed because the conversations were worth clipping. Momentum came from the sequence, not from luck.</p>
-    
-    <p>When the show is built properly, ideas travel further. Conversations hit deeper. Strangers become listeners. Listeners become community. Community opens doors.</p>
+  <div class="text-xs tracking-[2px] accent font-semibold mb-4">THE REAL STORY</div>
+  <h2 class="serif text-4xl md:text-5xl tracking-tight mb-8">Build a podcast that fits your real life, not the other way around.</h2>
+  <div class="space-y-5 text-lg text-white/70 leading-relaxed">
+    <p>Most podcast advice assumes you have unlimited time and energy. That was never true for me.</p>
+    <p>I learned the foundations from my mentor Chris Griffin. Then I actually built Edge Within while being a present dad and running my gardening business every week.</p>
+    <p>The system I'm giving you isn't just about launching a show. It's about doing it in a way that supports your mindset, protects your energy, and lets you stay balanced while you build something meaningful.</p>
+    <p>Because what's the point of growing a podcast <span class="accent">if it costs you everything else</span>?</p>
   </div>
-  
-  <p class="mt-6 text-white">This playbook is that sequence. Simplified, ordered, ready to use.</p>
 </section>
 
 
@@ -181,13 +241,13 @@
     </div>
 
         <div class="grid md:grid-cols-2 gap-4">
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">01</div><div><h3 class="font-semibold text-lg mb-1.5">Align with your identity and why</h3><p class="text-sm text-white/60 leading-relaxed">Get clear on who you actually are and why this show exists in your real life. Not a fantasy version of it.</p></div></div>
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">01</div><div><h3 class="font-semibold text-lg mb-1.5">Mindset First: Align with Your Identity &amp; Why</h3><p class="text-sm text-white/60 leading-relaxed">Align with who you are and your why, then adapt the right mindset for growth &amp; commitment.</p></div></div>
       
       <div class="card p-6 flex gap-4 reveal"><div class="step-num">02</div><div><h3 class="font-semibold text-lg mb-1.5">Design for Your Actual Capacity</h3><p class="text-sm text-white/60 leading-relaxed">Choose a format and commitment that can survive a full life (kids, business, bad weeks). Commitment math beats ambition.</p></div></div>
       
       <div class="card p-6 flex gap-4 reveal"><div class="step-num">03</div><div><h3 class="font-semibold text-lg mb-1.5">Build a Guest Relationship System</h3><p class="text-sm text-white/60 leading-relaxed">Create a pipeline where quality compounds. Give people a real reason to say yes that has nothing to do with your numbers.</p></div></div>
       
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">04</div><div><h3 class="font-semibold text-lg mb-1.5">Set Up Stupidly Simple Systems</h3><p class="text-sm text-white/60 leading-relaxed">Minimal gear, folder structure, and processes. The goal is to remove friction so you can actually start.</p></div></div>
+      <div class="card p-6 flex gap-4 reveal"><div class="step-num">04</div><div><h3 class="font-semibold text-lg mb-1.5">Set Up Stupidly Simple Systems</h3><p class="text-sm text-white/60 leading-relaxed">Minimal gear, folder structure, and processes. The goal is to remove friction so you can actually keep going week after week.</p></div></div>
       
       <div class="card p-6 flex gap-4 reveal"><div class="step-num">05</div><div><h3 class="font-semibold text-lg mb-1.5">Master Pre-Record State &amp; The Conversation</h3><p class="text-sm text-white/60 leading-relaxed">The ritual that gets you and your guest in the right headspace + how to lead conversations that create moments worth clipping.</p></div></div>
       
@@ -205,7 +265,7 @@
 <!-- GUESTS -->
 <section class="max-w-3xl mx-auto px-6 py-16 reveal">
   <div class="text-xs tracking-[2px] accent font-semibold mb-4">GUESTS</div>
-  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">You don't need to be famous to book great guests.</h2>
+  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">You don't need massive numbers to book better guests.</h2>
   <p class="text-lg text-white/70 mb-8">Biggest myth in podcasting: you need a massive audience first. <span class="text-white font-semibold">You don't.</span></p>
   <ul class="space-y-4">
     <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How to give guests a reason to say yes that has nothing to do with your download numbers.</span></li>
@@ -222,10 +282,12 @@
       <h2 class="serif text-4xl tracking-tight mb-3">Not just a PDF of advice.</h2>
       <p class="text-white/60 max-w-lg mx-auto">Things you fill in, copy, and work from, so the steps turn into a show instead of a nice read.</p>
     </div>
-    <div class="grid sm:grid-cols-3 gap-4">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       <div class="card p-6 reveal"><i class="fa-solid fa-pen-to-square accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Fillable worksheets</h3><p class="text-sm text-white/55">Google Docs you copy and write straight into. Not blank pages. Prompts that get you to an answer.</p></div>
       <div class="card p-6 reveal"><i class="fa-solid fa-list-check accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Printable checklists</h3><p class="text-sm text-white/55">One page per stage. Stick it above the desk and stop holding it all in your head.</p></div>
       <div class="card p-6 reveal"><i class="fa-solid fa-sliders accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Copy-my-settings sheets</h3><p class="text-sm text-white/55">Exact Auphonic values and folder structure. Match them and skip the trial and error.</p></div>
+      <div class="card p-6 reveal"><i class="fa-solid fa-video accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Direct video lessons</h3><p class="text-sm text-white/55">Videos of me speaking through every step and the mindset techniques in real time.</p></div>
+      <div class="card p-6 reveal"><i class="fa-solid fa-brain accent mb-3 text-lg"></i><h3 class="font-semibold mb-1">Mindset techniques</h3><p class="text-sm text-white/55">Practical exercises and headspace tools you can use before every conversation.</p></div>
     </div>
   </div>
 </section>
@@ -233,9 +295,9 @@
 <!-- FINAL CTA -->
 <section id="get-playbook" class="py-16 text-center">
   <div class="max-w-xl mx-auto px-6">
-    <p class="text-white/60 mb-4">Ready when you are.</p>
+    <p class="text-white/60 mb-4">Only 50 spots at launch.</p>
     <a href="#get-playbook" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl accent-bg text-black font-semibold text-lg hover:brightness-110 active:scale-[.98] transition">
-      Get the Playbook
+      Join the Waitlist
       <i class="fa-solid fa-arrow-right"></i>
     </a>
     <p class="mt-3 text-sm text-white/40">Free. Instant access to the full system + templates.</p>
@@ -248,7 +310,7 @@
     <div>© 2026 Edge Within with Mat Davenport</div>
     <div class="flex items-center gap-6">
       <a href="https://edgewithinpodcast.com/" class="hover:text-white transition">Podcast</a>
-      <a href="https://edgewithinpodcast.com/mentorship/" class="hover:text-white transition">Mentorship</a>
+
       <a href="https://www.instagram.com/edgewithinpodcast/" class="hover:text-white transition">Instagram</a>
     </div>
   </div>
