@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Edge Within Playbook | Face Your Edge, Meet Yourself</title>
-<meta name="description" content="The exact system behind Edge Within: from zero to 2.8M monthly views with $0 ads. Worksheets, templates, trackers and the order that works. Join the waitlist.">
+<title>The Edge Within Playbook | Get the Playbook</title>
+<meta name="description" content="The exact system behind Edge Within: from zero to 2.8M monthly views, $0 on ads. Free playbook with 8 steps, worksheets, checklists and templates. Built for real life.">
 <meta property="og:title" content="The Edge Within Playbook">
-<meta property="og:description" content="Face your edges. Meet yourself. The practical system and conversations that help you grow.">
+<meta property="og:description" content="Build a podcast that fits your real life. Zero followers, no paid ads, back garden studio. Get the free playbook.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,12 +26,10 @@
               border-radius:9999px;background:rgba(184,134,11,.15);color:var(--brand);
               font-size:12px;font-weight:700;letter-spacing:.5px; }
   .nav-scrolled { background:rgba(10,10,10,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.08); }
-  .hero-grad { background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,134,11,.18), transparent 70%); }
   .reveal { opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
 
-  /* Light form card like the screenshot - white at the top */
   .form-card {
     background: #F4F3F0;
     border: none;
@@ -46,7 +44,7 @@
   .form-card h3 {
     font-size: 17px;
     margin-bottom: 4px;
-    text-align: center;
+    text-align: left;
     color: #0A0A0A;
     font-family: Arial, sans-serif;
   }
@@ -54,95 +52,9 @@
     font-family: Arial, sans-serif;
     font-size: 13px;
     color: #666;
-    text-align: center;
+    text-align: left;
     margin-bottom: 14px;
     line-height: 1.45;
-  }
-    /* Kit form overrides - matching current live page */
-  #kit-form-wrapper {
-    margin: 0;
-    min-height: 0;
-  }
-  #kit-form-wrapper .formkit-form {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-    min-height: 0 !important;
-    box-shadow: none !important;
-  }
-  #kit-form-wrapper .formkit-header,
-  #kit-form-wrapper .formkit-subheader,
-  #kit-form-wrapper .formkit-powered-by-convertkit-container,
-  #kit-form-wrapper .formkit-powered-by,
-  #kit-form-wrapper a[href*="kit.com"],
-  #kit-form-wrapper a[href*="convertkit.com"] {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    visibility: hidden !important;
-  }
-  #kit-form-wrapper .formkit-guarantee {
-    display: none !important;
-  }
-  #kit-form-wrapper [data-element="fields"],
-  #kit-form-wrapper .formkit-fields {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    margin: 0 0 10px !important;
-    padding: 0 !important;
-  }
-  #kit-form-wrapper .formkit-field {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  #kit-form-wrapper .formkit-field input,
-  #kit-form-wrapper .formkit-field select {
-    background: #fff !important;
-    border: 1px solid #ddd !important;
-    border-radius: 8px !important;
-    color: #1a1a1a !important;
-    font-size: 15px !important;
-    padding: 11px 13px !important;
-    font-family: system-ui, -apple-system, sans-serif !important;
-  }
-  #kit-form-wrapper .formkit-submit,
-  #kit-form-wrapper [data-element="submit"] {
-    background: #b8860b !important;
-    color: #0A0A0A !important;
-    font-weight: 700 !important;
-    padding: 12px 18px !important;
-    border-radius: 8px !important;
-    width: 100% !important;
-    border: none !important;
-  }
-  .mindset-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 8px 0;
-  }
-  .mindset-list li {
-    padding: 13px 0 13px 26px;
-    position: relative;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    color: #c4c4c4;
-    font-size: 15.5px;
-    line-height: 1.45;
-  }
-  .mindset-list li:last-child {
-    border-bottom: none;
-  }
-  .mindset-list li:before {
-    content: "•";
-    color: #b8860b;
-    position: absolute;
-    left: 0;
-    font-size: 19px;
-    line-height: 1;
   }
   .form-proof {
     text-align: center;
@@ -153,24 +65,23 @@
     line-height: 1.4;
   }
 
-  .transform-item {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+  #kit-form-wrapper .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; }
+  #kit-form-wrapper .formkit-header,
+  #kit-form-wrapper .formkit-subheader,
+  #kit-form-wrapper .formkit-powered-by-convertkit-container,
+  #kit-form-wrapper .formkit-powered-by,
+  #kit-form-wrapper a[href*="kit.com"],
+  #kit-form-wrapper a[href*="convertkit.com"] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; }
+
+  .proof-img {
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
   }
-  .transform-item .icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    background: rgba(184,134,11,.15);
-    color: #b8860b;
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-  }
-    </style>
+</style>
 </head>
 <body>
 
@@ -183,7 +94,8 @@
       <span class="hidden sm:inline px-2.5 py-0.5 text-[11px] rounded-full border border-white/20 text-white/60">Playbook</span>
     </a>
     <div class="flex items-center gap-5 text-sm">
-      <a href="#waitlist-form" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Join the Waitlist</a>
+      <a href="https://edgewithinpodcast.com/mentorship/" class="hidden sm:inline text-white/70 hover:text-white transition">Mentorship</a>
+      <a href="#get-playbook" class="px-5 py-2 rounded-full accent-bg text-black font-semibold hover:brightness-110 transition">Get the Playbook</a>
     </div>
   </div>
 </nav>
@@ -193,34 +105,33 @@
   <div class="max-w-3xl mx-auto px-6 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[.07] border border-white/15 mb-8">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="text-xs font-semibold tracking-[1.5px]">FIRST 50 FREE</span>
+      <span class="text-xs font-semibold tracking-[1.5px]">FREE PLAYBOOK</span>
     </div>
 
     <h1 class="serif text-4xl md:text-6xl tracking-tight mb-4">
-      Face your <span class="accent">edges</span>.<br>
-      Meet yourself.<br>
-      Build the voice that helps you grow.
+      Build your own podcast,<br>meet your <span class="accent">edge</span>, evolve &amp; inspire.
     </h1>
 
-    <p class="text-lg text-white/70 mb-1">The podcast was never the point.</p>
-    <p class="text-xl md:text-2xl accent font-semibold mb-6">The person you become is.</p>
+    <p class="text-lg text-white/70 mb-1">Not someday. Not when you have more time.</p>
+    <p class="text-xl md:text-2xl accent font-semibold mb-6">Now.</p>
 
     <p class="text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
-      The exact system I used to grow from zero to 2.8M monthly views with zero ad spend. Worksheets, trackers, templates, and the order that actually works while protecting your real life.
+      The system I used to build Edge Within from a back garden with zero followers and no paid ads. 
+      No fluff. Just the order and tools that worked.
     </p>
   </div>
 
-  <!-- WHITE FORM CARD AT THE TOP (like the screenshot) -->
-  <div id="waitlist-form" class="max-w-xl mx-auto px-6">
+  <!-- WHITE FORM CARD AT THE TOP -->
+  <div class="max-w-xl mx-auto px-6">
     <div class="form-card">
-      <h3>Join the Waitlist</h3>
-      <p class="form-desc">The exact system. Worksheets, templates, trackers and the order that works. Only the first 50 get it free at launch.</p>
+      <h3>Get the Playbook</h3>
+      <p class="form-desc">Drop your details and I'll email you the full playbook. Worksheets, templates, the lot.</p>
       
       <div id="kit-form-wrapper">
         <script async data-uid="72d22088c1" src="https://edge-within.kit.com/72d22088c1/index.js"></script>
       </div>
       
-      <p class="form-proof">Only the first 50 get it free at launch. No spam.</p>
+      <p class="form-proof">Free. No spam. Built from the real system behind Edge Within.</p>
     </div>
   </div>
 </header>
@@ -228,57 +139,14 @@
 <!-- STATS -->
 <section id="stats" class="border-y border-white/10 py-8">
   <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-7 text-center">
-    <div>
-      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="2800000" data-format="M">0</div>
-      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">MONTHLY VIEWS</div>
-    </div>
-    <div>
-      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="13800" data-format="K">0</div>
-      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div>
-    </div>
-    <div>
-      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="160" data-format="plain">0</div>
-      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">DAYS FROM ZERO</div>
-    </div>
-    <div>
-      <div class="counter text-3xl font-bold tracking-tight tabular-nums accent" data-target="0" data-format="dollar">0</div>
-      <div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">SPENT ON ADS</div>
-    </div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">2.8M</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">MONTHLY VIEWS</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">13.1K</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">FOLLOWERS</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums">160</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">DAYS FROM ZERO</div></div>
+    <div><div class="text-3xl font-bold tracking-tight tabular-nums accent">$0</div><div class="text-[11px] text-white/50 tracking-[1.5px] mt-1">SPENT ON ADS</div></div>
   </div>
 </section>
 
-<!-- 8 STEPS (reframed) -->
-<section id="steps" class="sec-dark border-y border-white/10 py-16">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <div class="text-xs tracking-[2px] accent font-semibold mb-4">THE 8-STEP PATH</div>
-      <h2 class="serif text-4xl md:text-5xl tracking-tight mb-4">Structure that makes the transformation repeatable.</h2>
-      <p class="text-white/60 max-w-lg mx-auto">Not theory. The exact sequence I followed that let me grow the show while growing as a person.</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 gap-4">
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">01</div><div><h3 class="font-semibold text-lg mb-1.5">Mindset First: Align with Your Identity &amp; Why</h3><p class="text-sm text-white/60 leading-relaxed">Stop performing. Get clear on who you are and why this matters to you. This is the foundation that makes every conversation honest.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">02</div><div><h3 class="font-semibold text-lg mb-1.5">Design for Your Actual Capacity</h3><p class="text-sm text-white/60 leading-relaxed">Build something that can survive your real life. Ambition without capacity destroys the very growth you're chasing.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">03</div><div><h3 class="font-semibold text-lg mb-1.5">Build a Guest Relationship System</h3><p class="text-sm text-white/60 leading-relaxed">Create a pipeline where quality compounds. Give people a real reason to say yes that has nothing to do with your numbers.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">04</div><div><h3 class="font-semibold text-lg mb-1.5">Set Up Stupidly Simple Systems</h3><p class="text-sm text-white/60 leading-relaxed">Minimal gear and processes. Remove friction so you can keep showing up week after week when it matters most.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">05</div><div><h3 class="font-semibold text-lg mb-1.5">Master Pre-Record State &amp; The Conversation</h3><p class="text-sm text-white/60 leading-relaxed">The ritual that gets you and your guest in the right headspace. How to lead conversations that create moments worth clipping and that help you grow.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">06</div><div><h3 class="font-semibold text-lg mb-1.5">Build One Repeatable Rhythm</h3><p class="text-sm text-white/60 leading-relaxed">Combine recording, editing, and reviewing into one sustainable weekly system. The rhythm itself becomes the teacher.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">07</div><div><h3 class="font-semibold text-lg mb-1.5">Launch</h3><p class="text-sm text-white/60 leading-relaxed">Stack episodes and get it out there so launch day feels like an arrival, not a test of your worth.</p></div></div>
-      
-      <div class="card p-6 flex gap-4 reveal"><div class="step-num">08</div><div><h3 class="font-semibold text-lg mb-1.5">Grow &amp; Earn in Alignment</h3><p class="text-sm text-white/60 leading-relaxed">Build real momentum and monetize in a way that matches your identity and protects the life you're building.</p></div></div>
-    </div>
-
-    <p class="text-center mt-10 text-sm text-white/50 reveal">Same order I used. Do them in sequence and the outer growth supports the inner work instead of stealing from it.</p>
-  </div>
-</section>
-
-<!-- ALREADY LAUNCHED -->
+<!-- ALREADY LAUNCHED? -->
 <section id="already-launched" class="max-w-3xl mx-auto px-6 py-16 reveal">
   <div class="text-xs tracking-[2px] accent font-semibold mb-4">ALREADY LAUNCHED?</div>
   <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">Already launched? Start at step 3.</h2>
@@ -304,7 +172,7 @@
   <p class="mt-6 text-xs text-white/50">This makes the playbook relevant whether you're pre-launch or 50 episodes in.</p>
 </section>
 
-<!-- WHY MOST QUIT -->
+<!-- WHY MOST QUIT + IMAGE -->
 <section class="max-w-3xl mx-auto px-6 py-8 reveal border-t border-white/10">
   <div class="text-xs tracking-[2px] accent font-semibold mb-4">WHY MOST PEOPLE QUIT AT EPISODE 12</div>
   <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">The bottleneck isn't ideas. It's structure and capacity.</h2>
@@ -314,21 +182,27 @@
     <p>The process of consistent, honest conversation became the thing that sharpened me. The structure protected my energy so I could keep going without it taking over the rest of my life.</p>
     <p class="text-white">That's what this playbook protects: the outer system that lets the inner work happen.</p>
   </div>
+
+  <!-- Include the screenshot here as requested -->
+  <div class="mt-10">
+    <img src="images/transformation.png" alt="The transformation no one talks about — communication, confidence, rooms with great people, honest learning, facing your edges" class="proof-img">
+    <p class="text-center text-xs text-white/50 mt-3">The real work the structure makes possible.</p>
+  </div>
 </section>
 
 <!-- GUESTS -->
 <section class="max-w-3xl mx-auto px-6 py-16 reveal">
-  <div class="text-xs tracking-[2px] accent font-semibold mb-4">GUESTS &amp; CONVERSATIONS</div>
-  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">You don't need massive numbers to sit with incredible people.</h2>
-  <p class="text-lg text-white/70 mb-8">Biggest myth in podcasting: you need a massive audience first. <span class="text-white font-semibold">You don't.</span> What you need is genuine curiosity and the courage to have real conversations.</p>
+  <div class="text-xs tracking-[2px] accent font-semibold mb-4">GUESTS</div>
+  <h2 class="serif text-3xl md:text-4xl tracking-tight mb-6">You don't need to be famous to book great guests.</h2>
+  <p class="text-lg text-white/70 mb-8">Biggest myth in podcasting: you need a massive audience first. <span class="text-white font-semibold">You don't.</span></p>
   <ul class="space-y-4">
     <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How to give guests a reason to say yes that has nothing to do with your download numbers.</span></li>
-    <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How guest quality compounds. Each honest conversation makes the next one richer and helps you grow more.</span></li>
+    <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How guest quality compounds. Each episode makes the next one easier.</span></li>
     <li class="flex gap-3.5"><i class="fa-solid fa-check accent mt-1.5"></i><span class="text-white/75">How to keep track of outreach so nothing falls through the cracks.</span></li>
   </ul>
 </section>
 
-<!-- WHAT YOU GET -->
+<!-- WHAT YOU GET (expanded with specifics) -->
 <section class="sec-dark border-y border-white/10 py-16">
   <div class="max-w-4xl mx-auto px-6">
     <div class="text-center mb-12 reveal">
@@ -348,11 +222,11 @@
 </section>
 
 <!-- FINAL CTA -->
-<section id="final-cta" class="py-16 text-center">
+<section id="get-playbook" class="py-16 text-center">
   <div class="max-w-xl mx-auto px-6">
-    <p class="text-white/60 mb-4">Only 50 spots at launch.</p>
-    <a href="#waitlist-form" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl accent-bg text-black font-semibold text-lg hover:brightness-110 active:scale-[.98] transition">
-      Join the Waitlist
+    <p class="text-white/60 mb-4">Ready when you are.</p>
+    <a href="#get-playbook" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-2xl accent-bg text-black font-semibold text-lg hover:brightness-110 active:scale-[.98] transition">
+      Get the Playbook
       <i class="fa-solid fa-arrow-right"></i>
     </a>
     <p class="mt-3 text-sm text-white/40">Free. Instant access to the full system + templates.</p>
@@ -365,7 +239,7 @@
     <div>© 2026 Edge Within with Mat Davenport</div>
     <div class="flex items-center gap-6">
       <a href="https://edgewithinpodcast.com/" class="hover:text-white transition">Podcast</a>
-
+      <a href="https://edgewithinpodcast.com/mentorship/" class="hover:text-white transition">Mentorship</a>
       <a href="https://www.instagram.com/edgewithinpodcast/" class="hover:text-white transition">Instagram</a>
     </div>
   </div>
@@ -373,12 +247,10 @@
 
 <script>
 (function(){
-  // Nav
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('nav-scrolled', window.scrollY > 40);
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  // Scroll reveal
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((es) => {
       es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -389,63 +261,6 @@
     });
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-  }
-
-  // Format number nicely
-  function formatNumber(num, format) {
-    if (format === 'M') {
-      return (num / 1000000).toFixed(1) + 'M';
-    } else if (format === 'K') {
-      return (num / 1000).toFixed(1) + 'K';
-    } else if (format === 'dollar') {
-      return '$' + Math.floor(num);
-    } else {
-      return Math.floor(num);
-    }
-  }
-
-  // Smooth counter - longer and smoother
-  function animateCounter(el) {
-    const target = parseFloat(el.dataset.target);
-    const format = el.dataset.format || 'plain';
-    const duration = 2400;
-    const startTime = performance.now();
-
-    function step(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 2.5);
-      const current = target * eased;
-
-      el.textContent = formatNumber(current, format);
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = formatNumber(target, format);
-      }
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  // Start when stats visible
-  const statsSection = document.getElementById('stats');
-  if (statsSection && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counters = statsSection.querySelectorAll('.counter');
-          counters.forEach((counter, index) => {
-            setTimeout(() => {
-              counter.textContent = formatNumber(0, counter.dataset.format || 'plain');
-              animateCounter(counter);
-            }, index * 150);
-          });
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.35 });
-    observer.observe(statsSection);
   }
 })();
 </script>
