@@ -242,36 +242,21 @@
     margin: 0;
   }
 
-  /* Compare */
-  .compare-wrap { overflow-x: auto; margin-top: 28px; }
-  .compare {
-    width: 100%;
-    border-collapse: collapse;
+  .positioning-line {
+    margin-top: 36px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
     font-family: Arial, sans-serif;
-    min-width: 520px;
-  }
-  .compare th, .compare td {
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-    font-size: 13.5px;
-    color: var(--grey);
-    vertical-align: top;
-  }
-  .compare th {
-    font-family: 'Courier New', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--grey2);
-    font-weight: 700;
-  }
-  .compare th:last-child, .compare td:last-child {
+    font-size: 15.5px;
+    font-weight: 600;
     color: var(--white);
-    background: rgba(184,134,11,0.06);
+    line-height: 1.55;
+    padding: 18px 20px;
+    background: var(--card2);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
   }
-  .compare th:last-child { color: var(--gold); }
-  .compare td:first-child { color: var(--white); font-weight: 600; width: 28%; }
 
   .phase-strip {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
@@ -780,44 +765,9 @@
       </div>
     </div>
 
-    <div class="compare-wrap">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th></th>
-            <th>DIY</th>
-            <th>Patchwork freelancers</th>
-            <th>Edge Within</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Shoot + edit + reels + upload</td>
-            <td>You do all of it</td>
-            <td>3-4 separate vendors</td>
-            <td>One production partner</td>
-          </tr>
-          <tr>
-            <td>Look consistency</td>
-            <td>Variable</td>
-            <td>Variable</td>
-            <td>Same system every episode</td>
-          </tr>
-          <tr>
-            <td>Your time in production</td>
-            <td>High</td>
-            <td>Medium (project manage)</td>
-            <td>Low (you host + approve)</td>
-          </tr>
-          <tr>
-            <td>Short-form included</td>
-            <td>If you cut it</td>
-            <td>Often extra cost</td>
-            <td>5 reels in every package</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="positioning-line">
+      One partner from set day to live. Not a DIY stack. Not three freelancers to project-manage.
+    </p>
   </div>
 </section>
 
