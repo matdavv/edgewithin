@@ -138,11 +138,26 @@
   #kit-form-wrapper [data-element="submit"] {
     background: #b8860b !important;
     color: #0A0A0A !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
     font-weight: 700 !important;
-    padding: 12px 18px !important;
+    padding: 14px 18px !important;
     border-radius: 8px !important;
     width: 100% !important;
     border: none !important;
+    cursor: pointer !important;
+    display: block !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+  /* Kit button label is empty on this form; force visible CTA text */
+  #kit-form-wrapper .formkit-submit::before,
+  #kit-form-wrapper [data-element="submit"]::before {
+    content: "Join the Waitlist";
+  }
+  #kit-form-wrapper .formkit-submit:hover,
+  #kit-form-wrapper [data-element="submit"]:hover {
+    background: #9a7009 !important;
   }
   .form-proof {
     text-align: center;
