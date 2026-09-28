@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-# /production/ is kept out of search by its <meta name="robots" content="noindex"> tag.
-# Crawlers must be allowed to fetch the page to see that tag, so no Disallow here.
+
+Sitemap: https://edgewithinpodcast.com/sitemap.xml

@@ -4,23 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Podcast Production · Mobile Studio, Northern Rivers · Edge Within</title>
-<!-- Page is intentionally unlisted while you test it with warm contacts.
-     TODO(Mat): when ready to go public, remove this noindex tag AND the
-     "Disallow: /production/" line in /robots.txt (see proposed/robots.diff). -->
-<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="description" content="Done-for-you video podcast production. I come to you with 4K cameras, lighting and mics, then edit, cut the clips and get it live on Spotify, Apple and YouTube. Pilot episode A$2,500. Based in the Northern Rivers, NSW.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Edge Within">
 <meta property="og:title" content="Podcast production · I bring the studio to you">
 <meta property="og:description" content="4K cameras, lighting and mics on site. Edit, 5 clips, thumbnail and upload done for you. Pilot episode A$2,500. Northern Rivers, NSW.">
-<!-- TODO(Mat): swap for a 1200x630 image (a still from a shoot works best).
-     logo.jpg is 1000x1000, so Facebook/LinkedIn previews crop it. -->
-<meta property="og:image" content="https://edgewithinpodcast.com/logo.jpg">
+<meta property="og:image" content="https://edgewithinpodcast.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Edge Within with Mat Davenport">
 <meta property="og:url" content="https://edgewithinpodcast.com/production/">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Podcast production · I bring the studio to you">
+<meta name="twitter:description" content="4K cameras, lighting and mics on site. Edit, 5 clips, thumbnail and upload done for you. Northern Rivers, NSW.">
+<meta name="twitter:image" content="https://edgewithinpodcast.com/og-image.jpg">
 <link rel="canonical" href="https://edgewithinpodcast.com/production/">
-<link rel="icon" href="/logo.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -32,8 +32,8 @@
     --gold2: #9a7009;
     --white: #FFFFFF;
     --grey: #888888;
-    --grey2: #8a8a8a; /* was #666: 3.4:1 on bg, now 5.7:1 (WCAG AA) */
-    --gold-dark: #7a5a06; /* gold for text on the light cards (5.7:1) */
+    --grey2: #8a8a8a;
+    --gold-dark: #7a5a06;
     --grey3: #222222;
     --grey4: #333333;
   }
@@ -86,6 +86,15 @@
     border-radius: 5px; text-transform: uppercase;
   }
   .nav-cta:hover { background: var(--gold2) !important; }
+  .nav-links a[aria-current="page"] { color: var(--white); }
+  .hamburger {
+    display: none; flex-direction: column; gap: 6px; cursor: pointer;
+    background: none; border: none; padding: 8px; z-index: 101;
+  }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); display: block; transition: all 0.3s; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
   .eyebrow {
     font-family: 'Courier New', monospace; font-size: 11px;
@@ -214,11 +223,6 @@
     font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); line-height: 1.65;
     overflow-wrap: break-word;
   }
-  .proof-strip .partner-line {
-    margin-top: 12px; font-family: 'Courier New', monospace; font-size: 12px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey);
-  }
-  .proof-strip .partner-line strong { color: var(--white); letter-spacing: 0.1em; }
   .proof-strip a {
     color: var(--gold); text-decoration: none; font-weight: 600;
     display: inline-block; padding: 8px 0;
@@ -562,7 +566,6 @@
   }
 
 
-  /* ---- Added in proposed version ---- */
   .audience-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
   }
@@ -604,7 +607,6 @@
     content: ''; position: absolute; left: 0; top: 7px;
     width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
   }
-  /* Placeholder styling: deliberately loud so it can't ship by accident. */
   .todo-placeholder {
     border: 2px dashed #d97706 !important; background: rgba(217,119,6,0.08) !important;
     border-radius: 12px; padding: 24px; color: #fbbf24;
@@ -669,7 +671,17 @@
   }
   @media (max-width: 860px) {
     .hero { padding: 92px 20px 88px; gap: 22px; }
-    nav .nav-links a:not(.nav-cta) { display: none; }
+    nav { padding: 0 16px; }
+    .hamburger { display: flex; }
+    nav .nav-links {
+      display: none; position: absolute; top: 60px; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 6px;
+      background: rgba(10,10,10,0.98); border-bottom: 1px solid var(--border);
+      padding: 16px 24px 20px; z-index: 99;
+    }
+    nav .nav-links.active { display: flex; }
+    nav .nav-links a { display: block; padding: 10px 0; }
+    nav .nav-links a.nav-cta { text-align: center; padding: 10px 16px; }
     .mobile-cta { display: block; }
     footer { flex-direction: column; text-align: center; padding-bottom: 80px; }
     .form-section { padding-bottom: 96px; }
@@ -700,11 +712,14 @@
 
 <nav aria-label="Main">
   <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
-  <ul class="nav-links">
-    <li><a href="/">The Podcast</a></li>
-    <li><a href="#pricing">Packages</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#book" class="nav-cta" data-package="call">Book a call</a></li>
+  <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="/">The Show</a></li>
+    <li><a href="/production/" aria-current="page">Production</a></li>
+    <li><a href="mailto:mat@edgewithinpodcast.com?subject=Sponsorship%20enquiry">Sponsor</a></li>
+    <li><a href="mailto:mat@edgewithinpodcast.com?subject=Guest%20enquiry" class="nav-cta">Be a Guest</a></li>
   </ul>
 </nav>
 
@@ -750,7 +765,6 @@
         I've built my own show in public since January 2026, with zero paid ads.
         The production I run for the podcast is the production I run for clients.
       </p>
-      <p class="partner-line">Show sponsor: <strong>SuperFeast</strong></p>
       <p>
         <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener">Spotify →</a>
         &nbsp;·&nbsp;
@@ -759,15 +773,10 @@
         <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram →</a>
       </p>
     </div>
-    <!-- Figures confirmed by Mat, 28 Sep 2026:
-         - Instagram, last 90 days (Instagram's own 90-day metrics): 3.87M views,
-           +11,978 followers, 398K interactions. Shown rounded DOWN: 3.8M+, +11.9K, 398K.
-         - Totals: 22.7K Instagram followers, 20 episodes, $0 spent on ads.
-         Same figures are used on home, mentorship, get-playbook, growth and playbook pages. -->
     <div class="proof-metrics">
       <div class="proof-metric">
         <div class="v">3.8M+</div>
-        <div class="l">Instagram views, last 90 days</div>
+        <div class="l">Reel views in 90 days (Sep 2026)</div>
       </div>
       <div class="proof-metric">
         <div class="v">22.7K</div>
@@ -775,11 +784,11 @@
       </div>
       <div class="proof-metric">
         <div class="v">+11.9K</div>
-        <div class="l">New followers, last 90 days</div>
+        <div class="l">New followers in 90 days (Sep 2026)</div>
       </div>
       <div class="proof-metric">
         <div class="v">398K</div>
-        <div class="l">Interactions, last 90 days</div>
+        <div class="l">Interactions in 90 days (Sep 2026)</div>
       </div>
       <div class="proof-metric">
         <div class="v">$0</div>
@@ -870,8 +879,7 @@
         <li>Two rounds of revisions</li>
         <li>Titles, descriptions, chapters</li>
         <li>Upload to Spotify, Apple Podcasts, and YouTube once you approve</li>
-        <!-- TODO(Mat): confirm show set-up is included in every package (you did it for your first client). -->
-        <li>New show? I set up your Spotify and Apple Podcasts listings</li>
+        <li>I can set up your Spotify and Apple Podcasts listings</li>
         <li>You own the content</li>
       </ul>
       <p class="included-note">Typical turnaround: long-form review in 7-10 business days, clips within 5 business days of approval.</p>
@@ -886,10 +894,7 @@
     <div class="eyebrow">Client work</div>
     <h2>First client, start to finish.</h2>
   </div>
-  <!-- TODO(Mat): when Montana's quote arrives, remove the "client-grid--single" class below
-       AND the "hidden" attribute on the testimonial box further down (and paste her words in). -->
   <div class="client-grid client-grid--single">
-    <!-- Montana has agreed to be named and to give a testimonial (confirmed by Mat, Sep 2026). -->
     <div class="client-card">
       <h3>Montana Lower</h3>
       <div class="client-meta">Founding client · Inbluem</div>
@@ -900,30 +905,12 @@
         <li>Titles, descriptions, and chapters</li>
         <li>Show set up on Spotify and Apple Podcasts</li>
       </ul>
-      <!-- Her Inbluem episode is the video embedded at the top of the page.
-           Optional: add a link to her show here, e.g. <a class="card-link" href="SHOW-URL">Listen to Inbluem →</a> -->
     </div>
 
-    <!-- ================= TESTIMONIAL SLOT: Montana Lower, Inbluem (ready to fill) =================
-         TODO(Mat): Montana has agreed to give a testimonial. When it arrives:
-           1. Paste her EXACT words where it says PASTE_MONTANA_QUOTE_HERE (no edits beyond typos).
-           2. Uncomment the <figure> block below (move it out of this comment).
-           3. Delete the hidden placeholder <div class="todo-placeholder"> further down.
-           4. Remove the "client-grid--single" class from the client-grid div above.
-         No quote has been written for her. Do not publish until her real words are in.
-
-    <figure class="client-card">
-      <blockquote class="testimonial">"PASTE_MONTANA_QUOTE_HERE"</blockquote>
-      <figcaption class="testimonial-cite">Montana Lower, Inbluem</figcaption>
-    </figure>
-
-         ================= END TESTIMONIAL SLOT ================= -->
-    <!-- TODO(Mat): HIDDEN from visitors until Montana's quote arrives (keep the "hidden" attribute).
-         Preferred: use the TESTIMONIAL SLOT above and delete this box. -->
+    <!-- Testimonial: Montana Lower (Inbluem). Hidden until her quote is added. -->
     <div class="todo-placeholder" role="note" hidden>
-      <span class="todo-tag">PLACEHOLDER · TODO</span>
-      <p><strong>Montana Lower (Inbluem) testimonial goes here.</strong></p>
-      <p>Montana has agreed to give a testimonial. Paste her exact words here (2-3 sentences on what it was like and what she got out of it). No quote has been written for her.</p>
+      <span class="todo-tag">Testimonial</span>
+      <p><strong>Montana Lower, Inbluem</strong></p>
     </div>
   </div>
 </section>
@@ -989,9 +976,6 @@
       <strong>Need a different count?</strong> <a href="#inquire">Say so on the form</a> or <a href="#book" data-package="call">book a call</a>. I price it off the nearest tier.
     </p>
     <p class="price-note">All prices in AUD. No GST (not GST-registered).</p>
-    <!-- OPTIONAL (Mat to decide): founding-client offer for the warm-network test.
-         Your first client is on a founding rate. If you want to offer that to a limited number of people, add e.g.
-         <p class="value-note"><strong>Founding clients:</strong> I'm taking [N] more clients at a founding rate. <a href="#book">Ask about it</a>.</p> -->
 
     <div class="addons-grid">
       <div class="addon">
@@ -1028,14 +1012,7 @@
           <h3>Book a 15-minute call</h3>
           <p>No pitch. We talk through your idea and whether a pilot makes sense.</p>
         </div>
-        <!-- ================================================================
-             TODO(Mat): BOOKING LINK PLACEHOLDER
-             Create a Google Calendar appointment schedule (15 min), copy its
-             booking-page link (looks like https://calendar.app.google/XXXX)
-             and paste it into BOOKING_URL at the top of the <script> below.
-             Until then this button falls back to an email so it is never a dead end.
-             ================================================================ -->
-        <a id="bookingLink" class="btn-primary" data-todo="REPLACE-WITH-GOOGLE-CALENDAR-BOOKING-URL"
+        <a id="bookingLink" class="btn-primary"
            href="mailto:mat@edgewithinpodcast.com?subject=Podcast%20production%20-%20quick%20call&amp;body=Hi%20Mat%2C%20I%27d%20like%20a%20quick%20call%20about%20a%20podcast.%20Good%20times%20for%20me%3A%20">Book a call</a>
       </div>
 
@@ -1157,10 +1134,6 @@
       <button type="button" class="faq-q" aria-expanded="false">Who owns the content?</button>
       <div class="faq-a">You do. Full ownership of the final content stays with you.</div>
     </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false">Is this the same as mentorship?</button>
-      <div class="faq-a">No. <a href="/mentorship/">Mentorship</a> teaches you to build and run your own show. Production is done for you: I record, edit, cut the clips, and publish with you.</div>
-    </div>
   </div>
 </section>
 
@@ -1169,9 +1142,9 @@
 <footer>
   <p>© 2026 Edge Within with Mat Davenport</p>
   <p>
-    <a href="/">The Podcast</a> ·
-    <a href="/mentorship/">Mentorship</a> ·
-    <a href="/get-playbook/">Playbook</a> ·
+    <a href="/">The Show</a> ·
+    <a href="mailto:mat@edgewithinpodcast.com?subject=Sponsorship%20enquiry">Sponsor</a> ·
+    <a href="mailto:mat@edgewithinpodcast.com?subject=Guest%20enquiry">Be a Guest</a> ·
     <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a> ·
     <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a>
   </p>
@@ -1180,20 +1153,22 @@
 <a href="#book" class="mobile-cta" data-package="call">Book a call</a>
 
 <script>
-  // TODO(Mat): paste your Google Calendar appointment booking-page URL here, e.g.
-  // const BOOKING_URL = 'https://calendar.app.google/XXXX';
-  const BOOKING_URL = ''; // TODO: placeholder - empty = email fallback
-  if (BOOKING_URL) {
-    const bl = document.getElementById('bookingLink');
-    bl.href = BOOKING_URL; bl.target = '_blank'; bl.rel = 'noopener';
-    bl.removeAttribute('data-todo');
-  }
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }));
 
   const META_PIXEL_ID = '';
   const PACKAGE_VALUES = { pilot: 2500, series: 6600, season: 12000 };
   const PACKAGE_OPTIONS = ['pilot', 'series', 'season', 'call', 'not-sure'];
-  // Tip: send each warm contact a tagged link, e.g. /production/?utm_source=warm&utm_content=firstname
-  // The utm_* values are included in every enquiry so you can count which contacts enquired.
 
   function initMetaPixel(id) {
     if (!id || window.fbq) return;
