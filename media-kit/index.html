@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Kit · Edge Within Podcast with Mat Davenport</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --gold: #b8860b;
+    --gold2: #9a7009;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #8a8a8a;
+    --grey3: #222222;
+    --grey4: #333333;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { background: var(--bg); color: var(--white); font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; overflow-x: hidden; }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* ── Top bar ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.94);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); height: 60px;
+    display: flex; align-items: center; padding: 0 28px; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--white);
+    text-decoration: none; display: flex; align-items: center; gap: 8px;
+  }
+  .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .nav-tag {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--grey);
+  }
+
+  /* ── Type ── */
+  .eyebrow {
+    font-family: 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+  }
+  h1, h2 { font-weight: 400; }
+  h2 em, h1 em { color: var(--gold); font-style: italic; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--bg);
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 24px;
+    border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-block; border: 1px solid var(--grey4); color: var(--grey);
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    padding: 14px 24px; border-radius: 6px; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--white); }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    padding: 96px clamp(24px, 5vw, 64px) 56px;
+    background:
+      radial-gradient(ellipse 70% 60% at 10% 0%, rgba(184,134,11,0.14) 0%, transparent 55%),
+      #0D0D0D;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+  }
+  .hero-inner {
+    max-width: 1180px; width: 100%; margin: 0 auto;
+    display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center;
+  }
+  .hero-copy { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .hero-copy h1 { font-size: clamp(40px, 5.6vw, 76px); line-height: 1.02; }
+  .hero-sub {
+    font-family: Arial, sans-serif; font-size: 18px; color: #b0b0b0;
+    line-height: 1.7; max-width: 560px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  .hero-art {
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5); aspect-ratio: 1 / 1; background: #000;
+  }
+  .hero-art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ── Sections ── */
+  .section { padding: 88px clamp(24px, 5vw, 64px); }
+  .section.alt { background: #0D0D0D; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section-inner { max-width: 1180px; margin: 0 auto; }
+  .section-header { max-width: 720px; margin-bottom: 40px; }
+  .section-header .eyebrow { margin-bottom: 12px; }
+  .section-header h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.12; margin-bottom: 12px; }
+  .section-header p { font-family: Arial, sans-serif; font-size: 16px; color: var(--grey); line-height: 1.7; }
+
+  /* ── Reach ── */
+  .stat-group-label {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--grey); margin: 0 0 12px;
+  }
+  .stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 30px 26px;
+  }
+  .stat-card.featured { background: var(--card2); border-color: rgba(184,134,11,0.55); }
+  .stat-card .v {
+    font-family: Arial, sans-serif; font-size: clamp(40px, 4.4vw, 60px); font-weight: 700;
+    line-height: 1; color: var(--white); letter-spacing: -0.01em;
+  }
+  .stat-card.featured .v { color: var(--gold); }
+  .stat-card .l {
+    font-family: Arial, sans-serif; font-size: 15px; color: #b0b0b0; margin-top: 12px; line-height: 1.4;
+  }
+  .stat-note {
+    font-family: 'Courier New', monospace; font-size: 12px; color: var(--grey);
+    letter-spacing: 0.06em; margin-top: -8px;
+  }
+
+  /* ── Audience ── */
+  .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .info-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px;
+  }
+  .info-card .eyebrow { margin-bottom: 12px; }
+  .info-card h3 { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+  .info-card p { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.65; }
+  .interest-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .interest {
+    font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+    background: rgba(184,134,11,0.12); border: 1px solid rgba(184,134,11,0.45);
+    border-radius: 6px; padding: 10px 14px;
+  }
+
+  /* ── Guests ── */
+  .guest-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .guest {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; text-decoration: none; color: inherit; display: block;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .guest:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .guest img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #000; }
+  .guest-body { padding: 14px 16px 16px; }
+  .guest-ep { font-family: 'Courier New', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .guest-name { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+  .guest-topic { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); line-height: 1.45; }
+
+  /* ── Partner ── */
+  .partner-card {
+    display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 40px 44px;
+  }
+  .partner-name {
+    font-family: Arial, sans-serif; font-size: clamp(34px, 4vw, 52px); font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); line-height: 1;
+  }
+  .partner-card p { font-family: Arial, sans-serif; font-size: 16px; color: var(--grey); line-height: 1.7; }
+  .partner-card .eyebrow { margin-bottom: 10px; }
+
+  /* ── Partnership ── */
+  .includes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .include {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px;
+  }
+  .include-num {
+    width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--gold);
+    color: var(--gold); font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  .include h3 { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
+  .include p { font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); line-height: 1.6; }
+  .packages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .package {
+    background: #F4F3F0; border: 1px solid #e0dcd4; border-radius: 12px; padding: 28px 26px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25); color: #0A0A0A;
+  }
+  .package.featured { background: #fffdf8; border: 2px solid var(--gold); }
+  .package-name {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #7a5a06; margin-bottom: 8px; font-weight: 700;
+  }
+  .package h3 { font-family: Georgia, serif; font-size: 26px; font-weight: 400; margin-bottom: 14px; }
+  .package ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .package li {
+    font-family: Arial, sans-serif; font-size: 14.5px; color: #3a3a3a;
+    padding-left: 16px; position: relative; line-height: 1.45;
+  }
+  .package li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+  }
+
+  /* ── Contact ── */
+  .contact {
+    text-align: center;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(184,134,11,0.16) 0%, transparent 55%),
+      #0D0D0D;
+    border-top: 1px solid var(--border);
+  }
+  .contact .section-header { margin-left: auto; margin-right: auto; text-align: center; }
+  .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 860px; margin: 0 auto; }
+  .contact-item {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px 20px; text-decoration: none; color: inherit; transition: border-color 0.2s;
+    min-width: 0;
+  }
+  .contact-item:hover { border-color: var(--gold); }
+  .contact-item .k {
+    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  }
+  .contact-item .val { font-family: Arial, sans-serif; font-size: 19px; font-weight: 700; color: var(--white); overflow-wrap: break-word; }
+
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 24px 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  footer p { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey2); }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .guest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .includes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 860px) {
+    nav { padding: 0 16px; }
+    .hero { min-height: 0; padding: 88px 20px 56px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-art { max-width: 360px; order: -1; }
+    .hero-sub { font-size: 16px; }
+    .section { padding: 64px 20px; }
+    .stat-grid, .card-grid, .packages { grid-template-columns: 1fr; }
+    .stat-card { padding: 24px 22px; }
+    .partner-card { grid-template-columns: 1fr; gap: 16px; padding: 28px 22px; }
+    footer { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-card { padding: 18px 14px; }
+    .stat-card .v { font-size: 30px; }
+    .stat-card .l { font-size: 13px; }
+    .includes, .contact-grid { grid-template-columns: 1fr; }
+    .guest-grid { gap: 10px; }
+    .guest-body { padding: 12px 12px 14px; }
+    .guest-name { font-size: 14px; }
+    .guest-topic { font-size: 12px; }
+    .nav-tag { display: none; }
+    .contact-item .val { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Media kit">
+  <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
+  <span class="nav-tag">Media kit · 2026</span>
+</nav>
+
+<main>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Edge Within Podcast with Mat Davenport</div>
+      <h1>Partner with<br><em>Edge Within.</em></h1>
+      <p class="hero-sub">Long-form conversations filmed outdoors in the Northern Rivers, NSW, on personal growth, resilience, breathwork, nature and conscious living.</p>
+      <div class="hero-btns">
+        <a href="#reach" class="btn-primary">See the reach</a>
+        <a href="#contact" class="btn-secondary">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="/logo.jpg" alt="Edge Within with Mat Davenport">
+    </div>
+  </div>
+</section>
+
+<!-- Reach -->
+<section class="section" id="reach">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Reach</div>
+      <h2>Reach, <em>in real numbers.</em></h2>
+    </div>
+
+    <div class="stat-group-label">Instagram · last 90 days</div>
+    <div class="stat-grid">
+      <div class="stat-card featured">
+        <div class="v">3.87M</div>
+        <div class="l">Views</div>
+      </div>
+      <div class="stat-card featured">
+        <div class="v">+11,978</div>
+        <div class="l">New followers</div>
+      </div>
+      <div class="stat-card featured">
+        <div class="v">398K</div>
+        <div class="l">Interactions</div>
+      </div>
+    </div>
+
+    <div class="stat-group-label">The show</div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="v">~22.7K</div>
+        <div class="l">Instagram followers</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">20</div>
+        <div class="l">Episodes</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">300–1,000</div>
+        <div class="l">Listeners per episode</div>
+      </div>
+    </div>
+    <p class="stat-note">Instagram insights, last 90 days (Sept 2026).</p>
+  </div>
+</section>
+
+<!-- Audience -->
+<section class="section alt" id="audience">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">The audience</div>
+      <h2>An audience into <em>growth and wellness.</em></h2>
+      <p>Edge Within reaches people into breathwork, wellness, personal growth, the outdoors and conscious living.</p>
+    </div>
+    <div class="interest-row">
+      <span class="interest">Breathwork</span>
+      <span class="interest">Wellness</span>
+      <span class="interest">Personal growth</span>
+      <span class="interest">Outdoors</span>
+      <span class="interest">Conscious living</span>
+    </div>
+    <div class="card-grid">
+      <div class="info-card">
+        <div class="eyebrow">Why it works</div>
+        <h3>Host-read, in Mat's own words</h3>
+        <p>Ads are read by Mat himself, in his own words, as part of the conversation.</p>
+      </div>
+      <div class="info-card">
+        <div class="eyebrow">Why it works</div>
+        <h3>Breathwork on the show</h3>
+        <p>Mat facilitates breathwork on the show, so wellness is part of the conversation, not an add-on.</p>
+      </div>
+      <div class="info-card">
+        <div class="eyebrow">Why it works</div>
+        <h3>Long-form, filmed outdoors</h3>
+        <p>Full, unhurried conversations filmed outdoors in the Northern Rivers, NSW.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guests -->
+<section class="section" id="guests">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Recent guests</div>
+      <h2>Conversations <em>worth sitting with.</em></h2>
+    </div>
+    <div class="guest-grid">
+      <a class="guest" href="https://www.youtube.com/watch?v=pLAxT0ybFwM" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/pLAxT0ybFwM/maxresdefault.jpg" alt="Heath Jones on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 20</div><div class="guest-name">Heath Jones</div><div class="guest-topic">Comfort Is the Real Enemy</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=8GgBKdvt4Mg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/8GgBKdvt4Mg/maxresdefault.jpg" alt="Roy Grant on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 19</div><div class="guest-name">Roy Grant</div><div class="guest-topic">Patience</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=PRBe3A_O-7w" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/PRBe3A_O-7w/maxresdefault.jpg" alt="Tom Horne on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 16</div><div class="guest-name">Tom Horne</div><div class="guest-topic">Home Birth, Loss, and Learning to Feel Again</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=yHK4G3mEXag" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/yHK4G3mEXag/maxresdefault.jpg" alt="Montana Lower on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 15</div><div class="guest-name">Montana Lower</div><div class="guest-topic">Profit for Purpose, Sacred Anger &amp; the Real Village</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=iLlnffQCrus" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/iLlnffQCrus/maxresdefault.jpg" alt="Billy Otto on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 13</div><div class="guest-name">Billy Otto</div><div class="guest-topic">Healing Will Make You Angry</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=FB4-kKEbkng" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/FB4-kKEbkng/maxresdefault.jpg" alt="Sage Jefferys on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 12</div><div class="guest-name">Sage Jefferys</div><div class="guest-topic">Navigating the Waters Within and Without</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=Bp3g5wArXcw" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/Bp3g5wArXcw/maxresdefault.jpg" alt="Daisy Clementine on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 10</div><div class="guest-name">Daisy Clementine</div><div class="guest-topic">Astrology, Shadow Work &amp; Reconnecting With Your True Self</div></div>
+      </a>
+      <a class="guest" href="https://www.youtube.com/watch?v=J0EinG4smQg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/J0EinG4smQg/maxresdefault.jpg" alt="Connor Weston on Edge Within">
+        <div class="guest-body"><div class="guest-ep">EP 9</div><div class="guest-name">Connor Weston</div><div class="guest-topic">From Addiction &amp; Psychosis to Purpose</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Current partner -->
+<section class="section alt" id="partner">
+  <div class="section-inner">
+    <div class="partner-card">
+      <div>
+        <div class="eyebrow">Current partner</div>
+        <div class="partner-name">SuperFeast</div>
+      </div>
+      <p>Edge Within's current show partner.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership -->
+<section class="section" id="partnership">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">What a partnership includes</div>
+      <h2>Simple, <em>and in the show.</em></h2>
+    </div>
+    <div class="includes">
+      <div class="include">
+        <div class="include-num">1</div>
+        <h3>Product on set</h3>
+        <p>Your product visible on set during filmed episodes.</p>
+      </div>
+      <div class="include">
+        <div class="include-num">2</div>
+        <h3>60-second host-read ad</h3>
+        <p>Read by Mat in his own words, in each episode.</p>
+      </div>
+      <div class="include">
+        <div class="include-num">3</div>
+        <h3>Instagram reels</h3>
+        <p>Featured in reels on @edgewithinpodcast.</p>
+      </div>
+      <div class="include">
+        <div class="include-num">4</div>
+        <h3>Instagram stories</h3>
+        <p>Featured in stories on @edgewithinpodcast.</p>
+      </div>
+    </div>
+    <div class="packages">
+      <div class="package">
+        <div class="package-name">Start here</div>
+        <h3>Trial month</h3>
+        <ul>
+          <li>Product visible on set during filmed episodes</li>
+          <li>60-second host-read ad in each episode</li>
+          <li>Instagram reels and stories</li>
+          <li>One month to see how it fits</li>
+        </ul>
+      </div>
+      <div class="package featured">
+        <div class="package-name">After the trial</div>
+        <h3>Ongoing partner</h3>
+        <ul>
+          <li>Product visible on set during filmed episodes</li>
+          <li>60-second host-read ad in each episode</li>
+          <li>Instagram reels and stories</li>
+          <li>Continues month to month</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's talk.</h2>
+      <p>Mat Davenport, host of Edge Within.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:mat@edgewithinpodcast.com?subject=Sponsorship%20enquiry">
+        <div class="k">Email</div><div class="val">mat@edgewithinpodcast.com</div>
+      </a>
+      <a class="contact-item" href="https://edgewithinpodcast.com/" target="_blank" rel="noopener">
+        <div class="k">Website</div><div class="val">edgewithinpodcast.com</div>
+      </a>
+      <a class="contact-item" href="https://www.youtube.com/@EdgeWithinPodcast" target="_blank" rel="noopener">
+        <div class="k">YouTube</div><div class="val">youtube.com/@EdgeWithinPodcast</div>
+      </a>
+      <a class="contact-item" href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">
+        <div class="k">Instagram</div><div class="val">@edgewithinpodcast</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 Edge Within with Mat Davenport</p>
+  <p>Media kit · Sept 2026</p>
+</footer>
+
+</body>
+</html>
