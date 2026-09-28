@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners &amp; Discounts · Edge Within Podcast with Mat Davenport</title>
+<meta name="description" content="Brands Mat Davenport actually uses, with listener discount codes. Using these links saves you money and supports the Edge Within podcast.">
+<link rel="canonical" href="https://edgewithinpodcast.com/partners/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Edge Within">
+<meta property="og:url" content="https://edgewithinpodcast.com/partners/">
+<meta property="og:title" content="Partners &amp; Discounts · Edge Within">
+<meta property="og:description" content="Brands Mat actually uses, with listener discount codes that also support the show.">
+<meta property="og:image" content="https://edgewithinpodcast.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Edge Within with Mat Davenport">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Partners &amp; Discounts · Edge Within">
+<meta name="twitter:description" content="Brands Mat actually uses, with listener discount codes that also support the show.">
+<meta name="twitter:image" content="https://edgewithinpodcast.com/og-image.jpg">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #0F0A04;
+    --border: #1E1E1E;
+    --orange: #b8860b;
+    --white: #FFFFFF;
+    --grey: #888888;
+    --grey2: #555555;
+    --grey3: #222222;
+    --grey4: #333333;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Type ── */
+  .eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  h1 { font-size: clamp(36px, 6vw, 80px); line-height: 1.0; font-weight: 400; }
+  h2 { font-size: clamp(24px, 4vw, 42px); font-weight: 400; line-height: 1.15; }
+  h3 { font-size: 18px; font-weight: 700; font-family: Arial, sans-serif; }
+  .sans { font-family: Arial, sans-serif; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--grey);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--bg) !important;
+    font-weight: 700 !important;
+    padding: 9px 20px;
+    border-radius: 5px;
+    font-size: 12px !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace !important;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: #9a7009 !important; transform: scale(1.03); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+    z-index: 101;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+    display: block;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(12px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-12px);
+  }
+
+    /* ── Section layout ── */
+  .section { 
+    padding: 96px 32px; 
+    max-width: 1100px; 
+    margin: 0 auto;
+    min-height: auto !important;
+    overflow: visible;
+  }
+  .section-full { 
+    padding: 96px 32px;
+    min-height: auto !important;
+    overflow: visible;
+  }
+  .section-full .inner { max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 48px; }
+  .section-header p { font-size: 16px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 10px; line-height: 1.7; max-width: 560px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 26px;
+    border-radius: 6px;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--orange); color: var(--bg); }
+  .btn-primary:hover { background: #9a7009; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--grey4);
+  }
+  .btn-secondary:hover { border-color: var(--white); }
+
+  /* ── Footer ── */
+  footer {
+    background: #0D0D0D;
+    border-top: 1px solid var(--grey3);
+    padding: 48px 32px 32px;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--grey3);
+    margin-bottom: 28px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--grey);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+  .footer-logo {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+
+  .footer-col h4 {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey2);
+    margin-bottom: 14px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul a {
+    font-size: 13px;
+    color: var(--grey);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: var(--grey2); font-family: Arial, sans-serif; }
+  .footer-bottom a { color: var(--orange); text-decoration: none; }
+
+  /* ── Mobile sticky ── */
+  .mobile-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--orange);
+    color: var(--bg);
+    text-align: center;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 200;
+    border-top: 2px solid #9a7009;
+  }
+
+  /* ── Fade in ── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+  .nav-links a[aria-current="page"] { color: var(--white); }
+
+  /* ── Page hero ── */
+  .page-hero {
+    padding: calc(68px + clamp(56px, 8vw, 96px)) 32px clamp(48px, 6vw, 72px);
+    background:
+      radial-gradient(ellipse 70% 60% at 10% 0%, rgba(184,134,11,0.12) 0%, transparent 55%),
+      #0D0D0D;
+    border-bottom: 1px solid var(--grey3);
+  }
+  .page-hero .inner { max-width: calc(1100px - 64px); margin: 0 auto; }
+  .page-hero h1 { font-size: clamp(38px, 5.5vw, 64px); line-height: 1.05; margin-bottom: 20px; }
+  .page-hero h1 em { color: var(--orange); font-style: normal; }
+  .page-hero p {
+    font-family: Arial, sans-serif; font-size: 17px; color: var(--grey);
+    line-height: 1.75; max-width: 620px; margin-bottom: 12px;
+  }
+  .page-hero p strong { color: var(--white); font-weight: 700; }
+
+  /* ── Partner sections ── */
+  .partner-section + .partner-section { padding-top: 0; }
+  .partner-section .section-header { margin-bottom: 28px; }
+
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+  }
+
+  .partner-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .partner-card:hover { border-color: var(--grey4); transform: translateY(-2px); }
+  .partner-card.featured { background: var(--card2); border: 2px solid var(--orange); }
+  .partner-card.featured:hover { border-color: var(--orange); }
+
+  .partner-logo {
+    background: #0D0D0D;
+    border-bottom: 1px solid var(--border);
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+  .partner-logo img { display: block; width: auto; max-width: 220px; height: 44px; object-fit: contain; }
+  .partner-logo img.logo-superfeast { height: 50px; }
+
+  .partner-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+  .partner-tag {
+    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+  }
+  .partner-body h3 { font-size: 22px; margin-bottom: 10px; letter-spacing: 0.01em; }
+  .partner-desc { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7; margin-bottom: 10px; }
+  .partner-fav { font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); line-height: 1.6; margin-bottom: 4px; }
+  .partner-fav strong { color: var(--white); }
+
+  .code-label {
+    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--grey2); margin: 22px 0 8px;
+  }
+  .code-row { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; }
+  .code-box {
+    flex: 1 1 200px;
+    font-family: 'Courier New', monospace; font-size: 15px; font-weight: 700;
+    letter-spacing: 0.06em; color: var(--white);
+    background: var(--bg); border: 1px dashed var(--grey4); border-radius: 6px;
+    padding: 12px 14px; overflow-wrap: anywhere;
+  }
+  .code-box.pending { color: var(--grey); font-weight: 400; letter-spacing: 0.06em; }
+  .copy-btn {
+    font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); background: transparent;
+    border: 1px solid var(--grey4); border-radius: 6px; padding: 0 16px; min-height: 44px;
+    cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  .copy-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .copy-btn.copied { border-color: var(--orange); color: var(--orange); }
+
+  .partner-cta { margin-top: 22px; }
+  .partner-cta .btn { width: 100%; justify-content: center; }
+
+  /* Sponsor card: side-by-side on wide screens */
+  .sponsor-card { flex-direction: row; }
+  .sponsor-card .partner-logo { flex: 0 0 38%; border-bottom: none; border-right: 1px solid var(--border); min-height: 0; }
+  .sponsor-card .partner-body { padding: 32px 36px; }
+  .sponsor-card .partner-cta .btn { width: auto; }
+
+  .disclosure {
+    max-width: 1100px; margin: 0 auto; padding: 0 32px 96px;
+  }
+  .disclosure p {
+    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey2); line-height: 1.7;
+    border-top: 1px solid var(--grey3); padding-top: 24px; max-width: 720px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding-bottom: 88px; }
+    .mobile-cta { display: block; }
+    .sponsor-card { flex-direction: column; }
+    .sponsor-card .partner-logo { flex: none; border-right: none; border-bottom: 1px solid var(--border); min-height: 150px; }
+    .sponsor-card .partner-body { padding: 26px 26px 28px; }
+    .sponsor-card .partner-cta .btn { width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; height: 60px; }
+    nav .nav-links {
+      display: none; position: absolute; top: 60px; left: 0; right: 0;
+      flex-direction: column; background: rgba(10,10,10,0.98);
+      border-bottom: 1px solid var(--border); padding: 20px 24px; gap: 16px;
+      list-style: none; z-index: 99;
+    }
+    nav .nav-links.active { display: flex; }
+    nav .nav-links a { display: block; padding: 10px 0; }
+    .hamburger { display: flex; }
+    .nav-cta { padding: 8px 14px !important; font-size: 11px !important; width: 100%; text-align: center; }
+    .page-hero { padding: calc(60px + 48px) 20px 44px; }
+    .section { padding: 64px 20px; }
+    .disclosure { padding: 0 20px 64px; }
+  }
+
+  @media (max-width: 600px) {
+    .page-hero { padding: calc(60px + 40px) 16px 40px; }
+    .page-hero p { font-size: 15px; }
+    .section { padding: 48px 16px; }
+    .disclosure { padding: 0 16px 48px; }
+    .partner-grid { grid-template-columns: 1fr; }
+    .partner-body, .sponsor-card .partner-body { padding: 22px 20px 24px; }
+    .partner-logo { padding: 28px 20px; min-height: 130px; }
+    .btn { padding: 12px 20px; font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-in { opacity: 1; transform: none; transition: none; }
+    .btn:hover, .partner-card:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    Edge Within
+  </a>
+  <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="/">The Show</a></li>
+    <li><a href="/production/">Production</a></li>
+    <li><a href="/partners/" aria-current="page">Partners</a></li>
+    <li><a href="mailto:mat@edgewithinpodcast.com?subject=Sponsorship%20enquiry">Sponsor</a></li>
+    <li><a href="mailto:mat@edgewithinpodcast.com?subject=Guest%20enquiry" class="nav-cta">Be a Guest</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<!-- ── Page hero ── -->
+<header class="page-hero">
+  <div class="inner">
+    <div class="eyebrow">Edge Within · Partners</div>
+    <h1>Partners &amp; <em>Discounts</em></h1>
+    <p>These are brands I actually use. No filler, nothing I wouldn&rsquo;t recommend to a mate.</p>
+    <p>The codes below <strong>save you money</strong>, and every purchase through these links helps <strong>support the show</strong>. Thank you.</p>
+  </div>
+</header>
+
+<!-- ── Sponsor ── -->
+<section class="section partner-section fade-in" id="sponsor" aria-labelledby="sponsor-heading">
+  <div class="section-header">
+    <div class="eyebrow">Sponsor</div>
+    <h2 id="sponsor-heading">Proudly supported by</h2>
+  </div>
+
+  <article class="partner-card featured sponsor-card">
+    <div class="partner-logo">
+      <img src="/partners/superfeast-logo.svg" alt="SuperFeast" class="logo-superfeast" width="112" height="26">
+    </div>
+    <div class="partner-body">
+      <div class="partner-tag">Show sponsor</div>
+      <h3>SuperFeast</h3>
+      <p class="partner-desc">Australian medicinal mushrooms and tonic herbs.</p>
+      <p class="partner-fav">My favourites: <strong>Mason&rsquo;s Mushrooms</strong> and <strong>Jing</strong>.</p>
+
+      <div class="code-label">Listener code</div>
+      <!-- TODO: replace with Impact affiliate link + code -->
+      <div class="code-row">
+        <div class="code-box pending">Coming soon</div>
+      </div>
+
+      <div class="partner-cta">
+        <!-- TODO: replace with Impact affiliate link + code -->
+        <a href="https://superfeast.com.au" target="_blank" rel="sponsored noopener" class="btn btn-primary">Shop SuperFeast &rarr;</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ── Affiliates ── -->
+<section class="section partner-section fade-in" id="affiliates" aria-labelledby="affiliates-heading">
+  <div class="section-header">
+    <div class="eyebrow">Affiliates</div>
+    <h2 id="affiliates-heading">Brands I use and trust</h2>
+  </div>
+
+  <div class="partner-grid">
+    <article class="partner-card">
+      <div class="partner-logo">
+        <img src="/partners/inbluem-logo.png" alt="INBLUEM" width="840" height="160">
+      </div>
+      <div class="partner-body">
+        <div class="partner-tag">Byron Bay</div>
+        <h3>INBLUEM</h3>
+        <p class="partner-desc">Natural skincare made in Byron Bay on Bundjalung land, powered by native Australian botanicals.</p>
+
+        <div class="code-label">Discount code</div>
+        <div class="code-row">
+          <div class="code-box" id="code-inbluem">EDGEWITHINPODCAST</div>
+          <button type="button" class="copy-btn" data-copy="EDGEWITHINPODCAST" aria-live="polite" title="Copy INBLUEM discount code">Copy</button>
+        </div>
+
+        <div class="partner-cta">
+          <a href="https://inbluem.com/edgewithinpodcast" target="_blank" rel="sponsored noopener" class="btn btn-primary">Shop INBLUEM &rarr;</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── Disclosure ── -->
+<div class="disclosure">
+  <p>Some of these are affiliate or sponsor links. If you buy through them, Edge Within may earn a commission at no extra cost to you.</p>
+</div>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><span class="footer-logo-dot"></span>Edge Within</div>
+      <p>Real, raw, honest conversations about mindset, identity and growth. Hosted by Mat Davenport.</p>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
+        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" style="font-size:12px;color:var(--orange);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@edgewithinpodcast <span style="color:var(--grey2);font-weight:400;letter-spacing:0.04em;text-transform:none;">(show / clips)</span></a>
+        <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-size:12px;color:var(--grey);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@rawmatdavenport <span style="color:var(--grey2);font-weight:400;letter-spacing:0.04em;text-transform:none;">(host)</span></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="/#show">The Show</a></li>
+        <li><a href="/production/">Production</a></li>
+        <li><a href="/partners/">Partners</a></li>
+        <li><a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs?si=RnJXUleVRgOoAUzwj9iU5g" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://podcasts.apple.com/au/podcast/edge-within-with-mat-davenport/id1870199850" target="_blank" rel="noopener">Apple Podcasts</a></li>
+        <li><a href="https://www.youtube.com/@EdgeWithinPodcast" target="_blank" rel="noopener">YouTube</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Work with Mat</h4>
+      <ul>
+        <li><a href="/production/">Podcast Production</a></li>
+        <li><a href="mailto:mat@edgewithinpodcast.com?subject=Sponsorship%20enquiry">Sponsor the show</a></li>
+        <li><a href="mailto:mat@edgewithinpodcast.com?subject=Guest%20enquiry">Be a guest</a></li>
+        <li><a href="https://buymeacoffee.com/edgewithin" target="_blank" rel="noopener">Support the show</a></li>
+        <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a></li>
+        <li><a href="mailto:mat@edgewithinpodcast.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Edge Within with Mat Davenport. All rights reserved.</p>
+    <p>Built with intention. <a href="https://www.instagram.com/edgewithinpodcast/">@edgewithinpodcast</a></p>
+  </div>
+</footer>
+
+<a href="/#show" class="mobile-cta" id="mobile-cta">Listen now</a>
+
+<script>
+  // Mobile nav hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Copy discount codes
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy;
+      let ok = false;
+      if (navigator.clipboard && window.isSecureContext) {
+        try { await navigator.clipboard.writeText(text); ok = true; } catch (e) { ok = false; }
+      }
+      if (!ok) ok = fallbackCopy(text);
+      btn.textContent = ok ? 'Copied' : 'Copy failed';
+      btn.classList.toggle('copied', ok);
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
