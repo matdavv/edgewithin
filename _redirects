@@ -1,3 +1,5 @@
 /mentorship    /mentorship/index.html    200
 /playbook      /playbook/index.html      200
 /production    /production/index.html    200
+/production/pricing    /production/#pricing    301
+/production/pricing/   /production/#pricing    301

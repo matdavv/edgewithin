@@ -3,14 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edge Within · Podcast Production for Brands</title>
+<title>Podcast Production · Mobile Studio, Northern Rivers · Edge Within</title>
+<!-- Page is intentionally unlisted while you test it with warm contacts.
+     TODO(Mat): when ready to go public, remove this noindex tag AND the
+     "Disallow: /production/" line in /robots.txt (see proposed/robots.diff). -->
 <meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="description" content="Cinematic podcast production for founders and brands. 4K multicam, long-form edit, 5 reels per episode, and platform upload. From A$2,000-2,500 per episode. Northern Rivers base.">
-<meta property="og:title" content="Edge Within Podcast Production">
-<meta property="og:description" content="You host. We produce, cut 5 reels, and ship live. A$2,500 pilot · A$2,200 series · A$2,000 season.">
+<meta name="description" content="Done-for-you video podcast production. I come to you with 4K cameras, lighting and mics, then edit, cut the clips and get it live on Spotify, Apple and YouTube. Pilot episode A$2,500. Based in the Northern Rivers, NSW.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Edge Within">
+<meta property="og:title" content="Podcast production · I bring the studio to you">
+<meta property="og:description" content="4K cameras, lighting and mics on site. Edit, 5 clips, thumbnail and upload done for you. Pilot episode A$2,500. Northern Rivers, NSW.">
+<!-- TODO(Mat): swap for a 1200x630 image (a still from a shoot works best).
+     logo.jpg is 1000x1000, so Facebook/LinkedIn previews crop it. -->
 <meta property="og:image" content="https://edgewithinpodcast.com/logo.jpg">
+<meta property="og:image:alt" content="Edge Within with Mat Davenport">
 <meta property="og:url" content="https://edgewithinpodcast.com/production/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://edgewithinpodcast.com/production/">
+<link rel="icon" href="/logo.jpg">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -22,17 +32,37 @@
     --gold2: #9a7009;
     --white: #FFFFFF;
     --grey: #888888;
-    --grey2: #555555;
+    --grey2: #8a8a8a; /* was #666: 3.4:1 on bg, now 5.7:1 (WCAG AA) */
+    --gold-dark: #7a5a06; /* gold for text on the light cards (5.7:1) */
     --grey3: #222222;
     --grey4: #333333;
   }
-  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
   body { background: var(--bg); color: var(--white); font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; overflow-x: hidden; }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute; left: 12px; top: -48px; z-index: 300;
+    background: var(--gold); color: var(--bg);
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    padding: 10px 14px; border-radius: 6px; text-decoration: none;
+  }
+  .skip-link:focus { top: 12px; }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(10,10,10,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border); height: 56px;
+    background: rgba(10,10,10,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); height: 60px;
     display: flex; align-items: center; padding: 0 28px; justify-content: space-between;
   }
   .nav-logo {
@@ -44,9 +74,11 @@
   .nav-links { display: flex; gap: 22px; align-items: center; list-style: none; }
   .nav-links a {
     font-family: Arial, sans-serif; font-size: 13px; color: var(--grey);
-    text-decoration: none; transition: color 0.2s;
+    text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--white); }
+  .nav-links a { padding: 8px 0; }
+  .nav-links a.nav-cta { padding: 8px 16px; }
   .nav-cta {
     background: var(--gold) !important; color: var(--bg) !important;
     font-family: 'Courier New', monospace !important; font-size: 11px !important;
@@ -61,39 +93,47 @@
   }
 
   .hero {
-    padding: 88px 24px 36px;
+    padding: 108px 24px 48px;
     background:
-      radial-gradient(ellipse 70% 60% at 10% 0%, rgba(184,134,11,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 60% at 10% 0%, rgba(184,134,11,0.14) 0%, transparent 55%),
       #0D0D0D;
     border-bottom: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 24px;
+    gap: 28px;
+  }
+  .hero-copy,
+  .proof-strip,
+  .showreel-wrap,
+  .included-grid > *,
+  .proof-metrics > * {
+    min-width: 0;
   }
   .hero-copy {
-    max-width: 700px;
+    max-width: 720px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
   }
+  .hero-copy > * { min-width: 0; max-width: 100%; }
+  .proof-strip > *,
+  .outcome > * { min-width: 0; }
   .hero-copy h1 {
-    font-size: clamp(32px, 5.5vw, 52px); line-height: 1.05; font-weight: 400;
+    font-size: clamp(36px, 6vw, 58px); line-height: 1.04; font-weight: 400;
   }
   .hero-copy h1 em { color: var(--gold); font-style: italic; font-weight: 400; }
-  .hero-copy h1 .muted { color: var(--grey); font-style: italic; }
   .hero-sub {
-    font-family: Arial, sans-serif; font-size: 15.5px; color: var(--grey);
-    line-height: 1.7; max-width: 540px;
-  }
-  .hero-location {
-    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--grey2);
+    font-family: Arial, sans-serif; font-size: 16px; color: var(--grey);
+    line-height: 1.7; max-width: 540px; width: 100%;
+    overflow-wrap: break-word;
   }
   .hero-btns {
-    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 2px;
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    margin-top: 4px; width: 100%;
   }
   .btn-primary {
     display: inline-block; background: var(--gold); color: var(--bg);
@@ -111,38 +151,94 @@
   }
   .btn-secondary:hover { border-color: var(--gold); color: var(--white); }
   .pill {
-    display: inline-flex; align-items: center; gap: 8px;
+    display: inline-block; max-width: 100%; box-sizing: border-box;
+    text-align: center; line-height: 1.55;
     background: rgba(184,134,11,0.12); border: 1px solid var(--gold);
     color: var(--gold); font-family: 'Courier New', monospace; font-size: 11px;
     font-weight: 700; letter-spacing: 0.08em; padding: 10px 16px;
     border-radius: 6px; text-transform: uppercase;
   }
+  .pill-loc { white-space: nowrap; }
+  .pill-loc::before { content: ' · '; }
 
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+  .showreel-wrap {
     width: 100%;
-    max-width: 760px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--card);
-  }
-  .hero-stat {
-    padding: 18px 12px;
+    max-width: 900px;
     text-align: center;
-    border-right: 1px solid var(--border);
   }
-  .hero-stat:last-child { border-right: none; }
-  .stat-val {
-    font-size: clamp(18px, 2.6vw, 26px); font-weight: 700; color: var(--gold);
-    font-family: Arial, sans-serif; line-height: 1;
+  .showreel {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
   }
-  .stat-val.w { color: var(--white); }
-  .stat-lbl {
-    font-size: 11px; color: var(--grey); font-family: Arial, sans-serif;
-    margin-top: 6px; letter-spacing: 0.02em;
+  .showreel iframe,
+  .showreel video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+  }
+  .showreel-caption {
+    font-family: Arial, sans-serif;
+    font-size: 12.5px;
+    color: var(--grey);
+    margin-top: 12px;
+    line-height: 1.5;
+    padding: 0 8px;
+    overflow-wrap: break-word;
+  }
+
+  .proof-strip {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 22px;
+    align-items: center;
+    text-align: left;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .proof-strip .eyebrow { margin-bottom: 8px; }
+  .proof-strip h2 {
+    font-size: 20px; font-weight: 400; line-height: 1.25; margin-bottom: 10px;
+    overflow-wrap: anywhere;
+  }
+  .proof-strip p {
+    font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); line-height: 1.65;
+    overflow-wrap: break-word;
+  }
+  .proof-strip .partner-line {
+    margin-top: 12px; font-family: 'Courier New', monospace; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey);
+  }
+  .proof-strip .partner-line strong { color: var(--white); letter-spacing: 0.1em; }
+  .proof-strip a {
+    color: var(--gold); text-decoration: none; font-weight: 600;
+    display: inline-block; padding: 8px 0;
+  }
+  .proof-strip a:hover { text-decoration: underline; }
+  .proof-metrics {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .proof-metric {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .proof-metric .v {
+    font-family: Arial, sans-serif; font-size: 20px; font-weight: 700; color: var(--gold); line-height: 1;
+  }
+  .proof-metric .l {
+    font-family: Arial, sans-serif; font-size: 11px; color: var(--grey); margin-top: 6px;
   }
 
   .section {
@@ -154,8 +250,9 @@
     background: #0D0D0D; border-top: 1px solid var(--border);
   }
   .section-inner { max-width: 1080px; margin: 0 auto; }
-  .section-header { max-width: 640px; margin-bottom: 36px; }
+  .section-header { max-width: 640px; margin-bottom: 32px; }
   .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
+  .section-header .eyebrow { margin-bottom: 12px; }
   .section-header h2 {
     font-size: clamp(24px, 3.2vw, 36px); font-weight: 400; line-height: 1.15; margin-bottom: 12px;
   }
@@ -164,103 +261,43 @@
     font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7;
   }
 
-  /* Proof strip */
-  .proof-strip {
-    width: 100%;
-    max-width: 900px;
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 20px;
-    align-items: center;
-    text-align: left;
+  .outcome {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 24px;
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s;
   }
-  .proof-strip .eyebrow { margin-bottom: 8px; }
-  .proof-strip h3 {
-    font-size: 20px; font-weight: 400; line-height: 1.25; margin-bottom: 10px;
+  .outcome:hover { border-color: #2a2a2a; }
+  .outcome h3 {
+    font-family: Arial, sans-serif; font-size: 16px; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
   }
-  .proof-strip p {
-    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey); line-height: 1.65;
+  .outcome p {
+    font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); line-height: 1.65;
+    flex: 1; overflow-wrap: break-word;
   }
-  .proof-strip a { color: var(--gold); text-decoration: none; font-weight: 600; }
-  .proof-strip a:hover { text-decoration: underline; }
-  .proof-metrics {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  }
-  .proof-metric {
+  .outcome.highlight {
+    border-color: var(--gold);
     background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 12px;
-    text-align: center;
   }
-  .proof-metric .v {
-    font-family: Arial, sans-serif; font-size: 20px; font-weight: 700; color: var(--gold); line-height: 1;
-  }
-  .proof-metric .l {
-    font-family: Arial, sans-serif; font-size: 11px; color: var(--grey); margin-top: 5px;
-  }
-
-  .story {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .story .eyebrow { margin-bottom: 14px; }
-  .story h2 {
-    font-size: clamp(24px, 3.2vw, 36px); font-weight: 400;
-    line-height: 1.15; margin-bottom: 20px;
-  }
-  .story p {
-    font-family: Arial, sans-serif; font-size: 15.5px; color: var(--grey);
-    line-height: 1.75; margin-bottom: 14px;
-  }
-  .story p.strong { color: var(--white); font-size: 16px; }
-
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 36px;
-  }
-  .audience-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 22px 20px;
-    text-align: left;
-  }
-  .audience-card h3 {
-    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
-    color: var(--white); margin-bottom: 8px;
-  }
-  .audience-card p {
-    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); line-height: 1.55;
-    margin: 0;
-  }
-
-  .positioning-line {
-    margin-top: 36px;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+  .outcome.highlight:hover { border-color: var(--gold); }
+  .card-link {
+    display: inline-block;
+    margin-top: 18px;
     font-family: Arial, sans-serif;
-    font-size: 15.5px;
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.55;
-    padding: 18px 20px;
-    background: var(--card2);
-    border: 1px solid var(--gold);
-    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
   }
+  .card-link:hover { text-decoration: underline; }
 
   .phase-strip {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-    margin: 0 auto 40px; max-width: 920px; position: relative;
+    margin: 0 auto 32px; max-width: 920px; position: relative;
   }
   .phase-strip::before {
     content: ''; position: absolute; top: 19px; left: 12.5%; right: 12.5%;
@@ -274,110 +311,53 @@
     display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
   }
   .phase-name { font-family: Arial, sans-serif; font-size: 13.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-  .phase-desc { font-family: Arial, sans-serif; font-size: 11.5px; color: var(--grey2); line-height: 1.5; }
+  .phase-desc { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey); line-height: 1.5; }
 
-  .feature-cards {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;
-  }
-  .feature-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 20px;
-  }
-  .feature-card.wide { grid-column: 1 / -1; }
-  .feature-card.highlight {
-    border-color: var(--gold);
-    background: var(--card2);
-  }
-  .feature-label {
-    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
-  }
-  .feature-title {
-    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
-    color: var(--white); margin-bottom: 8px; line-height: 1.3;
-  }
-  .feature-list {
-    list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 10px;
-  }
-  .feature-list li {
-    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey);
-    padding-left: 16px; position: relative; line-height: 1.45;
-  }
-  .feature-list li::before {
-    content: ''; position: absolute; left: 0; top: 7px;
-    width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
-  }
-
-  /* Deliverables checklist */
-  .deliver-grid {
+  .included-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 12px;
-    margin-top: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
-  .deliver-box {
+  .included-box {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 22px 20px;
+    padding: 24px 22px;
   }
-  .deliver-box h3 {
+  .included-box-single {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .included-box h3,
+  .included-box h4 {
     font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
     color: var(--white); margin-bottom: 14px;
   }
-  .check-list {
-    list-style: none; display: flex; flex-direction: column; gap: 10px;
-  }
-  .check-list li {
+  .included-box ul { list-style: none; }
+  .included-box li {
     font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey);
-    padding-left: 28px; position: relative; line-height: 1.4;
+    padding-left: 18px; position: relative; line-height: 1.5; margin-bottom: 8px;
   }
-  .check-list li::before {
-    content: '✓';
-    position: absolute; left: 0; top: 0;
-    width: 18px; height: 18px; border-radius: 4px;
-    background: rgba(184,134,11,0.15); color: var(--gold);
-    font-size: 11px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    line-height: 18px; text-align: center;
+  .included-box li:last-child { margin-bottom: 0; }
+  .included-box li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 7px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+  }
+  .included-note {
+    margin-top: 14px;
+    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); line-height: 1.55;
   }
 
-  .turnaround {
+  .after-split {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 12px;
-  }
-  .turn-item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 14px;
-  }
-  .turn-tag {
-    display: inline-block;
-    font-family: 'Courier New', monospace; font-size: 9px; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); background: var(--grey3);
-    padding: 4px 8px; border-radius: 4px; margin-bottom: 10px;
-  }
-  .turn-item p {
-    font-family: Arial, sans-serif; font-size: 12.5px; color: var(--grey); line-height: 1.45;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 
-  .outcome-callout {
-    background: var(--card2); border: 1px solid var(--gold);
-    border-radius: 10px; padding: 24px 28px; text-align: center; margin-top: 24px;
-  }
-  .outcome-callout h3 {
-    font-family: Arial, sans-serif; font-size: 16px; color: var(--gold); margin-bottom: 8px;
-  }
-  .outcome-callout p {
-    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey);
-    line-height: 1.6; max-width: 540px; margin: 0 auto;
-  }
-
-  /* Pricing */
   #pricing.section-full {
     background:
       radial-gradient(ellipse 80% 70% at 15% 20%, rgba(184,134,11,0.18) 0%, transparent 55%),
@@ -390,6 +370,7 @@
   .pricing-grid {
     display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 16px;
     max-width: 1000px; margin: 0 auto 20px; align-items: stretch;
+    padding-top: 14px;
   }
   .tier {
     background: #F4F3F0; border: 1px solid #e0dcd4;
@@ -414,7 +395,7 @@
     font-size: 32px; font-weight: 700; color: #0A0A0A;
     font-family: Arial, sans-serif; line-height: 1; margin-bottom: 4px;
   }
-  .tier.featured .tier-price { color: var(--gold); }
+  .tier.featured .tier-price { color: var(--gold-dark); }
   .tier-period {
     font-family: Arial, sans-serif; font-size: 12.5px; color: #666; margin-bottom: 6px;
   }
@@ -436,6 +417,7 @@
     width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
   }
   .tier .btn-primary { text-align: center; width: 100%; }
+
   .value-note {
     text-align: center; font-family: Arial, sans-serif; font-size: 13.5px;
     color: #b0b0b0; max-width: 640px; margin: 0 auto 12px; line-height: 1.65;
@@ -445,14 +427,9 @@
     border-radius: 8px;
   }
   .value-note strong { color: var(--gold); }
-  .price-footnote {
-    text-align: center; font-family: Arial, sans-serif; font-size: 13px;
-    color: #888; max-width: 560px; margin: 0 auto; line-height: 1.6;
-  }
-  .price-footnote a { color: var(--gold); font-weight: 700; text-decoration: none; }
-  .price-footnote a:hover { text-decoration: underline; }
+  .value-note a { color: var(--gold); font-weight: 700; text-decoration: none; }
+  .value-note a:hover { text-decoration: underline; }
 
-  /* Add-ons */
   .addons-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -473,44 +450,6 @@
     font-family: Arial, sans-serif; font-size: 12px; color: #999; line-height: 1.45; margin: 0;
   }
 
-  /* Boundaries */
-  .split-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .bound-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 22px;
-  }
-  .bound-card h3 {
-    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
-    color: var(--white); margin-bottom: 14px;
-  }
-  .bound-list {
-    list-style: none; display: flex; flex-direction: column; gap: 10px;
-  }
-  .bound-list li {
-    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey);
-    padding-left: 22px; position: relative; line-height: 1.45;
-  }
-  .bound-list.yes li::before {
-    content: ''; position: absolute; left: 0; top: 7px;
-    width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
-  }
-  .bound-list.no li::before {
-    content: '×'; position: absolute; left: 0; top: 0;
-    color: var(--grey2); font-size: 14px; line-height: 1.3;
-  }
-  .soft-note {
-    margin-top: 16px;
-    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey2);
-    line-height: 1.65; text-align: center; max-width: 640px; margin-left: auto; margin-right: auto;
-  }
-
-  /* Form */
   .form-section {
     background:
       radial-gradient(ellipse 70% 60% at 50% 0%, rgba(184,134,11,0.16) 0%, transparent 55%),
@@ -549,7 +488,8 @@
   input, select, textarea {
     background: #fff; border: 1px solid #d4d0c8; border-radius: 8px;
     padding: 12px 14px; color: #0A0A0A; font-family: Arial, sans-serif;
-    font-size: 14px; outline: none; width: 100%; appearance: none;
+    font-size: 16px; outline: none; width: 100%;
+    appearance: none; -webkit-appearance: none;
   }
   input:focus, select:focus, textarea:focus {
     border-color: var(--gold);
@@ -562,7 +502,7 @@
     background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 32px;
   }
   select option { background: #fff; color: #0A0A0A; }
-  textarea { resize: vertical; min-height: 88px; }
+  textarea { resize: vertical; min-height: 88px; font-size: 16px; }
   .submit-btn {
     width: 100%; background: var(--gold); color: var(--bg);
     font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
@@ -575,7 +515,7 @@
     text-align: center; font-family: Arial, sans-serif; font-size: 13px;
     color: #666; margin-top: 14px;
   }
-  .form-dm a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .form-dm a { color: var(--gold-dark); text-decoration: underline; font-weight: 600; }
   .form-dm a:hover { text-decoration: underline; }
   .success-msg {
     display: none; background: #eef8ef; border: 1px solid #22C55E;
@@ -602,6 +542,8 @@
     color: var(--grey); line-height: 1.7; padding: 0 0 18px;
   }
   .faq-item.open .faq-a { display: block; }
+  .faq-a a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .faq-a a:hover { text-decoration: underline; }
 
   footer {
     background: var(--bg); border-top: 1px solid var(--border);
@@ -609,7 +551,8 @@
     align-items: center; flex-wrap: wrap; gap: 12px;
   }
   footer p { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey2); }
-  footer a { color: var(--gold); text-decoration: none; }
+  footer a { color: var(--gold); text-decoration: none; display: inline-block; padding: 6px 0; }
+  footer a:hover { text-decoration: underline; }
 
   .mobile-cta {
     display: none; position: fixed; bottom: 0; left: 0; right: 0;
@@ -618,279 +561,379 @@
     font-weight: 700; text-decoration: none; z-index: 200;
   }
 
-  @media (max-width: 900px) {
-    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-    .audience-grid { grid-template-columns: 1fr; }
-    .split-grid { grid-template-columns: 1fr; }
-    .turnaround { grid-template-columns: 1fr 1fr; }
-    .proof-strip { grid-template-columns: 1fr; text-align: center; }
-    .proof-strip .eyebrow { display: inline-block; }
-    .deliver-grid { grid-template-columns: 1fr; }
-    .addons-grid { grid-template-columns: 1fr 1fr; }
+
+  /* ---- Added in proposed version ---- */
+  .audience-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
   }
-  @media (max-width: 860px) {
-    .hero { padding: 80px 20px 28px; gap: 20px; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-    .hero-stat { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .hero-stat:nth-child(2n) { border-right: none; }
-    .hero-stat:nth-last-child(-n+2) { border-bottom: none; }
-    .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
-    .phase-strip::before { display: none; }
-    .feature-cards { grid-template-columns: 1fr; }
-    .feature-card.wide { grid-column: 1; }
+  .audience-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 22px 20px; text-align: left;
+  }
+  .audience-card h3 {
+    font-family: Arial, sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .audience-card p {
+    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey); line-height: 1.55;
+  }
+
+  .client-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch;
+  }
+  .client-grid--single { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+  .todo-placeholder[hidden] { display: none !important; }
+  .client-card {
+    background: var(--card2); border: 1px solid var(--gold);
+    border-radius: 12px; padding: 26px 24px;
+  }
+  .client-card h3 {
+    font-family: Arial, sans-serif; font-size: 16px; font-weight: 700;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .client-card .client-meta {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+  }
+  .client-card ul { list-style: none; }
+  .client-card li {
+    font-family: Arial, sans-serif; font-size: 13.5px; color: var(--grey);
+    padding-left: 18px; position: relative; line-height: 1.5; margin-bottom: 7px;
+  }
+  .client-card li::before {
+    content: ''; position: absolute; left: 0; top: 7px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+  }
+  /* Placeholder styling: deliberately loud so it can't ship by accident. */
+  .todo-placeholder {
+    border: 2px dashed #d97706 !important; background: rgba(217,119,6,0.08) !important;
+    border-radius: 12px; padding: 24px; color: #fbbf24;
+    font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6;
+  }
+  .todo-placeholder .todo-tag {
+    display: inline-block; background: #d97706; color: #0A0A0A;
+    font-family: 'Courier New', monospace; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px;
+  }
+  blockquote.testimonial {
+    font-size: 18px; line-height: 1.5; color: var(--white); font-style: italic;
+  }
+  .testimonial-cite {
+    display: block; margin-top: 12px; font-family: Arial, sans-serif; font-style: normal;
+    font-size: 13px; color: var(--gold);
+  }
+
+  .book-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    background: #fffdf8; border: 2px solid var(--gold); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 26px;
+  }
+  .book-card h3 { font-family: Arial, sans-serif; font-size: 16px; color: #0A0A0A; margin-bottom: 4px; }
+  .book-card p { font-family: Arial, sans-serif; font-size: 13.5px; color: #555; line-height: 1.5; }
+  .book-card .btn-primary { white-space: nowrap; }
+  .form-divider {
+    text-align: center; font-family: 'Courier New', monospace; font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #555; margin: 0 0 18px;
+  }
+  .form-error {
+    display: none; margin-top: 12px; padding: 12px 14px; border-radius: 8px;
+    background: #fdecec; border: 1px solid #dc2626; color: #7f1d1d;
+    font-family: Arial, sans-serif; font-size: 14px; text-align: center;
+  }
+  .form-error a { color: #7f1d1d; font-weight: 700; }
+  .hp-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .price-note {
+    text-align: center; font-family: Arial, sans-serif; font-size: 12.5px; color: #9a9a9a;
+    margin: 0 auto 14px; max-width: 640px;
+  }
+  .showreel-caption a { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .audience-grid { grid-template-columns: 1fr; }
+    .client-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .book-card { flex-direction: column; text-align: center; }
+    .book-card .btn-primary { width: 100%; }
+  }
+
+  @media (max-width: 900px) {
+    .included-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
     .form-grid { grid-template-columns: 1fr; }
     .field.full { grid-column: 1; }
+    .proof-strip { grid-template-columns: 1fr; text-align: center; }
+    .addons-grid { grid-template-columns: 1fr 1fr; }
+    .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .phase-strip::before { display: none; }
+  }
+  @media (max-width: 860px) {
+    .hero { padding: 92px 20px 88px; gap: 22px; }
     nav .nav-links a:not(.nav-cta) { display: none; }
     .mobile-cta { display: block; }
-    footer { flex-direction: column; text-align: center; padding-bottom: 72px; }
+    footer { flex-direction: column; text-align: center; padding-bottom: 80px; }
+    .form-section { padding-bottom: 96px; }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+    .pill { display: block; width: 100%; font-size: 10px; letter-spacing: 0.04em; padding: 10px 12px; }
+    .pill-loc { display: block; margin-top: 2px; }
+    .pill-loc::before { content: none; }
+    .proof-strip { padding: 20px 16px; width: 100%; }
+    .proof-strip h2 { font-size: 17px; }
+    .proof-metric .l { font-size: 10px; }
+    .outcome p { overflow-wrap: break-word; }
+    .section, .section-full { padding-left: 20px; padding-right: 20px; }
   }
   @media (max-width: 480px) {
     .addons-grid { grid-template-columns: 1fr; }
+    .proof-metrics { grid-template-columns: 1fr 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn-primary:hover, .submit-btn:hover { transform: none; }
   }
 </style>
 </head>
 <body>
 
-<nav>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav aria-label="Main">
   <a href="/" class="nav-logo"><span class="nav-dot"></span>Edge Within</a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/get-playbook/">Playbook</a></li>
-    <li><a href="#included">What's included</a></li>
+    <li><a href="/">The Podcast</a></li>
     <li><a href="#pricing">Packages</a></li>
-    <li><a href="#inquire" class="nav-cta">Inquire</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#book" class="nav-cta" data-package="call">Book a call</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<main id="main">
+
+<section class="hero" id="top">
   <div class="hero-copy">
-    <div class="eyebrow">Edge Within Productions</div>
+    <div class="eyebrow">Edge Within · Podcast production</div>
     <h1>
-      You host.<br>
-      <em>We produce, cut, and ship.</em>
+      Mobile studio.<br>
+      <em>I come to you.</em>
     </h1>
     <p class="hero-sub">
-      Cinematic podcast production for founders, personal brands, and businesses. Long-form episode, 5 platform-ready reels, thumbnail, and upload. You bring the conversation. We handle the rest.
+      Done-for-you video podcasts for founders, personal brands and mission-led businesses.
+      4K camera, lighting, and mics on site. I run the setup. You show up and talk.
+      I edit, cut the clips, and get it live.
     </p>
     <div class="hero-btns">
-      <a href="#inquire" class="btn-primary">Start a Conversation</a>
-      <a href="#pricing" class="btn-secondary">View Packages</a>
+      <a href="#book" class="btn-primary" data-package="call">Book a call</a>
+      <a href="#pricing" class="btn-secondary">See packages</a>
     </div>
-    <div class="pill">A$2,500 pilot · A$2,000 / ep on a season</div>
-    <p class="hero-location">Base · Northern Rivers, NSW · Travel scoped per shoot</p>
+    <div class="pill">A$2,500 pilot · A$2,000/ep season<span class="pill-loc">Northern Rivers</span></div>
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="stat-val">4K</div>
-      <div class="stat-lbl">Cinematic multicam</div>
+  <div class="showreel-wrap">
+    <div class="showreel">
+      <iframe
+        title="Inbluem episode produced for Montana Lower by Edge Within"
+        src="https://www.youtube-nocookie.com/embed/vvOc_aE6_3o?start=4&rel=0&modestbranding=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"></iframe>
     </div>
-    <div class="hero-stat">
-      <div class="stat-val">5</div>
-      <div class="stat-lbl">Reels per episode</div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-val w">Live</div>
-      <div class="stat-lbl">Spotify · YT · Apple</div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-val w">A$2k-2.5k</div>
-      <div class="stat-lbl">Per episode</div>
-    </div>
+    <!-- Montana Lower's Inbluem episode (youtube.com/watch?v=vvOc_aE6_3o), starts at 0:04. -->
+    <p class="showreel-caption">Produced for Montana Lower (Inbluem), my first production client.</p>
   </div>
 
-  <!-- Proof -->
   <div class="proof-strip">
     <div>
       <div class="eyebrow">Proof of work</div>
-      <h3>Same system behind Edge Within.</h3>
+      <h2>Same system behind Edge Within.</h2>
       <p>
-        Built in public since Jan 2026. Zero paid ads. The production model we run on the show is the one we run for client brands: consistent capture, sharp reels, publish-ready delivery.
-        <br><br>
-        <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener">Listen on Spotify →</a>
+        I've built my own show in public since January 2026, with zero paid ads.
+        The production I run for the podcast is the production I run for clients.
+      </p>
+      <p class="partner-line">Show sponsor: <strong>SuperFeast</strong></p>
+      <p>
+        <a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs" target="_blank" rel="noopener">Spotify →</a>
         &nbsp;·&nbsp;
         <a href="https://www.youtube.com/@EdgeWithinPodcast" target="_blank" rel="noopener">YouTube →</a>
         &nbsp;·&nbsp;
-        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">@edgewithinpodcast →</a>
+        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram →</a>
       </p>
     </div>
+    <!-- Figures confirmed by Mat, 28 Sep 2026:
+         - Instagram, last 90 days (Instagram's own 90-day metrics): 3.87M views,
+           +11,978 followers, 398K interactions. Shown rounded DOWN: 3.8M+, +11.9K, 398K.
+         - Totals: 22.7K Instagram followers, 20 episodes, $0 spent on ads.
+         Same figures are used on home, mentorship, get-playbook, growth and playbook pages. -->
     <div class="proof-metrics">
       <div class="proof-metric">
-        <div class="v">2M</div>
-        <div class="l">Monthly views</div>
+        <div class="v">3.8M+</div>
+        <div class="l">Instagram views, last 90 days</div>
       </div>
       <div class="proof-metric">
-        <div class="v">15.2K</div>
-        <div class="l">Followers</div>
+        <div class="v">22.7K</div>
+        <div class="l">Instagram followers</div>
+      </div>
+      <div class="proof-metric">
+        <div class="v">+11.9K</div>
+        <div class="l">New followers, last 90 days</div>
+      </div>
+      <div class="proof-metric">
+        <div class="v">398K</div>
+        <div class="l">Interactions, last 90 days</div>
       </div>
       <div class="proof-metric">
         <div class="v">$0</div>
         <div class="l">Spent on ads</div>
       </div>
       <div class="proof-metric">
-        <div class="v">17</div>
+        <div class="v">20</div>
         <div class="l">Episodes shipped</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHO / WHY -->
-<section class="section-full">
-  <div class="section-inner story">
+<section class="section" id="who">
+  <div class="section-header center">
     <div class="eyebrow">Who this is for</div>
-    <h2>
-      A real show without<br>another content chore.
-    </h2>
-    <p class="strong">
-      Most founders know a podcast would work for their brand. Few have the bandwidth to produce one at a standard they are proud of.
-    </p>
-    <p>
-      This is the full production layer: outdoor cinematic recording, multicam edit, short-form reels, thumbnails, metadata, and platform upload. Consistent look and feel without managing a crew, an editor, or five apps.
-    </p>
-
-    <div class="audience-grid">
-      <div class="audience-card">
-        <h3>Founders &amp; CEOs</h3>
-        <p>Build authority with deep conversations that show how you think, not just what you sell.</p>
-      </div>
-      <div class="audience-card">
-        <h3>Personal brands</h3>
-        <p>Stay present on Reels, Shorts, and long-form without burning out on production logistics.</p>
-      </div>
-      <div class="audience-card">
-        <h3>Mission-led businesses</h3>
-        <p>Document culture, community, and story in a format that compounds over a run, not a one-off shoot.</p>
-      </div>
+    <h2>A real show without<br>another content chore.</h2>
+    <p>You know a podcast would work for your brand. You don't have the time to produce one at a standard you're proud of. I handle the production so you can focus on the conversation.</p>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <h3>Founders &amp; CEOs</h3>
+      <p>Build authority with deep conversations that show how you think, not just what you sell.</p>
     </div>
-
-    <p class="positioning-line">
-      One partner from set day to live. Not a DIY stack. Not three freelancers to project-manage.
-    </p>
+    <div class="audience-card">
+      <h3>Personal brands</h3>
+      <p>Stay present on Reels, Shorts, and long-form without burning out on production logistics.</p>
+    </div>
+    <div class="audience-card">
+      <h3>Mission-led businesses</h3>
+      <p>Document culture, community, and story in a format that compounds over a run, not a one-off shoot.</p>
+    </div>
   </div>
 </section>
 
-<!-- INCLUDED -->
 <section class="section" id="included">
   <div class="section-header center">
-    <div class="eyebrow" style="margin-bottom:12px;">What's included</div>
-    <h2>From set day<br><em>to live on platforms.</em></h2>
-    <p style="margin-top:12px;">
-      One production partnership. You show up ready for the conversation. We own technical and creative delivery.
-    </p>
+    <div class="eyebrow">On the day</div>
+    <h2>How a shoot works.</h2>
+    <p>One person, one kit, one standard.</p>
   </div>
 
   <div class="phase-strip">
     <div class="phase-step">
       <div class="phase-num">1</div>
-      <div class="phase-name">Pre-produce</div>
-      <div class="phase-desc">Prep, prompts, location</div>
+      <div class="phase-name">Prep</div>
+      <div class="phase-desc">Prompts and location</div>
     </div>
     <div class="phase-step">
       <div class="phase-num">2</div>
       <div class="phase-name">Record</div>
-      <div class="phase-desc">4K, light, premium audio</div>
+      <div class="phase-desc">4K, light, premium mics</div>
     </div>
     <div class="phase-step">
       <div class="phase-num">3</div>
-      <div class="phase-name">Post</div>
-      <div class="phase-desc">Edit, grade, 5 reels, thumb</div>
+      <div class="phase-name">Edit</div>
+      <div class="phase-desc">Grade, clips, titles</div>
     </div>
     <div class="phase-step">
       <div class="phase-num">4</div>
-      <div class="phase-name">Publish</div>
-      <div class="phase-desc">Upload + metadata + live</div>
+      <div class="phase-name">Deliver</div>
+      <div class="phase-desc">Upload and go live</div>
     </div>
   </div>
 
-  <div class="feature-cards">
-    <div class="feature-card">
-      <div class="feature-label">01 · Recording &amp; pre-production</div>
-      <div class="feature-title">Show up ready. We run the set.</div>
-      <ul class="feature-list">
-        <li>Full 4K cinematic camera setup, lighting, and premium audio</li>
-        <li>Shaded, nature-based outdoor settings (sourced together)</li>
-        <li>Guest prep support and prompt guidance</li>
-        <li>Optional breathwork before record if you want it (no extra charge)</li>
-      </ul>
-    </div>
-    <div class="feature-card highlight">
-      <div class="feature-label">02 · Post · The growth engine</div>
-      <div class="feature-title">Long-form edit + 5 reels that can grow the show.</div>
-      <ul class="feature-list">
-        <li>1 long-form episode with multicam switching and colour grading</li>
-        <li>Two rounds of adjustments on the long-form</li>
-        <li>5 vertical reels for Instagram, TikTok, and YouTube Shorts</li>
-        <li>Hooks, captions, title cards, and end screens (often a paid add-on elsewhere)</li>
-        <li>Custom thumbnail per episode</li>
-        <li>Up to two revision rounds per reel</li>
-      </ul>
-    </div>
-    <div class="feature-card">
-      <div class="feature-label">03 · Distribution</div>
-      <div class="feature-title">Live once you approve.</div>
-      <ul class="feature-list">
-        <li>Full upload to Spotify, YouTube, and Apple Podcasts</li>
-        <li>Titles, descriptions, chapters, timestamps, SEO-minded metadata</li>
-        <li>Final files delivered with the reel package</li>
-      </ul>
-    </div>
-    <div class="feature-card">
-      <div class="feature-label">04 · Partnership</div>
-      <div class="feature-title">Built for how you actually release.</div>
-      <ul class="feature-list">
-        <li>Launch support: recommended reels plus light posting guidance</li>
-        <li>Producer credit for Edge Within on the show</li>
-        <li>You retain full ownership of the final content</li>
-        <li>Per-episode invoicing and clear communication throughout</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="deliver-grid">
-    <div class="deliver-box">
-      <h3>What you walk away with (per episode)</h3>
-      <ul class="check-list">
-        <li>Graded multicam long-form master</li>
-        <li>5 vertical reels with hooks + captions</li>
-        <li>Custom episode thumbnail</li>
-        <li>Episode live on Spotify, YouTube, Apple</li>
-        <li>Files ready for your team or socials</li>
-      </ul>
-    </div>
-    <div class="deliver-box">
-      <h3>Typical turnaround</h3>
-      <div class="turnaround" style="grid-template-columns:1fr; gap:10px; margin-top:0;">
-        <div class="turn-item" style="padding:12px 0; border:none; background:transparent;">
-          <div class="turn-tag">Long-form</div>
-          <p>Review cut within 7-10 business days after recording</p>
-        </div>
-        <div class="turn-item" style="padding:12px 0; border:none; background:transparent;">
-          <div class="turn-tag">Reels</div>
-          <p>First drafts of 5 reels within 5 business days after long-form approval</p>
-        </div>
-        <div class="turn-item" style="padding:12px 0; border:none; background:transparent;">
-          <div class="turn-tag">Revisions</div>
-          <p>2-3 business days per round · your release rhythm, batch-record when it helps</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="outcome-callout">
-    <h3>A live episode + a week of social content.</h3>
-    <p>No juggling freelancers. No half-finished uploads. One partner, one standard, from record day through publish.</p>
+  <div class="included-box included-box-single">
+    <h3>On site</h3>
+    <ul>
+      <li>Full 4K setup, lighting, premium mics. Same kit I use on Edge Within</li>
+      <li>Your place or a site we agree. Indoor or shaded outdoor</li>
+      <li>One person running the day. I interview you with prepared questions, or you host and I facilitate</li>
+      <li>Optional breathwork. Travel scoped per shoot</li>
+    </ul>
   </div>
 </section>
 
-<!-- PRICING -->
+<section class="section">
+  <div class="section-header center">
+    <div class="eyebrow">After the shoot</div>
+    <h2>What you get, every episode.</h2>
+  </div>
+
+  <div class="included-box included-box-single">
+      <h3>Every episode includes</h3>
+      <ul>
+        <li>Long-form edit with colour grading (multicam)</li>
+        <li>5 short-form clips + custom thumbnail</li>
+        <li>Two rounds of revisions</li>
+        <li>Titles, descriptions, chapters</li>
+        <li>Upload to Spotify, Apple Podcasts, and YouTube once you approve</li>
+        <!-- TODO(Mat): confirm show set-up is included in every package (you did it for your first client). -->
+        <li>New show? I set up your Spotify and Apple Podcasts listings</li>
+        <li>You own the content</li>
+      </ul>
+      <p class="included-note">Typical turnaround: long-form review in 7-10 business days, clips within 5 business days of approval.</p>
+  </div>
+  <p class="included-note" style="text-align:center; max-width:620px; margin:20px auto 0;">
+    Not in a podcast package: ongoing social, unlimited revisions, travel without a quote.
+  </p>
+</section>
+
+<section class="section" id="clients">
+  <div class="section-header center">
+    <div class="eyebrow">Client work</div>
+    <h2>First client, start to finish.</h2>
+  </div>
+  <!-- TODO(Mat): when Montana's quote arrives, remove the "client-grid--single" class below
+       AND the "hidden" attribute on the testimonial box further down (and paste her words in). -->
+  <div class="client-grid client-grid--single">
+    <!-- Montana has agreed to be named and to give a testimonial (confirmed by Mat, Sep 2026). -->
+    <div class="client-card">
+      <h3>Montana Lower</h3>
+      <div class="client-meta">Founding client · Inbluem</div>
+      <ul>
+        <li>Travel to location and outdoor shoot</li>
+        <li>Optional breathwork and guidance before recording</li>
+        <li>Long-form edit, 5-6 clips, custom thumbnail</li>
+        <li>Titles, descriptions, and chapters</li>
+        <li>Show set up on Spotify and Apple Podcasts</li>
+      </ul>
+      <!-- Her Inbluem episode is the video embedded at the top of the page.
+           Optional: add a link to her show here, e.g. <a class="card-link" href="SHOW-URL">Listen to Inbluem →</a> -->
+    </div>
+
+    <!-- ================= TESTIMONIAL SLOT: Montana Lower, Inbluem (ready to fill) =================
+         TODO(Mat): Montana has agreed to give a testimonial. When it arrives:
+           1. Paste her EXACT words where it says PASTE_MONTANA_QUOTE_HERE (no edits beyond typos).
+           2. Uncomment the <figure> block below (move it out of this comment).
+           3. Delete the hidden placeholder <div class="todo-placeholder"> further down.
+           4. Remove the "client-grid--single" class from the client-grid div above.
+         No quote has been written for her. Do not publish until her real words are in.
+
+    <figure class="client-card">
+      <blockquote class="testimonial">"PASTE_MONTANA_QUOTE_HERE"</blockquote>
+      <figcaption class="testimonial-cite">Montana Lower, Inbluem</figcaption>
+    </figure>
+
+         ================= END TESTIMONIAL SLOT ================= -->
+    <!-- TODO(Mat): HIDDEN from visitors until Montana's quote arrives (keep the "hidden" attribute).
+         Preferred: use the TESTIMONIAL SLOT above and delete this box. -->
+    <div class="todo-placeholder" role="note" hidden>
+      <span class="todo-tag">PLACEHOLDER · TODO</span>
+      <p><strong>Montana Lower (Inbluem) testimonial goes here.</strong></p>
+      <p>Montana has agreed to give a testimonial. Paste her exact words here (2-3 sentences on what it was like and what she got out of it). No quote has been written for her.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section-full" id="pricing">
   <div class="section-inner">
     <div class="section-header center">
-      <div class="eyebrow" style="margin-bottom:12px;">Packages</div>
-      <h2>One episode, three, or a full run.</h2>
-      <p style="margin-top:10px;">Same production standard every time. More episodes = lower rate per episode. Invoiced per episode as each cycle completes. You do not need to pay the full pack up front.</p>
+      <div class="eyebrow">Podcast packages</div>
+      <h2>Same production every time.</h2>
+      <p>Pay per episode as each cycle completes. You do not have to pay the full pack up front.</p>
     </div>
 
     <div class="pricing-grid">
@@ -901,21 +944,21 @@
         <div class="tier-total">1 episode · A$2,500 total</div>
         <ul class="tier-list">
           <li>Full production cycle, end to end</li>
-          <li>5 vertical reels + thumbnail</li>
-          <li>Platform upload on approval</li>
+          <li>5 short-form clips + thumbnail</li>
+          <li>Upload to Spotify, Apple, YouTube on approval</li>
           <li>Test the fit before committing further</li>
         </ul>
         <a href="#inquire" class="btn-primary" data-package="pilot">Start with a pilot</a>
       </div>
 
       <div class="tier featured">
-        <div class="tier-badge">Most popular · A$6,600</div>
+        <div class="tier-badge">Recommended · A$6,600</div>
         <div class="tier-name">Series</div>
         <div class="tier-price">A$2,200</div>
         <div class="tier-period">per episode · 3 episodes</div>
         <div class="tier-total">A$6,600 total · save A$900 vs pilot</div>
         <ul class="tier-list">
-          <li>Full Pilot cycle for each of 3 episodes</li>
+          <li>Full cycle for each of 3 episodes</li>
           <li>A$300 off per episode</li>
           <li>Enough runway to find your rhythm</li>
           <li>Batch-record when schedules align</li>
@@ -931,7 +974,7 @@
         <div class="tier-period">per episode · 6 episodes</div>
         <div class="tier-total">A$12,000 total · 20% less than pilot</div>
         <ul class="tier-list">
-          <li>Full Pilot cycle for each of 6 episodes</li>
+          <li>Full cycle for each of 6 episodes</li>
           <li>A$500 off per episode vs pilot</li>
           <li>Best rate for a serious content engine</li>
           <li>Priority scheduling and batch days</li>
@@ -943,16 +986,17 @@
     </div>
 
     <p class="value-note">
-      <strong>Why this price:</strong> agency-level stack (shoot + multicam edit + 5 reels + upload) without agency overhead. Comparable full-service video podcast production in Australia often sits in the A$1,500-3,500+ range per episode for similar scope. Reels are included, not an upsell.
+      <strong>Need a different count?</strong> <a href="#inquire">Say so on the form</a> or <a href="#book" data-package="call">book a call</a>. I price it off the nearest tier.
     </p>
-    <p class="price-footnote">
-      Need 4, 5, 8, or ongoing monthly? <a href="#inquire">Tell us the count</a> and we price it cleanly off these tiers. Optional breathwork included if you want it.
-    </p>
+    <p class="price-note">All prices in AUD. No GST (not GST-registered).</p>
+    <!-- OPTIONAL (Mat to decide): founding-client offer for the warm-network test.
+         Your first client is on a founding rate. If you want to offer that to a limited number of people, add e.g.
+         <p class="value-note"><strong>Founding clients:</strong> I'm taking [N] more clients at a founding rate. <a href="#book">Ask about it</a>.</p> -->
 
     <div class="addons-grid">
       <div class="addon">
-        <h4>Extra reels</h4>
-        <p>Beyond the 5 included. Quoted per reel or pack.</p>
+        <h4>Extra clips</h4>
+        <p>Quoted per clip or pack.</p>
       </div>
       <div class="addon">
         <h4>Travel</h4>
@@ -964,186 +1008,168 @@
       </div>
       <div class="addon">
         <h4>Social posting</h4>
-        <p>We can post ready reels for a release week.</p>
+        <p>I can post ready clips for a release week.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BOUNDARIES -->
-<section class="section" id="boundaries">
-  <div class="section-header center">
-    <div class="eyebrow" style="margin-bottom:12px;">Clear edges</div>
-    <h2>What we own. What you own.</h2>
-    <p style="margin-top:10px;">Good partnerships stay clean. Here is the line.</p>
-  </div>
-
-  <div class="split-grid">
-    <div class="bound-card">
-      <h3>You bring</h3>
-      <ul class="bound-list yes">
-        <li>Guests from your network (outreach and booking stay with you unless you add on support)</li>
-        <li>Themes, stories, and the conversation itself</li>
-        <li>Final approval before anything goes live</li>
-        <li>Posting reels to your socials if you want (files arrive ready)</li>
-      </ul>
-    </div>
-    <div class="bound-card">
-      <h3>Not in the base package</h3>
-      <ul class="bound-list no">
-        <li>Paid ads or paid promotion</li>
-        <li>Travel beyond Northern Rivers (quoted separately)</li>
-        <li>More than two revision rounds on long-form or per reel</li>
-        <li>Daily social management</li>
-      </ul>
-    </div>
-  </div>
-  <p class="soft-note">
-    This page is a guideline, not a rigid contract. Scope and timing can flex. Communication stays open, professional, and friendly. If something needs adjusting, we sort it early.
-  </p>
-</section>
-
-<!-- FORM -->
-<div class="form-section" id="inquire">
+<div class="form-section" id="book">
   <div class="form-inner">
     <div class="form-card">
       <div class="form-header">
         <div class="eyebrow">Start here</div>
-        <h2>Tell me about your show</h2>
-        <p>Short form. Mat reviews every inquiry personally and replies within 24-48 hours via email or Instagram.</p>
+        <h2>Tell me what you're building</h2>
+        <p>Book a quick call, or send the short form. I read every enquiry myself and reply within 24-48 hours by email or Instagram.</p>
       </div>
 
-      <form id="inquireForm">
+      <div class="book-card">
+        <div>
+          <h3>Book a 15-minute call</h3>
+          <p>No pitch. We talk through your idea and whether a pilot makes sense.</p>
+        </div>
+        <!-- ================================================================
+             TODO(Mat): BOOKING LINK PLACEHOLDER
+             Create a Google Calendar appointment schedule (15 min), copy its
+             booking-page link (looks like https://calendar.app.google/XXXX)
+             and paste it into BOOKING_URL at the top of the <script> below.
+             Until then this button falls back to an email so it is never a dead end.
+             ================================================================ -->
+        <a id="bookingLink" class="btn-primary" data-todo="REPLACE-WITH-GOOGLE-CALENDAR-BOOKING-URL"
+           href="mailto:mat@edgewithinpodcast.com?subject=Podcast%20production%20-%20quick%20call&amp;body=Hi%20Mat%2C%20I%27d%20like%20a%20quick%20call%20about%20a%20podcast.%20Good%20times%20for%20me%3A%20">Book a call</a>
+      </div>
+
+      <p class="form-divider" id="inquire">or send the form</p>
+
+      <form id="inquireForm" action="https://formspree.io/f/xzdlvjrn" method="POST">
         <div class="form-grid">
-          <div class="field">
-            <label>Your name</label>
-            <input type="text" name="name" required placeholder="Your name" autocomplete="name">
-          </div>
-          <div class="field">
-            <label>Brand or business</label>
-            <input type="text" name="brand" required placeholder="Brand / company name">
-          </div>
-          <div class="field">
-            <label>Email</label>
-            <input type="email" name="email" required placeholder="you@email.com" autocomplete="email">
-          </div>
-          <div class="field">
-            <label>Instagram or website</label>
-            <input type="text" name="handle" required placeholder="@handle or URL">
-          </div>
-          <div class="field">
-            <label>Package interest</label>
+          <div class="field full">
+            <label for="packageSelect">What do you want?</label>
             <select name="package" id="packageSelect" required>
               <option value="" disabled selected>Select one</option>
               <option value="pilot">Pilot · 1 episode · A$2,500</option>
               <option value="series">Series · 3 episodes · A$2,200/ep</option>
               <option value="season">Season · 6 episodes · A$2,000/ep</option>
-              <option value="custom">Other count / ongoing</option>
-              <option value="unsure">Not sure yet</option>
+              <option value="call">A quick call first</option>
+              <option value="not-sure">Not sure yet</option>
             </select>
           </div>
+
+          <div class="field full">
+            <label for="extra">What are you trying to make?</label>
+            <textarea name="extra" id="extra" required placeholder="e.g. Skincare brand. I want to host a 3-episode series."></textarea>
+          </div>
+
           <div class="field">
-            <label>Where are you based?</label>
-            <input type="text" name="location" required placeholder="City / region">
+            <label for="name">Your name</label>
+            <input type="text" name="name" id="name" required placeholder="Your name" autocomplete="name">
           </div>
           <div class="field">
-            <label>Have you recorded a show before?</label>
-            <select name="experience" required>
-              <option value="" disabled selected>Select one</option>
-              <option value="never">Not yet</option>
-              <option value="some">A few episodes</option>
-              <option value="active">Active show already</option>
-            </select>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required placeholder="you@email.com" autocomplete="email">
           </div>
           <div class="field">
-            <label>Ideal start window</label>
-            <select name="start_window" required>
-              <option value="" disabled selected>Select one</option>
+            <label for="location">Where are you based?</label>
+            <input type="text" name="location" id="location" required placeholder="City / region" autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label for="start_window">Rough timing (optional)</label>
+            <select name="start_window" id="start_window">
+              <option value="" selected>Select one</option>
               <option value="asap">ASAP / next 2-3 weeks</option>
               <option value="1_2_months">1-2 months</option>
               <option value="exploring">Just exploring</option>
             </select>
           </div>
-          <div class="field full">
-            <label>Episode count if not a set pack</label>
-            <input type="text" name="episode_count" placeholder="e.g. 4, 8, ongoing monthly (optional)">
+          <div class="field">
+            <label for="brand">Brand or business (optional)</label>
+            <input type="text" name="brand" id="brand" placeholder="Brand / company" autocomplete="organization">
           </div>
-          <div class="field full">
-            <label>What are you building?</label>
-            <textarea name="vision" required placeholder="Show idea, audience, goals, timeline. Be direct."></textarea>
-          </div>
-          <div class="field full">
-            <label>Anything else? (optional)</label>
-            <textarea name="extra" placeholder="Guests in mind, past content, travel needs, questions."></textarea>
+          <div class="field">
+            <label for="handle">Instagram or website (optional)</label>
+            <input type="text" name="handle" id="handle" placeholder="@handle or URL">
           </div>
         </div>
-        <button type="submit" class="submit-btn">Send Inquiry</button>
-        <div class="form-dm">Prefer to DM? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast on Instagram</a> · or <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a></div>
+        <!-- Spam honeypot (Formspree ignores submissions where this is filled) -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="gotcha">Leave this empty</label>
+          <input type="text" name="_gotcha" id="gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" name="_subject" value="New Production Enquiry - Edge Within">
 
-        <div class="success-msg" id="successMsg">
-          <div class="check">✓</div>
-          <h3>Inquiry received.</h3>
-          <p>Mat will review it and be in touch within 24-48 hours via email or Instagram.</p>
+        <button type="submit" class="submit-btn">Send enquiry</button>
+        <p class="form-error" id="formError" role="alert">Something went wrong sending the form. Please email <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a> or DM <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast</a>.</p>
+
+        <div class="form-dm">
+          Prefer to DM? <a href="https://ig.me/m/edgewithinpodcast" target="_blank" rel="noopener">@edgewithinpodcast on Instagram</a> · or <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a>
+        </div>
+
+        <div class="success-msg" id="successMsg" role="status" aria-live="polite" tabindex="-1">
+          <div class="check" aria-hidden="true">✓</div>
+          <h3>Enquiry received.</h3>
+          <p>Thanks. I'll be in touch within 24-48 hours by email or Instagram.</p>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- FAQ -->
 <section class="section" id="faq">
   <div class="section-header center">
-    <div class="eyebrow" style="margin-bottom:12px;">FAQ</div>
+    <div class="eyebrow">FAQ</div>
     <h2>Common questions</h2>
   </div>
+
   <div class="faq-list">
     <div class="faq-item">
-      <button type="button" class="faq-q">Do you only film in Northern Rivers?</button>
-      <div class="faq-a">Base production is Northern Rivers, NSW, with shaded outdoor nature settings. Travel and locations further afield are available and quoted per shoot.</div>
+      <button type="button" class="faq-q" aria-expanded="false">Do you only film in Northern Rivers?</button>
+      <div class="faq-a">Base is Northern Rivers, NSW. I travel; travel is quoted per shoot.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">How do the package prices work?</button>
-      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time, including 5 reels. You pay per episode as work completes, not necessarily the whole pack up front.</div>
+      <button type="button" class="faq-q" aria-expanded="false">How do the package prices work?</button>
+      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">What if I want 4, 5, or 8 episodes?</button>
-      <div class="faq-a">We price off the nearest tier. Example: 4 episodes typically sit at the Series rate (A$2,200). 8 or ongoing monthly can sit at or near the Season rate (from A$2,000). Tell us the count on the form and we confirm in the reply.</div>
+      <button type="button" class="faq-q" aria-expanded="false">What if I want 4, 5, or 8 episodes?</button>
+      <div class="faq-a">I price off the nearest tier. 4 episodes typically sit at the Series rate (A$2,200). 8 or ongoing monthly can sit at or near the Season rate (from A$2,000). Tell me the count and I confirm in my reply.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">Do I have to film the whole pack at once?</button>
-      <div class="faq-a">No. Commitment is to the number of episodes, not one giant shoot. Batch-record when it helps, or space them out. The pack rate holds for the committed run.</div>
+      <button type="button" class="faq-q" aria-expanded="false">Do I have to film the whole pack at once?</button>
+      <div class="faq-a">No. You commit to a number of episodes, not one giant shoot. Batch-record when it helps, or space them out. The pack rate holds for the committed run.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">Do you book guests for us?</button>
-      <div class="faq-a">Not in the base package. You bring guests from your network so the show stays aligned with your brand. Guest outreach can be added if you want support. Prep and prompts are included once a guest is locked.</div>
+      <button type="button" class="faq-q" aria-expanded="false">Do you book guests for me?</button>
+      <div class="faq-a">Not in the base package. You bring guests from your network so the show stays true to your brand. Guest outreach can be added if you want help. Prep and prompts are included once a guest is locked in.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">Is breathwork required?</button>
-      <div class="faq-a">No. It is optional. Some hosts and guests like a short drop-in before record. Others prefer to go straight to the conversation. No extra charge either way.</div>
+      <button type="button" class="faq-q" aria-expanded="false">Can you interview me if I do not want to host?</button>
+      <div class="faq-a">Yes. Pre-made questions. A pilot episode is enough to start.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">Who owns the content?</button>
-      <div class="faq-a">You do. Full ownership of final content stays with you. Edge Within takes a producer credit in descriptions and end screens.</div>
+      <button type="button" class="faq-q" aria-expanded="false">How fast is turnaround?</button>
+      <div class="faq-a">Long-form for review within 7-10 business days after recording. First drafts of the clips within 5 business days after you approve the long-form. Revisions typically 2-3 business days per round.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">How fast is turnaround?</button>
-      <div class="faq-a">Long-form for review within 7-10 business days after recording. First drafts of the 5 reels within 5 business days after you approve the long-form. Revisions typically 2-3 business days per round.</div>
+      <button type="button" class="faq-q" aria-expanded="false">Is breathwork required?</button>
+      <div class="faq-a">No. Optional, no extra charge.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">Is this the same as mentorship?</button>
-      <div class="faq-a">No. Mentorship teaches you to build and run your own show. Production is done-for-you: we record, edit, cut reels, and publish with you. <a href="/mentorship/" style="color:var(--gold);">See mentorship →</a></div>
+      <button type="button" class="faq-q" aria-expanded="false">Who owns the content?</button>
+      <div class="faq-a">You do. Full ownership of the final content stays with you.</div>
     </div>
     <div class="faq-item">
-      <button type="button" class="faq-q">Can scope change after we start?</button>
-      <div class="faq-a">Yes. This page is a guideline. Stay in open communication and we adjust timeline, episode count, or add-ons professionally as the partnership develops.</div>
+      <button type="button" class="faq-q" aria-expanded="false">Is this the same as mentorship?</button>
+      <div class="faq-a">No. <a href="/mentorship/">Mentorship</a> teaches you to build and run your own show. Production is done for you: I record, edit, cut the clips, and publish with you.</div>
     </div>
   </div>
 </section>
 
+</main>
+
 <footer>
   <p>© 2026 Edge Within with Mat Davenport</p>
   <p>
-    <a href="/">Home</a> ·
+    <a href="/">The Podcast</a> ·
     <a href="/mentorship/">Mentorship</a> ·
     <a href="/get-playbook/">Playbook</a> ·
     <a href="mailto:mat@edgewithinpodcast.com">mat@edgewithinpodcast.com</a> ·
@@ -1151,22 +1177,73 @@
   </p>
 </footer>
 
-<a href="#inquire" class="mobile-cta">Start a Conversation</a>
+<a href="#book" class="mobile-cta" data-package="call">Book a call</a>
 
 <script>
+  // TODO(Mat): paste your Google Calendar appointment booking-page URL here, e.g.
+  // const BOOKING_URL = 'https://calendar.app.google/XXXX';
+  const BOOKING_URL = ''; // TODO: placeholder - empty = email fallback
+  if (BOOKING_URL) {
+    const bl = document.getElementById('bookingLink');
+    bl.href = BOOKING_URL; bl.target = '_blank'; bl.rel = 'noopener';
+    bl.removeAttribute('data-todo');
+  }
+
+  const META_PIXEL_ID = '';
+  const PACKAGE_VALUES = { pilot: 2500, series: 6600, season: 12000 };
+  const PACKAGE_OPTIONS = ['pilot', 'series', 'season', 'call', 'not-sure'];
+  // Tip: send each warm contact a tagged link, e.g. /production/?utm_source=warm&utm_content=firstname
+  // The utm_* values are included in every enquiry so you can count which contacts enquired.
+
+  function initMetaPixel(id) {
+    if (!id || window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', id);
+    fbq('track', 'PageView');
+  }
+  initMetaPixel(META_PIXEL_ID);
+
+  function trackLead(pkg) {
+    if (typeof fbq !== 'function') return;
+    const value = PACKAGE_VALUES[pkg];
+    const payload = { content_name: 'production-inquiry', content_category: pkg || 'unknown' };
+    if (value) {
+      payload.value = value;
+      payload.currency = 'AUD';
+    }
+    fbq('track', 'Lead', payload);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const select = document.getElementById('packageSelect');
+  const pkgParam = params.get('package');
+  if (select && pkgParam && PACKAGE_OPTIONS.includes(pkgParam)) {
+    select.value = pkgParam;
+  }
+
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
       const open = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!open) item.classList.add('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const q = i.querySelector('.faq-q');
+        if (q) q.setAttribute('aria-expanded', 'false');
+      });
+      if (!open) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
   document.querySelectorAll('[data-package]').forEach(link => {
     link.addEventListener('click', () => {
       const val = link.getAttribute('data-package');
-      const select = document.getElementById('packageSelect');
       if (select && val) select.value = val;
     });
   });
@@ -1175,23 +1252,30 @@
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = form.querySelector('.submit-btn');
+    const errBox = document.getElementById('formError');
+    errBox.style.display = 'none';
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
     const data = new FormData(form);
+    const pkg = data.get('package');
     const payload = {
       name: data.get('name'),
-      brand: data.get('brand'),
+      brand: data.get('brand') || 'N/A',
       email: data.get('email'),
-      handle: data.get('handle'),
-      package: data.get('package'),
+      handle: data.get('handle') || 'N/A',
+      package: pkg,
       location: data.get('location'),
-      experience: data.get('experience'),
-      start_window: data.get('start_window'),
-      episode_count: data.get('episode_count') || 'N/A',
-      vision: data.get('vision'),
+      start_window: data.get('start_window') || 'N/A',
       extra: data.get('extra') || 'N/A',
-      _subject: 'New Production Inquiry - Edge Within',
+      _gotcha: data.get('_gotcha') || '',
+      page: 'production-v2',
+      utm_source: params.get('utm_source') || 'N/A',
+      utm_medium: params.get('utm_medium') || 'N/A',
+      utm_campaign: params.get('utm_campaign') || 'N/A',
+      utm_content: params.get('utm_content') || 'N/A',
+      utm_term: params.get('utm_term') || 'N/A',
+      _subject: 'New Production Enquiry - Edge Within',
       _replyto: data.get('email'),
     };
 
@@ -1202,15 +1286,21 @@
         body: JSON.stringify(payload)
       });
       if (res.ok) {
+        trackLead(pkg);
         form.querySelectorAll('.form-grid, .submit-btn, .form-dm').forEach(el => el.style.display = 'none');
-        document.getElementById('successMsg').style.display = 'block';
+        const ok = document.getElementById('successMsg');
+        ok.style.display = 'block';
+        ok.focus();
       } else {
-        btn.textContent = 'Something went wrong. Email mat@edgewithinpodcast.com';
-        btn.disabled = false;
+        showError();
       }
     } catch {
-      btn.textContent = 'Something went wrong. Email mat@edgewithinpodcast.com';
+      showError();
+    }
+    function showError() {
+      btn.textContent = 'Send enquiry';
       btn.disabled = false;
+      errBox.style.display = 'block';
     }
   });
 </script>

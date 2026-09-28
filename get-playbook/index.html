@@ -283,12 +283,12 @@
 <section id="stats" class="border-y border-white/10 py-8">
   <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-7 text-center">
     <div>
-      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="2000000" data-format="M">2M</div>
-      <div class="mono text-[10px] text-white/50 mt-1" style="letter-spacing:0.12em;">Monthly views</div>
+      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="3800000" data-format="M" data-suffix="+">3.8M+</div>
+      <div class="mono text-[10px] text-white/50 mt-1" style="letter-spacing:0.12em;">Instagram views, last 90 days</div>
     </div>
     <div>
-      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="15200" data-format="K">15.2K</div>
-      <div class="mono text-[10px] text-white/50 mt-1" style="letter-spacing:0.12em;">Followers</div>
+      <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="22700" data-format="K">22.7K</div>
+      <div class="mono text-[10px] text-white/50 mt-1" style="letter-spacing:0.12em;">Instagram followers</div>
     </div>
     <div>
       <div class="counter text-3xl font-bold tracking-tight tabular-nums" data-target="189" data-format="plain">189</div>
@@ -305,7 +305,7 @@
 <section class="proof-strip">
   <div class="proof-inner">
     Launched <strong>Jan 20, 2026</strong> at zero ·
-    <strong>17 episodes</strong> shipped ·
+    <strong>20 episodes</strong> shipped ·
     <strong>$0</strong> spent on ads ·
     Built while running a gardening business and being a present dad
   </div>
@@ -495,6 +495,7 @@
     <div class="flex items-center gap-6">
       <a href="https://edgewithinpodcast.com/" class="hover:text-white transition">Home</a>
       <a href="https://edgewithinpodcast.com/" class="hover:text-white transition">Podcast</a>
+      <a href="https://edgewithinpodcast.com/production/" class="hover:text-white transition">Production</a>
       <a href="https://www.instagram.com/rawmatdavenport/" class="hover:text-white transition" target="_blank" rel="noopener">@rawmatdavenport</a>
       <a href="https://www.instagram.com/edgewithinpodcast/" class="hover:text-white transition" target="_blank" rel="noopener">@edgewithinpodcast</a>
     </div>
@@ -549,11 +550,11 @@
     function step(now) {
       const progress = Math.min((now - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 2.5);
-      el.textContent = formatNumber(target * eased, format);
+      el.textContent = formatNumber(target * eased, format) + (el.dataset.suffix || '');
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
-        el.textContent = formatNumber(target, format);
+        el.textContent = formatNumber(target, format) + (el.dataset.suffix || '');
       }
     }
     requestAnimationFrame(step);
@@ -573,7 +574,7 @@
     }, { threshold: 0.35 });
     observer.observe(statsSection);
   }
-  // If no observer, static HTML values (2M / 15.2K / 189 / $0) remain visible
+  // If no observer, static HTML values (3.8M+ / 22.7K / 189 / $0) remain visible
 })();
 </script>
 </body>
