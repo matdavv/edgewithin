@@ -434,9 +434,32 @@
   .value-note a { color: var(--gold); font-weight: 700; text-decoration: none; }
   .value-note a:hover { text-decoration: underline; }
 
+  .founding-callout {
+    max-width: 1000px; margin: 8px auto 20px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
+    padding: 22px 26px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(184,134,11,0.16) 0%, rgba(184,134,11,0.05) 100%);
+    border: 1px solid rgba(184,134,11,0.55);
+  }
+  .founding-price {
+    font-family: Arial, sans-serif; font-size: 30px; font-weight: 700; color: var(--gold);
+    line-height: 1; white-space: nowrap;
+  }
+  .founding-price span {
+    display: block; margin-top: 6px; font-size: 11px; font-weight: 400; color: #b0b0b0;
+    font-family: 'Courier New', monospace; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .founding-callout .eyebrow { margin-bottom: 6px; }
+  .founding-callout p {
+    font-family: Arial, sans-serif; font-size: 14px; color: #cfcfcf; line-height: 1.6; margin: 0;
+  }
+  .founding-callout p strong { color: var(--white); }
+  .founding-callout .btn-secondary { white-space: nowrap; color: var(--gold); border-color: rgba(184,134,11,0.6); }
+  .founding-callout .btn-secondary:hover { color: var(--white); border-color: var(--gold); }
+
   .addons-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-top: 28px;
   }
@@ -666,6 +689,8 @@
     .field.full { grid-column: 1; }
     .proof-strip { grid-template-columns: 1fr; text-align: center; }
     .addons-grid { grid-template-columns: 1fr 1fr; }
+    .founding-callout { grid-template-columns: 1fr; text-align: center; gap: 14px; max-width: 420px; padding: 22px 20px; }
+    .founding-callout .btn-secondary { justify-self: center; white-space: normal; }
     .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
     .phase-strip::before { display: none; }
   }
@@ -879,13 +904,12 @@
         <li>Two rounds of revisions</li>
         <li>Titles, descriptions, chapters</li>
         <li>Upload to Spotify, Apple Podcasts, and YouTube once you approve</li>
-        <li>I can set up your Spotify and Apple Podcasts listings</li>
         <li>You own the content</li>
       </ul>
       <p class="included-note">Typical turnaround: long-form review in 7-10 business days, clips within 5 business days of approval.</p>
   </div>
   <p class="included-note" style="text-align:center; max-width:620px; margin:20px auto 0;">
-    Not in a podcast package: ongoing social, unlimited revisions, travel without a quote.
+    Not in a podcast package: new show setup (A$250 add-on), extra clips, ongoing social, unlimited revisions, travel without a quote.
   </p>
 </section>
 
@@ -949,7 +973,7 @@
           <li>A$300 off per episode</li>
           <li>Enough runway to find your rhythm</li>
           <li>Batch-record when schedules align</li>
-          <li>Launch support across the run</li>
+          <li>Release support across the run</li>
           <li>Invoiced per episode (due in 7 days)</li>
         </ul>
         <a href="#inquire" class="btn-primary" data-package="series">Book a 3-episode series</a>
@@ -972,6 +996,15 @@
       </div>
     </div>
 
+    <div class="founding-callout" id="founding">
+      <div class="founding-price">A$1,500<span>per episode</span></div>
+      <div>
+        <div class="eyebrow">Founding client rate</div>
+        <p><strong>Founding client rate: A$1,500 per episode for my first few production clients, in exchange for a testimonial and permission to use the work as examples.</strong> Limited to my first few clients.</p>
+      </div>
+      <a href="#inquire" class="btn-secondary" data-package="founding">Ask about it</a>
+    </div>
+
     <p class="value-note">
       <strong>Need a different count?</strong> <a href="#inquire">Say so on the form</a> or <a href="#book" data-package="call">book a call</a>. I price it off the nearest tier.
     </p>
@@ -980,7 +1013,11 @@
     <div class="addons-grid">
       <div class="addon">
         <h4>Extra clips</h4>
-        <p>Quoted per clip or pack.</p>
+        <p>5 clips are included per episode. Extra clips beyond those 5 are priced per clip.</p>
+      </div>
+      <div class="addon">
+        <h4>New show setup</h4>
+        <p>A$250 one-off. I set up your Spotify and Apple Podcasts listings. You supply logins and show details up front.</p>
       </div>
       <div class="addon">
         <h4>Travel</h4>
@@ -1027,6 +1064,7 @@
               <option value="pilot">Pilot · 1 episode · A$2,500</option>
               <option value="series">Series · 3 episodes · A$2,200/ep</option>
               <option value="season">Season · 6 episodes · A$2,000/ep</option>
+              <option value="founding">Founding client rate · A$1,500/ep</option>
               <option value="call">A quick call first</option>
               <option value="not-sure">Not sure yet</option>
             </select>
@@ -1104,7 +1142,11 @@
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">How do the package prices work?</button>
-      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier.</div>
+      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time, including 5 short-form clips per episode. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier. Add-ons are extra: clips beyond the 5 are priced per clip, and new show setup on Spotify and Apple Podcasts is A$250 one-off. My first few clients can take the founding client rate instead (see below).</div>
+    </div>
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false">What is the founding client rate?</button>
+      <div class="faq-a">A$1,500 per episode for my first few production clients, in exchange for a testimonial and permission to use the work as examples. It's limited to my first few clients. Pick "Founding client rate" on the form or ask on a call.</div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">What if I want 4, 5, or 8 episodes?</button>
@@ -1168,7 +1210,7 @@
 
   const META_PIXEL_ID = '';
   const PACKAGE_VALUES = { pilot: 2500, series: 6600, season: 12000 };
-  const PACKAGE_OPTIONS = ['pilot', 'series', 'season', 'call', 'not-sure'];
+  const PACKAGE_OPTIONS = ['pilot', 'series', 'season', 'founding', 'call', 'not-sure'];
 
   function initMetaPixel(id) {
     if (!id || window.fbq) return;
