@@ -860,6 +860,11 @@
       <p>Document culture, community, and story in a format that compounds over a run, not a one-off shoot.</p>
     </div>
   </div>
+  <!-- Second testimonial from Montana Lower (Inbluem), approved by Mat 29 Sep 2026. -->
+  <figure class="testimonial-card testimonial-card--hero">
+    <blockquote class="testimonial">&ldquo;I have found creating a podcast has allowed me to have conversations about my business and create meaningful &lsquo;content&rsquo; in a way that doesn&rsquo;t exhaust me. It&rsquo;s engaging for my community and allows me to speak about our ethos without having to &lsquo;sell&rsquo; to them.&rdquo;</blockquote>
+    <figcaption class="testimonial-cite">&mdash; Montana Lower, Host of Inbluem Podcast</figcaption>
+  </figure>
 </section>
 
 <section class="section" id="included">
@@ -934,7 +939,7 @@
   <div class="client-grid client-grid--single">
     <div class="client-card">
       <h3>Montana Lower</h3>
-      <div class="client-meta">Founding client · Inbluem</div>
+      <div class="client-meta">First client · Inbluem</div>
       <ul>
         <li>Travel to location and outdoor shoot</li>
         <li>Optional breathwork and guidance before recording</li>
@@ -1004,17 +1009,8 @@
       </div>
     </div>
 
-    <div class="founding-callout" id="founding">
-      <div class="founding-price">A$1,500<span>per episode</span></div>
-      <div>
-        <div class="eyebrow">Founding client rate</div>
-        <p><strong>For my first few production clients.</strong> Same full production, in exchange for a testimonial and permission to use the work as examples.</p>
-      </div>
-      <a href="#inquire" class="btn-secondary" data-package="founding">Ask about it</a>
-    </div>
-
     <p class="value-note">
-      <strong>Need a different count?</strong> <a href="#inquire">Say so on the form</a> or <a href="#book" data-package="call">book a call</a>. I price it off the nearest tier.
+      <strong>Custom packages available.</strong> Need a different episode count or something tailored? <a href="#inquire">Enquire on the form</a> or <a href="#book" data-package="call">book a call</a>.
     </p>
     <p class="price-note">All prices in AUD. No GST (not GST-registered).</p>
 
@@ -1072,7 +1068,6 @@
               <option value="pilot">Pilot · 1 episode · A$2,500</option>
               <option value="series">Series · 3 episodes · A$2,200/ep</option>
               <option value="season">Season · 6 episodes · A$2,000/ep</option>
-              <option value="founding">Founding client rate · A$1,500/ep</option>
               <option value="call">A quick call first</option>
               <option value="not-sure">Not sure yet</option>
             </select>
@@ -1150,11 +1145,7 @@
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">How do the package prices work?</button>
-      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time, including 5 short-form clips per episode. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier. Add-ons are extra: clips beyond the 5 are priced per clip, and new show setup on Spotify and Apple Podcasts is A$250 one-off. My first few clients can take the founding client rate instead (see below).</div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false">What is the founding client rate?</button>
-      <div class="faq-a">A$1,500 per episode for my first few production clients, in exchange for a testimonial and permission to use the work as examples. It's limited to my first few clients. Pick "Founding client rate" on the form or ask on a call.</div>
+      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time, including 5 short-form clips per episode. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier. Add-ons are extra: clips beyond the 5 are priced per clip, and new show setup on Spotify and Apple Podcasts is A$250 one-off.</div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">What if I want 4, 5, or 8 episodes?</button>
@@ -1220,7 +1211,7 @@
 
   const META_PIXEL_ID = '';
   const PACKAGE_VALUES = { pilot: 2500, series: 6600, season: 12000 };
-  const PACKAGE_OPTIONS = ['pilot', 'series', 'season', 'founding', 'call', 'not-sure'];
+  const PACKAGE_OPTIONS = ['pilot', 'series', 'season', 'call', 'not-sure'];
 
   function initMetaPixel(id) {
     if (!id || window.fbq) return;
