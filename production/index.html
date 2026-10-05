@@ -174,6 +174,20 @@
   }
   .pill-loc { white-space: nowrap; }
   .pill-loc::before { content: ' · '; }
+  .hero-price-link {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: var(--grey);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,134,11,0.45);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+    margin-top: -4px;
+  }
+  .hero-price-link:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
 
   .showreel-wrap {
     width: 100%;
@@ -462,25 +476,45 @@
   .founding-callout .btn-secondary { white-space: nowrap; color: var(--gold); border-color: rgba(184,134,11,0.6); }
   .founding-callout .btn-secondary:hover { color: var(--white); border-color: var(--gold); }
 
-  .addons-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 28px;
-  }
-  .addon {
+  .addons {
+    max-width: 720px;
+    margin: 28px auto 0;
     background: rgba(0,0,0,0.25);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 16px 14px;
+    border-radius: 12px;
+    padding: 22px 24px 18px;
   }
-  .addon h4 {
-    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
-    color: var(--white); margin-bottom: 6px;
+  .addons-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
   }
-  .addon p {
-    font-family: Arial, sans-serif; font-size: 12px; color: #999; line-height: 1.45; margin: 0;
+  .addons-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
   }
+  .addons-list li {
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    color: #b0b0b0;
+    line-height: 1.55;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .addons-list li:last-child { border-bottom: none; padding-bottom: 2px; }
+  .addons-list li strong {
+    color: var(--white);
+    font-weight: 700;
+    display: inline;
+  }
+  .addons-list li strong::after { content: ': '; font-weight: 700; color: var(--white); }
 
   .form-section {
     background:
@@ -759,7 +793,6 @@
     .form-grid { grid-template-columns: 1fr; }
     .field.full { grid-column: 1; }
     .proof-strip { grid-template-columns: 1fr; text-align: center; }
-    .addons-grid { grid-template-columns: 1fr 1fr; }
     .founding-callout { grid-template-columns: 1fr; text-align: center; gap: 14px; max-width: 420px; padding: 22px 20px; }
     .founding-callout .btn-secondary { justify-self: center; white-space: normal; }
     .phase-strip { grid-template-columns: 1fr 1fr; row-gap: 28px; }
@@ -833,7 +866,6 @@
     .section, .section-full { padding-left: 20px; padding-right: 20px; }
   }
   @media (max-width: 480px) {
-    .addons-grid { grid-template-columns: 1fr; }
     .proof-metrics { grid-template-columns: 1fr 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -879,6 +911,7 @@
       <a href="#pricing" class="btn-secondary">See packages</a>
     </div>
     <div class="pill">A$2,500 pilot · A$2,000/ep season<span class="pill-loc">Northern Rivers</span></div>
+    <a href="#pricing" class="hero-price-link">Packages from A$2,000 an episode</a>
   </div>
 
   <div class="showreel-wrap">
@@ -895,7 +928,7 @@
     <!-- Testimonial: Montana Lower (Inbluem), approved by Mat 29 Sep 2026. -->
     <figure class="testimonial-card testimonial-card--hero">
       <blockquote class="testimonial">&ldquo;Working with Mat gave me the support and guidance I needed to bring a dream to life. He handled everything from filming and editing to clips and getting my show live on Spotify and Apple. He respected and inspired my unique vision, and he made me feel so much more confident. I&rsquo;m eternally grateful and keen to keep creating together!&rdquo;</blockquote>
-      <figcaption class="testimonial-cite">&mdash; Montana Lower, Host of Inbluem Podcast</figcaption>
+      <figcaption class="testimonial-cite">Montana Lower, Host of Inbluem Podcast</figcaption>
     </figure>
   </div>
 
@@ -967,7 +1000,7 @@
   <!-- Second testimonial from Montana Lower (Inbluem), approved by Mat 29 Sep 2026. -->
   <figure class="testimonial-card testimonial-card--hero">
     <blockquote class="testimonial">&ldquo;I have found creating a podcast has allowed me to have conversations about my business and create meaningful &lsquo;content&rsquo; in a way that doesn&rsquo;t exhaust me. It&rsquo;s engaging for my community and allows me to speak about our ethos without having to &lsquo;sell&rsquo; to them.&rdquo;</blockquote>
-    <figcaption class="testimonial-cite">&mdash; Montana Lower, Host of Inbluem Podcast</figcaption>
+    <figcaption class="testimonial-cite">Montana Lower, Host of Inbluem Podcast</figcaption>
   </figure>
 </section>
 
@@ -1080,7 +1113,7 @@
       <p class="included-note">Typical turnaround: long-form review in 7-10 business days, clips within 5 business days of approval.</p>
   </div>
   <p class="included-note" style="text-align:center; max-width:620px; margin:20px auto 0;">
-    Not in a podcast package: new show setup (A$250 add-on), extra clips, ongoing social, unlimited revisions, travel without a quote.
+    Not in a podcast package: <a href="#addons" style="color:var(--gold); text-decoration:none; font-weight:600;">see add-ons</a> for extras, plus unlimited revisions.
   </p>
 </section>
 
@@ -1167,35 +1200,17 @@
     </p>
     <p class="price-note">All prices in AUD. No GST (not GST-registered).</p>
 
-    <div class="addons-grid">
-      <div class="addon">
-        <h4>Extra clips</h4>
-        <p>Every episode includes 5 short-form clips, each cut with the same care and finish as the Edge Within clips. Extra clips are A$50 each.</p>
-      </div>
-      <div class="addon">
-        <h4>Cinematic clips</h4>
-        <p>Everything a standard clip has, plus extra flair: bolder animated text, sharper pacing and more punch. A$75 per clip, or add A$25 to upgrade any included clip.</p>
-      </div>
-      <div class="addon">
-        <h4>Episode trailer</h4>
-        <p>A short trailer to launch or promote the episode. A$100.</p>
-      </div>
-      <div class="addon">
-        <h4>New show setup</h4>
-        <p>A$250 one-off. I set up your Spotify and Apple Podcasts listings. You supply logins and show details up front.</p>
-      </div>
-      <div class="addon">
-        <h4>Travel</h4>
-        <p>Outside Northern Rivers. Scoped per shoot.</p>
-      </div>
-      <div class="addon">
-        <h4>Guest outreach</h4>
-        <p>Optional support if you want help booking.</p>
-      </div>
-      <div class="addon">
-        <h4>Social posting</h4>
-        <p>I can post ready clips for a release week.</p>
-      </div>
+    <div class="addons" id="addons">
+      <div class="addons-label">Add-ons</div>
+      <ul class="addons-list">
+        <li><strong>Extra clips</strong>Every episode includes 5 short-form clips, each cut with the same care and finish as the Edge Within clips. Extra clips are A$50 each.</li>
+        <li><strong>Cinematic clips</strong>Everything a standard clip has, plus extra flair: bolder animated text, sharper pacing and more punch. A$75 per clip, or add A$25 to upgrade any included clip.</li>
+        <li><strong>Episode trailer</strong>A short trailer to launch or promote the episode. A$100.</li>
+        <li><strong>New show setup</strong>A$250 one-off. I set up your Spotify and Apple Podcasts listings. You supply logins and show details up front.</li>
+        <li><strong>Travel</strong>Outside Northern Rivers. Scoped per shoot.</li>
+        <li><strong>Guest outreach</strong>Optional support if you want help booking.</li>
+        <li><strong>Social posting</strong>I can post ready clips for a release week.</li>
+      </ul>
     </div>
   </div>
 </section>
