@@ -96,6 +96,11 @@
   .hamburger.active span:nth-child(2) { opacity: 0; }
   .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
   .eyebrow {
     font-family: 'Courier New', monospace; font-size: 11px;
     letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
@@ -121,7 +126,7 @@
     min-width: 0;
   }
   .hero-copy {
-    max-width: 720px;
+    max-width: 820px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -132,12 +137,12 @@
   .proof-strip > *,
   .outcome > * { min-width: 0; }
   .hero-copy h1 {
-    font-size: clamp(36px, 6vw, 58px); line-height: 1.04; font-weight: 400;
+    font-size: clamp(30px, 5vw, 48px); line-height: 1.08; font-weight: 400;
   }
   .hero-copy h1 em { color: var(--gold); font-style: italic; font-weight: 400; }
   .hero-sub {
     font-family: Arial, sans-serif; font-size: 16px; color: var(--grey);
-    line-height: 1.7; max-width: 540px; width: 100%;
+    line-height: 1.7; max-width: 640px; width: 100%;
     overflow-wrap: break-word;
   }
   .hero-btns {
@@ -459,7 +464,7 @@
 
   .addons-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-top: 28px;
   }
@@ -589,6 +594,65 @@
   }
 
 
+
+  .compare-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .compare-table { width: 100%; }
+  .compare-row {
+    display: grid;
+    grid-template-columns: minmax(110px, 0.9fr) 1fr 1.15fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row > div {
+    padding: 16px 18px;
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--grey);
+  }
+  .compare-row.compare-head > div {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--card2);
+    padding: 14px 18px;
+  }
+  .compare-label {
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+  }
+  .compare-row .compare-ew {
+    color: #d4d4d4;
+    background: rgba(184,134,11,0.06);
+    border-left: 1px solid rgba(184,134,11,0.25);
+  }
+  .compare-head .compare-ew {
+    background: rgba(184,134,11,0.12) !important;
+    color: var(--gold) !important;
+    border-left: 1px solid rgba(184,134,11,0.25);
+  }
+  .compare-close {
+    max-width: 680px;
+    margin: 22px auto 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
   .audience-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
   }
@@ -702,6 +766,46 @@
     .phase-strip::before { display: none; }
   }
   @media (max-width: 860px) {
+    .compare-row {
+      grid-template-columns: 1fr;
+      padding: 14px 16px 16px;
+      gap: 10px;
+    }
+    .compare-row > div { padding: 0; }
+    .compare-row.compare-head { display: none; }
+    .compare-label {
+      font-family: 'Courier New', monospace !important;
+      font-size: 11px !important;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold) !important;
+      font-weight: 700 !important;
+      margin-bottom: 2px;
+    }
+    .compare-studio::before,
+    .compare-ew::before {
+      display: block;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey2);
+      margin-bottom: 4px;
+    }
+    .compare-studio::before { content: 'A studio'; }
+    .compare-ew::before { content: 'Edge Within'; color: var(--gold); }
+    .compare-ew {
+      background: rgba(184,134,11,0.08);
+      border: 1px solid rgba(184,134,11,0.28);
+      border-radius: 8px;
+      padding: 12px 14px !important;
+      border-left: 1px solid rgba(184,134,11,0.28) !important;
+    }
+    .compare-studio {
+      padding: 4px 0 2px !important;
+    }
+
     .hero { padding: 92px 20px 88px; gap: 22px; }
     nav { padding: 0 16px; }
     .hamburger { display: flex; }
@@ -762,13 +866,13 @@
   <div class="hero-copy">
     <div class="eyebrow">Edge Within · Podcast production</div>
     <h1>
-      Mobile studio.<br>
-      <em>I come to you.</em>
+      I don't just film your podcast.<br>
+      <em>I help you have the conversation worth filming.</em>
     </h1>
     <p class="hero-sub">
-      Done-for-you video podcasts for founders, personal brands and mission-led businesses.
-      4K camera, lighting, and mics on site. I run the setup. You show up and talk.
-      I edit, cut the clips, and get it live.
+      A mobile studio run by a host. 4K cameras, lighting and mics, set up wherever your story lives.
+      I can offer question ideas and prompts if you'd like them, guide the conversation on the day,
+      then edit the episode, cut the clips and get it live.
     </p>
     <div class="hero-btns">
       <a href="#book" class="btn-primary" data-package="call">Book a call</a>
@@ -867,6 +971,54 @@
   </figure>
 </section>
 
+
+<section class="section" id="compare">
+  <div class="section-header center">
+    <div class="eyebrow">The difference</div>
+    <h2>Studio or me?</h2>
+  </div>
+  <div class="compare-wrap">
+    <div class="compare-table" role="table" aria-label="Studio versus Edge Within">
+      <div class="compare-row compare-head" role="row">
+        <div class="compare-label" role="columnheader"><span class="sr-only">Topic</span></div>
+        <div class="compare-studio" role="columnheader">A studio</div>
+        <div class="compare-ew" role="columnheader">Edge Within</div>
+      </div>
+      <div class="compare-row" role="row">
+        <div class="compare-label" role="rowheader">Where you record</div>
+        <div class="compare-studio" role="cell">Their room, on one of their sets</div>
+        <div class="compare-ew" role="cell">Your place, your land, or somewhere outdoors that feels like you</div>
+      </div>
+      <div class="compare-row" role="row">
+        <div class="compare-label" role="rowheader">Who's in the room</div>
+        <div class="compare-studio" role="cell">A producer who presses record</div>
+        <div class="compare-ew" role="cell">A host who interviews you or helps you lead</div>
+      </div>
+      <div class="compare-row" role="row">
+        <div class="compare-label" role="rowheader">Getting comfortable</div>
+        <div class="compare-studio" role="cell">You walk in and start</div>
+        <div class="compare-ew" role="cell">Optional breathwork so you settle in and open up</div>
+      </div>
+      <div class="compare-row" role="row">
+        <div class="compare-label" role="rowheader">Who edits</div>
+        <div class="compare-studio" role="cell">Whoever's on shift</div>
+        <div class="compare-ew" role="cell">The same person who was there for the conversation</div>
+      </div>
+      <div class="compare-row" role="row">
+        <div class="compare-label" role="rowheader">What you get</div>
+        <div class="compare-studio" role="cell">Footage and edits, priced item by item</div>
+        <div class="compare-ew" role="cell">The whole episode: edit, 5 clips, thumbnail, titles, chapters and upload</div>
+      </div>
+      <div class="compare-row" role="row">
+        <div class="compare-label" role="rowheader">Proof it works</div>
+        <div class="compare-studio" role="cell">A showreel</div>
+        <div class="compare-ew" role="cell">My own show: 3.8M reel views in 90 days with no ads</div>
+      </div>
+    </div>
+  </div>
+  <p class="compare-close">If you just need a room and a camera, a studio will be cheaper. If you want a show that sounds like you and looks like your world, that's what I do.</p>
+</section>
+
 <section class="section" id="included">
   <div class="section-header center">
     <div class="eyebrow">On the day</div>
@@ -902,8 +1054,9 @@
     <ul>
       <li>Full 4K setup, lighting, premium mics. Same kit I use on Edge Within</li>
       <li>Your place or a site we agree. Indoor or shaded outdoor</li>
-      <li>One person running the day. I interview you with prepared questions, or you host and I facilitate</li>
-      <li>Optional breathwork. Travel scoped per shoot</li>
+      <li>One person running the day. I interview you, with question ideas and prompts if you'd like them, or you host and I facilitate</li>
+      <li>Optional breathwork: before we record, I can guide a short session so you arrive in your body and speak from there, rather than performing for the camera.</li>
+      <li>Travel scoped per shoot</li>
     </ul>
   </div>
 </section>
@@ -1017,7 +1170,15 @@
     <div class="addons-grid">
       <div class="addon">
         <h4>Extra clips</h4>
-        <p>5 clips are included per episode. Extra clips beyond those 5 are priced per clip.</p>
+        <p>Every episode includes 5 short-form clips, each cut with the same care and finish as the Edge Within clips. Extra clips are A$50 each.</p>
+      </div>
+      <div class="addon">
+        <h4>Cinematic clips</h4>
+        <p>Everything a standard clip has, plus extra flair: bolder animated text, sharper pacing and more punch. A$75 per clip, or add A$25 to upgrade any included clip.</p>
+      </div>
+      <div class="addon">
+        <h4>Episode trailer</h4>
+        <p>A short trailer to launch or promote the episode. A$100.</p>
       </div>
       <div class="addon">
         <h4>New show setup</h4>
@@ -1145,7 +1306,7 @@
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">How do the package prices work?</button>
-      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time, including 5 short-form clips per episode. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier. Add-ons are extra: clips beyond the 5 are priced per clip, and new show setup on Spotify and Apple Podcasts is A$250 one-off.</div>
+      <div class="faq-a">Pilot is A$2,500 for one episode. Series is 3 episodes at A$2,200 each (A$6,600). Season is 6 episodes at A$2,000 each (A$12,000). Same deliverables every time, including 5 short-form clips per episode. You pay per episode as work completes, not the whole pack up front. Custom counts are priced off the nearest tier. Add-ons are extra: extra clips are A$50 each, cinematic clips A$75, and new show setup on Spotify and Apple Podcasts is A$250 one-off.</div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">What if I want 4, 5, or 8 episodes?</button>
@@ -1161,7 +1322,7 @@
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">Can you interview me if I do not want to host?</button>
-      <div class="faq-a">Yes. Pre-made questions. A pilot episode is enough to start.</div>
+      <div class="faq-a">Yes. I can suggest questions and prompts, and a pilot episode is enough to start.</div>
     </div>
     <div class="faq-item">
       <button type="button" class="faq-q" aria-expanded="false">How fast is turnaround?</button>
