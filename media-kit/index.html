@@ -280,6 +280,72 @@
   footer p { font-family: Arial, sans-serif; font-size: 12px; color: var(--grey2); }
   footer { align-items: center; }
 
+  /* ── Vision ── */
+  .pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 48px; }
+  .pillar { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; }
+  .pillar .include-num { margin-bottom: 14px; }
+  .pillar h3 { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+  .pillar p { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.65; }
+  .pillar p + p { margin-top: 10px; }
+  .dream { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .dream-head { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .dream-note { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); font-style: italic; margin-bottom: 12px; }
+  .dream-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dream-chips li {
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; color: var(--white);
+    background: rgba(184,134,11,0.12); border: 1px solid rgba(184,134,11,0.45); border-radius: 999px; padding: 6px 12px;
+  }
+  .since-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-bottom: 12px; }
+  .since-grid .stat-card { padding: 24px 20px; }
+  .since-grid .stat-card .v { font-size: clamp(26px, 2.6vw, 38px); }
+  .src { font-family: 'Courier New', monospace; font-size: 12px; color: var(--grey); letter-spacing: 0.04em; line-height: 1.6; margin-bottom: 40px; }
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 28px 20px; margin-bottom: 12px; }
+  .chart-card h3 { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .chart-card .sub { font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); margin-bottom: 20px; }
+  .bars { display: flex; align-items: flex-end; gap: 10px; height: 240px; padding-top: 24px; border-bottom: 1px solid var(--grey4); }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+  .bar-val { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding-bottom: 5px; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; color: var(--white); white-space: nowrap; }
+  .bar { position: relative; width: 100%; max-width: 72px; background: var(--gold); border-radius: 4px 4px 0 0; }
+  .bar.partial { background: repeating-linear-gradient(135deg, rgba(184,134,11,0.85) 0 6px, rgba(184,134,11,0.35) 6px 12px); }
+  .bar-labels { display: flex; gap: 10px; margin-top: 8px; }
+  .bar-labels span { flex: 1; text-align: center; font-family: 'Courier New', monospace; font-size: 11px; color: var(--grey); min-width: 0; }
+  .chart-key { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); margin-top: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .chart-key i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; background: repeating-linear-gradient(135deg, rgba(184,134,11,0.85) 0 3px, rgba(184,134,11,0.35) 3px 6px); }
+  .ig-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-bottom: 12px; }
+  .ig-grid .stat-card { padding: 24px 20px; }
+  .ig-grid .stat-card .v { font-size: clamp(24px, 2.4vw, 34px); }
+  .ig-callout { font-family: Arial, sans-serif; font-size: 15px; color: #b0b0b0; margin-bottom: 8px; }
+  .listen-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+  .listen-grid .info-card .big { font-family: Arial, sans-serif; font-size: 34px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+  .listen-grid .info-card .big + p { margin-bottom: 14px; }
+  .geo-row { display: grid; grid-template-columns: 110px 1fr 44px; align-items: center; gap: 10px; margin-bottom: 8px; font-family: Arial, sans-serif; font-size: 14px; color: #b0b0b0; }
+  .geo-track { height: 8px; background: var(--grey3); border-radius: 4px; overflow: hidden; }
+  .geo-fill { height: 100%; background: var(--gold); border-radius: 4px; }
+  .geo-row b { color: var(--white); text-align: right; font-weight: 700; }
+  .vision-prod { margin-top: 8px; }
+  .vision-close { font-family: Georgia, serif; font-size: clamp(20px, 2.2vw, 26px); margin-top: 40px; line-height: 1.4; }
+  .vision-close em { color: var(--gold); }
+  @media (max-width: 1100px) {
+    .since-grid, .ig-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .listen-grid { grid-template-columns: 1fr 1fr; }
+    .listen-grid .info-card:first-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 860px) {
+    .pillars { grid-template-columns: 1fr; }
+    .since-grid, .ig-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .listen-grid { grid-template-columns: 1fr; }
+    .chart-card { padding: 22px 14px 16px; }
+    .bars, .bar-labels { gap: 4px; }
+    .bars { height: 200px; }
+    .bar-val { font-size: 9px; }
+    .bar-labels span { font-size: 9px; }
+    .since-grid .stat-card, .ig-grid .stat-card { padding: 18px 14px; }
+    .since-grid .stat-card .v, .ig-grid .stat-card .v { font-size: 24px; }
+    .geo-row { grid-template-columns: 92px 1fr 40px; font-size: 13px; }
+  }
+
   /* ── Responsive ── */
   @media (max-width: 1100px) {
     .guest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -481,7 +547,7 @@
 </section>
 
 <!-- hidden until SuperFeast pays, restore later.
-     To restore: remove this wrapper comment. (Also change the Partnership section below back from "section alt" to "section".)
+     To restore: remove this wrapper comment, then check the alternating section backgrounds (Vision is currently "section alt").
 [Current partner]
 <section class="section alt" id="partner">
   <div class="section-inner">
@@ -496,8 +562,157 @@
 </section>
 -->
 
+<!-- Vision: where Edge Within is heading -->
+<section class="section alt" id="vision">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Where Edge Within is heading</div>
+      <h2>Bigger guests. Wilder places. <em>A growing audience.</em></h2>
+      <p>Edge Within is raw, honest, long-form conversations with real people, filmed outdoors in the Northern Rivers, NSW, and published on YouTube, Spotify and Apple Podcasts. The heart of the show stays the same. Here is where it is going next.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="include-num">1</div>
+        <h3>Bigger guests</h3>
+        <p>Same unhurried, honest conversations, with bigger names in the chair.</p>
+        <div class="dream">
+          <div class="dream-head">On the dream guest list</div>
+          <div class="dream-note">The calibre of guest we are working toward. Aspirational, not booked.</div>
+          <ul class="dream-chips">
+            <li>Wim Hof</li><li>Robert Irwin</li><li>Lee Harris</li><li>Robert Glover</li><li>Ryan Moresby-White</li><li>Mick Fanning</li><li>Ross Edgley</li><li>Gabor Mat&eacute;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="include-num">2</div>
+        <h3>More incredible locations in nature</h3>
+        <p>Edge Within has always been filmed outdoors. Next, the show heads to waterfalls, coastlines, mountains and other wild places, so your product sits on set somewhere people want to watch.</p>
+      </div>
+      <div class="pillar">
+        <div class="include-num">3</div>
+        <h3>A growing audience</h3>
+        <p>Edge Within launched in January 2026. Monthly plays and downloads went from 394 in February to 2,756 in July, about 7x. On Instagram, @edgewithinpodcast went from 0 followers in January to 22,963, and nearly doubled (+87.2%) in the 90 days to 4 Oct 2026.</p>
+      </div>
+    </div>
+
+    <!-- Since launch -->
+    <div class="stat-group-label">Since launch</div>
+    <div class="since-grid">
+      <div class="stat-card">
+        <div class="v">Jan 2026</div>
+        <div class="l">Launched</div>
+      </div>
+      <div class="stat-card featured">
+        <div class="v">0 &rarr; 23K</div>
+        <div class="l">Instagram followers (22,963)</div>
+      </div>
+      <div class="stat-card featured">
+        <div class="v">10,370</div>
+        <div class="l">Plays and downloads</div>
+      </div>
+      <div class="stat-card featured">
+        <div class="v">7x</div>
+        <div class="l">Monthly plays, Feb to Jul</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">50</div>
+        <div class="l">Countries listening</div>
+      </div>
+    </div>
+    <p class="src">Sources: Spotify for Creators, plays and downloads (Spotify plus other platforms via Spotify hosting), 19 Jan to 23 Sep 2026. Instagram Insights, 4 Oct 2026.</p>
+
+    <!-- Monthly plays chart. Static HTML bars, heights are value / 2,756 (the July high) x 100%. -->
+    <div class="chart-card">
+      <h3>Monthly plays and downloads</h3>
+      <p class="sub">From 14 a day in February to 89 a day in July.</p>
+      <div class="bars" role="img" aria-label="Monthly plays and downloads, 2026: January (from 19 Jan) 263, February 394, March 494, April 676, May 690, June 1,905, July 2,756, August 2,066, September (to 23 Sep) 1,126.">
+        <div class="bar-col"><div class="bar partial" style="height:9.5%"><span class="bar-val">263</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:14.3%"><span class="bar-val">394</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:17.9%"><span class="bar-val">494</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:24.5%"><span class="bar-val">676</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:25%"><span class="bar-val">690</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:69.1%"><span class="bar-val">1,905</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:100%"><span class="bar-val">2,756</span></div></div>
+        <div class="bar-col"><div class="bar" style="height:75%"><span class="bar-val">2,066</span></div></div>
+        <div class="bar-col"><div class="bar partial" style="height:40.9%"><span class="bar-val">1,126</span></div></div>
+      </div>
+      <div class="bar-labels" aria-hidden="true">
+        <span>Jan*</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep*</span>
+      </div>
+      <p class="chart-key"><i></i> *Partial months: January from 19 Jan (first episode data), September to 23 Sep.</p>
+    </div>
+    <p class="src">Source: Spotify for Creators, plays and downloads incl. other platforms via Spotify hosting, as at 23 Sep 2026.</p>
+
+    <!-- Instagram growth -->
+    <div class="stat-group-label">Instagram growth · @edgewithinpodcast</div>
+    <p class="ig-callout">From 0 followers in January 2026 to 22,963 today. One reel alone brought in 4.4K follows.</p>
+    <div class="ig-grid">
+      <div class="stat-card featured">
+        <div class="v">22,963</div>
+        <div class="l">Followers (+87.2% since 6 Jul)</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">+10,696</div>
+        <div class="l">Net new followers</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">2,006,614</div>
+        <div class="l">Accounts reached</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">3.7M</div>
+        <div class="l">Reels views</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">342,887</div>
+        <div class="l">Interactions</div>
+      </div>
+    </div>
+    <p class="src">Source: Instagram Insights, 90 days to 4 Oct 2026.</p>
+    <!-- Optional: if Mat sends month-by-month follower counts, add a second chart-card here using the same bar markup. -->
+
+    <!-- Who's listening -->
+    <div class="stat-group-label">Who's listening</div>
+    <div class="listen-grid">
+      <div class="info-card">
+        <div class="eyebrow">Where</div>
+        <div class="geo-row"><span>Australia</span><div class="geo-track"><div class="geo-fill" style="width:54%"></div></div><b>54%</b></div>
+        <div class="geo-row"><span>United States</span><div class="geo-track"><div class="geo-fill" style="width:11%"></div></div><b>11%</b></div>
+        <div class="geo-row"><span>United Kingdom</span><div class="geo-track"><div class="geo-fill" style="width:6%"></div></div><b>6%</b></div>
+        <div class="geo-row"><span>Canada</span><div class="geo-track"><div class="geo-fill" style="width:4.5%"></div></div><b>4.5%</b></div>
+        <div class="geo-row"><span>New Zealand</span><div class="geo-track"><div class="geo-fill" style="width:2.7%"></div></div><b>2.7%</b></div>
+        <p>Listeners in 50 countries.</p>
+      </div>
+      <div class="info-card">
+        <div class="eyebrow">Who</div>
+        <div class="big">66%</div>
+        <p>female</p>
+        <div class="big">26%</div>
+        <p>male</p>
+      </div>
+      <div class="info-card">
+        <div class="eyebrow">Age</div>
+        <div class="big">79%</div>
+        <p>aged 23 to 44</p>
+        <div class="big">38%</div>
+        <p>aged 28 to 34, the largest group</p>
+      </div>
+    </div>
+    <p class="src">Source: Spotify for Creators, as at 23 Sep 2026.</p>
+
+    <div class="info-card vision-prod">
+      <div class="eyebrow">Built to show up consistently</div>
+      <h3>Produced by Edge Within Productions</h3>
+      <p>Mat also runs Edge Within Productions, filming podcasts for other people, so the show is shot and produced by a production company. A dedicated short-form editor means clips go out consistently.</p>
+    </div>
+
+    <p class="vision-close">Partners stay in the show the same way as it grows: product on set and a genuine host ad read from Mat. <em>Come on board now and grow with it.</em></p>
+  </div>
+</section>
+
 <!-- Partnership -->
-<section class="section alt" id="partnership">
+<section class="section" id="partnership">
   <div class="section-inner">
     <div class="section-header">
       <div class="eyebrow">What a partnership includes</div>
