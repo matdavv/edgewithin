@@ -312,7 +312,7 @@
   .bar-labels span { flex: 1; text-align: center; font-family: 'Courier New', monospace; font-size: 11px; color: var(--grey); min-width: 0; }
   .chart-key { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); margin-top: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .chart-key i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; background: repeating-linear-gradient(135deg, rgba(184,134,11,0.85) 0 3px, rgba(184,134,11,0.35) 3px 6px); }
-  .ig-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-bottom: 12px; }
+  .ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 12px; }
   .ig-grid .stat-card { padding: 24px 20px; }
   .ig-grid .stat-card .v { font-size: clamp(24px, 2.4vw, 34px); }
   .ig-callout { font-family: Arial, sans-serif; font-size: 15px; color: #b0b0b0; margin-bottom: 8px; }
@@ -327,13 +327,14 @@
   .vision-close { font-family: Georgia, serif; font-size: clamp(20px, 2.2vw, 26px); margin-top: 40px; line-height: 1.4; }
   .vision-close em { color: var(--gold); }
   @media (max-width: 1100px) {
-    .since-grid, .ig-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .since-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .listen-grid { grid-template-columns: 1fr 1fr; }
     .listen-grid .info-card:first-child { grid-column: 1 / -1; }
   }
   @media (max-width: 860px) {
     .pillars { grid-template-columns: 1fr; }
-    .since-grid, .ig-grid { grid-template-columns: 1fr 1fr; }
+    .since-grid { grid-template-columns: 1fr 1fr; }
+    .ig-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .listen-grid { grid-template-columns: 1fr; }
@@ -647,27 +648,18 @@
 
     <!-- Instagram growth -->
     <div class="stat-group-label">Instagram growth · @edgewithinpodcast</div>
-    <p class="ig-callout">From 0 followers in January 2026 to 22,963 today. One reel alone brought in 4.4K follows.</p>
     <div class="ig-grid">
       <div class="stat-card featured">
-        <div class="v">22,963</div>
-        <div class="l">Followers (+87.2% since 6 Jul)</div>
-      </div>
-      <div class="stat-card">
-        <div class="v">+10,696</div>
-        <div class="l">Net new followers</div>
+        <div class="v">0 &rarr; 22,963</div>
+        <div class="l">Followers since Jan 2026 (+87.2% since 6 Jul)</div>
       </div>
       <div class="stat-card">
         <div class="v">2,006,614</div>
-        <div class="l">Accounts reached</div>
+        <div class="l">Accounts reached in 90 days</div>
       </div>
       <div class="stat-card">
-        <div class="v">3.7M</div>
-        <div class="l">Reels views</div>
-      </div>
-      <div class="stat-card">
-        <div class="v">342,887</div>
-        <div class="l">Interactions</div>
+        <div class="v">4.4K</div>
+        <div class="l">Follows from one reel alone</div>
       </div>
     </div>
     <p class="src">Source: Instagram Insights, 90 days to 4 Oct 2026.</p>
