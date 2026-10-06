@@ -8,22 +8,52 @@
 <link rel="icon" href="/favicon.ico?v=3" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Anton for the wordmark. text= subsets the font to the letters in EDGE WITHIN PRODUCTIONS (a few KB); add letters here if the wordmark text changes. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&amp;text=EDGWITHNPROUCS">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #0A0A0A; color: #fff; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 24px; }
-  .wrap { max-width: 480px; }
+  .wrap { max-width: 480px; display: flex; flex-direction: column; align-items: center; }
+  /* Wordmark: gold EDGE + white WITHIN in Anton, matching the cover art */
+  .wordmark {
+    display: inline-flex; flex-direction: column; align-items: flex-start;
+    text-decoration: none; line-height: 1;
+  }
+  .wordmark:hover, .wordmark:focus { text-decoration: none !important; }
+  .wm-word {
+    font-family: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400;
+    font-size: 24px; line-height: 1; letter-spacing: 0; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .wm-edge { color: #b8860b; }
+  .wm-within { color: #FFFFFF; }
+  .wm-sub {
+    font-family: Arial, sans-serif; font-size: 8px; font-weight: 700; line-height: 1;
+    letter-spacing: 0.42em; text-transform: uppercase; color: #bdbdbd;
+    margin-top: 4px; white-space: nowrap;
+  }
+  .wordmark--lg .wm-word { font-size: 30px; }
+  .wordmark--lg .wm-sub { font-size: 9.5px; margin-top: 5px; }
+  /* On a light background: WITHIN (and the sub line) go dark so they stay readable */
+  .wordmark--on-light .wm-within { color: #0A0A0A; }
+  .wordmark--on-light .wm-sub { color: #555555; }
+  .wordmark { margin-bottom: 36px; }
   .num { font-size: 96px; font-weight: 700; color: #b8860b; line-height: 1; font-family: Georgia, serif; }
   h1 { font-size: 24px; color: #fff; margin: 16px 0 10px; }
-  p { font-size: 15px; color: #888; line-height: 1.7; margin-bottom: 32px; }
-  a { display: inline-block; background: #b8860b; color: #0A0A0A; font-weight: 700; font-size: 13px; padding: 13px 28px; border-radius: 6px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Courier New', monospace; }
+  p { font-size: 15px; color: #8a8a8a; line-height: 1.7; margin-bottom: 32px; }
+  .btn { display: inline-block; background: #b8860b; color: #0A0A0A; font-weight: 700; font-size: 13px; padding: 13px 28px; border-radius: 6px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Courier New', monospace; }
+  a:focus-visible { outline: 2px solid #b8860b; outline-offset: 3px; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<main class="wrap">
+  <a href="/" class="wordmark wordmark--lg" aria-label="Edge Within" translate="no"><span class="wm-word" aria-hidden="true"><span class="wm-edge">EDGE</span><span class="wm-within">WITHIN</span></span></a>
   <div class="num">404</div>
   <h1>Page not found.</h1>
   <p>The page you're looking for doesn't exist. Head back to the home page.</p>
-  <a href="/">Back to Home</a>
-</div>
+  <a class="btn" href="/">Back to Home</a>
+</main>
 </body>
 </html>

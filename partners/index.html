@@ -9,6 +9,10 @@
 <link rel="icon" href="/favicon.ico?v=3" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Anton for the wordmark. text= subsets the font to the letters in EDGE WITHIN PRODUCTIONS (a few KB); add letters here if the wordmark text changes. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&amp;text=EDGWITHNPROUCS">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Edge Within">
 <meta property="og:url" content="https://edgewithinpodcast.com/partners/">
@@ -33,7 +37,7 @@
     --orange: #b8860b;
     --white: #FFFFFF;
     --grey: #888888;
-    --grey2: #555555;
+    --grey2: #8a8a8a; /* was #555 (2.6:1 on #0D0D0D); #8a8a8a is 5.6:1 */
     --grey3: #222222;
     --grey4: #333333;
   }
@@ -78,23 +82,38 @@
     justify-content: space-between;
   }
 
-  .nav-logo {
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--white);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  /* Wordmark: gold EDGE + white WITHIN in Anton, matching the cover art */
+  .wordmark {
+    display: inline-flex; flex-direction: column; align-items: flex-start;
+    text-decoration: none; line-height: 1;
   }
-  .nav-logo-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--orange);
+  .wordmark:hover, .wordmark:focus { text-decoration: none !important; }
+  .wm-word {
+    font-family: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400;
+    font-size: 24px; line-height: 1; letter-spacing: 0; text-transform: uppercase;
+    white-space: nowrap;
   }
+  .wm-edge { color: #b8860b; }
+  .wm-within { color: #FFFFFF; }
+  .wm-sub {
+    font-family: Arial, sans-serif; font-size: 8px; font-weight: 700; line-height: 1;
+    letter-spacing: 0.42em; text-transform: uppercase; color: #bdbdbd;
+    margin-top: 4px; white-space: nowrap;
+  }
+  .wordmark--lg .wm-word { font-size: 30px; }
+  .wordmark--lg .wm-sub { font-size: 9.5px; margin-top: 5px; }
+  /* On a light background: WITHIN (and the sub line) go dark so they stay readable */
+  .wordmark--on-light .wm-within { color: #0A0A0A; }
+  .wordmark--on-light .wm-sub { color: #555555; }
+  nav .wordmark .wm-word { font-size: 26px; }
+
+  .skip-link {
+    position: absolute; left: 12px; top: -48px; z-index: 300;
+    background: #b8860b; color: #0A0A0A;
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    padding: 10px 14px; border-radius: 6px; text-decoration: none;
+  }
+  .skip-link:focus { top: 12px; }
 
   .nav-links {
     display: flex;
@@ -144,13 +163,13 @@
     display: block;
   }
   .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(12px);
+    transform: translateY(8px) rotate(45deg);
   }
   .hamburger.active span:nth-child(2) {
     opacity: 0;
   }
   .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-12px);
+    transform: translateY(-8px) rotate(-45deg);
   }
 
     /* ── Section layout ── */
@@ -218,18 +237,6 @@
     line-height: 1.7;
     margin-top: 12px;
   }
-  .footer-logo {
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .footer-logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
 
   .footer-col h4 {
     font-family: 'Courier New', monospace;
@@ -401,6 +408,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 0 16px; height: 60px; }
+    nav .wordmark .wm-word { font-size: 23px; }
     nav .nav-links {
       display: none; position: absolute; top: 60px; left: 0; right: 0;
       flex-direction: column; background: rgba(10,10,10,0.98);
@@ -436,12 +444,11 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <!-- ── Nav ── -->
-<nav>
-  <a href="/" class="nav-logo">
-    <span class="nav-logo-dot"></span>
-    Edge Within
-  </a>
+<nav aria-label="Main">
+  <a href="/" class="wordmark" aria-label="Edge Within" translate="no"><span class="wm-word" aria-hidden="true"><span class="wm-edge">EDGE</span><span class="wm-within">WITHIN</span></span></a>
   <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
     <span></span>
     <span></span>
@@ -451,7 +458,7 @@
     <li><a href="/">The Show</a></li>
     <li><a href="https://edgewithinproductions.com/">Production</a></li>
     <li><a href="/partners/" aria-current="page">Partners</a></li>
-    <li><a href="mailto:mat@edgewithinproductions.com?subject=Sponsorship%20enquiry">Sponsor</a></li>
+    <li><a href="/media-kit/">Sponsor</a></li>
     <li><a href="mailto:mat@edgewithinproductions.com?subject=Guest%20enquiry" class="nav-cta">Be a Guest</a></li>
   </ul>
 </nav>
@@ -485,11 +492,14 @@
       <p class="partner-desc">Australian medicinal mushrooms and tonic herbs.</p>
       <p class="partner-fav">My favourites: <strong>Mason&rsquo;s Mushrooms</strong> and <strong>Jing</strong>.</p>
 
+      <!-- SuperFeast listener code box hidden until the code is live (was showing "Coming soon").
+           TODO: replace with Impact affiliate link + code, then restore this block:
       <div class="code-label">Listener code</div>
-      <!-- TODO: replace with Impact affiliate link + code -->
       <div class="code-row">
-        <div class="code-box pending">Coming soon</div>
+        <div class="code-box">YOURCODE</div>
+        <button type="button" class="copy-btn" data-copy="YOURCODE" aria-live="polite" title="Copy SuperFeast discount code">Copy</button>
       </div>
+      -->
 
       <div class="partner-cta">
         <!-- TODO: replace with Impact affiliate link + code -->
@@ -541,7 +551,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo"><span class="footer-logo-dot"></span>Edge Within</div>
+      <a href="/" class="wordmark wordmark--lg" aria-label="Edge Within" translate="no"><span class="wm-word" aria-hidden="true"><span class="wm-edge">EDGE</span><span class="wm-within">WITHIN</span></span></a>
       <p>Real, raw, honest conversations about mindset, identity and growth. Hosted by Mat Davenport.</p>
       <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
         <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" style="font-size:12px;color:var(--orange);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@edgewithinpodcast <span style="color:var(--grey2);font-weight:400;letter-spacing:0.04em;text-transform:none;">(show / clips)</span></a>
