@@ -699,6 +699,7 @@
     }
   }
 </style>
+<link rel="stylesheet" href="/assets/signup.css">
 </head>
 <body>
 
@@ -956,6 +957,29 @@
 
 <!-- ── Footer ── -->
 <footer>
+  <!-- Email signup (Kit). Form ID lives in /assets/signup.js -->
+  <div class="footer-signup" id="signup">
+    <div>
+      <p class="signup-eyebrow">Never miss an episode</p>
+      <h2 class="signup-title">Get new episodes in your inbox.</h2>
+      <p class="signup-lead">One email when a new episode drops, plus the odd show update. No spam. Unsubscribe any time.</p>
+    </div>
+    <form class="signup-form" method="post" data-signup>
+      <div class="signup-fields">
+        <div class="signup-field">
+          <label for="ft-first">First name <span class="opt">(optional)</span></label>
+          <input class="signup-input" id="ft-first" name="fields[first_name]" type="text" autocomplete="given-name" maxlength="60">
+        </div>
+        <div class="signup-field">
+          <label for="ft-email">Email</label>
+          <input class="signup-input" id="ft-email" name="email_address" type="email" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="signup-hp" aria-hidden="true"><label>Leave this empty <input type="text" tabindex="-1" autocomplete="off" data-hp></label></div>
+        <button type="submit" class="signup-btn">Sign me up</button>
+      </div>
+      <p class="signup-status" role="status" aria-live="polite" data-signup-status></p>
+    </form>
+  </div>
   <div class="footer-inner">
     <div class="footer-brand">
       <a href="/" class="wordmark wordmark--lg" aria-label="Edge Within" translate="no"><span class="wm-word" aria-hidden="true"><span class="wm-edge">EDGE</span><span class="wm-within">WITHIN</span></span></a>
@@ -1050,5 +1074,6 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 </script>
+<script src="/assets/signup.js" defer></script>
 </body>
 </html>

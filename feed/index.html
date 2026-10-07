@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Edge Within with Mat Davenport: latest episode and links</title>
+<meta name="description" content="Raw, honest conversations with real people, hosted by Mat Davenport. Listen to the latest episode, get new episodes in your inbox, and find Edge Within on Spotify, Apple Podcasts, YouTube and Instagram.">
+<link rel="canonical" href="https://edgewithinpodcast.com/feed/">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/favicon.ico?v=4" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Anton for the wordmark. text= subsets the font to the letters in EDGE WITHIN PRODUCTIONS (a few KB); add letters here if the wordmark text changes. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&amp;text=EDGWITHNPROUCS">
+<link rel="stylesheet" href="/assets/signup.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Edge Within">
+<meta property="og:url" content="https://edgewithinpodcast.com/feed/">
+<meta property="og:title" content="Edge Within with Mat Davenport">
+<meta property="og:description" content="Raw, honest conversations with real people. Latest episode, new episodes by email, and every place to listen.">
+<meta property="og:image" content="https://edgewithinpodcast.com/og-image.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Edge Within with Mat Davenport">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Edge Within with Mat Davenport">
+<meta name="twitter:description" content="Raw, honest conversations with real people. Hosted by Mat Davenport.">
+<meta name="twitter:image" content="https://edgewithinpodcast.com/og-image.jpg?v=2">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --card: #111111;
+    --border: #262626;
+    --gold: #b8860b;
+    --logo-gold: #D5A117;
+    --white: #FFFFFF;
+    --text2: #b5b5b5;
+    --grey: #8a8a8a;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--white);
+    font-family: Arial, sans-serif; line-height: 1.5;
+    min-height: 100vh; overflow-x: hidden;
+    background-image: radial-gradient(ellipse 90% 340px at 50% 0%, rgba(184,134,11,0.16) 0%, transparent 70%);
+    background-repeat: no-repeat;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--logo-gold); outline-offset: 3px; }
+
+  .skip-link {
+    position: absolute; left: 12px; top: -48px; z-index: 300;
+    background: var(--gold); color: var(--bg);
+    font-size: 13px; font-weight: 700; padding: 10px 14px; border-radius: 6px; text-decoration: none;
+  }
+  .skip-link:focus { top: 12px; }
+
+  .wrap {
+    max-width: 480px; margin: 0 auto;
+    padding: 36px 20px calc(36px + env(safe-area-inset-bottom));
+    display: flex; flex-direction: column; gap: 28px;
+  }
+
+  /* ── Header ── */
+  .head { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .avatar {
+    display: block; width: 104px; height: 104px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--logo-gold); box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+    margin-bottom: 18px;
+  }
+  .wordmark { display: inline-flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; }
+  .wm-word {
+    font-family: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400;
+    font-size: 44px; line-height: 1; text-transform: uppercase; white-space: nowrap;
+  }
+  .wm-edge { color: var(--logo-gold); }
+  .wm-within { color: var(--white); }
+  .wm-sub {
+    font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; line-height: 1;
+    letter-spacing: 0.38em; text-transform: uppercase; color: #d0d0d0;
+    margin-top: 8px; white-space: nowrap; padding-left: 0.38em;
+  }
+  .tagline { margin-top: 16px; font-size: 16px; line-height: 1.6; color: var(--text2); max-width: 360px; }
+
+  .eyebrow {
+    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+  }
+
+  /* ── Latest episode card ── */
+  .ep-card {
+    display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 14px; align-items: center;
+    background: var(--card); border: 2px solid var(--gold); border-radius: 12px; padding: 12px;
+    text-decoration: none; transition: border-color 0.2s, transform 0.2s;
+  }
+  .ep-card:hover { border-color: var(--logo-gold); transform: translateY(-2px); }
+  .ep-art { display: block; width: 100px; height: 100px; border-radius: 8px; object-fit: cover; background: #0a0a0a; }
+  .ep-num { font-family: 'Courier New', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .ep-name { font-size: 17px; font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 3px; }
+  .ep-sub { font-size: 14px; color: var(--text2); line-height: 1.4; margin-bottom: 8px; }
+  .ep-cta { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; color: var(--logo-gold); letter-spacing: 0.06em; }
+
+  /* ── Signup box ── */
+  .signup-box {
+    background: radial-gradient(ellipse 90% 80% at 50% 0%, rgba(184,134,11,0.14) 0%, transparent 70%), #0F0A04;
+    border: 1px solid rgba(184,134,11,0.45); border-radius: 14px; padding: 24px 20px 22px;
+  }
+  .signup-box h2 { font-family: Georgia, serif; font-size: 27px; font-weight: 400; line-height: 1.15; margin-bottom: 8px; }
+  .signup-box .lead { font-size: 15px; line-height: 1.6; color: var(--text2); margin-bottom: 18px; }
+  .signup-box .signup-field { flex-basis: 100%; }
+  .signup-box .signup-btn { width: 100%; min-height: 54px; font-size: 16px; }
+  .signup-box .signup-status { font-size: 15px; }
+
+  /* ── Link buttons ── */
+  .links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .link {
+    display: flex; align-items: center; gap: 14px; min-height: 60px;
+    padding: 12px 16px; border-radius: 12px; text-decoration: none;
+    background: var(--card); border: 1px solid var(--border); color: var(--white);
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  }
+  .link:hover { border-color: var(--gold); transform: translateY(-1px); }
+  .link:active { transform: translateY(1px); }
+  .link-icon { flex: 0 0 26px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; color: var(--logo-gold); }
+  .link-icon svg { width: 24px; height: 24px; display: block; }
+  .link-text { flex: 1 1 auto; min-width: 0; }
+  .link-name { display: block; font-size: 16px; font-weight: 700; line-height: 1.25; }
+  .link-sub { display: block; font-size: 13px; color: var(--grey); line-height: 1.35; margin-top: 2px; overflow-wrap: anywhere; }
+  .link-arrow { flex: 0 0 auto; color: var(--gold); font-size: 18px; }
+  .link--primary { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+  .link--primary:hover { background: var(--logo-gold); border-color: var(--logo-gold); }
+  .link--primary .link-icon, .link--primary .link-arrow { color: var(--bg); }
+  .link--primary .link-sub { color: #2a1f05; }
+
+  .foot { text-align: center; font-size: 12px; color: var(--grey); line-height: 1.7; padding-top: 4px; }
+  .foot a { color: var(--gold); text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+
+  @media (min-width: 700px) {
+    .wrap { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ep-card, .link, .signup-btn { transition: none; }
+    .ep-card:hover, .link:hover, .link:active { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<main id="main" class="wrap">
+
+  <!-- ── Header ── -->
+  <header class="head">
+    <picture>
+      <source type="image/webp" srcset="/logo-320.webp?v=3">
+      <img src="/logo.jpg?v=3" alt="Mat Davenport, host of Edge Within" class="avatar" width="104" height="104" fetchpriority="high" decoding="async">
+    </picture>
+    <h1>
+      <a href="/" class="wordmark" translate="no">
+        <span class="wm-word"><span class="wm-edge">EDGE</span><span class="wm-within">WITHIN</span></span>
+        <span class="wm-sub">with Mat Davenport</span>
+      </a>
+    </h1>
+    <p class="tagline">Raw, honest conversations with real people. No scripts. No agenda. Just truth.</p>
+  </header>
+
+  <!-- ── Latest episode ── -->
+  <!-- Update this card when a new episode goes live (same details as the first card on the home page). -->
+  <section aria-labelledby="latest-h">
+    <h2 class="eyebrow" id="latest-h">Latest episode</h2>
+    <a class="ep-card" href="https://open.spotify.com/episode/6FudaelkwJTJYdho6vh84z">
+      <img class="ep-art" src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be064f7b91d5c659e44c44bb76" alt="Ryan Barraclough" width="100" height="100" decoding="async">
+      <span>
+        <span class="ep-num" style="display:block;">EP 21 · Latest</span>
+        <span class="ep-name" style="display:block;">Ryan Barraclough</span>
+        <span class="ep-sub" style="display:block;">Brotherhood, Initiation &amp; What Makes a Mature Man</span>
+        <span class="ep-cta" style="display:block;">Listen on Spotify →</span>
+      </span>
+    </a>
+  </section>
+
+  <!-- ── Email signup (Kit). Form ID lives in /assets/signup.js ── -->
+  <section class="signup-box" id="signup" aria-labelledby="signup-h">
+    <h2 id="signup-h">Get new episodes in your inbox.</h2>
+    <p class="lead">One email when a new episode drops, plus the odd show update. That's it.</p>
+    <form class="signup-form" method="post" data-signup>
+      <div class="signup-fields">
+        <div class="signup-field">
+          <label for="feed-first">First name <span class="opt">(optional)</span></label>
+          <input class="signup-input" id="feed-first" name="fields[first_name]" type="text" autocomplete="given-name" maxlength="60">
+        </div>
+        <div class="signup-field">
+          <label for="feed-email">Email</label>
+          <input class="signup-input" id="feed-email" name="email_address" type="email" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="signup-hp" aria-hidden="true"><label>Leave this empty <input type="text" tabindex="-1" autocomplete="off" data-hp></label></div>
+        <button type="submit" class="signup-btn">Sign me up</button>
+      </div>
+      <p class="signup-note">No spam. Unsubscribe any time.</p>
+      <p class="signup-status" role="status" aria-live="polite" data-signup-status></p>
+    </form>
+  </section>
+
+  <!-- ── Listen and follow ── -->
+  <nav aria-labelledby="listen-h">
+    <h2 class="eyebrow" id="listen-h">Listen and follow</h2>
+    <ul class="links">
+      <li>
+        <a class="link link--primary" href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span>
+          <span class="link-text"><span class="link-name">Listen on Spotify</span><span class="link-sub">All episodes</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://podcasts.apple.com/au/podcast/edge-within-with-mat-davenport/id1870199850">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"/></svg></span>
+          <span class="link-text"><span class="link-name">Apple Podcasts</span><span class="link-sub">Listen on Apple Podcasts</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.youtube.com/@EdgeWithinPodcast">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <span class="link-text"><span class="link-name">YouTube</span><span class="link-sub">Watch full episodes</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.instagram.com/edgewithinpodcast/">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span>
+          <span class="link-text"><span class="link-name">Instagram</span><span class="link-sub">@edgewithinpodcast · clips and behind the scenes</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="/">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span class="link-text"><span class="link-name">Website</span><span class="link-sub">edgewithinpodcast.com</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ── Work with Mat ── -->
+  <nav aria-labelledby="work-h">
+    <h2 class="eyebrow" id="work-h">Work with Mat</h2>
+    <ul class="links">
+      <li>
+        <a class="link" href="https://edgewithinproductions.com">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 18v4"/><path d="M8 22h8"/></svg></span>
+          <span class="link-text"><span class="link-name">Podcast production</span><span class="link-sub">edgewithinproductions.com</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://calendly.com/mjdaavenport/podcast-production-chat">
+          <span class="link-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span>
+          <span class="link-text"><span class="link-name">Book a call</span><span class="link-sub">Chat with Mat about podcast production</span></span>
+          <span class="link-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <footer class="foot">
+    <p>© 2026 Edge Within with Mat Davenport</p>
+  </footer>
+
+</main>
+
+<script src="/assets/signup.js" defer></script>
+</body>
+</html>
