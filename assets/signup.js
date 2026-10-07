@@ -3,16 +3,16 @@
   Used by /feed/ and the footer signup form on every page.
 
   ==================================================================
-  TO GO LIVE: replace KIT_FORM_ID below with the number of your Kit
-  form (Kit > Grow > Landing Pages & Forms > your form > Embed > HTML,
-  copy the number from the form's action URL). That's the only change.
-  e.g. 'https://app.kit.com/forms/1234567/subscriptions'
+  Kit form: 10012918.
+  To switch forms, change the number in KIT_FORM_ACTION below. That
+  one line wires every signup form on the site.
+  Kit fields used: email_address (required), fields[first_name].
   ==================================================================
 */
 (function () {
   'use strict';
 
-  var KIT_FORM_ACTION = 'https://app.kit.com/forms/KIT_FORM_ID/subscriptions';
+  var KIT_FORM_ACTION = 'https://app.kit.com/forms/10012918/subscriptions';
 
   var MESSAGES = {
     success: "You're in. New episodes will land in your inbox.",
