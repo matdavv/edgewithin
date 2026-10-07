@@ -15,7 +15,7 @@
   var KIT_FORM_ACTION = 'https://app.kit.com/forms/10012918/subscriptions';
 
   var MESSAGES = {
-    success: "You're in. New episodes will land in your inbox.",
+    success: "Nearly there. Check your inbox to confirm your email.",
     notReady: "Thanks for that. Email updates are being switched on very soon, so please check back shortly. In the meantime, follow @edgewithinpodcast on Instagram for new episodes.",
     error: "Something went wrong there. Please check your email address and try again.",
     sending: "Signing you up..."
