@@ -9,13 +9,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Anton for the wordmark. text= subsets the font to the letters in EDGE WITHIN PRODUCTIONS (a few KB); add letters here if the wordmark text changes. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&amp;text=EDGWITHNPROUCS">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0A0A0A; color: #fff; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 24px; }
+  body { background: #0A0A0A; color: #fff; font-family: var(--sans); display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 24px; }
   .wrap { max-width: 480px; display: flex; flex-direction: column; align-items: center; }
   /* Wordmark: gold EDGE + white WITHIN in Anton, matching the cover art */
   .wordmark {
@@ -24,14 +20,14 @@
   }
   .wordmark:hover, .wordmark:focus { text-decoration: none !important; }
   .wm-word {
-    font-family: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400;
+    font-family: 'Anton', Impact, sans-serif; font-weight: 400;
     font-size: 24px; line-height: 1; letter-spacing: 0; text-transform: uppercase;
     white-space: nowrap;
   }
   .wm-edge { color: #b8860b; }
   .wm-within { color: #FFFFFF; }
   .wm-sub {
-    font-family: Arial, sans-serif; font-size: 8px; font-weight: 700; line-height: 1;
+    font-family: var(--sans); font-size: 8px; font-weight: 700; line-height: 1;
     letter-spacing: 0.42em; text-transform: uppercase; color: #bdbdbd;
     margin-top: 4px; white-space: nowrap;
   }
@@ -41,12 +37,16 @@
   .wordmark--on-light .wm-within { color: #0A0A0A; }
   .wordmark--on-light .wm-sub { color: #555555; }
   .wordmark { margin-bottom: 36px; }
-  .num { font-size: 96px; font-weight: 700; color: #b8860b; line-height: 1; font-family: Georgia, serif; }
+  .num { font-size: 96px; font-weight: 700; color: #b8860b; line-height: 1; font-family: var(--serif); }
   h1 { font-size: 24px; color: #fff; margin: 16px 0 10px; }
   p { font-size: 15px; color: #8a8a8a; line-height: 1.7; margin-bottom: 32px; }
-  .btn { display: inline-block; background: #b8860b; color: #0A0A0A; font-weight: 700; font-size: 13px; padding: 13px 28px; border-radius: 6px; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; font-family: 'Courier New', monospace; }
+  .btn { display: inline-block; background: #b8860b; color: #0A0A0A; font-weight: 700; font-size: 14px; padding: 13px 28px; border-radius: 6px; text-decoration: none; letter-spacing:0.01em;  font-family: var(--sans); }
   a:focus-visible { outline: 2px solid #b8860b; outline-offset: 3px; }
+.btn{min-height:44px;display:inline-flex !important;align-items:center}.nf-links{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;align-items:center;gap:4px}.nf-links a{color:#EDE6DA;font-family:var(--sans);font-size:15px;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:3px}
 </style>
+<link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/brand.css?v=1">
 </head>
 <body>
 <main class="wrap">
@@ -55,6 +55,10 @@
   <h1>Page not found.</h1>
   <p>The page you're looking for doesn't exist. Head back to the home page.</p>
   <a class="btn" href="/">Back to Home</a>
+  <ul class="nf-links">
+    <li><a href="https://open.spotify.com/episode/6FudaelkwJTJYdho6vh84z">Listen to the latest episode</a></li>
+    <li><a href="/feed/">All links and the email list</a></li>
+  </ul>
 </main>
 </body>
 </html>

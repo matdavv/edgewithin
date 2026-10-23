@@ -11,10 +11,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Anton for the wordmark. text= subsets the font to the letters in EDGE WITHIN PRODUCTIONS (a few KB); add letters here if the wordmark text changes. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&amp;text=EDGWITHNPROUCS">
 <link rel="stylesheet" href="/assets/signup.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Edge Within">
@@ -44,7 +40,7 @@
   html { -webkit-text-size-adjust: 100%; }
   body {
     background: var(--bg); color: var(--white);
-    font-family: Arial, sans-serif; line-height: 1.5;
+    font-family: var(--sans); line-height: 1.5;
     min-height: 100vh; overflow-x: hidden;
     background-image: radial-gradient(ellipse 90% 340px at 50% 0%, rgba(184,134,11,0.16) 0%, transparent 70%);
     background-repeat: no-repeat;
@@ -55,7 +51,7 @@
   .skip-link {
     position: absolute; left: 12px; top: -48px; z-index: 300;
     background: var(--gold); color: var(--bg);
-    font-size: 13px; font-weight: 700; padding: 10px 14px; border-radius: 6px; text-decoration: none;
+    font-size: 14px; font-weight: 700; padding: 10px 14px; border-radius: 6px; text-decoration: none;
   }
   .skip-link:focus { top: 12px; }
 
@@ -74,21 +70,21 @@
   }
   .wordmark { display: inline-flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; }
   .wm-word {
-    font-family: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400;
+    font-family: 'Anton', Impact, sans-serif; font-weight: 400;
     font-size: 44px; line-height: 1; text-transform: uppercase; white-space: nowrap;
   }
   .wm-edge { color: var(--logo-gold); }
   .wm-within { color: var(--white); }
   .wm-sub {
-    font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; line-height: 1;
+    font-family: var(--sans); font-size: 11px; font-weight: 700; line-height: 1;
     letter-spacing: 0.38em; text-transform: uppercase; color: #d0d0d0;
     margin-top: 8px; white-space: nowrap; padding-left: 0.38em;
   }
   .tagline { margin-top: 16px; font-size: 16px; line-height: 1.6; color: var(--text2); max-width: 360px; }
 
   .eyebrow {
-    font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    font-family: var(--sans); font-size: 14px; letter-spacing:0.01em;
+     color: var(--gold); margin-bottom: 10px;
   }
 
   /* ── Latest episode card ── */
@@ -99,17 +95,17 @@
   }
   .ep-card:hover { border-color: var(--logo-gold); transform: translateY(-2px); }
   .ep-art { display: block; width: 100px; height: 100px; border-radius: 8px; object-fit: cover; background: #0a0a0a; }
-  .ep-num { font-family: 'Courier New', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .ep-num { font-family: var(--sans); font-size: 14px; color: var(--gold); letter-spacing:0.01em; margin-bottom: 4px; }
   .ep-name { font-size: 17px; font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 3px; }
   .ep-sub { font-size: 14px; color: var(--text2); line-height: 1.4; margin-bottom: 8px; }
-  .ep-cta { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; color: var(--logo-gold); letter-spacing: 0.06em; }
+  .ep-cta { font-family: var(--sans); font-size: 14px; font-weight: 700; color: var(--logo-gold); letter-spacing:0.01em; }
 
   /* ── Signup box ── */
   .signup-box {
     background: radial-gradient(ellipse 90% 80% at 50% 0%, rgba(184,134,11,0.14) 0%, transparent 70%), #0F0A04;
     border: 1px solid rgba(184,134,11,0.45); border-radius: 14px; padding: 24px 20px 22px;
   }
-  .signup-box h2 { font-family: Georgia, serif; font-size: 27px; font-weight: 400; line-height: 1.15; margin-bottom: 8px; }
+  .signup-box h2 { font-family: var(--serif); font-size: 27px; font-weight: 400; line-height: 1.15; margin-bottom: 8px; }
   .signup-box .lead { font-size: 15px; line-height: 1.6; color: var(--text2); margin-bottom: 18px; }
   .signup-box .signup-field { flex-basis: 100%; }
   .signup-box .signup-btn { width: 100%; min-height: 54px; font-size: 16px; }
@@ -129,14 +125,14 @@
   .link-icon svg { width: 24px; height: 24px; display: block; }
   .link-text { flex: 1 1 auto; min-width: 0; }
   .link-name { display: block; font-size: 16px; font-weight: 700; line-height: 1.25; }
-  .link-sub { display: block; font-size: 13px; color: var(--grey); line-height: 1.35; margin-top: 2px; overflow-wrap: anywhere; }
+  .link-sub { display: block; font-size: 14px; color: var(--grey); line-height: 1.35; margin-top: 2px; overflow-wrap: anywhere; }
   .link-arrow { flex: 0 0 auto; color: var(--gold); font-size: 18px; }
   .link--primary { background: var(--gold); border-color: var(--gold); color: var(--bg); }
   .link--primary:hover { background: var(--logo-gold); border-color: var(--logo-gold); }
   .link--primary .link-icon, .link--primary .link-arrow { color: var(--bg); }
   .link--primary .link-sub { color: #2a1f05; }
 
-  .foot { text-align: center; font-size: 12px; color: var(--grey); line-height: 1.7; padding-top: 4px; }
+  .foot { text-align: center; font-size: 14px; color: var(--grey); line-height: 1.7; padding-top: 4px; }
   .foot a { color: var(--gold); text-decoration: none; }
   .foot a:hover { text-decoration: underline; }
 
@@ -148,6 +144,9 @@
     .ep-card:hover, .link:hover, .link:active { transform: none; }
   }
 </style>
+<link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/brand.css?v=1">
 </head>
 <body>
 

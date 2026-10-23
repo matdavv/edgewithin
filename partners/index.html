@@ -10,10 +10,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Anton for the wordmark. text= subsets the font to the letters in EDGE WITHIN PRODUCTIONS (a few KB); add letters here if the wordmark text changes. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&amp;text=EDGWITHNPROUCS">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Edge Within">
 <meta property="og:url" content="https://edgewithinpodcast.com/partners/">
@@ -48,24 +44,24 @@
   body {
     background: var(--bg);
     color: var(--white);
-    font-family: 'Georgia', serif;
+    font-family: var(--sans);
     line-height: 1.6;
     overflow-x: hidden;
   }
 
   /* ── Type ── */
   .eyebrow {
-    font-family: 'Courier New', monospace;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing:0.01em;
+    
     color: var(--orange);
     margin-bottom: 12px;
   }
   h1 { font-size: clamp(36px, 6vw, 80px); line-height: 1.0; font-weight: 400; }
   h2 { font-size: clamp(24px, 4vw, 42px); font-weight: 400; line-height: 1.15; }
-  h3 { font-size: 18px; font-weight: 700; font-family: Arial, sans-serif; }
-  .sans { font-family: Arial, sans-serif; }
+  h3 { font-size: 18px; font-weight: 700; font-family: var(--sans); }
+  .sans { font-family: var(--sans); }
 
   /* ── Nav ── */
   nav {
@@ -90,14 +86,14 @@
   }
   .wordmark:hover, .wordmark:focus { text-decoration: none !important; }
   .wm-word {
-    font-family: 'Anton', Impact, 'Arial Narrow Bold', sans-serif; font-weight: 400;
+    font-family: 'Anton', Impact, sans-serif; font-weight: 400;
     font-size: 24px; line-height: 1; letter-spacing: 0; text-transform: uppercase;
     white-space: nowrap;
   }
   .wm-edge { color: #b8860b; }
   .wm-within { color: #FFFFFF; }
   .wm-sub {
-    font-family: Arial, sans-serif; font-size: 8px; font-weight: 700; line-height: 1;
+    font-family: var(--sans); font-size: 8px; font-weight: 700; line-height: 1;
     letter-spacing: 0.42em; text-transform: uppercase; color: #bdbdbd;
     margin-top: 4px; white-space: nowrap;
   }
@@ -111,7 +107,7 @@
   .skip-link {
     position: absolute; left: 12px; top: -48px; z-index: 300;
     background: #b8860b; color: #0A0A0A;
-    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
     padding: 10px 14px; border-radius: 6px; text-decoration: none;
   }
   .skip-link:focus { top: 12px; }
@@ -123,8 +119,8 @@
     list-style: none;
   }
   .nav-links a {
-    font-family: Arial, sans-serif;
-    font-size: 13px;
+    font-family: var(--sans);
+    font-size: 14px;
     color: var(--grey);
     text-decoration: none;
     letter-spacing: 0.04em;
@@ -138,10 +134,10 @@
     font-weight: 700 !important;
     padding: 9px 20px;
     border-radius: 5px;
-    font-size: 12px !important;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-family: 'Courier New', monospace !important;
+    font-size: 14px !important;
+    letter-spacing:0.01em;
+    
+    font-family: var(--sans) !important;
     transition: background 0.2s, transform 0.2s;
   }
   .nav-cta:hover { background: #9a7009 !important; transform: scale(1.03); }
@@ -188,13 +184,13 @@
   }
   .section-full .inner { max-width: 1100px; margin: 0 auto; }
   .section-header { margin-bottom: 48px; }
-  .section-header p { font-size: 16px; color: var(--grey); font-family: Arial, sans-serif; margin-top: 10px; line-height: 1.7; max-width: 560px; }
+  .section-header p { font-size: 16px; color: var(--grey); font-family: var(--sans); margin-top: 10px; line-height: 1.7; max-width: 560px; }
 
   .btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: Arial, sans-serif;
+    font-family: var(--sans);
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;
@@ -232,27 +228,27 @@
   }
 
   .footer-brand p {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--grey);
-    font-family: Arial, sans-serif;
+    font-family: var(--sans);
     line-height: 1.7;
     margin-top: 12px;
   }
 
   .footer-col h4 {
-    font-family: 'Courier New', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-family: var(--sans);
+    font-size: 14px;
+    letter-spacing:0.01em;
+    
     color: var(--grey2);
     margin-bottom: 14px;
   }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .footer-col ul a {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--grey);
     text-decoration: none;
-    font-family: Arial, sans-serif;
+    font-family: var(--sans);
     transition: color 0.2s;
   }
   .footer-col ul a:hover { color: var(--white); }
@@ -266,7 +262,7 @@
     flex-wrap: wrap;
     gap: 12px;
   }
-  .footer-bottom p { font-size: 12px; color: var(--grey2); font-family: Arial, sans-serif; }
+  .footer-bottom p { font-size: 14px; color: var(--grey2); font-family: var(--sans); }
   .footer-bottom a { color: var(--orange); text-decoration: none; }
 
   /* ── Mobile sticky ── */
@@ -278,7 +274,7 @@
     color: var(--bg);
     text-align: center;
     padding: 16px;
-    font-family: Arial, sans-serif;
+    font-family: var(--sans);
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;
@@ -306,7 +302,7 @@
   .page-hero h1 { font-size: clamp(38px, 5.5vw, 64px); line-height: 1.05; margin-bottom: 20px; }
   .page-hero h1 em { color: var(--orange); font-style: normal; }
   .page-hero p {
-    font-family: Arial, sans-serif; font-size: 17px; color: var(--grey);
+    font-family: var(--sans); font-size: 17px; color: var(--grey);
     line-height: 1.75; max-width: 620px; margin-bottom: 12px;
   }
   .page-hero p strong { color: var(--white); font-weight: 700; }
@@ -348,30 +344,30 @@
 
   .partner-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
   .partner-tag {
-    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+    font-family: var(--sans); font-size: 14px; letter-spacing:0.01em;
+     color: var(--orange); margin-bottom: 8px;
   }
   .partner-body h3 { font-size: 22px; margin-bottom: 10px; letter-spacing: 0.01em; }
-  .partner-desc { font-family: Arial, sans-serif; font-size: 15px; color: var(--grey); line-height: 1.7; margin-bottom: 10px; }
-  .partner-fav { font-family: Arial, sans-serif; font-size: 14px; color: var(--grey); line-height: 1.6; margin-bottom: 4px; }
+  .partner-desc { font-family: var(--sans); font-size: 15px; color: var(--grey); line-height: 1.7; margin-bottom: 10px; }
+  .partner-fav { font-family: var(--sans); font-size: 14px; color: var(--grey); line-height: 1.6; margin-bottom: 4px; }
   .partner-fav strong { color: var(--white); }
 
   .code-label {
-    font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--grey2); margin: 22px 0 8px;
+    font-family: var(--sans); font-size: 14px; letter-spacing:0.01em;
+     color: var(--grey2); margin: 22px 0 8px;
   }
   .code-row { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; }
   .code-box {
     flex: 1 1 200px;
-    font-family: 'Courier New', monospace; font-size: 15px; font-weight: 700;
-    letter-spacing: 0.06em; color: var(--white);
+    font-family: var(--sans); font-size: 15px; font-weight: 700;
+    letter-spacing:0.01em; color: var(--white);
     background: var(--bg); border: 1px dashed var(--grey4); border-radius: 6px;
     padding: 12px 14px; overflow-wrap: anywhere;
   }
   .code-box.pending { color: var(--grey); font-weight: 400; letter-spacing: 0.06em; }
   .copy-btn {
-    font-family: 'Courier New', monospace; font-size: 11px; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    letter-spacing:0.01em; 
     color: var(--white); background: transparent;
     border: 1px solid var(--grey4); border-radius: 6px; padding: 0 16px; min-height: 44px;
     cursor: pointer; transition: border-color 0.2s, color 0.2s;
@@ -392,7 +388,7 @@
     max-width: 1100px; margin: 0 auto; padding: 0 32px 96px;
   }
   .disclosure p {
-    font-family: Arial, sans-serif; font-size: 13px; color: var(--grey2); line-height: 1.7;
+    font-family: var(--sans); font-size: 14px; color: var(--grey2); line-height: 1.7;
     border-top: 1px solid var(--grey3); padding-top: 24px; max-width: 720px;
   }
 
@@ -419,7 +415,7 @@
     nav .nav-links.active { display: flex; }
     nav .nav-links a { display: block; padding: 10px 0; }
     .hamburger { display: flex; }
-    .nav-cta { padding: 8px 14px !important; font-size: 11px !important; width: 100%; text-align: center; }
+    .nav-cta { padding: 8px 14px !important; font-size: 14px !important; width: 100%; text-align: center; }
     .page-hero { padding: calc(60px + 48px) 20px 44px; }
     .section { padding: 64px 20px; }
     .disclosure { padding: 0 20px 64px; }
@@ -433,7 +429,7 @@
     .partner-grid { grid-template-columns: 1fr; }
     .partner-body, .sponsor-card .partner-body { padding: 22px 20px 24px; }
     .partner-logo { padding: 28px 20px; min-height: 130px; }
-    .btn { padding: 12px 20px; font-size: 13px; }
+    .btn { padding: 12px 20px; font-size: 14px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -443,6 +439,9 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/signup.css">
+<link rel="preload" href="/assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/brand.css?v=1">
 </head>
 <body>
 
@@ -621,47 +620,32 @@
       <p class="signup-status" role="status" aria-live="polite" data-signup-status></p>
     </form>
   </div>
-  <div class="footer-inner">
-    <div class="footer-brand">
+  <div class="ft-grid">
+    <div class="ft-brand">
       <a href="/" class="wordmark wordmark--lg" aria-label="Edge Within" translate="no"><span class="wm-word" aria-hidden="true"><span class="wm-edge">EDGE</span><span class="wm-within">WITHIN</span></span></a>
       <p>Real, raw, honest conversations about mindset, identity and growth. Hosted by Mat Davenport.</p>
-      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px;">
-        <a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener" style="font-size:12px;color:var(--orange);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@edgewithinpodcast <span style="color:var(--grey2);font-weight:400;letter-spacing:0.04em;text-transform:none;">(show / clips)</span></a>
-        <a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener" style="font-size:12px;color:var(--grey);font-family:'Courier New',monospace;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">@rawmatdavenport <span style="color:var(--grey2);font-weight:400;letter-spacing:0.04em;text-transform:none;">(host)</span></a>
-        <a class="support-btn" href="https://www.buymeacoffee.com/edgewithin" target="_blank" rel="noopener" aria-label="Support The Show on Buy Me a Coffee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>Support The Show</a>
-      </div>
+      <a class="support-btn" href="https://www.buymeacoffee.com/edgewithin" target="_blank" rel="noopener" aria-label="Support The Show on Buy Me a Coffee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>Support The Show</a>
     </div>
-
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <ul>
-        <li><a href="/#show">The Show</a></li>
-        <li><a href="https://edgewithinproductions.com/">Production</a></li>
-        <li><a href="/partners/">Partners</a></li>
-        <li><a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs?si=RnJXUleVRgOoAUzwj9iU5g" target="_blank" rel="noopener">Spotify</a></li>
-        <li><a href="https://podcasts.apple.com/au/podcast/edge-within-with-mat-davenport/id1870199850" target="_blank" rel="noopener">Apple Podcasts</a></li>
-        <li><a href="https://www.youtube.com/@EdgeWithinPodcast" target="_blank" rel="noopener">YouTube</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Work with Mat</h4>
-      <ul>
-        <li><a href="https://edgewithinproductions.com/">Podcast Production</a></li>
-        <li><a href="/media-kit/">Sponsor the show</a></li>
-        <li><a href="mailto:mat@edgewithinproductions.com?subject=Guest%20enquiry">Be a guest</a></li>
-        <li><a href="https://buymeacoffee.com/edgewithin" target="_blank" rel="noopener">Support the show</a></li>
-        <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a></li>
-        <li><a href="mailto:mat@edgewithinproductions.com">Email</a></li>
-      </ul>
-    </div>
+    <div class="ft-col" role="navigation" aria-label="Listen"><h2>Listen</h2><ul>
+      <li><a href="https://open.spotify.com/show/6EJ2PRRlHMxoWW7Hct9iEs?si=RnJXUleVRgOoAUzwj9iU5g" target="_blank" rel="noopener">Spotify</a></li>
+      <li><a href="https://podcasts.apple.com/au/podcast/edge-within-with-mat-davenport/id1870199850" target="_blank" rel="noopener">Apple Podcasts</a></li>
+      <li><a href="https://www.youtube.com/@EdgeWithinPodcast" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="/feed/">Latest episode and links</a></li>
+    </ul></div>
+    <div class="ft-col" role="navigation" aria-label="The show"><h2>The show</h2><ul>
+      <li><a href="/#show">The Show</a></li>
+      <li><a href="/partners/">Partners</a></li>
+      <li><a href="https://www.instagram.com/edgewithinpodcast/" target="_blank" rel="noopener">@edgewithinpodcast</a></li>
+      <li><a href="https://www.instagram.com/rawmatdavenport/" target="_blank" rel="noopener">@rawmatdavenport (host)</a></li>
+      <li><a href="https://sociatap.com/matdavenport" target="_blank" rel="noopener">sociatap.com/matdavenport</a></li>
+    </ul></div>
+    <div class="ft-col" role="navigation" aria-label="Work with Mat"><h2>Work with Mat</h2><ul>
+      <li><a href="https://edgewithinproductions.com/">Podcast Production</a></li>
+      <li><a href="/media-kit/">Sponsor the show</a></li>
+      <li><a href="mailto:mat@edgewithinproductions.com?subject=Guest%20enquiry">Be a guest</a></li>
+    </ul></div>
   </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 Edge Within with Mat Davenport. All rights reserved.</p>
-    <p>Built with intention. <a href="https://www.instagram.com/edgewithinpodcast/">@edgewithinpodcast</a></p>
-  </div>
+  <p class="ft-line"><span>&copy; 2026 Edge Within with Mat Davenport</span><a href="mailto:mat@edgewithinproductions.com">mat@edgewithinproductions.com</a></p>
 </footer>
 
 <a href="/#show" class="mobile-cta" id="mobile-cta">Listen now</a>
