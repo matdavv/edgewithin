@@ -11,7 +11,7 @@
 body { font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 h1, h2, .package h3, .signup-title, blockquote { font-family: var(--serif) !important; font-weight: 500 !important; letter-spacing: -0.005em; }
 /* Quiet labels: sentence case, sans, warm off-white */
-.eyebrow, .signup-eyebrow, .ep-num, .sp-sub, .stat-label, .ig-stat-lbl, .guest-ep, .stat-group-label, .dream-head, .package-name, .partner-tag, .interest, .contact-item .k, .footer-col h4, .link-sub, .bar-labels span {
+.eyebrow, .signup-eyebrow, .ep-num, .sp-sub, .stat-label, .ig-stat-lbl, .guest-ep, .stat-group-label, .dream-head, .package-name, .partner-tag, .interest, .contact-item .k, .footer-col h4, .link-sub {
   font-family: var(--sans) !important; text-transform: none !important; letter-spacing: 0.01em !important; color: var(--muted) !important; font-size: max(14px, 1em);
 }
 .eyebrow, .signup-eyebrow { font-size: 14px !important; font-weight: 500; }
@@ -41,16 +41,6 @@ h1, h2, .package h3, .signup-title, blockquote { font-family: var(--serif) !impo
 .hamburger { min-width: 44px; min-height: 44px; }
 .support-btn { min-height: 44px; }
 /* Media kit */
-.bar-col { position: relative; }
-.bar { flex-shrink: 0; }
-.bar-val { position: static !important; transform: none !important; padding: 0 0 6px !important; font-family: var(--sans) !important; font-size: 14px !important; font-weight: 600; color: var(--cream) !important; white-space: nowrap; }
-.bars { padding-top: 32px !important; }
-@media (max-width: 600px) {
-  .bars, .bar-labels { gap: 3px !important; }
-  .bar-val { font-size: 14px !important; letter-spacing: -0.02em; writing-mode: vertical-rl; transform: rotate(180deg) !important; padding: 0 0 6px !important; }
-  .bars { padding-top: 56px !important; }
-  .bar-labels span { font-size: 14px !important; letter-spacing: -0.02em !important; }
-}
 .package .package-name { color: #5a5248 !important; }
 .package.featured .package-name { color: #7a5a06 !important; font-weight: 600; }
 .package-price { font-family: var(--serif); font-size: 40px; font-weight: 500; line-height: 1.1; color: #0A0A0A; margin: 0 0 18px; }
